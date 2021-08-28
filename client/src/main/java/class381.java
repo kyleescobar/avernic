@@ -1,0 +1,2 @@
+public class class381 {
+}

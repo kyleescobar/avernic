@@ -1,0 +1,12 @@
+package dev.avernic.server.engine
+
+import dev.avernic.server.cache.GameCache
+import dev.avernic.server.util.RSA
+import org.koin.dsl.module
+import java.nio.file.Paths
+
+val EngineModule = module {
+    single { GameCache(Paths.get("data/cache/")) }
+    single { RSA(Paths.get("data/rsa/")) }
+    single { Engine() }
+}
