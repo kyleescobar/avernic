@@ -1,5 +1,6 @@
 package dev.avernic.server.engine.net
 
+import dev.avernic.server.engine.net.handshake.HandshakeProtocol
 import io.netty.channel.ChannelHandlerContext
 import org.tinylog.kotlin.Logger
 import java.util.concurrent.atomic.AtomicReference
@@ -18,7 +19,10 @@ class Session(val ctx: ChannelHandlerContext) {
     val protocol = AtomicReference<Protocol>(null)
 
     internal fun onConnect() {
-        println("Works")
+        /*
+         * Set the initial protocol as the HandshakeProtocol.
+         */
+        protocol.set(HandshakeProtocol(this))
     }
 
     internal fun onDisconnect() {
@@ -26,7 +30,7 @@ class Session(val ctx: ChannelHandlerContext) {
     }
 
     internal fun onMessage(message: Message) {
-
+        protocol.get().handle(message)
     }
 
     internal fun onError(cause: Throwable) {

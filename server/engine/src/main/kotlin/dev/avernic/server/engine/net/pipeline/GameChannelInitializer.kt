@@ -12,8 +12,8 @@ class GameChannelInitializer : ChannelInitializer<SocketChannel>() {
 
         ch.pipeline()
             .addLast("decoder", decoder)
-            .addLast("handler", handler)
             .addLast("encoder", encoder)
+            .addLast("handler", handler)
     }
 
 }
