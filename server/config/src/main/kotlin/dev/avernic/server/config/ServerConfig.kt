@@ -69,7 +69,7 @@ class ServerConfig {
         val NETWORK = NetworkCompanion(config)
         class NetworkCompanion(private val config: ServerConfig) {
             val ADDRESS get() = config[Spec.Network.address]
-            val PORT get() = config[Spec.Network.address]
+            val PORT get() = config[Spec.Network.port]
         }
 
         val DEFAULTS = DefaultsCompanion(config)

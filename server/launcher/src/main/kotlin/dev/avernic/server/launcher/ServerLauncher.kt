@@ -5,9 +5,11 @@ import dev.avernic.server.common.get
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.config.XteaConfig
 import dev.avernic.server.engine.Engine
+import dev.avernic.server.engine.net.NetworkServer
 import dev.avernic.server.util.RSA
 import org.koin.core.context.startKoin
 import org.tinylog.kotlin.Logger
+import java.net.InetSocketAddress
 
 object ServerLauncher {
 
@@ -57,5 +59,9 @@ object ServerLauncher {
 
         val engine = get<Engine>()
         engine.start()
+
+        val networkServer = get<NetworkServer>()
+        val address = InetSocketAddress(ServerConfig.NETWORK.ADDRESS, ServerConfig.NETWORK.PORT)
+        networkServer.bind(address)
     }
 }
