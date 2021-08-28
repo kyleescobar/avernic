@@ -57,6 +57,29 @@ class ServerConfig {
     companion object {
         private val config: ServerConfig by inject()
 
+        init {
+            config.load()
+        }
+
         val SERVER_NAME get() = config[Spec.serverName]
+        val REVISION get() = config[Spec.revision]
+        val DEVELOPER_MODE get() = config[Spec.developerMode]
+        val TICK_INTERVAL get() = config[Spec.tickInterval]
+
+        val NETWORK = NetworkCompanion(config)
+        class NetworkCompanion(private val config: ServerConfig) {
+            val ADDRESS get() = config[Spec.Network.address]
+            val PORT get() = config[Spec.Network.address]
+        }
+
+        val DEFAULTS = DefaultsCompanion(config)
+        class DefaultsCompanion(private val config: ServerConfig) {
+            val HOME_TILE = HomeTileCompanion(config)
+            class HomeTileCompanion(private val config: ServerConfig) {
+                val X get() = config[Spec.Defaults.HomeTile.x]
+                val Y get() = config[Spec.Defaults.HomeTile.y]
+                val PLANE get() = config[Spec.Defaults.HomeTile.plane]
+            }
+        }
     }
 }

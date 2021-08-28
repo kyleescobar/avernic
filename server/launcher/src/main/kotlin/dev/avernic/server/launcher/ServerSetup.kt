@@ -92,6 +92,6 @@ object ServerSetup {
 
     private fun verifyCache() {
         Logger.info("Verifying game cache files...")
-        get<GameCache>().initialize()
+        get<GameCache>().load()
     }
 }

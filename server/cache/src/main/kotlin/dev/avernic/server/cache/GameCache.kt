@@ -16,7 +16,7 @@ class GameCache(private val directory: Path) {
     val archiveCrcs = mutableListOf<Int>()
     val archiveCount get() = cache.archiveCount
 
-    fun initialize() {
+    fun load() {
         val validator = cache.generateValidator(includeWhirlpool = false, includeSizes = false)
         val container = Js5Container(validator.encode())
 

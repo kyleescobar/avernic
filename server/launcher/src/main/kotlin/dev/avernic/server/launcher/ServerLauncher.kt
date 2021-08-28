@@ -1,28 +1,20 @@
 package dev.avernic.server.launcher
 
+import dev.avernic.server.cache.GameCache
+import dev.avernic.server.common.get
+import dev.avernic.server.config.ServerConfig
+import dev.avernic.server.config.XteaConfig
+import dev.avernic.server.engine.Engine
+import dev.avernic.server.util.RSA
 import org.koin.core.context.startKoin
 import org.tinylog.kotlin.Logger
-import java.io.File
-import kotlin.system.exitProcess
 
 object ServerLauncher {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        /*
-         * Check that the server has been set up.
-         */
-        if(!checkSetup()) {
-            Logger.error("The server has not been setup. Please run the 'setup server' gradle and try starting the server again.")
-            exitProcess(0)
-        }
-
         initialize()
         launch()
-    }
-
-    private fun checkSetup(): Boolean {
-        return File("data/setup.txt").exists()
     }
 
     private fun initialize() {
@@ -32,10 +24,38 @@ object ServerLauncher {
          * Start the dependency injector.
          */
         startKoin { modules(DI_MODULES) }
+
+        loadConfigs()
+        loadRSA()
+        loadGameCache()
+    }
+
+    private fun loadConfigs() {
+        Logger.info("Loading server configuration file.")
+        get<ServerConfig>().load()
+        Logger.info("${ServerConfig.SERVER_NAME} is running for Old School RuneScape revision: ${ServerConfig.SERVER_NAME}.")
+
+        Logger.info("Loading region XTEA keys configuration file.")
+        get<XteaConfig>().load()
+        Logger.info("Successfully loaded ${get<XteaConfig>().xteas.values.size} region XTEA keys.")
+    }
+
+    private fun loadRSA() {
+        Logger.info("Loading RSA private key data.")
+        get<RSA>().load()
+    }
+
+    private fun loadGameCache() {
+        Logger.info("Loading game cache files.")
+        val cache = get<GameCache>()
+        cache.load()
+        Logger.info("Successfully loaded ${cache.archiveCount} game cache archives.")
     }
 
     private fun launch() {
-        Logger.info("Preparing to launch Avernic server.")
+        Logger.info("Preparing server game engine.")
 
+        val engine = get<Engine>()
+        engine.start()
     }
 }
