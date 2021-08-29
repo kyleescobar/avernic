@@ -2781,7 +2781,7 @@ public final class client extends class19 implements class318 {
             loginState = 3;
          }
 
-         boolean var17;
+         boolean usingMFA;
          int var18;
          if (3 == loginState) {
             if (null != class179.field2070) {
@@ -2792,12 +2792,12 @@ public final class client extends class19 implements class318 {
                class142.field1560.method419();
             }
 
-            var17 = true;
+            usingMFA = true;
             if (field457 && !((class330)var2).method5294(1)) {
-               var17 = false;
+               usingMFA = false;
             }
 
-            if (var17) {
+            if (usingMFA) {
                var18 = ((class330)var2).readUnsignedByte();
                if (null != class179.field2070) {
                   class179.field2070.method419();
@@ -3047,16 +3047,16 @@ public final class client extends class19 implements class318 {
 
          } else {
             if (loginState == 14 && ((class330)var2).available() >= 1) {
-               class293.field3714 = ((class330)var2).readUnsignedByte();
+               class293.loginResponseLength = ((class330)var2).readUnsignedByte();
                loginState = 15;
             }
 
-            if (loginState == 15 && ((class330)var2).available() >= class293.field3714) {
-               var17 = ((class330)var2).readUnsignedByte() == 1;
+            if (loginState == 15 && ((class330)var2).available() >= class293.loginResponseLength) {
+               usingMFA = ((class330)var2).readUnsignedByte() == 1;
                ((class330)var2).read(var3.payload, 0, 4);
                var3.offset = 0;
                boolean var25 = false;
-               if (var17) {
+               if (usingMFA) {
                   var18 = var3.readByteIsaac() << 24;
                   var18 |= var3.readByteIsaac() << 16;
                   var18 |= var3.readByteIsaac() << 8;

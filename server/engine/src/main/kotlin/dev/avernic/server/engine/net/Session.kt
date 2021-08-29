@@ -1,5 +1,7 @@
 package dev.avernic.server.engine.net
 
+import dev.avernic.server.engine.game.entity.Client
+import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.handshake.HandshakeProtocol
 import dev.avernic.server.util.IsaacRandom
 import io.netty.channel.ChannelHandlerContext
@@ -11,6 +13,8 @@ import kotlin.random.nextLong
 class Session(val ctx: ChannelHandlerContext) {
 
     val channel get() = ctx.channel()
+
+    internal lateinit var client: Client
 
     var seed = Random.nextLong(0.. Long.MAX_VALUE)
 
@@ -30,7 +34,9 @@ class Session(val ctx: ChannelHandlerContext) {
     }
 
     internal fun onDisconnect() {
-
+        if(protocol.get() is GameProtocol) {
+            client.player.logout()
+        }
     }
 
     internal fun onMessage(message: Message) {

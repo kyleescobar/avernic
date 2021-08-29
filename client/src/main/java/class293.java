@@ -8,7 +8,7 @@ import java.util.Set;
 public class class293 implements class290 {
    static Interface field3699;
    static class279 field3711;
-   static int field3714;
+   static int loginResponseLength;
    static final class293 field3697;
    static final class293 field3698;
    static final class293 field3700;

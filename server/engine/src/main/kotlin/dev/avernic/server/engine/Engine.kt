@@ -41,6 +41,7 @@ class Engine {
         /*
          * Start game engine services.
          */
+        serviceManager.initialize()
         serviceManager.startServices()
 
         /*

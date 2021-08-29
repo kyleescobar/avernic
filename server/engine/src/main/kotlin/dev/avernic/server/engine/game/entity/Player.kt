@@ -2,7 +2,10 @@ package dev.avernic.server.engine.game.entity
 
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.Privilege
+import dev.avernic.server.engine.net.StatusResponse
+import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.login.LoginRequest
+import dev.avernic.server.engine.net.login.LoginResponse
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
 
@@ -20,6 +23,8 @@ class Player(val client: Client) : LivingEntity() {
 
     var pid: Int = -1
 
+    var member: Boolean = true
+
     internal fun login(request: LoginRequest) {
         username = request.username
         displayName = request.username
@@ -33,14 +38,33 @@ class Player(val client: Client) : LivingEntity() {
         client.height = request.clientHeight
 
         /*
-         * Update the game
+         * Register the player with the game world.
          */
+        world.players.add(this)
+
+        /*
+         * Update the Session State values and Isaac Random values.
+         */
+        client.session.client = client
+        client.session.seed = request.seed
+        client.session.xteas = request.xteas
+        client.session.reconnectXteas = request.reconnectXteas
+
+        client.session.encoderIsaac.init(IntArray(4) { request.xteas[it] + 50 })
+        client.session.decoderIsaac.init(request.xteas)
+
+        val response = LoginResponse(StatusResponse.NORMAL, this)
+        client.session.writeAndFlush(response).addListener {
+            if(it.isSuccess) {
+                client.session.protocol.set(GameProtocol(client.session))
+            }
+        }
 
         Logger.info("[username: $username] has connected to the server.")
     }
 
     internal fun logout() {
-        client.session.disconnect()
         Logger.info("[username: $username] has disconnected from the server.")
+        world.players.remove(this)
     }
 }
