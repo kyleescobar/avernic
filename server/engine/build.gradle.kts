@@ -6,4 +6,5 @@ dependencies {
     implementation("io.netty:netty-all:_")
     implementation("io.guthix:jagex-bytebuf:_")
     implementation("com.google.guava:guava:_")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
 }

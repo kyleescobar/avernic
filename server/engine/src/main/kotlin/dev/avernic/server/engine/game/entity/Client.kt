@@ -7,7 +7,7 @@ class Client(val session: Session) {
     val player: Player = Player(this)
 
     var resizableMode: Boolean = false
-    var clientWidth: Int = 0
-    var clientHeight: Int = 0
+    var width: Int = 0
+    var height: Int = 0
 
 }

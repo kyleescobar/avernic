@@ -7,7 +7,8 @@ import io.netty.buffer.ByteBuf
 class LoginEncoder(private val session: Session) {
 
     fun encode(message: Message, out: ByteBuf) {
-
+        if(message !is LoginResponse) return
+        
     }
 
 }

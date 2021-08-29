@@ -24,5 +24,11 @@ data class Appearance(var styles: IntArray, var colors: IntArray, var gender: Ge
     companion object {
         private val DEFAULT_STYLES = intArrayOf(0, 10, 18, 26, 33, 36, 42)
         private val DEFAULT_COLORS = intArrayOf(0, 0, 0, 0, 0)
+        private val DEFAULT_GENDER = Gender.MALE
+
+        /**
+         * The default appearance of the game player.
+         */
+        val DEFAULT = Appearance(DEFAULT_STYLES, DEFAULT_COLORS, DEFAULT_GENDER)
     }
 }

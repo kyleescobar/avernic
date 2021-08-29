@@ -1,6 +1,7 @@
 package dev.avernic.server.engine.net
 
 import dev.avernic.server.engine.net.handshake.HandshakeProtocol
+import dev.avernic.server.util.IsaacRandom
 import io.netty.channel.ChannelHandlerContext
 import org.tinylog.kotlin.Logger
 import java.util.concurrent.atomic.AtomicReference
@@ -11,12 +12,15 @@ class Session(val ctx: ChannelHandlerContext) {
 
     val channel get() = ctx.channel()
 
-    val seed = Random.nextLong(0.. Long.MAX_VALUE)
+    var seed = Random.nextLong(0.. Long.MAX_VALUE)
 
     var xteas = IntArray(4) { 0 }
     var reconnectXteas: IntArray? = null
 
     val protocol = AtomicReference<Protocol>(null)
+
+    val encoderIsaac = IsaacRandom()
+    val decoderIsaac = IsaacRandom()
 
     internal fun onConnect() {
         /*
