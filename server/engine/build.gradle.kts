@@ -5,4 +5,5 @@ dependencies {
     implementation(project(":server:cache"))
     implementation("io.netty:netty-all:_")
     implementation("io.guthix:jagex-bytebuf:_")
+    implementation("com.google.guava:guava:_")
 }

@@ -39,6 +39,7 @@ class ServerConfig {
         val revision by optional(198, "revision")
         val developerMode by optional(true, "developer-mode")
         val tickInterval by optional(600L, "tick-interval")
+        val loginQueueThreads by optional(4, "login-queue-threads")
 
         object Network : ConfigSpec("network") {
             val address by optional("0.0.0.0", "address")
@@ -65,6 +66,7 @@ class ServerConfig {
         val REVISION get() = config[Spec.revision]
         val DEVELOPER_MODE get() = config[Spec.developerMode]
         val TICK_INTERVAL get() = config[Spec.tickInterval]
+        val LOGIN_QUEUE_THREADS get() = config[Spec.loginQueueThreads]
 
         val NETWORK = NetworkCompanion(config)
         class NetworkCompanion(private val config: ServerConfig) {

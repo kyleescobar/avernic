@@ -8,7 +8,6 @@ import dev.avernic.server.util.RSA
 import dev.avernic.server.util.Xtea
 import io.guthix.buffer.readString0CP1252
 import io.guthix.buffer.readStringCP1252
-import io.guthix.js5.util.xteaDecrypt
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import java.math.BigInteger

@@ -8,5 +8,7 @@ abstract class LivingEntity : Entity {
 
     override var tile: Tile = Tile(0, 0, 0)
 
+    override var orientation: Int = 0
+
 
 }
