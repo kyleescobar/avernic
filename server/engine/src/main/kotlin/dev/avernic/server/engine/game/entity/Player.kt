@@ -6,6 +6,7 @@ import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.login.LoginRequest
 import dev.avernic.server.engine.net.login.LoginResponse
+import dev.avernic.server.engine.net.packet.server.RebuildRegionNormal
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
 
@@ -57,6 +58,7 @@ class Player(val client: Client) : LivingEntity() {
         client.session.writeAndFlush(response).addListener {
             if(it.isSuccess) {
                 client.session.protocol.set(GameProtocol(client.session))
+                client.write(RebuildRegionNormal(this))
             }
         }
 

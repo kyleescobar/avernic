@@ -4,6 +4,9 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder
 import dev.avernic.server.common.inject
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.game.World
+import dev.avernic.server.engine.game.entity.Client
+import dev.avernic.server.engine.game.entity.Player
+import dev.avernic.server.engine.net.game.GamePackets
 import dev.avernic.server.engine.service.ServiceManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.asCoroutineDispatcher
@@ -39,15 +42,20 @@ class Engine {
         state = EngineState.RUNNING
 
         /*
-         * Start game engine services.
+         * Register game packets.
          */
-        serviceManager.initialize()
-        serviceManager.startServices()
+        GamePackets.loadPackets()
 
         /*
          * Start the game cycle coroutine.
          */
         gameCoroutine.start(ServerConfig.TICK_INTERVAL)
+
+        /*
+         * Start game engine services.
+         */
+        serviceManager.initialize()
+        serviceManager.startServices()
     }
 
     fun stop() {
@@ -89,6 +97,29 @@ class Engine {
     }
 
     private suspend fun gameLogic() {
+        world.players.forEach { it.client.processPackets() }
+        world.players.forEach { it.cycle() }
+        world.players.forEach { it.client.flush() }
+    }
 
+    private suspend fun Client.processPackets() {
+        for(i in 0 until MAX_PACKET_PER_CYCLE) {
+            val packet = packetQueue.poll() ?: break
+            try {
+                packet.handle(session)
+            } catch (e : Throwable) {
+                Logger.error(e) { "An error occurred while handling client game packet. (packet=${packet::class.simpleName})." }
+            }
+        }
+    }
+
+    private suspend fun Player.cycle() {
+
+    }
+
+
+
+    companion object {
+        private const val MAX_PACKET_PER_CYCLE = 16
     }
 }

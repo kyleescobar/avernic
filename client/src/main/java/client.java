@@ -4249,7 +4249,7 @@ public final class client extends class19 implements class318 {
             int value;
             Interface var72;
             if (ServerPacket.field2732 == var1.serverPacket) {
-               value = buf.method5995();
+               value = buf.readIntINV();
                var72 = class87.getComponent(value);
 
                for(var7 = 0; var7 < var72.field3086.length; ++var7) {
@@ -4697,7 +4697,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (var1.serverPacket == ServerPacket.IF_SET_COLOR) {
-               value = buf.method5995();
+               value = buf.readIntINV();
                var23 = buf.readUnsignedShortLE();
                var7 = var23 >> 10 & 31;
                var31 = var23 >> 5 & 31;
@@ -4844,7 +4844,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2722 == var1.serverPacket) {
                class108.method2105();
                value = buf.readUnsignedByte();
-               var23 = buf.method5995();
+               var23 = buf.readIntINV();
                var7 = buf.readUnsignedByteSUB();
                field542[value] = var23;
                field435[value] = var7;
@@ -5377,13 +5377,13 @@ public final class client extends class19 implements class318 {
             }
 
             if (var1.serverPacket == ServerPacket.IF_SET_OBJ) {
-               value = buf.method5995();
+               value = buf.readIntINV();
                var23 = buf.readUnsignedShort();
                if (65535 == var23) {
                   var23 = -1;
                }
 
-               var7 = buf.method5995();
+               var7 = buf.readIntINV();
                var29 = class87.getComponent(var7);
                class157 var9;
                if (!var29.field2993) {
@@ -5432,7 +5432,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2701 == var1.serverPacket) {
                value = buf.method5951();
                var23 = buf.method5989();
-               var7 = buf.method5995();
+               var7 = buf.readIntINV();
                var29 = class87.getComponent(var7);
                if (var23 != var29.field2947 || var29.field3019 != value || 0 != var29.field3063 || var29.field2964 != 0) {
                   var29.field2947 = var23;
@@ -5452,7 +5452,7 @@ public final class client extends class19 implements class318 {
 
             if (var1.serverPacket == ServerPacket.field2762) {
                value = buf.readUnsignedShort();
-               var23 = buf.method5995();
+               var23 = buf.readIntINV();
                class244.field2912[value] = var23;
                if (class244.field2911[value] != var23) {
                   class244.field2911[value] = var23;

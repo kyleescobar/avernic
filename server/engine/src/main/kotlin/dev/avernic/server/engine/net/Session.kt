@@ -2,6 +2,7 @@ package dev.avernic.server.engine.net
 
 import dev.avernic.server.engine.game.entity.Client
 import dev.avernic.server.engine.net.game.GameProtocol
+import dev.avernic.server.engine.net.game.Packet
 import dev.avernic.server.engine.net.handshake.HandshakeProtocol
 import dev.avernic.server.util.IsaacRandom
 import io.netty.channel.ChannelHandlerContext
@@ -40,7 +41,11 @@ class Session(val ctx: ChannelHandlerContext) {
     }
 
     internal fun onMessage(message: Message) {
-        protocol.get().handle(message)
+        if(protocol.get() is GameProtocol && message is Packet) {
+            client.packetQueue.add(message)
+        } else {
+            protocol.get().handle(message)
+        }
     }
 
     internal fun onError(cause: Throwable) {
