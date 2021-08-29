@@ -5,7 +5,7 @@ import java.net.URI;
 public class class42 {
    public static class298 field356 = new class298();
    static class115 field355;
-   static int[] reconnectXteas;
+   static int[] field357;
 
    static void method766(String var0, boolean var1, String var2, boolean var3) {
       if (var1) {

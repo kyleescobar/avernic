@@ -90,7 +90,7 @@ public final class client extends class19 implements class318 {
    static int field404;
    static int field406 = 0;
    static int field407 = 0;
-   static int clientType = -1;
+   static int field410 = -1;
    static int field411;
    static int field413 = 0;
    static int field416;
@@ -318,7 +318,7 @@ public final class client extends class19 implements class318 {
          var5.writeInt(var4.nextInt());
       }
 
-      var5.encryptRSA(class53.field776, class53.field773);
+      var5.method5971(class53.field776, class53.field773);
       var6.writeByte(10);
 
       for(var8 = 0; var8 < 3; ++var8) {
@@ -329,7 +329,7 @@ public final class client extends class19 implements class318 {
       var6.method6023(var4.nextLong());
       class145.method2451(var6);
       var6.writeLong(var4.nextLong());
-      var6.encryptRSA(class53.field776, class53.field773);
+      var6.method5971(class53.field776, class53.field773);
       var8 = class281.method4532(var2);
       if (var8 % 8 != 0) {
          var8 += 8 - var8 % 8;
@@ -1079,8 +1079,8 @@ public final class client extends class19 implements class318 {
                   }
                   break;
                case 4:
-                  if (clientType == -1) {
-                     clientType = Integer.parseInt(var2);
+                  if (field410 == -1) {
+                     field410 = Integer.parseInt(var2);
                   }
                   break;
                case 5:
@@ -1154,7 +1154,7 @@ public final class client extends class19 implements class318 {
          }
 
          class59.field874 = this;
-         class97.field1259 = clientType;
+         class97.field1259 = field410;
          if (-1 == field474) {
             field474 = 0;
          }
@@ -2728,13 +2728,13 @@ public final class client extends class19 implements class318 {
 
       try {
          if (loginState == 0) {
-            if (class99.isaacRandom == null && (field444.method1597() || field439 > 250)) {
-               class99.isaacRandom = field444.method1591();
+            if (class99.field1267 == null && (field444.method1597() || field439 > 250)) {
+               class99.field1267 = field444.method1591();
                field444.method1589();
                field444 = null;
             }
 
-            if (class99.isaacRandom != null) {
+            if (class99.field1267 != null) {
                if (var2 != null) {
                   ((class330)var2).method5279();
                   var2 = null;
@@ -2781,7 +2781,7 @@ public final class client extends class19 implements class318 {
             loginState = 3;
          }
 
-         boolean usingMFA;
+         boolean var17;
          int var18;
          if (3 == loginState) {
             if (null != class179.field2070) {
@@ -2792,12 +2792,12 @@ public final class client extends class19 implements class318 {
                class142.field1560.method419();
             }
 
-            usingMFA = true;
+            var17 = true;
             if (field457 && !((class330)var2).method5294(1)) {
-               usingMFA = false;
+               var17 = false;
             }
 
-            if (usingMFA) {
+            if (var17) {
                var18 = ((class330)var2).readUnsignedByte();
                if (null != class179.field2070) {
                   class179.field2070.method419();
@@ -2833,7 +2833,7 @@ public final class client extends class19 implements class318 {
 
             if (var3.offset == 8) {
                var3.offset = 0;
-               class187.seed = var3.method5954();
+               class187.field2120 = var3.method5954();
                loginState = 5;
             }
          }
@@ -2842,60 +2842,60 @@ public final class client extends class19 implements class318 {
          if (loginState == 5) {
             packetWriter.field1201.offset = 0;
             packetWriter.clearBuffer();
-            PacketBuffer rsaBuf = new PacketBuffer(500);
-            int[] xteaKeys = new int[]{class99.isaacRandom.nextInt(), class99.isaacRandom.nextInt(), class99.isaacRandom.nextInt(), class99.isaacRandom.nextInt()};
-            rsaBuf.offset = 0;
-            rsaBuf.writeByte(1);
-            rsaBuf.writeInt(xteaKeys[0]);
-            rsaBuf.writeInt(xteaKeys[1]);
-            rsaBuf.writeInt(xteaKeys[2]);
-            rsaBuf.writeInt(xteaKeys[3]);
-            rsaBuf.writeLong(class187.seed);
+            PacketBuffer var24 = new PacketBuffer(500);
+            int[] xteaKeys = new int[]{class99.field1267.nextInt(), class99.field1267.nextInt(), class99.field1267.nextInt(), class99.field1267.nextInt()};
+            var24.offset = 0;
+            var24.writeByte(1);
+            var24.writeInt(xteaKeys[0]);
+            var24.writeInt(xteaKeys[1]);
+            var24.writeInt(xteaKeys[2]);
+            var24.writeInt(xteaKeys[3]);
+            var24.writeLong(class187.field2120);
             if (40 == field413) {
-               rsaBuf.writeInt(class42.reconnectXteas[0]);
-               rsaBuf.writeInt(class42.reconnectXteas[1]);
-               rsaBuf.writeInt(class42.reconnectXteas[2]);
-               rsaBuf.writeInt(class42.reconnectXteas[3]);
+               var24.writeInt(class42.field357[0]);
+               var24.writeInt(class42.field357[1]);
+               var24.writeInt(class42.field357[2]);
+               var24.writeInt(class42.field357[3]);
             } else {
-               rsaBuf.writeByte(field448.method4619());
+               var24.writeByte(field448.method4619());
                switch(field448.field1270) {
                case 0:
                case 1:
-                  rsaBuf.writeMedium(class283.mfaAuthCode);
-                  ++rsaBuf.offset;
+                  var24.writeMedium(class283.field3640);
+                  ++var24.offset;
                   break;
                case 2:
-                  rsaBuf.offset += 4;
+                  var24.offset += 4;
                   break;
                case 3:
-                  rsaBuf.writeInt((Integer)class38.clientPreferences.parameters.get(class166.method2881(class56.loginUsername)));
+                  var24.writeInt((Integer)class38.clientPreferences.parameters.get(class166.method2881(class56.loginUsername)));
                }
 
-               rsaBuf.writeByte(class389.field4231.method4619());
-               rsaBuf.writeStringCP1252(class56.loginPassword);
+               var24.writeByte(class389.field4231.method4619());
+               var24.writeStringCP1252(class56.field818);
             }
 
-            rsaBuf.encryptRSA(class55.publicExponent, class55.publicModulus);
-            class42.reconnectXteas = xteaKeys;
+            var24.method5971(class55.field793, class55.field792);
+            class42.field357 = xteaKeys;
             PacketBufferNode packetNode = class160.createPacketNode();
             packetNode.clientPacket = null;
             packetNode.clientPacketLength = 0;
             packetNode.packetBuffer = new PacketBuffer(5000);
             packetNode.packetBuffer.offset = 0;
             if (40 == field413) {
-               packetNode.packetBuffer.writeByte(LoginPacket.RECONNECT_LOGIN.id);
+               packetNode.packetBuffer.writeByte(LoginPacket.field2793.id);
             } else {
-               packetNode.packetBuffer.writeByte(LoginPacket.NORMAL_LOGIN.id);
+               packetNode.packetBuffer.writeByte(LoginPacket.field2790.id);
             }
 
             packetNode.packetBuffer.writeShort(0);
             loginUsernameLength = packetNode.packetBuffer.offset;
             packetNode.packetBuffer.writeInt(198);
             packetNode.packetBuffer.writeInt(1);
-            packetNode.packetBuffer.writeByte(clientType);
+            packetNode.packetBuffer.writeByte(field410);
             packetNode.packetBuffer.writeByte(field474);
-            packetNode.packetBuffer.writeBytes(rsaBuf.payload, 0, rsaBuf.offset);
-            int xteaBufOffset = packetNode.packetBuffer.offset;
+            packetNode.packetBuffer.writeBytes(var24.payload, 0, var24.offset);
+            int var9 = packetNode.packetBuffer.offset;
             packetNode.packetBuffer.writeStringCP1252(class56.loginUsername);
             packetNode.packetBuffer.writeByte((isResizableMode ? 1 : 0) << 1 | (isLowDetailMode ? 1 : 0));
             packetNode.packetBuffer.writeShort(class69.canvasWidth);
@@ -2903,22 +2903,22 @@ public final class client extends class19 implements class318 {
             class145.method2451(packetNode.packetBuffer);
             packetNode.packetBuffer.writeStringCP1252(class150.field1661);
             packetNode.packetBuffer.writeInt(class408.field4314);
-            Buffer platformInfoBuf = new Buffer(ServerPacket.platformInfo.method5457());
-            ServerPacket.platformInfo.write(platformInfoBuf);
-            packetNode.packetBuffer.writeBytes(platformInfoBuf.payload, 0, platformInfoBuf.payload.length);
-            packetNode.packetBuffer.writeByte(clientType);
+            Buffer var10 = new Buffer(ServerPacket.platformInfo.method5457());
+            ServerPacket.platformInfo.write(var10);
+            packetNode.packetBuffer.writeBytes(var10.payload, 0, var10.payload.length);
+            packetNode.packetBuffer.writeByte(field410);
             packetNode.packetBuffer.writeInt(0);
             packetNode.packetBuffer.method5994(class340.archive11.crc);
             packetNode.packetBuffer.method5992(class19.archive17.crc);
             packetNode.packetBuffer.writeInt(class38.archive3.crc);
-            packetNode.packetBuffer.writeIntINV(class62.archive15.crc);
+            packetNode.packetBuffer.method5972(class62.archive15.crc);
             packetNode.packetBuffer.method5994(class124.archive13.crc);
             packetNode.packetBuffer.method5994(class127.archive9.crc);
             packetNode.packetBuffer.method5994(class139.archive4.crc);
             packetNode.packetBuffer.method5994(class199.archive5.crc);
-            packetNode.packetBuffer.writeIntINV(class106.archive10.crc);
-            packetNode.packetBuffer.writeIntINV(class75.archive7.crc);
-            packetNode.packetBuffer.writeIntINV(class292.archive1.crc);
+            packetNode.packetBuffer.method5972(class106.archive10.crc);
+            packetNode.packetBuffer.method5972(class75.archive7.crc);
+            packetNode.packetBuffer.method5972(class292.archive1.crc);
             packetNode.packetBuffer.method5992(class271.archive8.crc);
             packetNode.packetBuffer.method5992(class38.archive19.crc);
             packetNode.packetBuffer.writeInt(ApproximateRouteStrategy.archive12.crc);
@@ -2926,10 +2926,10 @@ public final class client extends class19 implements class318 {
             packetNode.packetBuffer.method5992(class323.archive20.crc);
             packetNode.packetBuffer.method5992(class192.archive14.crc);
             packetNode.packetBuffer.method5992(class109.archive6.crc);
-            packetNode.packetBuffer.writeIntINV(class16.archive18.crc);
-            packetNode.packetBuffer.writeIntINV(class192.archive2.crc);
+            packetNode.packetBuffer.method5972(class16.archive18.crc);
+            packetNode.packetBuffer.method5972(class192.archive2.crc);
             packetNode.packetBuffer.writeInt(class121.archive0.crc);
-            packetNode.packetBuffer.encryptXtea(xteaKeys, xteaBufOffset, packetNode.packetBuffer.offset);
+            packetNode.packetBuffer.encryptXtea(xteaKeys, var9, packetNode.packetBuffer.offset);
             packetNode.packetBuffer.writeLengthShort(packetNode.packetBuffer.offset - loginUsernameLength);
             packetWriter.addNode(packetNode);
             packetWriter.flush();
@@ -3047,16 +3047,16 @@ public final class client extends class19 implements class318 {
 
          } else {
             if (loginState == 14 && ((class330)var2).available() >= 1) {
-               class293.loginResponseLength = ((class330)var2).readUnsignedByte();
+               class293.field3714 = ((class330)var2).readUnsignedByte();
                loginState = 15;
             }
 
-            if (loginState == 15 && ((class330)var2).available() >= class293.loginResponseLength) {
-               usingMFA = ((class330)var2).readUnsignedByte() == 1;
+            if (loginState == 15 && ((class330)var2).available() >= class293.field3714) {
+               var17 = ((class330)var2).readUnsignedByte() == 1;
                ((class330)var2).read(var3.payload, 0, 4);
                var3.offset = 0;
                boolean var25 = false;
-               if (usingMFA) {
+               if (var17) {
                   var18 = var3.readByteIsaac() << 24;
                   var18 |= var3.readByteIsaac() << 16;
                   var18 |= var3.readByteIsaac() << 8;
@@ -3679,7 +3679,7 @@ public final class client extends class19 implements class318 {
                                                          }
 
                                                          var41 = class149.getPacketBufferNode(ClientPacket.field2578, packetWriter.isaacCipher);
-                                                         var41.packetBuffer.writeIntINV(field688.id);
+                                                         var41.packetBuffer.method5972(field688.id);
                                                          var41.packetBuffer.writeShortLEADD(field516);
                                                          var41.packetBuffer.method5983(field519);
                                                          var41.packetBuffer.writeByte(var38);
@@ -4249,7 +4249,7 @@ public final class client extends class19 implements class318 {
             int value;
             Interface var72;
             if (ServerPacket.field2732 == var1.serverPacket) {
-               value = buf.readIntINV();
+               value = buf.method5995();
                var72 = class87.getComponent(value);
 
                for(var7 = 0; var7 < var72.field3086.length; ++var7) {
@@ -4697,7 +4697,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (var1.serverPacket == ServerPacket.IF_SET_COLOR) {
-               value = buf.readIntINV();
+               value = buf.method5995();
                var23 = buf.readUnsignedShortLE();
                var7 = var23 >> 10 & 31;
                var31 = var23 >> 5 & 31;
@@ -4844,7 +4844,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2722 == var1.serverPacket) {
                class108.method2105();
                value = buf.readUnsignedByte();
-               var23 = buf.readIntINV();
+               var23 = buf.method5995();
                var7 = buf.readUnsignedByteSUB();
                field542[value] = var23;
                field435[value] = var7;
@@ -5377,13 +5377,13 @@ public final class client extends class19 implements class318 {
             }
 
             if (var1.serverPacket == ServerPacket.IF_SET_OBJ) {
-               value = buf.readIntINV();
+               value = buf.method5995();
                var23 = buf.readUnsignedShort();
                if (65535 == var23) {
                   var23 = -1;
                }
 
-               var7 = buf.readIntINV();
+               var7 = buf.method5995();
                var29 = class87.getComponent(var7);
                class157 var9;
                if (!var29.field2993) {
@@ -5432,7 +5432,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2701 == var1.serverPacket) {
                value = buf.method5951();
                var23 = buf.method5989();
-               var7 = buf.readIntINV();
+               var7 = buf.method5995();
                var29 = class87.getComponent(var7);
                if (var23 != var29.field2947 || var29.field3019 != value || 0 != var29.field3063 || var29.field2964 != 0) {
                   var29.field2947 = var23;
@@ -5452,7 +5452,7 @@ public final class client extends class19 implements class318 {
 
             if (var1.serverPacket == ServerPacket.field2762) {
                value = buf.readUnsignedShort();
-               var23 = buf.readIntINV();
+               var23 = buf.method5995();
                class244.field2912[value] = var23;
                if (class244.field2911[value] != var23) {
                   class244.field2911[value] = var23;
@@ -5495,7 +5495,7 @@ public final class client extends class19 implements class318 {
                var28.packetBuffer.method5976(class19.field120);
                var28.packetBuffer.method6067(var7);
                var28.packetBuffer.method5994(value);
-               var28.packetBuffer.writeIntINV(var23);
+               var28.packetBuffer.method5972(var23);
                packetWriter.addNode(var28);
                var1.serverPacket = null;
                return true;

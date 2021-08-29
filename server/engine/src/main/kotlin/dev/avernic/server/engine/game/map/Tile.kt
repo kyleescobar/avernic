@@ -17,24 +17,15 @@ value class Tile(private val packed: Int) {
 
     val plane: Int get() = (packed ushr 30)
 
+    val as30BitInteger: Int get() = (y and 0x3FFF) or ((x and 0x3FFF) shl 14) or ((plane and 0x3) shl 28)
+
+    val as18BitInteger: Int get() = (y shr 13) or ((x shr 13) shl 8) or ((plane and 0x3) shl 16)
+
     val regionId: Int get() = (x shr 6) shl 8 or (y shr 6)
 
-    val regionX: Int get() = x shr 3
-    val regionY: Int get() = x shr 3
+    val chunkX: Int get() = x shr 3
+    val chunkY: Int get() = x shr 3
 
-    val chunkX: Int get() = localX shr 3
-    val chunkY : Int get() = localY shr 3
-
-    val localX: Int get() = x - ((x shr 6) shl 6)
-    val localY: Int get() = y - ((y shr 6) shl 6)
-
-    val sceneX: Int get() = x - ((regionX - 6) shl 3)
-    val sceneY: Int get() = y - ((regionY - 6) shl 3)
-
-    val chunkBase: Tile get() = Tile(regionX shl 3, regionY shl 3, plane)
-
-    val chunkOffsetX: Int get() = localX - ((localX shr 3) shl 3)
-    val chunkOffsetY: Int get() = localY - ((localY shr 3) shl 3)
 
     fun transform(x: Int = 0, y: Int = 0, plane: Int = 0) = Tile(this.x + x, this.y + y)
 

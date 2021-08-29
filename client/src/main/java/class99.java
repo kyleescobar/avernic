@@ -1,7 +1,7 @@
 import java.security.SecureRandom;
 
 public class class99 implements class98 {
-   static SecureRandom isaacRandom;
+   static SecureRandom field1267;
 
    static int method2071(int var0, class59 var1, boolean var2) {
       if (3800 == var0) {

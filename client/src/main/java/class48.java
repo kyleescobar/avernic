@@ -334,7 +334,7 @@ public class class48 {
                      class51.field747[++class51.field746 - 1] = client.field412 ? 1 : 0;
                      return 1;
                   } else if (var0 == 6519) {
-                     class51.field747[++class51.field746 - 1] = client.clientType & 3;
+                     class51.field747[++class51.field746 - 1] = client.field410 & 3;
                      return 1;
                   } else if (6520 == var0) {
                      return 1;

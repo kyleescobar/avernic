@@ -41,7 +41,7 @@ public final class class197 extends class354 {
    static void method3413(int var0, int var1) {
       PacketBufferNode var3 = class149.getPacketBufferNode(ClientPacket.field2614, client.packetWriter.isaacCipher);
       var3.packetBuffer.writeShort(var1);
-      var3.packetBuffer.writeIntINV(var0);
+      var3.packetBuffer.method5972(var0);
       client.packetWriter.addNode(var3);
    }
 }

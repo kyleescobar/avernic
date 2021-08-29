@@ -683,7 +683,7 @@ public class class156 extends class349 {
                               return;
                            }
 
-                           if (class56.loginPassword.length() == 0) {
+                           if (class56.field818.length() == 0) {
                               client.method1272(class270.field3377, class270.field3350, class270.field3351);
                               return;
                            }
@@ -698,8 +698,8 @@ public class class156 extends class349 {
                         if (1 == var4 && var25 >= var30 - 75 && var25 <= var30 + 75 && var26 >= var29 - 20 && var26 <= 20 + var29) {
                            class56.field812 = 0;
                            class56.loginUsername = "";
-                           class56.loginPassword = "";
-                           class283.mfaAuthCode = 0;
+                           class56.field818 = "";
+                           class283.field3640 = 0;
                            class147.field1615 = "";
                            class56.field821 = true;
                         }
@@ -766,8 +766,8 @@ public class class156 extends class349 {
                                           } else {
                                              class56.field812 = 0;
                                              class56.loginUsername = "";
-                                             class56.loginPassword = "";
-                                             class283.mfaAuthCode = 0;
+                                             class56.field818 = "";
+                                             class283.field3640 = 0;
                                              class147.field1615 = "";
                                              class56.field821 = true;
                                           }
@@ -777,8 +777,8 @@ public class class156 extends class349 {
                                     }
                                  } while(1 != class56.field822);
 
-                                 if (class121.field1418 == 85 && class56.loginPassword.length() > 0) {
-                                    class56.loginPassword = class56.loginPassword.substring(0, class56.loginPassword.length() - 1);
+                                 if (class121.field1418 == 85 && class56.field818.length() > 0) {
+                                    class56.field818 = class56.field818.substring(0, class56.field818.length() - 1);
                                  } else if (class121.field1418 == 84 || class121.field1418 == 80) {
                                     class56.field822 = 0;
                                     if (class121.field1418 == 84) {
@@ -788,7 +788,7 @@ public class class156 extends class349 {
                                           return;
                                        }
 
-                                       if (class56.loginPassword.length() == 0) {
+                                       if (class56.field818.length() == 0) {
                                           client.method1272(class270.field3377, class270.field3350, class270.field3351);
                                           return;
                                        }
@@ -803,7 +803,7 @@ public class class156 extends class349 {
                                  if ((KeyHandler.pressedKeys[82] || KeyHandler.pressedKeys[87]) && class121.field1418 == 67) {
                                     Clipboard var37 = Toolkit.getDefaultToolkit().getSystemClipboard();
                                     var34 = var37.getContents(class59.field874);
-                                    var36 = 20 - class56.loginPassword.length();
+                                    var36 = 20 - class56.field818.length();
                                     break;
                                  }
 
@@ -831,8 +831,8 @@ public class class156 extends class349 {
                                  if (var32) {
                                     char var38 = class127.field1450;
                                     boolean var35 = class56.field811.indexOf(var38) != -1;
-                                    if (var35 && class56.loginPassword.length() < 20) {
-                                       class56.loginPassword = class56.loginPassword + class127.field1450;
+                                    if (var35 && class56.field818.length() < 20) {
+                                       class56.field818 = class56.field818 + class127.field1450;
                                     }
                                  }
                               }
@@ -845,7 +845,7 @@ public class class156 extends class349 {
 
                               while(true) {
                                  if (var15 >= var40) {
-                                    class56.loginPassword = class56.loginPassword + var39.substring(0, var40);
+                                    class56.field818 = class56.field818 + var39.substring(0, var40);
                                     continue label1268;
                                  }
 
@@ -916,7 +916,7 @@ public class class156 extends class349 {
                                  return;
                               }
 
-                              class283.mfaAuthCode = Integer.parseInt(class147.field1615);
+                              class283.field3640 = Integer.parseInt(class147.field1615);
                               class147.field1615 = "";
                               class51.method1468(true);
                               client.method1272(class270.field3459, class270.field3460, class270.field3461);
@@ -936,8 +936,8 @@ public class class156 extends class349 {
                            if (1 == var4 && var25 >= var27 - 75 && var25 <= 75 + var27 && var26 >= var8 - 20 && var26 <= var8 + 20) {
                               class56.field812 = 0;
                               class56.loginUsername = "";
-                              class56.loginPassword = "";
-                              class283.mfaAuthCode = 0;
+                              class56.field818 = "";
+                              class283.field3640 = 0;
                               class147.field1615 = "";
                            }
 
@@ -954,8 +954,8 @@ public class class156 extends class349 {
                               if (class121.field1418 == 13) {
                                  class56.field812 = 0;
                                  class56.loginUsername = "";
-                                 class56.loginPassword = "";
-                                 class283.mfaAuthCode = 0;
+                                 class56.field818 = "";
+                                 class283.field3640 = 0;
                                  class147.field1615 = "";
                               } else {
                                  if (class121.field1418 == 85 && class147.field1615.length() > 0) {
@@ -969,7 +969,7 @@ public class class156 extends class349 {
                                        return;
                                     }
 
-                                    class283.mfaAuthCode = Integer.parseInt(class147.field1615);
+                                    class283.field3640 = Integer.parseInt(class147.field1615);
                                     class147.field1615 = "";
                                     class51.method1468(true);
                                     client.method1272(class270.field3459, class270.field3460, class270.field3461);

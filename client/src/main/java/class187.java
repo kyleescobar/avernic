@@ -3,7 +3,7 @@ public class class187 {
    public static final class187 field2116 = new class187("compositemap");
    public static final class187 field2117 = new class187("labels");
    public static final class187 field2118 = new class187("details");
-   static long seed;
+   static long field2120;
    static final class187 field2119 = new class187("area");
    public final String field2114;
 

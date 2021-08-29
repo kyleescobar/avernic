@@ -217,7 +217,7 @@ public class class167 implements class188 {
       int i;
       if ((updateMask & 1024) != 0) {
          player.spotAnimation = buf.readUnsignedShortLE();
-         i = buf.readIntINV();
+         i = buf.method5995();
          player.field1062 = i >> 16;
          player.field1061 = client.field452 + (i & '\uffff');
          player.field1028 = 0;

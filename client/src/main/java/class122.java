@@ -181,7 +181,7 @@ public class class122 extends class104 {
          var9 = class149.getPacketBufferNode(ClientPacket.field2629, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5994(class62.field912);
          var9.packetBuffer.writeShort(class104.field1295);
-         var9.packetBuffer.writeIntINV(var1);
+         var9.packetBuffer.method5972(var1);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.method5983(var0);
          var9.packetBuffer.method5983(KeyHandler.field41);
@@ -296,7 +296,7 @@ public class class122 extends class104 {
 
       if (var2 == 34) {
          var9 = class149.getPacketBufferNode(ClientPacket.field2630, client.packetWriter.isaacCipher);
-         var9.packetBuffer.writeIntINV(var1);
+         var9.packetBuffer.method5972(var1);
          var9.packetBuffer.writeShortLEADD(var3);
          var9.packetBuffer.writeShort(var0);
          client.packetWriter.addNode(var9);
@@ -413,7 +413,7 @@ public class class122 extends class104 {
          client.field644 = var0;
          client.field597 = var1;
          var9 = class149.getPacketBufferNode(ClientPacket.field2566, client.packetWriter.isaacCipher);
-         var9.packetBuffer.writeIntINV(class25.field185);
+         var9.packetBuffer.method5972(class25.field185);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.method5983(client.field564);
@@ -571,7 +571,7 @@ public class class122 extends class104 {
 
          if (41 == var2) {
             var9 = class149.getPacketBufferNode(ClientPacket.field2636, client.packetWriter.isaacCipher);
-            var9.packetBuffer.writeIntINV(var1);
+            var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5983(var3);
             var9.packetBuffer.writeShort(var0);
             client.packetWriter.addNode(var9);
@@ -588,7 +588,7 @@ public class class122 extends class104 {
 
          if (33 == var2) {
             var9 = class149.getPacketBufferNode(ClientPacket.field2563, client.packetWriter.isaacCipher);
-            var9.packetBuffer.writeIntINV(var1);
+            var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5984(var0);
             var9.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var9);
@@ -638,7 +638,7 @@ public class class122 extends class104 {
          if (var2 == 32) {
             var9 = class149.getPacketBufferNode(ClientPacket.field2631, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShortLEADD(var3);
-            var9.packetBuffer.writeIntINV(var1);
+            var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5983(var0);
             var9.packetBuffer.method5994(class25.field185);
             var9.packetBuffer.method5984(client.field564);

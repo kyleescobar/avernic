@@ -29,7 +29,7 @@ public class class108 extends class104 {
       class56.field816 = class270.field3444;
       class56.field812 = 2;
       if (var0) {
-         class56.loginPassword = "";
+         class56.field818 = "";
       }
 
       class81.method1871();
