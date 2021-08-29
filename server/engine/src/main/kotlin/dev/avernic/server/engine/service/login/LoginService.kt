@@ -52,7 +52,7 @@ class LoginService : Service {
              */
 
             val client = Client(request.session)
-            val player = Player(client)
+            val player = client.player
 
             /*
              * Handoff login handling to the player object.
