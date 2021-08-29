@@ -114,7 +114,7 @@ public class Buffer extends class354 {
       }
    }
 
-   public void writeJagStringCP1252(String var1) {
+   public void writeJagString0CP1252(String var1) {
       int var3 = var1.indexOf(0);
       if (var3 >= 0) {
          throw new IllegalArgumentException("");
@@ -474,7 +474,7 @@ public class Buffer extends class354 {
       this.offset = var5;
    }
 
-   public void method5971(BigInteger var1, BigInteger var2) {
+   public void encryptRSA(BigInteger var1, BigInteger var2) {
       int var4 = this.offset;
       this.offset = 0;
       byte[] var5 = new byte[var4];
@@ -591,7 +591,7 @@ public class Buffer extends class354 {
       return ((this.payload[this.offset - 1] & 255) << 8) + ((this.payload[this.offset - 3] & 255) << 16) + (this.payload[this.offset - 2] & 255);
    }
 
-   public void method5972(int var1) {
+   public void writeIntINV(int var1) {
       this.payload[++this.offset - 1] = (byte)var1;
       this.payload[++this.offset - 1] = (byte)(var1 >> 8);
       this.payload[++this.offset - 1] = (byte)(var1 >> 16);

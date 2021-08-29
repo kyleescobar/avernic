@@ -275,7 +275,7 @@ public class class293 implements class290 {
                var0.method4853(class303.escapeBrackets(var6), class56.field817 + 180 - 70, var13, 16777215, 0);
                var13 += 15;
 
-               for(var7 = class17.method141(class56.field818); var0.method4848(var7) > var14; var7 = var7.substring(1)) {
+               for(var7 = class17.method141(class56.loginPassword); var0.method4848(var7) > var14; var7 = var7.substring(1)) {
                }
 
                var0.method4853(class270.field3466 + var7, class56.field817 + 180 - 108, var13, 16777215, 0);
@@ -333,7 +333,7 @@ public class class293 implements class290 {
                   var0.method4853(class303.escapeBrackets(var6) + (0 == class56.field822 & client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 70, var13, 16777215, 0);
                   var13 += 15;
 
-                  for(var7 = class17.method141(class56.field818); var0.method4848(var7) > var14; var7 = var7.substring(1)) {
+                  for(var7 = class17.method141(class56.loginPassword); var0.method4848(var7) > var14; var7 = var7.substring(1)) {
                   }
 
                   var0.method4853(class270.field3466 + var7 + (class56.field822 == 1 & client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 108, var13, 16777215, 0);

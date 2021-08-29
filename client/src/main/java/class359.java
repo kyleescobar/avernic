@@ -64,7 +64,7 @@ public class class359 {
    public boolean field4026 = false;
 
    static LoginPacket[] method5692() {
-      return new LoginPacket[]{LoginPacket.field2793, LoginPacket.field2791, LoginPacket.field2790, LoginPacket.field2794, LoginPacket.field2792, LoginPacket.field2797};
+      return new LoginPacket[]{LoginPacket.RECONNECT_LOGIN, LoginPacket.field2791, LoginPacket.NORMAL_LOGIN, LoginPacket.field2794, LoginPacket.field2792, LoginPacket.field2797};
    }
 
    static {

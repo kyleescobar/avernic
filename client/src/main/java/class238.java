@@ -487,10 +487,10 @@ public class class238 extends class354 {
          class7.field16 = new class74(class56.field797);
          if (var2) {
             class56.loginUsername = "";
-            class56.field818 = "";
+            class56.loginPassword = "";
          }
 
-         class283.field3640 = 0;
+         class283.mfaAuthCode = 0;
          class147.field1615 = "";
          class56.field821 = true;
          class56.field800 = false;

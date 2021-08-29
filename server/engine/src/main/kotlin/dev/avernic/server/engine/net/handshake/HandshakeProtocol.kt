@@ -6,6 +6,7 @@ import dev.avernic.server.engine.net.Protocol
 import dev.avernic.server.engine.net.Session
 import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.js5.JS5Protocol
+import dev.avernic.server.engine.net.login.LoginProtocol
 import io.netty.buffer.ByteBuf
 
 class HandshakeProtocol(session: Session) : Protocol(session) {
@@ -19,7 +20,10 @@ class HandshakeProtocol(session: Session) : Protocol(session) {
     }
 
     override fun encode(message: Message, out: ByteBuf) {
+        if(message !is HandshakeResponse) return
 
+        out.writeByte(message.status.opcode)
+        out.writeLong(message.seed)
     }
 
     override fun handle(message: Message) {
@@ -40,6 +44,8 @@ class HandshakeProtocol(session: Session) : Protocol(session) {
     }
 
     private fun HandshakeRequest.LOGIN.handle() {
-
+        val response = HandshakeResponse(StatusResponse.SUCCESSFUL, session.seed)
+        session.writeAndFlush(response)
+        session.protocol.set(LoginProtocol(session))
     }
 }

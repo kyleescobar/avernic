@@ -1,7 +1,7 @@
 public class LoginPacket implements class226 {
-   public static final LoginPacket field2790 = new LoginPacket(16);
+   public static final LoginPacket NORMAL_LOGIN = new LoginPacket(16);
    public static final LoginPacket field2792 = new LoginPacket(14);
-   public static final LoginPacket field2793 = new LoginPacket(18);
+   public static final LoginPacket RECONNECT_LOGIN = new LoginPacket(18);
    public static final LoginPacket field2794 = new LoginPacket(19);
    static final LoginPacket field2791 = new LoginPacket(27);
    static final LoginPacket field2797 = new LoginPacket(15);

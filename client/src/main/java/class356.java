@@ -68,14 +68,14 @@ public class class356 extends class354 {
       var1.writeByte(this.field3996);
       var1.writeMedium(this.field4006);
       var1.writeShort(this.field3998);
-      var1.writeJagStringCP1252(this.field3978);
-      var1.writeJagStringCP1252(this.field3987);
-      var1.writeJagStringCP1252(this.field4000);
-      var1.writeJagStringCP1252(this.field4001);
+      var1.writeJagString0CP1252(this.field3978);
+      var1.writeJagString0CP1252(this.field3987);
+      var1.writeJagString0CP1252(this.field4000);
+      var1.writeJagString0CP1252(this.field4001);
       var1.writeByte(this.field4003);
       var1.writeShort(this.field4002);
-      var1.writeJagStringCP1252(this.field3988);
-      var1.writeJagStringCP1252(this.field4008);
+      var1.writeJagString0CP1252(this.field3988);
+      var1.writeJagString0CP1252(this.field4008);
       var1.writeByte(this.field4004);
       var1.writeByte(this.field4005);
 
@@ -84,7 +84,7 @@ public class class356 extends class354 {
       }
 
       var1.writeInt(this.field4009);
-      var1.writeJagStringCP1252(this.field3994);
+      var1.writeJagString0CP1252(this.field3994);
    }
 
    public int method5457() {

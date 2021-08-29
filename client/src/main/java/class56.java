@@ -27,7 +27,7 @@ public class class56 {
    static String field811;
    static String field814;
    static String field816;
-   static String field818;
+   static String loginPassword;
    static String field823;
    static String field824;
    static long field813;
@@ -45,7 +45,7 @@ public class class56 {
       field814 = "";
       field816 = "";
       loginUsername = "";
-      field818 = "";
+      loginPassword = "";
       field830 = false;
       field820 = false;
       field821 = true;
