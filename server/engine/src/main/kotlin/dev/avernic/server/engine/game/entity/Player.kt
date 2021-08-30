@@ -6,6 +6,7 @@ import dev.avernic.server.engine.game.Privilege
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
 import dev.avernic.server.engine.game.manager.InterfaceManager
+import dev.avernic.server.engine.game.manager.SceneManager
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
@@ -31,10 +32,12 @@ class Player(val client: Client) : LivingEntity() {
      * Player context managers.
      */
     val gpi = GpiManager(this)
+    val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
 
     private fun initialize() {
         gpi.initialize()
+        scene.initialize()
         interfaces.initialize()
     }
 

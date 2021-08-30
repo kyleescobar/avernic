@@ -15,9 +15,12 @@ class GpiManager(private val player: Player) {
     var localPlayerCount: Int = 0
     val localPlayers = arrayOfNulls<Player>(World.MAX_PLAYERS)
     val localPlayerIndexes = IntArray(World.MAX_PLAYERS)
+
     var externalPlayerCount = 0
     val externalPlayerIndexes = IntArray(World.MAX_PLAYERS)
+
     val tileMultipliers = IntArray(World.MAX_PLAYERS)
+
     val skipFlags = IntArray(World.MAX_PLAYERS)
 
     internal fun initialize() {
@@ -30,11 +33,6 @@ class GpiManager(private val player: Player) {
                 externalPlayerIndexes[externalPlayerCount++] = index
             }
         }
-
-        /*
-         * Tell the client to rebuild the world regions with GPI data.
-         */
-        player.client.write(RebuildRegionNormal(player, gpi = true))
     }
 
     internal fun encode(buf: ByteBuf) {
