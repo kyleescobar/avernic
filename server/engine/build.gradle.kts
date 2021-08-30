@@ -8,4 +8,5 @@ dependencies {
     implementation("com.google.guava:guava:_")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:_")
     implementation("io.github.classgraph:classgraph:_")
+    implementation("it.unimi.dsi:fastutil:_")
 }

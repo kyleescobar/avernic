@@ -3,7 +3,9 @@ package dev.avernic.server.engine.game.entity
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.Privilege
+import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
+import dev.avernic.server.engine.game.manager.InterfaceManager
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
@@ -23,15 +25,17 @@ class Player(val client: Client) : LivingEntity() {
     var appearance: Appearance = Appearance.DEFAULT
     var pid: Int = -1
     var member: Boolean = true
+    var displayMode: DisplayMode = DisplayMode.FIXED
 
     /*
      * Player context managers.
      */
-    internal val gpi = GpiManager(this)
+    val gpi = GpiManager(this)
+    val interfaces = InterfaceManager(this)
 
     private fun initialize() {
         gpi.initialize()
-        client.write(IfOpenTop(548))
+        interfaces.initialize()
     }
 
     internal fun login(request: LoginRequest) {
