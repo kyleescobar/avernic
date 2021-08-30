@@ -6,6 +6,10 @@ enum class PacketType(val length: Int) {
     VARIABLE_SHORT(-2);
 
     companion object {
-        fun fromLength(length: Int): PacketType = values().first { it.length == length }
+        fun fromLength(length: Int): PacketType = when(length) {
+            -1 -> VARIABLE_BYTE
+            -2 -> VARIABLE_SHORT
+            else -> FIXED
+        }
     }
 }
