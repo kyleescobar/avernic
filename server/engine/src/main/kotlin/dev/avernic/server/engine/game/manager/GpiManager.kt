@@ -3,6 +3,9 @@ package dev.avernic.server.engine.game.manager
 import dev.avernic.server.common.inject
 import dev.avernic.server.engine.game.World
 import dev.avernic.server.engine.game.entity.Player
+import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
+import dev.avernic.server.engine.game.entity.update.PlayerUpdateTask
+import dev.avernic.server.engine.net.packet.server.PlayerUpdate
 import dev.avernic.server.engine.net.packet.server.RebuildRegionNormal
 import io.guthix.buffer.toBitMode
 import io.netty.buffer.ByteBuf
@@ -33,6 +36,22 @@ class GpiManager(private val player: Player) {
                 externalPlayerIndexes[externalPlayerCount++] = index
             }
         }
+
+        /*
+         * Add the initial player appearance update flag.
+         */
+        player.updateFlags.add(PlayerUpdateFlag.APPEARANCE)
+    }
+
+    internal fun synchronize() {
+        val updateBuf = Unpooled.buffer()
+        val task = PlayerUpdateTask(player)
+        task.execute(updateBuf)
+
+        /*
+         * Send the player update packet with the encoded data.
+         */
+        player.client.write(PlayerUpdate(updateBuf))
     }
 
     internal fun encode(buf: ByteBuf) {
@@ -52,5 +71,13 @@ class GpiManager(private val player: Player) {
         gpiBuf.readBytes(gpiBytes)
 
         buf.writeBytes(gpiBytes)
+    }
+
+    companion object {
+
+        /**
+         * The distance that players and entities are rendered from the local player.
+         */
+        const val RENDER_DISTANCE = 15
     }
 }

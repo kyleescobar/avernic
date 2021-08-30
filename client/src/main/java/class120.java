@@ -19,7 +19,7 @@ public abstract class class120 extends class354 {
       }
    }
 
-   static void method2199() {
+   static void resetCachedGpi() {
       client.field417 = -1L;
       class7.field14.field967 = 0;
       class256.field3128 = true;

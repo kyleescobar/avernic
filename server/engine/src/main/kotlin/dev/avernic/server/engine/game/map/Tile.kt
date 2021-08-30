@@ -37,6 +37,8 @@ value class Tile(private val packed: Int) {
         return ceil(sqrt((dx * dx + dy * dy).toDouble())).toInt()
     }
 
+    fun isWithinRadius(other: Tile, radius: Int): Boolean = isWithinRadius(other.x, other.y, other.plane, radius)
+
     fun isWithinRadius(x: Int, y: Int, plane: Int, radius: Int): Boolean {
         if(this.plane != plane) {
             return false

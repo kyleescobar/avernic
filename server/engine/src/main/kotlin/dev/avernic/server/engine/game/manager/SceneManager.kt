@@ -27,11 +27,6 @@ class SceneManager(private val player: Player) {
         chunk = world.getChunk(player.tile.chunkX, player.tile.chunkY, player.tile.plane)
 
         /*
-         * Add the player to the chunk.
-         */
-        chunk.players.add(player)
-
-        /*
          * Tell the client to rebuild the world regions with GPI data.
          */
         player.client.write(RebuildRegionNormal(player, gpi = true))
@@ -62,6 +57,11 @@ class SceneManager(private val player: Player) {
             }
         }
         return xteas
+    }
+
+    internal fun synchronize() {
+        val currentChunk = world.getChunk(player.tile)
+        checkReload(currentChunk)
     }
 
     companion object {

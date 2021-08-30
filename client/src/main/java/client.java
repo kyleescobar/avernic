@@ -3123,7 +3123,7 @@ public final class client extends class19 implements class318 {
                   var3.offset = 0;
                   ((class330)var2).read(var3.payload, 0, packetWriter.serverPacketLength);
                   field458.method5075();
-                  class120.method2199();
+                  class120.resetCachedGpi();
                   class44.updatePlayerGpi(var3);
                   MouseHandler.field137 = -1;
                   class239.loadRegions(false, var3);

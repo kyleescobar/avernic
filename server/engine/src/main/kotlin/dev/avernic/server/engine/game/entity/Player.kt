@@ -3,6 +3,8 @@ package dev.avernic.server.engine.game.entity
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.Privilege
+import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
+import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
 import dev.avernic.server.engine.game.manager.InterfaceManager
@@ -16,6 +18,7 @@ import dev.avernic.server.engine.net.packet.server.IfOpenTop
 import dev.avernic.server.engine.net.packet.server.RebuildRegionNormal
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
+import java.util.*
 
 class Player(val client: Client) : LivingEntity() {
 
@@ -27,6 +30,9 @@ class Player(val client: Client) : LivingEntity() {
     var pid: Int = -1
     var member: Boolean = true
     var displayMode: DisplayMode = DisplayMode.FIXED
+    var skullIcon: Int = -1
+    var prayerIcon: Int = -1
+    override var combatLevel: Int = 3
 
     /*
      * Player context managers.
@@ -34,6 +40,8 @@ class Player(val client: Client) : LivingEntity() {
     val gpi = GpiManager(this)
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
+
+    override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
 
     private fun initialize() {
         gpi.initialize()
@@ -89,5 +97,10 @@ class Player(val client: Client) : LivingEntity() {
     internal fun logout() {
         Logger.info("[username: $username] has disconnected from the server.")
         world.players.remove(this)
+    }
+
+    internal fun synchronize() {
+        scene.synchronize()
+        gpi.synchronize()
     }
 }

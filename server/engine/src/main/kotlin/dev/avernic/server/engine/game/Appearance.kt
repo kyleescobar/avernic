@@ -22,7 +22,7 @@ data class Appearance(var styles: IntArray, var colors: IntArray, var gender: Ge
     }
 
     companion object {
-        private val DEFAULT_STYLES = intArrayOf(0, 10, 18, 26, 33, 36, 42)
+        private val DEFAULT_STYLES = intArrayOf(18, 26, 36, 0, 33, 42, 10)
         private val DEFAULT_COLORS = intArrayOf(0, 0, 0, 0, 0)
         private val DEFAULT_GENDER = Gender.MALE
 

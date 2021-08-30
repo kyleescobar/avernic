@@ -5,6 +5,7 @@ import dev.avernic.server.engine.event.EventHandler
 import dev.avernic.server.engine.event.EventSubject
 import dev.avernic.server.engine.game.list.PlayerList
 import dev.avernic.server.engine.game.map.Chunk
+import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.task.Task
 import dev.avernic.server.engine.task.TaskSubject
 import dev.avernic.server.engine.task.TaskType
@@ -41,6 +42,12 @@ class World : EventSubject, TaskSubject {
         // World
         processTasks()
 
+        // Player
+        processPlayerTasks()
+
+        // Sync
+        synchronize()
+
         // Post
         postProcess()
 
@@ -57,6 +64,16 @@ class World : EventSubject, TaskSubject {
             if(resume.all { !it } && events.isEmpty()) break
         }
     }
+
+    private fun processPlayerTasks() {
+        players.forEach { it.processTasks() }
+    }
+
+    private fun synchronize() {
+        players.forEach { it.synchronize() }
+    }
+
+    fun getChunk(tile: Tile): Chunk = getChunk(tile.chunkX, tile.chunkY, tile.plane)
 
     fun getChunk(x: Int, y: Int, plane: Int): Chunk {
         var found = chunks[plane][x][y]
