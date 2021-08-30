@@ -6,10 +6,6 @@ class World {
 
     val players = PlayerList(MAX_PLAYERS)
 
-    fun cycle() {
-
-    }
-
     companion object {
 
         /**
