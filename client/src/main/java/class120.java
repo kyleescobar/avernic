@@ -21,7 +21,7 @@ public abstract class class120 extends class354 {
 
    static void resetCachedGpi() {
       client.field417 = -1L;
-      class7.field14.field967 = 0;
+      class7.mouseRecorder.field967 = 0;
       class256.field3128 = true;
       client.field421 = true;
       client.field636 = -1L;
@@ -121,7 +121,7 @@ public abstract class class120 extends class354 {
          client.field617[var1] = true;
       }
 
-      PacketBufferNode var6 = class149.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
+      PacketBufferNode var6 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
       var6.packetBuffer.writeByte(class238.method4117());
       var6.packetBuffer.writeShort(class69.canvasWidth);
       var6.packetBuffer.writeShort(client.canvasHeight);

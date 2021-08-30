@@ -198,7 +198,7 @@ public class class359 {
                }
 
                if (var8) {
-                  PacketBufferNode var11 = class149.getPacketBufferNode(ClientPacket.field2667, client.packetWriter.isaacCipher);
+                  PacketBufferNode var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2667, client.packetWriter.isaacCipher);
                   var11.packetBuffer.method5992(this.field4074.method4161());
                   client.packetWriter.addNode(var11);
                   this.field4072 = 0L;

@@ -8,7 +8,7 @@ public class class69 implements Runnable {
    int[] field968 = new int[500];
    int[] field969 = new int[500];
    Object field975 = new Object();
-   long[] field970 = new long[500];
+   long[] millis = new long[500];
 
    class69() {
    }
@@ -19,7 +19,7 @@ public class class69 implements Runnable {
             if (this.field967 < 500) {
                this.field968[this.field967] = MouseHandler.field142;
                this.field969[this.field967] = MouseHandler.field145;
-               this.field970[this.field967] = MouseHandler.field144;
+               this.millis[this.field967] = MouseHandler.field144;
                ++this.field967;
             }
          }

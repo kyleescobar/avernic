@@ -434,7 +434,7 @@ public class class25 {
    }
 
    static final void method446() {
-      PacketBufferNode var1 = class149.getPacketBufferNode(ClientPacket.field2657, client.packetWriter.isaacCipher);
+      PacketBufferNode var1 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2657, client.packetWriter.isaacCipher);
       client.packetWriter.addNode(var1);
 
       for(InterfaceParent var2 = (InterfaceParent)client.interfaceParents.method5736(); null != var2; var2 = (InterfaceParent)client.interfaceParents.method5739()) {

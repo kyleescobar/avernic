@@ -10,7 +10,7 @@ public class class322 extends class348 {
    }
 
    static final void method5133(String var0, int var1) {
-      PacketBufferNode var3 = class149.getPacketBufferNode(ClientPacket.field2588, client.packetWriter.isaacCipher);
+      PacketBufferNode var3 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2588, client.packetWriter.isaacCipher);
       var3.packetBuffer.writeByte(class281.method4532(var0) + 1);
       var3.packetBuffer.writeStringCP1252(var0);
       var3.packetBuffer.writeByte(var1);

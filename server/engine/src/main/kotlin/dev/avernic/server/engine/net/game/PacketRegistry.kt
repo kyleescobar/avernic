@@ -28,6 +28,6 @@ class PacketRegistry {
         else -> PacketType.FIXED
     }
 
-    fun isUnknown(opcode: Int): Boolean = !lengthMap.containsKey(opcode)
+    fun isUnknown(opcode: Int): Boolean = !codecMap.containsKey(opcode)
 
 }

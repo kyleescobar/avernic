@@ -230,7 +230,7 @@ public abstract class class72 extends class201 {
                var12 = class278.method4502(var14);
             }
 
-            PacketBufferNode var16 = class149.getPacketBufferNode(ClientPacket.field2650, client.packetWriter.isaacCipher);
+            PacketBufferNode var16 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2650, client.packetWriter.isaacCipher);
             var16.packetBuffer.writeInt(var12);
             client.packetWriter.addNode(var16);
             return 1;
@@ -238,14 +238,14 @@ public abstract class class72 extends class201 {
             PacketBufferNode var10;
             if (var0 == 3105) {
                var14 = class51.field738[--class2.field4];
-               var10 = class149.getPacketBufferNode(ClientPacket.field2609, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2609, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeByte(var14.length() + 1);
                var10.packetBuffer.writeStringCP1252(var14);
                client.packetWriter.addNode(var10);
                return 1;
             } else if (var0 == 3106) {
                var14 = class51.field738[--class2.field4];
-               var10 = class149.getPacketBufferNode(ClientPacket.field2638, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2638, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeByte(var14.length() + 1);
                var10.packetBuffer.writeStringCP1252(var14);
                client.packetWriter.addNode(var10);
@@ -290,7 +290,7 @@ public abstract class class72 extends class201 {
                   return 1;
                } else if (var0 == 3115) {
                   var8 = class51.field747[--class51.field746];
-                  var10 = class149.getPacketBufferNode(ClientPacket.field2647, client.packetWriter.isaacCipher);
+                  var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2647, client.packetWriter.isaacCipher);
                   var10.packetBuffer.writeShort(var8);
                   client.packetWriter.addNode(var10);
                   return 1;
@@ -304,7 +304,7 @@ public abstract class class72 extends class201 {
                   } else if (var6.length() > 500) {
                      return 1;
                   } else {
-                     PacketBufferNode var7 = class149.getPacketBufferNode(ClientPacket.field2641, client.packetWriter.isaacCipher);
+                     PacketBufferNode var7 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2641, client.packetWriter.isaacCipher);
                      var7.packetBuffer.writeShort(1 + class281.method4532(var5) + class281.method4532(var6));
                      var7.packetBuffer.writeStringCP1252(var6);
                      var7.packetBuffer.method5976(var8);

@@ -57,7 +57,7 @@ public class ClientPacket implements class226 {
    public static final ClientPacket field2623 = new ClientPacket(50, 7);
    public static final ClientPacket field2624 = new ClientPacket(61, -2);
    public static final ClientPacket field2625 = new ClientPacket(62, 3);
-   public static final ClientPacket field2626 = new ClientPacket(63, -1);
+   public static final ClientPacket MOUSE_IDLE = new ClientPacket(63, -1);
    public static final ClientPacket field2627 = new ClientPacket(64, 3);
    public static final ClientPacket field2628 = new ClientPacket(65, 3);
    public static final ClientPacket field2629 = new ClientPacket(76, 16);

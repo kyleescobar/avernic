@@ -172,7 +172,7 @@ public class class126 extends class104 {
          }
 
          client.field647 = class51.field747[2 + class51.field746];
-         PacketBufferNode var14 = class149.getPacketBufferNode(ClientPacket.field2653, client.packetWriter.isaacCipher);
+         PacketBufferNode var14 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2653, client.packetWriter.isaacCipher);
          var14.packetBuffer.writeByte(client.field670);
          var14.packetBuffer.writeByte(class125.field1441.field4301);
          var14.packetBuffer.writeByte(client.field647);
@@ -188,7 +188,7 @@ public class class126 extends class104 {
             class51.field746 -= 2;
             var9 = class51.field747[class51.field746];
             var11 = class51.field747[class51.field746 + 1];
-            var7 = class149.getPacketBufferNode(ClientPacket.field2601, client.packetWriter.isaacCipher);
+            var7 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2601, client.packetWriter.isaacCipher);
             var7.packetBuffer.writeByte(class281.method4532(var4) + 2);
             var7.packetBuffer.writeStringCP1252(var4);
             var7.packetBuffer.writeByte(var9 - 1);
@@ -262,7 +262,7 @@ public class class126 extends class104 {
                      class2.field4 -= 2;
                      var4 = class51.field738[class2.field4];
                      String var10 = class51.field738[1 + class2.field4];
-                     var12 = class149.getPacketBufferNode(ClientPacket.field2624, client.packetWriter.isaacCipher);
+                     var12 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2624, client.packetWriter.isaacCipher);
                      var12.packetBuffer.writeShort(0);
                      int var13 = var12.packetBuffer.offset;
                      var12.packetBuffer.writeStringCP1252(var4);

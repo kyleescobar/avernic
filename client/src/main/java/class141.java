@@ -14,7 +14,7 @@ public class class141 extends class349 {
    public boolean field1530 = true;
    public boolean field1542 = false;
    public class147 field1540;
-   public class149 field1550;
+   public VerticalAlignment field1550;
    public int field1535 = -1;
    public int field1539 = 0;
    public int field1548;
@@ -26,7 +26,7 @@ public class class141 extends class349 {
 
    class141(int var1) {
       this.field1540 = class147.field1608;
-      this.field1550 = class149.field1654;
+      this.field1550 = VerticalAlignment.field1654;
       this.field1553 = -1;
       this.field1534 = var1;
    }
@@ -119,7 +119,7 @@ public class class141 extends class349 {
                class147[] var7 = new class147[]{class147.field1608, class147.field1609, class147.field1613};
                this.field1540 = (class147)class251.enumeratedValueOf(var7, var1.readUnsignedByte());
             } else if (var2 == 30) {
-               this.field1550 = (class149)class251.enumeratedValueOf(class5.method17(), var1.readUnsignedByte());
+               this.field1550 = (VerticalAlignment)class251.enumeratedValueOf(class5.method17(), var1.readUnsignedByte());
             }
          }
       }

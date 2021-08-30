@@ -76,7 +76,7 @@ public class class63 implements Callable {
 
    static final void method1660(String var0) {
       if (class69.field972 != null) {
-         PacketBufferNode var2 = class149.getPacketBufferNode(ClientPacket.field2633, client.packetWriter.isaacCipher);
+         PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2633, client.packetWriter.isaacCipher);
          var2.packetBuffer.writeByte(class281.method4532(var0));
          var2.packetBuffer.writeStringCP1252(var0);
          client.packetWriter.addNode(var2);

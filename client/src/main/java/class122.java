@@ -66,7 +66,7 @@ public class class122 extends class104 {
          }
       }
 
-      PacketBufferNode var2 = class149.getPacketBufferNode(ClientPacket.field2666, client.packetWriter.isaacCipher);
+      PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2666, client.packetWriter.isaacCipher);
       var2.packetBuffer.writeByte(var0.length() + 1);
       var2.packetBuffer.writeStringCP1252(var0);
       client.packetWriter.addNode(var2);
@@ -79,7 +79,7 @@ public class class122 extends class104 {
 
       PacketBufferNode var9;
       if (37 == var2) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2660, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2660, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5992(var1);
          var9.packetBuffer.writeShortLEADD(var3);
          var9.packetBuffer.method5983(var0);
@@ -100,7 +100,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2661, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2661, client.packetWriter.isaacCipher);
             var10.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
             var10.packetBuffer.writeShortLEADD(var3);
             client.packetWriter.addNode(var10);
@@ -117,7 +117,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2575, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2575, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShort(var3);
             var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -133,7 +133,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2651, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2651, client.packetWriter.isaacCipher);
             var10.packetBuffer.method5984(var3);
             var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -149,7 +149,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2605, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2605, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShort(var3);
             var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -161,13 +161,13 @@ public class class122 extends class104 {
          client.field463 = var7;
          client.field511 = 2;
          client.field540 = 0;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2621, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2621, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5984(var3);
          client.packetWriter.addNode(var9);
       }
 
       if (var2 == 35) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2582, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2582, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5984(var3);
          var9.packetBuffer.method5992(var1);
          var9.packetBuffer.writeShort(var0);
@@ -178,7 +178,7 @@ public class class122 extends class104 {
       }
 
       if (var2 == 31) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2629, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2629, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5994(class62.field912);
          var9.packetBuffer.writeShort(class104.field1295);
          var9.packetBuffer.method5972(var1);
@@ -200,7 +200,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2589, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2589, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShort(var3);
             var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -208,7 +208,7 @@ public class class122 extends class104 {
       }
 
       if (40 == var2) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2615, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2615, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5992(var1);
          var9.packetBuffer.method5983(var0);
          var9.packetBuffer.method5984(var3);
@@ -227,7 +227,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2628, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2628, client.packetWriter.isaacCipher);
             var10.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
             var10.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var10);
@@ -241,7 +241,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2595, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2595, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
          var9.packetBuffer.method5983(var1 + class78.baseY);
@@ -258,7 +258,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2616, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2616, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShortLEADD(class104.field1295);
             var10.packetBuffer.method5992(class62.field912);
             var10.packetBuffer.method5983(var3);
@@ -273,7 +273,7 @@ public class class122 extends class104 {
          client.field463 = var7;
          client.field511 = 2;
          client.field540 = 0;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2587, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2587, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5984(var3);
          client.packetWriter.addNode(var9);
       }
@@ -284,7 +284,7 @@ public class class122 extends class104 {
          if (null != var15 && var15.field3087[var0] >= 100000) {
             class121.addGameMessage(27, "", var15.field3087[var0] + " x " + KeyHandler.method93(var3).field1836);
          } else {
-            var10 = class149.getPacketBufferNode(ClientPacket.field2587, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2587, client.packetWriter.isaacCipher);
             var10.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var10);
          }
@@ -295,7 +295,7 @@ public class class122 extends class104 {
       }
 
       if (var2 == 34) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2630, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2630, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5972(var1);
          var9.packetBuffer.writeShortLEADD(var3);
          var9.packetBuffer.writeShort(var0);
@@ -314,7 +314,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2611, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2611, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShortLEADD(var3);
             var10.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -330,7 +330,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2570, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2570, client.packetWriter.isaacCipher);
             var10.packetBuffer.writeShort(var3);
             var10.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var10);
@@ -346,7 +346,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var10 = class149.getPacketBufferNode(ClientPacket.field2627, client.packetWriter.isaacCipher);
+            var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2627, client.packetWriter.isaacCipher);
             var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             var10.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var10);
@@ -368,7 +368,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2590, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2590, client.packetWriter.isaacCipher);
          var9.packetBuffer.writeShortLEADD(class78.baseY + var1);
          var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
          var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -377,7 +377,7 @@ public class class122 extends class104 {
       }
 
       if (var2 == 43) {
-         var9 = class149.getPacketBufferNode(ClientPacket.field2668, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2668, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5992(var1);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.writeShortLEADD(var0);
@@ -394,7 +394,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2618, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2618, client.packetWriter.isaacCipher);
          var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.method5984(KeyHandler.field41);
          var9.packetBuffer.method5994(class62.field912);
@@ -412,7 +412,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2566, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2566, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5972(class25.field185);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -430,7 +430,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2597, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2597, client.packetWriter.isaacCipher);
          var9.packetBuffer.writeShortLEADD(var0 + class281.baseX);
          var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
          var9.packetBuffer.method5984(var3);
@@ -445,7 +445,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2594, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2594, client.packetWriter.isaacCipher);
          var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
          var9.packetBuffer.writeShortLEADD(KeyHandler.field41);
          var9.packetBuffer.method5992(class62.field912);
@@ -470,7 +470,7 @@ public class class122 extends class104 {
             }
 
             if (var16 != null) {
-               var11 = class149.getPacketBufferNode(ClientPacket.field2648, client.packetWriter.isaacCipher);
+               var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2648, client.packetWriter.isaacCipher);
                var11.packetBuffer.method5983(var16.field1627);
                client.packetWriter.addNode(var11);
             }
@@ -484,7 +484,7 @@ public class class122 extends class104 {
          client.field540 = 0;
          client.field644 = var0;
          client.field597 = var1;
-         var9 = class149.getPacketBufferNode(ClientPacket.field2598, client.packetWriter.isaacCipher);
+         var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2598, client.packetWriter.isaacCipher);
          var9.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.method5984(var3);
          var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
@@ -516,7 +516,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2623, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2623, client.packetWriter.isaacCipher);
             var9.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
             var9.packetBuffer.method5984(var1 + class78.baseY);
             var9.packetBuffer.method5984(var0 + class281.baseX);
@@ -533,7 +533,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2593, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2593, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortLEADD(client.field565);
                var10.packetBuffer.method5994(class25.field185);
                var10.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -550,7 +550,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2600, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2600, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(class281.baseX + var0);
             var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
             var9.packetBuffer.method5984(class78.baseY + var1);
@@ -559,7 +559,7 @@ public class class122 extends class104 {
          }
 
          if (var2 == 36) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2620, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2620, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShort(var0);
             var9.packetBuffer.writeShortLEADD(var3);
             var9.packetBuffer.method5992(var1);
@@ -570,7 +570,7 @@ public class class122 extends class104 {
          }
 
          if (41 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2636, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2636, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5983(var3);
             var9.packetBuffer.writeShort(var0);
@@ -587,7 +587,7 @@ public class class122 extends class104 {
          }
 
          if (33 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2563, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2563, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5984(var0);
             var9.packetBuffer.method5984(var3);
@@ -598,7 +598,7 @@ public class class122 extends class104 {
          }
 
          if (42 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2567, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2567, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(var3);
             var9.packetBuffer.writeShort(var0);
             var9.packetBuffer.method5992(var1);
@@ -609,7 +609,7 @@ public class class122 extends class104 {
          }
 
          if (39 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2573, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2573, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShort(var3);
             var9.packetBuffer.method5983(var0);
             var9.packetBuffer.writeInt(var1);
@@ -628,7 +628,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2610, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2610, client.packetWriter.isaacCipher);
                var10.packetBuffer.method5984(var3);
                var10.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
                client.packetWriter.addNode(var10);
@@ -636,7 +636,7 @@ public class class122 extends class104 {
          }
 
          if (var2 == 32) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2631, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2631, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShortLEADD(var3);
             var9.packetBuffer.method5972(var1);
             var9.packetBuffer.method5983(var0);
@@ -655,7 +655,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2612, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2612, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShort(var3);
             var9.packetBuffer.method5984(var1 + class78.baseY);
             var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -674,7 +674,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2619, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2619, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(var1 + class78.baseY);
             var9.packetBuffer.writeShortLEADD(var0 + class281.baseX);
             var9.packetBuffer.method5983(var3);
@@ -691,7 +691,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2625, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2625, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
                var10.packetBuffer.writeShortLEADD(var3);
                client.packetWriter.addNode(var10);
@@ -707,7 +707,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2607, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2607, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShortLEADD(var3);
                var10.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
                client.packetWriter.addNode(var10);
@@ -717,7 +717,7 @@ public class class122 extends class104 {
          int var14;
          Interface var17;
          if (28 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeInt(var1);
             client.packetWriter.addNode(var9);
             var17 = class87.getComponent(var1);
@@ -735,7 +735,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2592, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2592, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5983(var1 + class78.baseY);
             var9.packetBuffer.method5984(var3);
             var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
@@ -759,7 +759,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2632, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2632, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
                var10.packetBuffer.method5983(var3);
                client.packetWriter.addNode(var10);
@@ -767,7 +767,7 @@ public class class122 extends class104 {
          }
 
          if (29 == var2) {
-            var9 = class149.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeInt(var1);
             client.packetWriter.addNode(var9);
             var17 = class87.getComponent(var1);
@@ -787,7 +787,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2639, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2639, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
             var9.packetBuffer.method5983(var1 + class78.baseY);
             var9.packetBuffer.method5983(var0 + class281.baseX);
@@ -803,7 +803,7 @@ public class class122 extends class104 {
             }
 
             if (var18) {
-               var11 = class149.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
+               var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2652, client.packetWriter.isaacCipher);
                var11.packetBuffer.writeInt(var1);
                client.packetWriter.addNode(var11);
             }
@@ -818,7 +818,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2656, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2656, client.packetWriter.isaacCipher);
                var10.packetBuffer.method5984(var3);
                var10.packetBuffer.writeShort(class104.field1295);
                var10.packetBuffer.method5994(class62.field912);
@@ -837,7 +837,7 @@ public class class122 extends class104 {
                client.field540 = 0;
                client.field644 = var0;
                client.field597 = var1;
-               var10 = class149.getPacketBufferNode(ClientPacket.field2603, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2603, client.packetWriter.isaacCipher);
                var10.packetBuffer.writeShort(client.field565);
                var10.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
                var10.packetBuffer.writeShort(client.field564);
@@ -850,7 +850,7 @@ public class class122 extends class104 {
          if (var2 == 58) {
             var15 = class50.method1394(var1, var0);
             if (var15 != null) {
-               var10 = class149.getPacketBufferNode(ClientPacket.field2606, client.packetWriter.isaacCipher);
+               var10 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2606, client.packetWriter.isaacCipher);
                var10.packetBuffer.method5983(var15.field3088);
                var10.packetBuffer.method5992(var1);
                var10.packetBuffer.writeShort(var0);
@@ -872,7 +872,7 @@ public class class122 extends class104 {
             client.field540 = 0;
             client.field644 = var0;
             client.field597 = var1;
-            var9 = class149.getPacketBufferNode(ClientPacket.field2585, client.packetWriter.isaacCipher);
+            var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2585, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(var3);
             var9.packetBuffer.method5983(var0 + class281.baseX);
             var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);

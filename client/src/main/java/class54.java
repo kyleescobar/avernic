@@ -47,7 +47,7 @@ public class class54 {
                int var11 = lastPressedY * rawX - rawY * lastPressedX >> 11;
                int var12 = MouseHandler.localPlayer.x + var10 >> 7;
                int var13 = MouseHandler.localPlayer.y - var11 >> 7;
-               PacketBufferNode packetNode = class149.getPacketBufferNode(ClientPacket.MOVE_MINIMAP_CLICK, client.packetWriter.isaacCipher);
+               PacketBufferNode packetNode = VerticalAlignment.getPacketBufferNode(ClientPacket.MOVE_MINIMAP_CLICK, client.packetWriter.isaacCipher);
                packetNode.packetBuffer.writeByte(18);
                packetNode.packetBuffer.writeShortLEADD(var12 + class281.baseX); // tileX
                packetNode.packetBuffer.writeShort(class78.baseY + var13); // tileY

@@ -2,7 +2,7 @@ import java.awt.Font;
 
 public class class7 implements class290 {
    public static final class7 field17 = new class7(0, 0);
-   static class69 field14;
+   static class69 mouseRecorder;
    static class74 field16;
    static int field15;
    static Font field13;

@@ -22,7 +22,7 @@ public class class389 implements class290 {
          if (var1 >= 0 && var1 < client.field638[var0].method2230()) {
             class106 var4 = (class106)client.field638[var0].field1436.get(var1);
             class86 var5 = client.packetWriter;
-            PacketBufferNode var6 = class149.getPacketBufferNode(ClientPacket.field2665, var5.isaacCipher);
+            PacketBufferNode var6 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2665, var5.isaacCipher);
             var6.packetBuffer.writeByte(4 + class281.method4532(var4.field1303.getName()));
             var6.packetBuffer.writeByte(var0);
             var6.packetBuffer.writeShort(var1);

@@ -2194,7 +2194,7 @@ public final class client extends class19 implements class318 {
                   class156.field1738.method3883();
                   PacketBufferNode var64;
                   if (class59.field874.method185()) {
-                     var64 = class149.getPacketBufferNode(ClientPacket.field2622, packetWriter.isaacCipher);
+                     var64 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2622, packetWriter.isaacCipher);
                      var64.packetBuffer.writeInt(1057001181);
                      packetWriter.addNode(var64);
                   }
@@ -2229,7 +2229,7 @@ public final class client extends class19 implements class318 {
                   class257.field3138 = null;
                   class338.field3926 = null;
                   class81.field1162 = null;
-                  var64 = class149.getPacketBufferNode(ClientPacket.field2577, packetWriter.isaacCipher);
+                  var64 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2577, packetWriter.isaacCipher);
                   packetWriter.addNode(var64);
                   class85.field1199.method2322();
 
@@ -2338,11 +2338,11 @@ public final class client extends class19 implements class318 {
          class38.field311.method1895();
       }
 
-      if (null != class7.field14) {
-         class7.field14.field966 = false;
+      if (null != class7.mouseRecorder) {
+         class7.mouseRecorder.field966 = false;
       }
 
-      class7.field14 = null;
+      class7.mouseRecorder = null;
       packetWriter.method1965();
       ClientPacket.method3900();
       if (MouseHandler.field135 != null) {
@@ -3239,12 +3239,12 @@ public final class client extends class19 implements class318 {
                }
 
                int var4;
-               PacketBufferNode var18;
+               PacketBufferNode clientPacket;
                if (!var17) {
                   PacketBufferNode var19;
                   int var20;
                   if (field458.field3782) {
-                     var19 = class149.getPacketBufferNode(ClientPacket.field2576, packetWriter.isaacCipher);
+                     var19 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2576, packetWriter.isaacCipher);
                      var19.packetBuffer.writeByte(0);
                      var20 = var19.packetBuffer.offset;
                      field458.method5065(var19.packetBuffer);
@@ -3262,26 +3262,26 @@ public final class client extends class19 implements class318 {
                   int var11;
                   int var12;
                   int var13;
-                  synchronized(class7.field14.field975) {
+                  synchronized(class7.mouseRecorder.field975) {
                      if (!field635) {
-                        class7.field14.field967 = 0;
-                     } else if (MouseHandler.lastButton != 0 || class7.field14.field967 >= 40) {
-                        var18 = null;
+                        class7.mouseRecorder.field967 = 0;
+                     } else if (MouseHandler.lastButton != 0 || class7.mouseRecorder.field967 >= 40) {
+                        clientPacket = null;
                         var4 = 0;
                         var5 = 0;
                         var6 = 0;
                         var7 = 0;
 
-                        for(var8 = 0; var8 < class7.field14.field967 && (null == var18 || var18.packetBuffer.offset - var4 < 246); ++var8) {
+                        for(var8 = 0; var8 < class7.mouseRecorder.field967 && (null == clientPacket || clientPacket.packetBuffer.offset - var4 < 246); ++var8) {
                            var5 = var8;
-                           var9 = class7.field14.field969[var8];
+                           var9 = class7.mouseRecorder.field969[var8];
                            if (var9 < -1) {
                               var9 = -1;
                            } else if (var9 > 65534) {
                               var9 = 65534;
                            }
 
-                           var10 = class7.field14.field968[var8];
+                           var10 = class7.mouseRecorder.field968[var8];
                            if (var10 < -1) {
                               var10 = -1;
                            } else if (var10 > 65534) {
@@ -3289,11 +3289,11 @@ public final class client extends class19 implements class318 {
                            }
 
                            if (var10 != field418 || var9 != field419) {
-                              if (null == var18) {
-                                 var18 = class149.getPacketBufferNode(ClientPacket.field2626, packetWriter.isaacCipher);
-                                 var18.packetBuffer.writeByte(0);
-                                 var4 = var18.packetBuffer.offset;
-                                 PacketBuffer var10000 = var18.packetBuffer;
+                              if (null == clientPacket) {
+                                 clientPacket = VerticalAlignment.getPacketBufferNode(ClientPacket.MOUSE_IDLE, packetWriter.isaacCipher);
+                                 clientPacket.packetBuffer.writeByte(0);
+                                 var4 = clientPacket.packetBuffer.offset;
+                                 PacketBuffer var10000 = clientPacket.packetBuffer;
                                  var10000.offset += 2;
                                  var6 = 0;
                                  var7 = 0;
@@ -3302,8 +3302,8 @@ public final class client extends class19 implements class318 {
                               if (field420 != -1L) {
                                  var11 = var10 - field418;
                                  var12 = var9 - field419;
-                                 var13 = (int)((class7.field14.field970[var8] - field420) / 20L);
-                                 var6 = (int)((long)var6 + (class7.field14.field970[var8] - field420) % 20L);
+                                 var13 = (int)((class7.mouseRecorder.millis[var8] - field420) / 20L);
+                                 var6 = (int)((long)var6 + (class7.mouseRecorder.millis[var8] - field420) % 20L);
                               } else {
                                  var11 = var10;
                                  var12 = var9;
@@ -3315,51 +3315,51 @@ public final class client extends class19 implements class318 {
                               if (var13 < 8 && var11 >= -32 && var11 <= 31 && var12 >= -32 && var12 <= 31) {
                                  var11 += 32;
                                  var12 += 32;
-                                 var18.packetBuffer.writeShort((var13 << 12) + (var11 << 6) + var12);
+                                 clientPacket.packetBuffer.writeShort((var13 << 12) + (var11 << 6) + var12);
                               } else if (var13 < 32 && var11 >= -128 && var11 <= 127 && var12 >= -128 && var12 <= 127) {
                                  var11 += 128;
                                  var12 += 128;
-                                 var18.packetBuffer.writeByte(var13 + 128);
-                                 var18.packetBuffer.writeShort(var12 + (var11 << 8));
+                                 clientPacket.packetBuffer.writeByte(var13 + 128);
+                                 clientPacket.packetBuffer.writeShort(var12 + (var11 << 8));
                               } else if (var13 < 32) {
-                                 var18.packetBuffer.writeByte(192 + var13);
+                                 clientPacket.packetBuffer.writeByte(192 + var13);
                                  if (var10 != -1 && -1 != var9) {
-                                    var18.packetBuffer.writeInt(var10 | var9 << 16);
+                                    clientPacket.packetBuffer.writeInt(var10 | var9 << 16);
                                  } else {
-                                    var18.packetBuffer.writeInt(Integer.MIN_VALUE);
+                                    clientPacket.packetBuffer.writeInt(Integer.MIN_VALUE);
                                  }
                               } else {
-                                 var18.packetBuffer.writeShort('\ue000' + (var13 & 8191));
+                                 clientPacket.packetBuffer.writeShort('\ue000' + (var13 & 8191));
                                  if (var10 != -1 && var9 != -1) {
-                                    var18.packetBuffer.writeInt(var10 | var9 << 16);
+                                    clientPacket.packetBuffer.writeInt(var10 | var9 << 16);
                                  } else {
-                                    var18.packetBuffer.writeInt(Integer.MIN_VALUE);
+                                    clientPacket.packetBuffer.writeInt(Integer.MIN_VALUE);
                                  }
                               }
 
                               ++var7;
-                              field420 = class7.field14.field970[var8];
+                              field420 = class7.mouseRecorder.millis[var8];
                            }
                         }
 
-                        if (var18 != null) {
-                           var18.packetBuffer.method5945(var18.packetBuffer.offset - var4);
-                           var8 = var18.packetBuffer.offset;
-                           var18.packetBuffer.offset = var4;
-                           var18.packetBuffer.writeByte(var6 / var7);
-                           var18.packetBuffer.writeByte(var6 % var7);
-                           var18.packetBuffer.offset = var8;
-                           packetWriter.addNode(var18);
+                        if (clientPacket != null) {
+                           clientPacket.packetBuffer.method5945(clientPacket.packetBuffer.offset - var4);
+                           var8 = clientPacket.packetBuffer.offset;
+                           clientPacket.packetBuffer.offset = var4;
+                           clientPacket.packetBuffer.writeByte(var6 / var7);
+                           clientPacket.packetBuffer.writeByte(var6 % var7);
+                           clientPacket.packetBuffer.offset = var8;
+                           packetWriter.addNode(clientPacket);
                         }
 
-                        if (var5 >= class7.field14.field967) {
-                           class7.field14.field967 = 0;
+                        if (var5 >= class7.mouseRecorder.field967) {
+                           class7.mouseRecorder.field967 = 0;
                         } else {
-                           class69 var43 = class7.field14;
+                           class69 var43 = class7.mouseRecorder;
                            var43.field967 -= var5;
-                           System.arraycopy(class7.field14.field968, var5, class7.field14.field968, 0, class7.field14.field967);
-                           System.arraycopy(class7.field14.field969, var5, class7.field14.field969, 0, class7.field14.field967);
-                           System.arraycopy(class7.field14.field970, var5, class7.field14.field970, 0, class7.field14.field967);
+                           System.arraycopy(class7.mouseRecorder.field968, var5, class7.mouseRecorder.field968, 0, class7.mouseRecorder.field967);
+                           System.arraycopy(class7.mouseRecorder.field969, var5, class7.mouseRecorder.field969, 0, class7.mouseRecorder.field967);
+                           System.arraycopy(class7.mouseRecorder.millis, var5, class7.mouseRecorder.millis, 0, class7.mouseRecorder.field967);
                         }
                      }
                   }
@@ -3387,7 +3387,7 @@ public final class client extends class19 implements class318 {
                      }
 
                      var6 = (int)var21;
-                     var26 = class149.getPacketBufferNode(ClientPacket.field2580, packetWriter.isaacCipher);
+                     var26 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2580, packetWriter.isaacCipher);
                      var26.packetBuffer.writeShort((MouseHandler.lastButton == 2 ? 1 : 0) + (var6 << 1));
                      var26.packetBuffer.writeShort(var5);
                      var26.packetBuffer.writeShort(var4);
@@ -3395,7 +3395,7 @@ public final class client extends class19 implements class318 {
                   }
 
                   if (KeyHandler.field36 > 0) {
-                     var19 = class149.getPacketBufferNode(ClientPacket.field2564, packetWriter.isaacCipher);
+                     var19 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2564, packetWriter.isaacCipher);
                      var19.packetBuffer.writeShort(0);
                      var20 = var19.packetBuffer.offset;
                      long var22 = class87.method1989();
@@ -3426,7 +3426,7 @@ public final class client extends class19 implements class318 {
                   if (field492 && field608 <= 0) {
                      field608 = 20;
                      field492 = false;
-                     var19 = class149.getPacketBufferNode(ClientPacket.field2642, packetWriter.isaacCipher);
+                     var19 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2642, packetWriter.isaacCipher);
                      var19.packetBuffer.method5983(cameraAngleY);
                      var19.packetBuffer.writeShortLEADD(field476);
                      packetWriter.addNode(var19);
@@ -3434,14 +3434,14 @@ public final class client extends class19 implements class318 {
 
                   if (class256.field3128 && !field421) {
                      field421 = true;
-                     var19 = class149.getPacketBufferNode(ClientPacket.field2599, packetWriter.isaacCipher);
+                     var19 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2599, packetWriter.isaacCipher);
                      var19.packetBuffer.writeByte(1);
                      packetWriter.addNode(var19);
                   }
 
                   if (!class256.field3128 && field421) {
                      field421 = false;
-                     var19 = class149.getPacketBufferNode(ClientPacket.field2599, packetWriter.isaacCipher);
+                     var19 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2599, packetWriter.isaacCipher);
                      var19.packetBuffer.writeByte(0);
                      packetWriter.addNode(var19);
                   }
@@ -3593,7 +3593,7 @@ public final class client extends class19 implements class318 {
                      if (MouseHandler.localPlayer.plane != var4) {
                         var5 = class281.baseX + MouseHandler.localPlayer.pathX[0];
                         var6 = class78.baseY + MouseHandler.localPlayer.pathY[0];
-                        var26 = class149.getPacketBufferNode(ClientPacket.field2635, packetWriter.isaacCipher);
+                        var26 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2635, packetWriter.isaacCipher);
                         var26.packetBuffer.writeByte(var4);
                         var26.packetBuffer.writeShort(var6);
                         var26.packetBuffer.writeShortLEADD(var5);
@@ -3678,7 +3678,7 @@ public final class client extends class19 implements class318 {
                                                             var35.method4238(field519, field516);
                                                          }
 
-                                                         var41 = class149.getPacketBufferNode(ClientPacket.field2578, packetWriter.isaacCipher);
+                                                         var41 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2578, packetWriter.isaacCipher);
                                                          var41.packetBuffer.method5972(field688.id);
                                                          var41.packetBuffer.writeShortLEADD(field516);
                                                          var41.packetBuffer.method5983(field519);
@@ -3705,7 +3705,7 @@ public final class client extends class19 implements class318 {
                                              if (Scene.shouldSendWalk()) {
                                                 var4 = Scene.selectedX;
                                                 var5 = Scene.selectedY;
-                                                PacketBufferNode packetNode = class149.getPacketBufferNode(ClientPacket.MOVE_GAME_CLICK, packetWriter.isaacCipher);
+                                                PacketBufferNode packetNode = VerticalAlignment.getPacketBufferNode(ClientPacket.MOVE_GAME_CLICK, packetWriter.isaacCipher);
                                                 packetNode.packetBuffer.writeByte(5);
                                                 packetNode.packetBuffer.writeShortLEADD(var4 + class281.baseX); // tileX
                                                 packetNode.packetBuffer.writeShort(class78.baseY + var5); // tileY
@@ -3876,7 +3876,7 @@ public final class client extends class19 implements class318 {
                                                 }
 
                                                 if (KeyHandler.pressedKeys[13]) {
-                                                   packetWriter.addNode(class149.getPacketBufferNode(ClientPacket.field2634, packetWriter.isaacCipher));
+                                                   packetWriter.addNode(VerticalAlignment.getPacketBufferNode(ClientPacket.field2634, packetWriter.isaacCipher));
                                                    field482 = 0;
                                                 }
                                              }
@@ -3933,14 +3933,14 @@ public final class client extends class19 implements class318 {
                                              if (var4 > 15000 && var6 > 15000) {
                                                 field571 = 250;
                                                 MouseHandler.field146 = 14500;
-                                                var41 = class149.getPacketBufferNode(ClientPacket.field2664, packetWriter.isaacCipher);
+                                                var41 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2664, packetWriter.isaacCipher);
                                                 packetWriter.addNode(var41);
                                              }
 
                                              class13.field80.method1322();
                                              ++packetWriter.field1216;
                                              if (packetWriter.field1216 > 50) {
-                                                var41 = class149.getPacketBufferNode(ClientPacket.field2574, packetWriter.isaacCipher);
+                                                var41 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2574, packetWriter.isaacCipher);
                                                 packetWriter.addNode(var41);
                                              }
 
@@ -3989,12 +3989,12 @@ public final class client extends class19 implements class318 {
                   }
                }
 
-               var18 = class149.getPacketBufferNode(ClientPacket.field2591, packetWriter.isaacCipher);
-               var18.packetBuffer.writeByte(0);
-               var4 = var18.packetBuffer.offset;
-               class71.method1744(var18.packetBuffer);
-               var18.packetBuffer.method5945(var18.packetBuffer.offset - var4);
-               packetWriter.addNode(var18);
+               clientPacket = VerticalAlignment.getPacketBufferNode(ClientPacket.field2591, packetWriter.isaacCipher);
+               clientPacket.packetBuffer.writeByte(0);
+               var4 = clientPacket.packetBuffer.offset;
+               class71.method1744(clientPacket.packetBuffer);
+               clientPacket.packetBuffer.method5945(clientPacket.packetBuffer.offset - var4);
+               packetWriter.addNode(clientPacket);
             }
          }
       }
@@ -5491,7 +5491,7 @@ public final class client extends class19 implements class318 {
                value = buf.readInt();
                var23 = buf.readInt();
                var7 = class264.method4339();
-               PacketBufferNode var28 = class149.getPacketBufferNode(ClientPacket.field2596, packetWriter.isaacCipher);
+               PacketBufferNode var28 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2596, packetWriter.isaacCipher);
                var28.packetBuffer.method5976(class19.field120);
                var28.packetBuffer.method6067(var7);
                var28.packetBuffer.method5994(value);
@@ -5943,7 +5943,7 @@ public final class client extends class19 implements class318 {
                }
 
                if (null != field585 && class123.method2215(field581) != null) {
-                  PacketBufferNode var11 = class149.getPacketBufferNode(ClientPacket.field2662, packetWriter.isaacCipher);
+                  PacketBufferNode var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2662, packetWriter.isaacCipher);
                   var11.packetBuffer.method5994(field581.id);
                   var11.packetBuffer.method5984(field585.field3031);
                   var11.packetBuffer.writeShortLEADD(field581.field3088);

@@ -98,7 +98,7 @@ public class class49 {
             } else if (this.method1325(var3)) {
                MouseHandler.method326(class270.field3402 + var1 + class270.field3403);
             } else {
-               PacketBufferNode var4 = class149.getPacketBufferNode(ClientPacket.field2565, client.packetWriter.isaacCipher);
+               PacketBufferNode var4 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2565, client.packetWriter.isaacCipher);
                var4.packetBuffer.writeByte(class281.method4532(var1));
                var4.packetBuffer.writeStringCP1252(var1);
                client.packetWriter.addNode(var4);
@@ -140,7 +140,7 @@ public class class49 {
          if (var3.method6523()) {
             if (this.field712.method5192(var3)) {
                client.field610 = client.field593;
-               PacketBufferNode var4 = class149.getPacketBufferNode(ClientPacket.field2637, client.packetWriter.isaacCipher);
+               PacketBufferNode var4 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2637, client.packetWriter.isaacCipher);
                var4.packetBuffer.writeByte(class281.method4532(var1));
                var4.packetBuffer.writeStringCP1252(var1);
                client.packetWriter.addNode(var4);
@@ -157,7 +157,7 @@ public class class49 {
          if (var3.method6523()) {
             if (this.field713.method5192(var3)) {
                class125.method2249();
-               PacketBufferNode var4 = class149.getPacketBufferNode(ClientPacket.field2579, client.packetWriter.isaacCipher);
+               PacketBufferNode var4 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2579, client.packetWriter.isaacCipher);
                var4.packetBuffer.writeByte(class281.method4532(var1));
                var4.packetBuffer.writeStringCP1252(var1);
                client.packetWriter.addNode(var4);

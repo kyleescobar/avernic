@@ -1,11 +1,11 @@
-public class class149 implements class290 {
-   static final class149 field1653 = new class149(1, 0);
-   static final class149 field1654 = new class149(0, 1);
-   static final class149 field1655 = new class149(2, 2);
+public class VerticalAlignment implements class290 {
+   static final VerticalAlignment field1653 = new VerticalAlignment(1, 0);
+   static final VerticalAlignment field1654 = new VerticalAlignment(0, 1);
+   static final VerticalAlignment field1655 = new VerticalAlignment(2, 2);
    final int field1657;
    public final int field1658;
 
-   class149(int var1, int var2) {
+   VerticalAlignment(int var1, int var2) {
       this.field1658 = var1;
       this.field1657 = var2;
    }

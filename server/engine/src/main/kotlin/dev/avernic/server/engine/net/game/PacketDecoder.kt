@@ -1,7 +1,6 @@
 package dev.avernic.server.engine.net.game
 
 import io.netty.buffer.ByteBuf
-import io.netty.buffer.Unpooled
 import org.tinylog.kotlin.Logger
 
 class PacketDecoder(private val protocol: GameProtocol) {
@@ -13,80 +12,76 @@ class PacketDecoder(private val protocol: GameProtocol) {
     }
 
     private var stage = Stage.OPCODE
-    private var opcode = 0
-    private var type = PacketType.FIXED
+    private var opcode = -1
     private var length = 0
+    private var ignore = false
 
     fun decode(buf: ByteBuf, out: MutableList<Any>) {
-        when(stage) {
-            Stage.OPCODE -> decodeOpcode(buf)
-            Stage.LENGTH -> decodeLength(buf)
-            Stage.PAYLOAD -> decodePayload(buf, out)
+        try {
+            when(stage) {
+                Stage.OPCODE -> buf.readOpcode(out)
+                Stage.LENGTH -> buf.readLength(out)
+                Stage.PAYLOAD -> buf.readPayload(out)
+            }
+        } catch(e : Exception) {
+            Logger.error(e) { "An error occurred while decoding inbound client packet opcode: $opcode." }
+            buf.skipBytes(buf.readableBytes())
+            protocol.session.disconnect()
+            return
         }
     }
 
-    private fun decodeOpcode(buf: ByteBuf) {
-        opcode = (buf.readUnsignedByte().toInt() - protocol.session.decoderIsaac.nextInt()) and 0xFF
+    private fun ByteBuf.readOpcode(out: MutableList<Any>) {
+        opcode = (readUnsignedByte().toInt() - protocol.session.decoderIsaac.nextInt()) and 0xFF
+        length = GamePackets.CLIENT_LENGTHS[opcode]!!
 
         if(GamePackets.CLIENT.isUnknown(opcode)) {
             Logger.warn("Received unknown client packet with opcode: $opcode.")
-            this.skipPacket(buf)
+            ignore = true
+        }
+
+        if(length == 0) {
+            readPayload(out)
             return
+        }
+
+        stage = if(length < 0) Stage.LENGTH else Stage.PAYLOAD
+    }
+
+    private fun ByteBuf.readLength(out: MutableList<Any>) {
+       length = readLengthBytes() ?: return
+
+        if(length == 0) {
+            readPayload(out)
         } else {
-            stage = Stage.LENGTH
+            stage = Stage.PAYLOAD
         }
     }
 
-    private fun decodeLength(buf: ByteBuf) {
-        type = PacketType.fromLength(GamePackets.CLIENT_LENGTHS[opcode]!!)
-
-        length = when(type) {
-            PacketType.VARIABLE_BYTE -> buf.readUnsignedByte().toInt()
-            PacketType.VARIABLE_SHORT -> buf.readUnsignedShort()
-            else -> GamePackets.CLIENT_LENGTHS[opcode]!!
+    private fun ByteBuf.readPayload(out: MutableList<Any>) {
+        if(readableBytes() < length) {
+            return
         }
-
-        stage = Stage.PAYLOAD
-    }
-
-    private fun decodePayload(buf: ByteBuf, out: MutableList<Any>) {
-        if(!buf.isReadable(length)) {
-            buf.skipBytes(buf.readableBytes())
-        } else {
-            val payload = if(length > 0) buf.readBytes(length) else Unpooled.EMPTY_BUFFER
-            val codec = GamePackets.CLIENT.getCodec(opcode)
-            val packet = try {
-                codec.decode(protocol.session, payload)
-            } finally {
-                payload.release()
-            }
-
-            out.add(packet)
-            stage = Stage.OPCODE
-        }
-    }
-
-    private fun skipPacket(buf: ByteBuf) {
         try {
-            val packetLength = GamePackets.CLIENT_LENGTHS[opcode]
-                ?: throw IllegalStateException("Received invalid opcode: $opcode.")
-
-            val type = PacketType.fromLength(packetLength)
-
-            length = when(type) {
-                PacketType.VARIABLE_BYTE -> buf.readUnsignedByte().toInt()
-                PacketType.VARIABLE_SHORT -> buf.readUnsignedShort()
-                else -> packetLength
+            if(ignore) {
+                skipBytes(length)
+            } else {
+                val payload = readBytes(length)
+                val codec = GamePackets.CLIENT.getCodec(opcode)
+                val packet = codec.decode(protocol.session, payload)
+                out.add(packet)
             }
-
-            if(length > 0) {
-                buf.skipBytes(length)
-            }
-        } catch(e : Exception) {
-            Logger.error(e) { "Failed to skip an inbound client packet. [opcode: $opcode, type: $type, length: $length]." }
-            protocol.session.disconnect()
+        } finally {
+            stage = Stage.OPCODE
+            opcode = -1
+            length = 0
+            ignore = false
         }
+    }
 
-        stage = Stage.OPCODE
+    private fun ByteBuf.readLengthBytes(): Int? = when(length) {
+        -1 -> if(readableBytes() < Byte.SIZE_BYTES) null else readUnsignedByte().toInt()
+        -2 -> if(readableBytes() < Short.SIZE_BYTES) null else readUnsignedShort()
+        else -> throw IllegalStateException("Unsupported packet length: $length.")
     }
 }

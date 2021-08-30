@@ -25,7 +25,7 @@ public class class377 implements class290 {
    }
 
    static final void method5860(String var0) {
-      PacketBufferNode var2 = class149.getPacketBufferNode(ClientPacket.field2604, client.packetWriter.isaacCipher);
+      PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2604, client.packetWriter.isaacCipher);
       var2.packetBuffer.writeByte(class281.method4532(var0));
       var2.packetBuffer.writeStringCP1252(var0);
       client.packetWriter.addNode(var2);
@@ -89,7 +89,7 @@ public class class377 implements class290 {
          }
 
          if (326 == var2) {
-            PacketBufferNode var5 = class149.getPacketBufferNode(ClientPacket.field2658, client.packetWriter.isaacCipher);
+            PacketBufferNode var5 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2658, client.packetWriter.isaacCipher);
             client.field598.method4181(var5.packetBuffer);
             client.packetWriter.addNode(var5);
             return true;

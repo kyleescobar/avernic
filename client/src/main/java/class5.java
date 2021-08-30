@@ -1,8 +1,8 @@
 public final class class5 {
    static int field7;
 
-   static class149[] method17() {
-      return new class149[]{class149.field1654, class149.field1653, class149.field1655};
+   static VerticalAlignment[] method17() {
+      return new VerticalAlignment[]{VerticalAlignment.field1654, VerticalAlignment.field1653, VerticalAlignment.field1655};
    }
 
    public static void method16(int var0) {

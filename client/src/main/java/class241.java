@@ -92,7 +92,7 @@ public class class241 extends class354 {
          if (var4.field1306 == -1) {
             String var5 = var4.field1303.getName();
             class86 var6 = client.packetWriter;
-            PacketBufferNode var7 = class149.getPacketBufferNode(ClientPacket.field2672, var6.isaacCipher);
+            PacketBufferNode var7 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2672, var6.isaacCipher);
             var7.packetBuffer.writeByte(3 + class281.method4532(var5));
             var7.packetBuffer.writeByte(var0);
             var7.packetBuffer.writeShort(var1);

@@ -33,22 +33,22 @@ public class class109 extends class104 {
          if (var8 != null && MouseHandler.localPlayer != var8 && var8.username != null && var8.username.equals(var6)) {
             PacketBufferNode var9;
             if (var0 == 1) {
-               var9 = class149.getPacketBufferNode(ClientPacket.field2625, client.packetWriter.isaacCipher);
+               var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2625, client.packetWriter.isaacCipher);
                var9.packetBuffer.writeByte(0);
                var9.packetBuffer.writeShortLEADD(var4[var7]);
                client.packetWriter.addNode(var9);
             } else if (var0 == 4) {
-               var9 = class149.getPacketBufferNode(ClientPacket.field2651, client.packetWriter.isaacCipher);
+               var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2651, client.packetWriter.isaacCipher);
                var9.packetBuffer.method5984(var4[var7]);
                var9.packetBuffer.method6067(0);
                client.packetWriter.addNode(var9);
             } else if (6 == var0) {
-               var9 = class149.getPacketBufferNode(ClientPacket.field2570, client.packetWriter.isaacCipher);
+               var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2570, client.packetWriter.isaacCipher);
                var9.packetBuffer.writeShort(var4[var7]);
                var9.packetBuffer.method5976(0);
                client.packetWriter.addNode(var9);
             } else if (7 == var0) {
-               var9 = class149.getPacketBufferNode(ClientPacket.field2628, client.packetWriter.isaacCipher);
+               var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2628, client.packetWriter.isaacCipher);
                var9.packetBuffer.method5974(0);
                var9.packetBuffer.method5984(var4[var7]);
                client.packetWriter.addNode(var9);

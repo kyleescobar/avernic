@@ -652,7 +652,7 @@ public class class169 {
       }
    }
 
-   int method2987(class398 var1, class149 var2) {
+   int method2987(class398 var1, VerticalAlignment var2) {
       switch(var2.field1658) {
       case 0:
          return -var1.field4271 / 2;

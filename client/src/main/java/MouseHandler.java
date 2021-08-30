@@ -134,7 +134,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener, FocusLi
             class106 var3 = (class106)client.field638[var0].field1436.get(var1);
             if (var3.field1306 == -1) {
                class86 var4 = client.packetWriter;
-               PacketBufferNode var5 = class149.getPacketBufferNode(ClientPacket.field2646, var4.isaacCipher);
+               PacketBufferNode var5 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2646, var4.isaacCipher);
                var5.packetBuffer.writeByte(3 + class281.method4532(var3.field1303.getName()));
                var5.packetBuffer.writeByte(var0);
                var5.packetBuffer.writeShort(var1);

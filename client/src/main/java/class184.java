@@ -27,7 +27,7 @@ public class class184 {
             if (var8) {
                PacketBufferNode var11;
                if (1 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2643, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2643, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -35,7 +35,7 @@ public class class184 {
                }
 
                if (2 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2645, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2645, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -43,7 +43,7 @@ public class class184 {
                }
 
                if (3 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2617, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2617, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -51,7 +51,7 @@ public class class184 {
                }
 
                if (var0 == 4) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2659, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2659, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -59,7 +59,7 @@ public class class184 {
                }
 
                if (var0 == 5) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2583, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2583, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -67,7 +67,7 @@ public class class184 {
                }
 
                if (6 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2649, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2649, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -75,7 +75,7 @@ public class class184 {
                }
 
                if (7 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2640, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2640, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -83,7 +83,7 @@ public class class184 {
                }
 
                if (var0 == 8) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2608, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2608, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -91,7 +91,7 @@ public class class184 {
                }
 
                if (9 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2654, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2654, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);
@@ -99,7 +99,7 @@ public class class184 {
                }
 
                if (10 == var0) {
-                  var11 = class149.getPacketBufferNode(ClientPacket.field2571, client.packetWriter.isaacCipher);
+                  var11 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2571, client.packetWriter.isaacCipher);
                   var11.packetBuffer.writeInt(var1);
                   var11.packetBuffer.writeShort(var2);
                   var11.packetBuffer.writeShort(var3);

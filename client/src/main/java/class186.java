@@ -426,8 +426,8 @@ public abstract class class186 {
                      client.field411 = 110;
                   }
                } else if (client.field411 == 110) {
-                  class7.field14 = new class69();
-                  class19.field101.method2257(class7.field14, 10);
+                  class7.mouseRecorder = new class69();
+                  class19.field101.method2257(class7.mouseRecorder, 10);
                   class56.field807 = class270.field3256;
                   class56.field806 = 92;
                   client.field411 = 120;

@@ -7,7 +7,7 @@ public abstract class class104 extends class354 {
    }
 
    public static PacketBufferNode method2090(int var0, String var1, class292 var2, int var3) {
-      PacketBufferNode var5 = class149.getPacketBufferNode(ClientPacket.field2644, client.packetWriter.isaacCipher);
+      PacketBufferNode var5 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2644, client.packetWriter.isaacCipher);
       var5.packetBuffer.writeByte(0);
       int var6 = var5.packetBuffer.offset;
       var5.packetBuffer.writeByte(var0);

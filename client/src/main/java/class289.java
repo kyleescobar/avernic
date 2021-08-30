@@ -43,7 +43,7 @@ public class class289 {
          client.field617[var1] = true;
       }
 
-      PacketBufferNode var3 = class149.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
+      PacketBufferNode var3 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
       var3.packetBuffer.writeByte(class238.method4117());
       var3.packetBuffer.writeShort(class69.canvasWidth);
       var3.packetBuffer.writeShort(client.canvasHeight);

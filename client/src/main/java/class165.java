@@ -48,7 +48,7 @@ public class class165 {
       }
 
       if (client.field413 >= 25) {
-         PacketBufferNode var2 = class149.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
+         PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2572, client.packetWriter.isaacCipher);
          var2.packetBuffer.writeByte(class238.method4117());
          var2.packetBuffer.writeShort(class69.canvasWidth);
          var2.packetBuffer.writeShort(client.canvasHeight);

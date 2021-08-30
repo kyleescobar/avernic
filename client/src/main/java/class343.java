@@ -53,7 +53,7 @@ public abstract class class343 implements class216 {
    }
 
    public static void method5419(int var0, int var1, int var2, boolean var3) {
-      PacketBufferNode var5 = class149.getPacketBufferNode(ClientPacket.field2635, client.packetWriter.isaacCipher);
+      PacketBufferNode var5 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2635, client.packetWriter.isaacCipher);
       var5.packetBuffer.writeByte(var2);
       var5.packetBuffer.writeShort(var1);
       var5.packetBuffer.writeShortLEADD(var0);

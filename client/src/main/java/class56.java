@@ -68,7 +68,7 @@ public class class56 {
    }
 
    static final void method1580() {
-      PacketBufferNode var1 = class149.getPacketBufferNode(ClientPacket.field2655, client.packetWriter.isaacCipher);
+      PacketBufferNode var1 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2655, client.packetWriter.isaacCipher);
       var1.packetBuffer.writeByte(0);
       client.packetWriter.addNode(var1);
    }
