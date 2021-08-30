@@ -16,6 +16,12 @@ class GameCache(private val directory: Path) {
     val archiveCrcs = mutableListOf<Int>()
     val archiveCount get() = cache.archiveCount
 
+    /**
+     * Loaded cache archive models.
+     */
+
+    lateinit var configArchive: ConfigArchive private set
+
     fun load() {
         val validator = cache.generateValidator(includeWhirlpool = false, includeSizes = false)
         val container = Js5Container(validator.encode())
@@ -27,5 +33,11 @@ class GameCache(private val directory: Path) {
         )
 
         archiveCrcs.addAll(validator.archiveValidators.map { it.crc })
+
+        this.loadArchives()
+    }
+
+    private fun loadArchives() {
+        configArchive = ConfigArchive.load(cache.readArchive(ConfigArchive.id))
     }
 }
