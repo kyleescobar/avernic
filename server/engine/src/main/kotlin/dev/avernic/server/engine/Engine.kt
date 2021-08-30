@@ -3,9 +3,11 @@ package dev.avernic.server.engine
 import com.google.common.util.concurrent.ThreadFactoryBuilder
 import dev.avernic.server.common.inject
 import dev.avernic.server.config.ServerConfig
+import dev.avernic.server.engine.event.EventBus
+import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.world.ServerStartEvent
+import dev.avernic.server.engine.event.world.ServerStopEvent
 import dev.avernic.server.engine.game.World
-import dev.avernic.server.engine.game.entity.Client
-import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.net.game.GamePackets
 import dev.avernic.server.engine.service.ServiceManager
 import kotlinx.coroutines.CoroutineScope
@@ -56,6 +58,11 @@ class Engine {
          */
         serviceManager.initialize()
         serviceManager.startServices()
+
+        /*
+         * Dispatch the event.
+         */
+        EventBus.schedule(ServerStartEvent())
     }
 
     fun stop() {
@@ -72,11 +79,16 @@ class Engine {
          * Stop the game coroutine cycle.
          */
         gameExecutor.shutdownNow()
+
+        /*
+         * Dispatch Event
+         */
+        EventBus.schedule(ServerStopEvent())
     }
 
     private fun CoroutineScope.start(delay: Long) = launch {
         while(state == EngineState.RUNNING) {
-            val elapsedNanos = measureNanoTime { gameLogic() } + excessCycleNanos
+            val elapsedNanos = measureNanoTime { world.gameLogic() } + excessCycleNanos
             val elapsedMillis = TimeUnit.NANOSECONDS.toMillis(elapsedNanos)
             val isOverdue = elapsedMillis > delay
             val sleepTime = if(isOverdue) {
@@ -94,32 +106,5 @@ class Engine {
             excessCycleNanos = elapsedNanos - TimeUnit.MILLISECONDS.toNanos(elapsedMillis)
             delay(sleepTime)
         }
-    }
-
-    private suspend fun gameLogic() {
-        world.players.forEach { it.client.processPackets() }
-        world.players.forEach { it.cycle() }
-        world.players.forEach { it.client.flush() }
-    }
-
-    private suspend fun Client.processPackets() {
-        for(i in 0 until MAX_PACKET_PER_CYCLE) {
-            val packet = packetQueue.poll() ?: break
-            try {
-                packet.handle(session)
-            } catch (e : Throwable) {
-                Logger.error(e) { "An error occurred while handling client game packet. (packet=${packet::class.simpleName})." }
-            }
-        }
-    }
-
-    private suspend fun Player.cycle() {
-
-    }
-
-
-
-    companion object {
-        private const val MAX_PACKET_PER_CYCLE = 16
     }
 }
