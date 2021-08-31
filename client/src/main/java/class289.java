@@ -28,8 +28,8 @@ public class class289 {
 
       MouseHandler.localPlayer = null;
 
-      for(var1 = 0; var1 < client.field567.length; ++var1) {
-         class78 var2 = client.field567[var1];
+      for(var1 = 0; var1 < client.npcs.length; ++var1) {
+         Npc var2 = client.npcs[var1];
          if (var2 != null) {
             var2.targetIndex = -1;
             var2.field1032 = false;

@@ -140,8 +140,8 @@ public final class class210 {
                   return 2;
                }
             } else {
-               if (class78.field1137 != null && class82.field1165 < class212.field2520) {
-                  class51.field747[++class51.field746 - 1] = class78.field1137[++class82.field1165 - 1] & '\uffff';
+               if (Npc.field1137 != null && class82.field1165 < class212.field2520) {
+                  class51.field747[++class51.field746 - 1] = Npc.field1137[++class82.field1165 - 1] & '\uffff';
                } else {
                   class51.field747[++class51.field746 - 1] = -1;
                }

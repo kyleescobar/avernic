@@ -178,19 +178,19 @@ public class class99 implements class98 {
          class17.method128(25);
          class12.method98(class270.field3237, true);
          int var4 = class281.baseX;
-         int var5 = class78.baseY;
+         int var5 = Npc.baseY;
          class281.baseX = (var0 - 6) * 8;
-         class78.baseY = 8 * (var1 - 6);
+         Npc.baseY = 8 * (var1 - 6);
          int var6 = class281.baseX - var4;
-         int var7 = class78.baseY - var5;
+         int var7 = Npc.baseY - var5;
          var4 = class281.baseX;
-         var5 = class78.baseY;
+         var5 = Npc.baseY;
 
          int var8;
          int var10;
          int[] var10000;
          for(var8 = 0; var8 < 32768; ++var8) {
-            class78 var9 = client.field567[var8];
+            Npc var9 = client.npcs[var8];
             if (null != var9) {
                for(var10 = 0; var10 < 10; ++var10) {
                   var10000 = var9.pathX;

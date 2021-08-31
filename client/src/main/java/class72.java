@@ -45,7 +45,7 @@ public abstract class class72 extends class201 {
    int field1067 = 0;
    int field1068;
    int x;
-   int field1070 = 0;
+   int npcCycle = 0;
    int field1071 = 200;
    int field1072 = -1;
    int field1073 = 0;

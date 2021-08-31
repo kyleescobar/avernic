@@ -119,9 +119,9 @@ public class class17 {
    }
 
    static final void method142(class72 var0, int var1) {
-      if (var0.field1074 >= client.field452) {
+      if (var0.field1074 >= client.cycle) {
          class48.method1315(var0);
-      } else if (var0.field1068 >= client.field452) {
+      } else if (var0.field1068 >= client.cycle) {
          class45.method798(var0);
       } else {
          class156.method2651(var0);

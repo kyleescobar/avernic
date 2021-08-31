@@ -49,7 +49,7 @@ public class class110 extends class120 {
          }
       }
 
-      if (-1 != var0.spotAnimation && client.field452 >= var0.field1061) {
+      if (-1 != var0.spotAnimation && client.cycle >= var0.field1061) {
          if (var0.field1028 < 0) {
             var0.field1028 = 0;
          }
@@ -78,7 +78,7 @@ public class class110 extends class120 {
 
       if (-1 != var0.sequence && var0.field1056 <= 1) {
          var2 = class48.method1312(var0.sequence);
-         if (1 == var2.field1868 && var0.field1067 > 0 && var0.field1074 <= client.field452 && var0.field1068 < client.field452) {
+         if (1 == var2.field1868 && var0.field1067 > 0 && var0.field1074 <= client.cycle && var0.field1068 < client.cycle) {
             var0.field1056 = 1;
             return;
          }

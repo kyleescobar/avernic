@@ -55,9 +55,9 @@ public class class108 extends class104 {
          }
       }
 
-      for(var2 = 0; var2 < client.field685; ++var2) {
-         int var5 = client.field450[var2];
-         class78 var4 = client.field567[var5];
+      for(var2 = 0; var2 < client.npcCount; ++var2) {
+         int var5 = client.npcIndexes[var2];
+         Npc var4 = client.npcs[var5];
          if (null != var4 && var4.overheadTextCyclesRemaining > 0) {
             --var4.overheadTextCyclesRemaining;
             if (0 == var4.overheadTextCyclesRemaining) {

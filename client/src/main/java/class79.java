@@ -1,7 +1,7 @@
 public class class79 {
    static String field1138 = "|";
    static String field1139 = ")";
-   static String field1140 = ",";
+   static String SYMBOL_COMMA = ",";
    static String field1141 = " (";
    static String field1142 = "true";
    static String field1143 = "->";

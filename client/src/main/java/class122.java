@@ -107,9 +107,9 @@ public class class122 extends class104 {
          }
       }
 
-      class78 var13;
+      Npc var13;
       if (var2 == 10) {
-         var13 = client.field567[var3];
+         var13 = client.npcs[var3];
          if (null != var13) {
             client.field508 = var6;
             client.field463 = var7;
@@ -244,13 +244,13 @@ public class class122 extends class104 {
          var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2595, client.packetWriter.isaacCipher);
          var9.packetBuffer.method5983(var3);
          var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
-         var9.packetBuffer.method5983(var1 + class78.baseY);
+         var9.packetBuffer.method5983(var1 + Npc.baseY);
          var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
          client.packetWriter.addNode(var9);
       }
 
       if (7 == var2) {
-         var13 = client.field567[var3];
+         var13 = client.npcs[var3];
          if (null != var13) {
             client.field508 = var6;
             client.field463 = var7;
@@ -338,7 +338,7 @@ public class class122 extends class104 {
       }
 
       if (12 == var2) {
-         var13 = client.field567[var3];
+         var13 = client.npcs[var3];
          if (var13 != null) {
             client.field508 = var6;
             client.field463 = var7;
@@ -369,7 +369,7 @@ public class class122 extends class104 {
          client.field644 = var0;
          client.field597 = var1;
          var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2590, client.packetWriter.isaacCipher);
-         var9.packetBuffer.writeShortLEADD(class78.baseY + var1);
+         var9.packetBuffer.writeShortLEADD(Npc.baseY + var1);
          var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
          var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.writeShortLEADD(var3);
@@ -401,7 +401,7 @@ public class class122 extends class104 {
          var9.packetBuffer.writeShort(var3);
          var9.packetBuffer.writeShort(class104.field1295);
          var9.packetBuffer.writeShort(class281.baseX + var0);
-         var9.packetBuffer.writeShortLEADD(class78.baseY + var1);
+         var9.packetBuffer.writeShortLEADD(Npc.baseY + var1);
          client.packetWriter.addNode(var9);
       }
 
@@ -418,7 +418,7 @@ public class class122 extends class104 {
          var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.method5983(client.field564);
          var9.packetBuffer.method5984(var0 + class281.baseX);
-         var9.packetBuffer.method5984(var1 + class78.baseY);
+         var9.packetBuffer.method5984(var1 + Npc.baseY);
          var9.packetBuffer.method5984(client.field565);
          client.packetWriter.addNode(var9);
       }
@@ -432,7 +432,7 @@ public class class122 extends class104 {
          client.field597 = var1;
          var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2597, client.packetWriter.isaacCipher);
          var9.packetBuffer.writeShortLEADD(var0 + class281.baseX);
-         var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
+         var9.packetBuffer.writeShortLEADD(var1 + Npc.baseY);
          var9.packetBuffer.method5984(var3);
          var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
          client.packetWriter.addNode(var9);
@@ -446,7 +446,7 @@ public class class122 extends class104 {
          client.field644 = var0;
          client.field597 = var1;
          var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2594, client.packetWriter.isaacCipher);
-         var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
+         var9.packetBuffer.writeShortLEADD(var1 + Npc.baseY);
          var9.packetBuffer.writeShortLEADD(KeyHandler.field41);
          var9.packetBuffer.method5992(class62.field912);
          var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -462,9 +462,9 @@ public class class122 extends class104 {
          client.field463 = var7;
          client.field511 = 2;
          client.field540 = 0;
-         var13 = client.field567[var3];
+         var13 = client.npcs[var3];
          if (var13 != null) {
-            class148 var16 = var13.field1132;
+            class148 var16 = var13.definition;
             if (var16.field1646 != null) {
                var16 = var16.method2471();
             }
@@ -487,7 +487,7 @@ public class class122 extends class104 {
          var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2598, client.packetWriter.isaacCipher);
          var9.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
          var9.packetBuffer.method5984(var3);
-         var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
+         var9.packetBuffer.writeShortLEADD(var1 + Npc.baseY);
          var9.packetBuffer.writeInt(class25.field185);
          var9.packetBuffer.writeShortLEADD(var0 + class281.baseX);
          var9.packetBuffer.writeShortLEADD(client.field565);
@@ -518,7 +518,7 @@ public class class122 extends class104 {
             client.field597 = var1;
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2623, client.packetWriter.isaacCipher);
             var9.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
-            var9.packetBuffer.method5984(var1 + class78.baseY);
+            var9.packetBuffer.method5984(var1 + Npc.baseY);
             var9.packetBuffer.method5984(var0 + class281.baseX);
             var9.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var9);
@@ -553,7 +553,7 @@ public class class122 extends class104 {
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2600, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(class281.baseX + var0);
             var9.packetBuffer.method5976(KeyHandler.pressedKeys[82] ? 1 : 0);
-            var9.packetBuffer.method5984(class78.baseY + var1);
+            var9.packetBuffer.method5984(Npc.baseY + var1);
             var9.packetBuffer.method5984(var3);
             client.packetWriter.addNode(var9);
          }
@@ -620,7 +620,7 @@ public class class122 extends class104 {
          }
 
          if (var2 == 11) {
-            var13 = client.field567[var3];
+            var13 = client.npcs[var3];
             if (var13 != null) {
                client.field508 = var6;
                client.field463 = var7;
@@ -657,7 +657,7 @@ public class class122 extends class104 {
             client.field597 = var1;
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2612, client.packetWriter.isaacCipher);
             var9.packetBuffer.writeShort(var3);
-            var9.packetBuffer.method5984(var1 + class78.baseY);
+            var9.packetBuffer.method5984(var1 + Npc.baseY);
             var9.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? 1 : 0);
             var9.packetBuffer.method5984(class281.baseX + var0);
             client.packetWriter.addNode(var9);
@@ -675,7 +675,7 @@ public class class122 extends class104 {
             client.field644 = var0;
             client.field597 = var1;
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2619, client.packetWriter.isaacCipher);
-            var9.packetBuffer.method5984(var1 + class78.baseY);
+            var9.packetBuffer.method5984(var1 + Npc.baseY);
             var9.packetBuffer.writeShortLEADD(var0 + class281.baseX);
             var9.packetBuffer.method5983(var3);
             var9.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -699,7 +699,7 @@ public class class122 extends class104 {
          }
 
          if (9 == var2) {
-            var13 = client.field567[var3];
+            var13 = client.npcs[var3];
             if (null != var13) {
                client.field508 = var6;
                client.field463 = var7;
@@ -736,7 +736,7 @@ public class class122 extends class104 {
             client.field644 = var0;
             client.field597 = var1;
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2592, client.packetWriter.isaacCipher);
-            var9.packetBuffer.method5983(var1 + class78.baseY);
+            var9.packetBuffer.method5983(var1 + Npc.baseY);
             var9.packetBuffer.method5984(var3);
             var9.packetBuffer.writeShortLEADD(class281.baseX + var0);
             var9.packetBuffer.method6067(KeyHandler.pressedKeys[82] ? 1 : 0);
@@ -751,7 +751,7 @@ public class class122 extends class104 {
          }
 
          if (var2 == 13) {
-            var13 = client.field567[var3];
+            var13 = client.npcs[var3];
             if (null != var13) {
                client.field508 = var6;
                client.field463 = var7;
@@ -789,7 +789,7 @@ public class class122 extends class104 {
             client.field597 = var1;
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2639, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
-            var9.packetBuffer.method5983(var1 + class78.baseY);
+            var9.packetBuffer.method5983(var1 + Npc.baseY);
             var9.packetBuffer.method5983(var0 + class281.baseX);
             var9.packetBuffer.writeShort(var3);
             client.packetWriter.addNode(var9);
@@ -829,7 +829,7 @@ public class class122 extends class104 {
          }
 
          if (8 == var2) {
-            var13 = client.field567[var3];
+            var13 = client.npcs[var3];
             if (var13 != null) {
                client.field508 = var6;
                client.field463 = var7;
@@ -875,7 +875,7 @@ public class class122 extends class104 {
             var9 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2585, client.packetWriter.isaacCipher);
             var9.packetBuffer.method5984(var3);
             var9.packetBuffer.method5983(var0 + class281.baseX);
-            var9.packetBuffer.writeShortLEADD(var1 + class78.baseY);
+            var9.packetBuffer.writeShortLEADD(var1 + Npc.baseY);
             var9.packetBuffer.method5974(KeyHandler.pressedKeys[82] ? 1 : 0);
             client.packetWriter.addNode(var9);
          }

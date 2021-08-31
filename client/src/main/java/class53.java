@@ -27,7 +27,7 @@ public class class53 {
    static final void method1540() {
       for(class52 var1 = (class52)client.field539.method4687(); null != var1; var1 = (class52)client.field539.method4678()) {
          if (class285.plane == var1.field760 && !var1.field767) {
-            if (client.field452 >= var1.field759) {
+            if (client.cycle >= var1.field759) {
                var1.method1531(client.field556);
                if (var1.field767) {
                   var1.remove();

@@ -191,7 +191,7 @@ public class class74 {
       }
 
       this.field1088 += var1;
-      var8 = (var1 + (client.field452 & 1)) / 2;
+      var8 = (var1 + (client.cycle & 1)) / 2;
       if (var8 > 0) {
          short var17 = 128;
          byte var18 = 2;

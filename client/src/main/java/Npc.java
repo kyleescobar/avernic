@@ -1,13 +1,13 @@
 import java.io.File;
 import java.io.IOException;
 
-public final class class78 extends class72 {
+public final class Npc extends class72 {
    static class88 field1135;
    static int baseY;
    static short[] field1137;
-   class148 field1132;
+   class148 definition;
 
-   class78() {
+   Npc() {
    }
 
    final void method1832(int var1, byte var2) {
@@ -108,12 +108,12 @@ public final class class78 extends class72 {
    }
 
    protected final class207 method3687() {
-      if (this.field1132 == null) {
+      if (this.definition == null) {
          return null;
       } else {
          class159 var2 = -1 != super.sequence && super.field1056 == 0 ? class48.method1312(super.sequence) : null;
          class159 var3 = -1 == super.field1050 || super.field1030 == super.field1050 && null != var2 ? null : class48.method1312(super.field1050);
-         class207 var4 = this.field1132.method2491(var2, super.field1054, var3, super.field1042);
+         class207 var4 = this.definition.method2491(var2, super.field1054, var3, super.field1042);
          if (var4 == null) {
             return null;
          } else {
@@ -128,7 +128,7 @@ public final class class78 extends class72 {
                }
             }
 
-            if (1 == this.field1132.field1622) {
+            if (1 == this.definition.field1622) {
                var4.field2430 = true;
             }
 
@@ -138,7 +138,7 @@ public final class class78 extends class72 {
    }
 
    final boolean method1748() {
-      return null != this.field1132;
+      return null != this.definition;
    }
 
    public static class369 method1836(String var0, String var1, boolean var2) {

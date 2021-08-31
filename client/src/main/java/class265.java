@@ -20,7 +20,7 @@ public class class265 {
       long var7 = -1L;
 
       int var9;
-      for(var9 = 0; var9 < class78.method1834(); ++var9) {
+      for(var9 = 0; var9 < Npc.method1834(); ++var9) {
          long var10 = class208.field2485[var9];
          if (var7 != var10) {
             var7 = var10;
@@ -82,20 +82,20 @@ public class class265 {
 
             Player var24;
             int var29;
-            class78 var31;
+            Npc var31;
             int[] var32;
             int var36;
             if (1 == var16) {
-               class78 var27 = client.field567[var19];
+               Npc var27 = client.npcs[var19];
                if (null == var27) {
                   continue;
                }
 
-               if (var27.field1132.field1622 == 1 && (var27.x & 127) == 64 && 64 == (var27.y & 127)) {
-                  for(var29 = 0; var29 < client.field685; ++var29) {
-                     var31 = client.field567[client.field450[var29]];
-                     if (null != var31 && var31 != var27 && var31.field1132.field1622 == 1 && var31.x == var27.x && var27.y == var31.y) {
-                        class291.method4625(var31.field1132, client.field450[var29], var14, var15);
+               if (var27.definition.field1622 == 1 && (var27.x & 127) == 64 && 64 == (var27.y & 127)) {
+                  for(var29 = 0; var29 < client.npcCount; ++var29) {
+                     var31 = client.npcs[client.npcIndexes[var29]];
+                     if (null != var31 && var31 != var27 && var31.definition.field1622 == 1 && var31.x == var27.x && var27.y == var31.y) {
+                        class291.method4625(var31.definition, client.npcIndexes[var29], var14, var15);
                      }
                   }
 
@@ -110,7 +110,7 @@ public class class265 {
                   }
                }
 
-               class291.method4625(var27.field1132, var19, var14, var15);
+               class291.method4625(var27.definition, var19, var14, var15);
             }
 
             if (0 == var16) {
@@ -120,10 +120,10 @@ public class class265 {
                }
 
                if (64 == (var28.x & 127) && (var28.y & 127) == 64) {
-                  for(var29 = 0; var29 < client.field685; ++var29) {
-                     var31 = client.field567[client.field450[var29]];
-                     if (var31 != null && var31.field1132.field1622 == 1 && var31.x == var28.x && var28.y == var31.y) {
-                        class291.method4625(var31.field1132, client.field450[var29], var14, var15);
+                  for(var29 = 0; var29 < client.npcCount; ++var29) {
+                     var31 = client.npcs[client.npcIndexes[var29]];
+                     if (var31 != null && var31.definition.field1622 == 1 && var31.x == var28.x && var28.y == var31.y) {
+                        class291.method4625(var31.definition, client.npcIndexes[var29], var14, var15);
                      }
                   }
 

@@ -4,9 +4,12 @@ import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.EventBus
 import dev.avernic.server.engine.event.player.PlayerLoginEvent
 import dev.avernic.server.engine.event.player.PlayerLogoutEvent
+import dev.avernic.server.engine.event.player.PlayerMoveEvent
 import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
+import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Privilege
+import dev.avernic.server.engine.game.entity.pathfinder.TmpPathfinder
 import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.interf.DisplayMode
@@ -37,6 +40,11 @@ class Player(val client: Client) : LivingEntity() {
     var skullIcon: Int = -1
     var prayerIcon: Int = -1
     override var combatLevel: Int = 3
+
+    /**
+     * The pathfinder configured for players.
+     */
+    override val pathfinder = TmpPathfinder()
 
     /*
      * Player context managers.
@@ -113,6 +121,8 @@ class Player(val client: Client) : LivingEntity() {
         gpi.synchronize()
         client.flush()
     }
+
+    override fun scheduleMoveEvent(type: MovementType) = EventBus.schedule(PlayerMoveEvent(this, type))
 
     override fun addAppearanceUpdateFlag() { updateFlags.add(PlayerUpdateFlag.APPEARANCE) }
     override fun addForceChatUpdateFlag() { updateFlags.add(PlayerUpdateFlag.FORCE_CHAT) }

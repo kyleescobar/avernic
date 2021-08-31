@@ -219,10 +219,10 @@ public class class167 implements class188 {
          player.spotAnimation = buf.readUnsignedShortLE();
          i = buf.method5995();
          player.field1062 = i >> 16;
-         player.field1061 = client.field452 + (i & '\uffff');
+         player.field1061 = client.cycle + (i & '\uffff');
          player.field1028 = 0;
          player.field1060 = 0;
-         if (player.field1061 > client.field452) {
+         if (player.field1061 > client.cycle) {
             player.field1028 = -1;
          }
 
@@ -293,8 +293,8 @@ public class class167 implements class188 {
          player.field1065 = buf.method5980();
          player.field1064 = buf.readByte();
          player.field1066 = buf.method5935();
-         player.field1074 = buf.readUnsignedShortLEADD() + client.field452;
-         player.field1068 = buf.readUnsignedShortADD() + client.field452;
+         player.field1074 = buf.readUnsignedShortLEADD() + client.cycle;
+         player.field1068 = buf.readUnsignedShortADD() + client.cycle;
          player.field1051 = buf.readUnsignedShort();
          if (player.field1004) {
             player.field1063 += player.tileX;
@@ -393,7 +393,7 @@ public class class167 implements class188 {
                }
 
                var20 = buf.method5962();
-               player.method1759(var17, var10, var9, var19, client.field452, var20);
+               player.method1759(var17, var10, var9, var19, client.cycle, var20);
             }
          }
 
@@ -406,7 +406,7 @@ public class class167 implements class188 {
                   var19 = buf.method5962();
                   var20 = buf.readUnsignedByteADD();
                   var13 = var10 > 0 ? buf.readUnsignedByteSUB() : var20;
-                  player.method1750(var9, client.field452, var10, var19, var20, var13);
+                  player.method1750(var9, client.cycle, var10, var19, var20, var13);
                } else {
                   player.method1751(var9);
                }
@@ -452,7 +452,7 @@ public class class167 implements class188 {
       if (6600 == var0) {
          var4 = class285.plane;
          int var17 = (MouseHandler.localPlayer.x >> 7) + class281.baseX;
-         int var13 = (MouseHandler.localPlayer.y >> 7) + class78.baseY;
+         int var13 = (MouseHandler.localPlayer.y >> 7) + Npc.baseY;
          class186.method3221().method5488(var4, var17, var13, true);
          return 1;
       } else {

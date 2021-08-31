@@ -221,7 +221,7 @@ public class class84 {
    }
 
    class369 method1894(boolean var1) {
-      return class78.method1836("2", class69.field976.field3208, var1);
+      return Npc.method1836("2", class69.field976.field3208, var1);
    }
 
    void method1895() {

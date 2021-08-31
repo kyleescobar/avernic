@@ -559,10 +559,10 @@ public class class270 {
 
    static boolean method4359() {
       try {
-         if (null == class78.field1135) {
-            class78.field1135 = class170.field1992.method1983(new URL(class310.field3776));
-         } else if (class78.field1135.method1999()) {
-            byte[] var1 = class78.field1135.method1998();
+         if (null == Npc.field1135) {
+            Npc.field1135 = class170.field1992.method1983(new URL(class310.field3776));
+         } else if (Npc.field1135.method1999()) {
+            byte[] var1 = Npc.field1135.method1998();
             Buffer var2 = new Buffer(var1);
             var2.readInt();
             class48.field692 = var2.readUnsignedShort();
@@ -580,12 +580,12 @@ public class class270 {
             }
 
             class84.method1905(class16.field86, 0, class16.field86.length - 1, class48.field696, class48.field695);
-            class78.field1135 = null;
+            Npc.field1135 = null;
             return true;
          }
       } catch (Exception var5) {
          var5.printStackTrace();
-         class78.field1135 = null;
+         Npc.field1135 = null;
       }
 
       return false;

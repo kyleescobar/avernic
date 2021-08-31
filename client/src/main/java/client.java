@@ -84,7 +84,7 @@ public final class client extends class19 implements class318 {
    static class47 field518;
    static class58 field444;
    static Player[] localPlayers;
-   static class78[] field567;
+   static Npc[] npcs;
    static class81 field433;
    static class81 field459;
    static int field404;
@@ -112,7 +112,7 @@ public final class client extends class19 implements class318 {
    static int field441;
    static int cameraAngleY;
    static int field451;
-   static int field452 = 0;
+   static int cycle = 0;
    static int field454 = 0;
    static int field460;
    static int field461;
@@ -224,13 +224,13 @@ public final class client extends class19 implements class318 {
    static int field679;
    static int field682;
    static int field683;
-   static int field685;
+   static int npcCount;
    static int[] field428;
    static int[] field431;
    static int[] field435;
    static int[] field437;
    static int[] field442;
-   static int[] field450;
+   static int[] npcIndexes;
    static int[] field475;
    static int[] field496;
    static int[] field497;
@@ -456,9 +456,9 @@ public final class client extends class19 implements class318 {
       isLoginUsernameRemembered = false;
       field444 = new class58();
       field447 = null;
-      field567 = new class78['\u8000'];
-      field685 = 0;
-      field450 = new int['\u8000'];
+      npcs = new Npc['\u8000'];
+      npcCount = 0;
+      npcIndexes = new int['\u8000'];
       field501 = 0;
       field475 = new int[250];
       packetWriter = new class86();
@@ -1204,7 +1204,7 @@ public final class client extends class19 implements class318 {
    }
 
    protected final void method178() {
-      ++field452;
+      ++cycle;
       this.method1131();
       class269.method4358();
 
@@ -1376,7 +1376,7 @@ public final class client extends class19 implements class318 {
                   byte[] var4 = class356.regionMapArchives[var3];
                   if (var4 != null) {
                      var5 = 64 * (class235.regionIds[var3] >> 8) - class281.baseX;
-                     var6 = 64 * (class235.regionIds[var3] & 255) - class78.baseY;
+                     var6 = 64 * (class235.regionIds[var3] & 255) - Npc.baseY;
                      if (inInstanceRegion) {
                         var5 = 10;
                         var6 = 10;
@@ -1497,7 +1497,7 @@ public final class client extends class19 implements class318 {
                      byte[] var7;
                      for(var51 = 0; var51 < var3; ++var51) {
                         var5 = (class235.regionIds[var51] >> 8) * 64 - class281.baseX;
-                        var6 = (class235.regionIds[var51] & 255) * 64 - class78.baseY;
+                        var6 = (class235.regionIds[var51] & 255) * 64 - Npc.baseY;
                         var7 = ClientPacket.regionLandArchives[var51];
                         if (var7 != null) {
                            class263.method4333();
@@ -1507,7 +1507,7 @@ public final class client extends class19 implements class318 {
 
                      for(var51 = 0; var51 < var3; ++var51) {
                         var5 = 64 * (class235.regionIds[var51] >> 8) - class281.baseX;
-                        var6 = 64 * (class235.regionIds[var51] & 255) - class78.baseY;
+                        var6 = 64 * (class235.regionIds[var51] & 255) - Npc.baseY;
                         var7 = ClientPacket.regionLandArchives[var51];
                         if (null == var7 && class8.field27 < 800) {
                            class263.method4333();
@@ -1521,7 +1521,7 @@ public final class client extends class19 implements class318 {
                         byte[] var54 = class356.regionMapArchives[var51];
                         if (null != var54) {
                            var6 = 64 * (class235.regionIds[var51] >> 8) - class281.baseX;
-                           var55 = (class235.regionIds[var51] & 255) * 64 - class78.baseY;
+                           var55 = (class235.regionIds[var51] & 255) * 64 - Npc.baseY;
                            class263.method4333();
                            Scene var8 = class166.field1925;
                            class160[] var60 = field465;
@@ -3592,7 +3592,7 @@ public final class client extends class19 implements class318 {
 
                      if (MouseHandler.localPlayer.plane != var4) {
                         var5 = class281.baseX + MouseHandler.localPlayer.pathX[0];
-                        var6 = class78.baseY + MouseHandler.localPlayer.pathY[0];
+                        var6 = Npc.baseY + MouseHandler.localPlayer.pathY[0];
                         var26 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2635, packetWriter.isaacCipher);
                         var26.packetBuffer.writeByte(var4);
                         var26.packetBuffer.writeShort(var6);
@@ -3627,7 +3627,7 @@ public final class client extends class19 implements class318 {
                                           if (var30 == null) {
                                              this.method830();
                                              if (class25.field202 != null) {
-                                                class25.field202.method5488(class285.plane, (MouseHandler.localPlayer.x >> 7) + class281.baseX, (MouseHandler.localPlayer.y >> 7) + class78.baseY, false);
+                                                class25.field202.method5488(class285.plane, (MouseHandler.localPlayer.x >> 7) + class281.baseX, (MouseHandler.localPlayer.y >> 7) + Npc.baseY, false);
                                                 class25.field202.method5509();
                                              }
 
@@ -3708,7 +3708,7 @@ public final class client extends class19 implements class318 {
                                                 PacketBufferNode packetNode = VerticalAlignment.getPacketBufferNode(ClientPacket.MOVE_GAME_CLICK, packetWriter.isaacCipher);
                                                 packetNode.packetBuffer.writeByte(5);
                                                 packetNode.packetBuffer.writeShortLEADD(var4 + class281.baseX); // tileX
-                                                packetNode.packetBuffer.writeShort(class78.baseY + var5); // tileY
+                                                packetNode.packetBuffer.writeShort(Npc.baseY + var5); // tileY
                                                 packetNode.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? (KeyHandler.pressedKeys[81] ? 2 : 1) : 0);
                                                 packetWriter.addNode(packetNode);
                                                 Scene.method3537();
@@ -4047,7 +4047,7 @@ public final class client extends class19 implements class318 {
          field617[var2] = false;
       }
 
-      field616 = field452;
+      field616 = cycle;
       field557 = -1;
       field558 = -1;
       field515 = null;
@@ -4097,7 +4097,7 @@ public final class client extends class19 implements class318 {
                   var5 = var5 + class44.method770(16777215) + " " + '/' + " " + (field545 - 2) + class270.field3432;
                }
 
-               class130.field1468.method4861(var5, var2 + 4, var3 + 15, 16777215, 0, field452 / 1000);
+               class130.field1468.method4861(var5, var2 + 4, var3 + 15, 16777215, 0, cycle / 1000);
             }
          }
       } else {
@@ -4283,9 +4283,9 @@ public final class client extends class19 implements class318 {
                   }
                }
 
-               for(value = 0; value < field567.length; ++value) {
-                  if (null != field567[value]) {
-                     field567[value].sequence = -1;
+               for(value = 0; value < npcs.length; ++value) {
+                  if (null != npcs[value]) {
+                     npcs[value].sequence = -1;
                   }
                }
 
@@ -5688,15 +5688,15 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            class333.method5330("" + (packetReader.serverPacket != null ? packetReader.serverPacket.field2787 * 1005948575 * -820114081 : -1) + class79.field1140 + (packetReader.field1214 != null ? packetReader.field1214.field2787 * 1005948575 * -820114081 : -1) + class79.field1140 + (packetReader.field1213 != null ? -820114081 * packetReader.field1213.field2787 * 1005948575 : -1) + class79.field1140 + packetReader.serverPacketLength, (Throwable)null);
+            class333.method5330("" + (packetReader.serverPacket != null ? packetReader.serverPacket.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (packetReader.field1214 != null ? packetReader.field1214.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (packetReader.field1213 != null ? -820114081 * packetReader.field1213.field2787 * 1005948575 : -1) + class79.SYMBOL_COMMA + packetReader.serverPacketLength, (Throwable)null);
             class145.method2449();
          } catch (IOException var18) {
             class175.method3140();
          } catch (Exception var19) {
-            var6 = "" + (packetReader.serverPacket != null ? packetReader.serverPacket.field2787 * 1005948575 * -820114081 : -1) + class79.field1140 + (packetReader.field1214 != null ? packetReader.field1214.field2787 * 1005948575 * -820114081 : -1) + class79.field1140 + (null != packetReader.field1213 ? packetReader.field1213.field2787 * 1005948575 * -820114081 : -1) + class79.field1140 + packetReader.serverPacketLength + class79.field1140 + (class281.baseX + MouseHandler.localPlayer.pathX[0]) + class79.field1140 + (MouseHandler.localPlayer.pathY[0] + class78.baseY) + class79.field1140;
+            var6 = "" + (packetReader.serverPacket != null ? packetReader.serverPacket.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (packetReader.field1214 != null ? packetReader.field1214.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (null != packetReader.field1213 ? packetReader.field1213.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + packetReader.serverPacketLength + class79.SYMBOL_COMMA + (class281.baseX + MouseHandler.localPlayer.pathX[0]) + class79.SYMBOL_COMMA + (MouseHandler.localPlayer.pathY[0] + Npc.baseY) + class79.SYMBOL_COMMA;
 
             for(var7 = 0; var7 < packetReader.serverPacketLength && var7 < 50; ++var7) {
-               var6 = var6 + buf.payload[var7] + class79.field1140;
+               var6 = var6 + buf.payload[var7] + class79.SYMBOL_COMMA;
             }
 
             class333.method5330(var6, var19);

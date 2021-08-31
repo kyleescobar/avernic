@@ -18,7 +18,7 @@ public class class45 extends class349 {
 
    void method773(int var1, String var2, String var3, String var4) {
       this.field378 = class304.method4959();
-      this.field389 = client.field452;
+      this.field389 = client.cycle;
       this.field379 = var1;
       this.field380 = var2;
       this.method780();
@@ -70,9 +70,9 @@ public class class45 extends class349 {
    }
 
    static final void method798(class72 var0) {
-      if (var0.field1068 == client.field452 || var0.sequence == -1 || 0 != var0.field1056 || 1 + var0.field1055 > class48.method1312(var0.sequence).field1865[var0.field1054]) {
+      if (var0.field1068 == client.cycle || var0.sequence == -1 || 0 != var0.field1056 || 1 + var0.field1055 > class48.method1312(var0.sequence).field1865[var0.field1054]) {
          int var2 = var0.field1068 - var0.field1074;
-         int var3 = client.field452 - var0.field1074;
+         int var3 = client.cycle - var0.field1074;
          int var4 = var0.field1063 * 128 + var0.field1024 * 64;
          int var5 = var0.field1024 * 64 + var0.field1065 * 128;
          int var6 = var0.field1024 * 64 + var0.field1064 * 128;

@@ -128,7 +128,7 @@ public class class131 {
                }
 
                if (19 == var7) {
-                  var8 = (MouseHandler.localPlayer.y >> 7) + class78.baseY;
+                  var8 = (MouseHandler.localPlayer.y >> 7) + Npc.baseY;
                }
 
                if (20 == var7) {

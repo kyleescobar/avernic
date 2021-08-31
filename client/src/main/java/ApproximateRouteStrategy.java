@@ -21,10 +21,10 @@ public class ApproximateRouteStrategy extends class161 {
          int var4 = var0.y >> 7;
          if (var3 >= 0 && var3 < 104 && var4 >= 0 && var4 < 104) {
             long var5 = class172.method3133(0, 0, 0, false, var0.index);
-            if (var0.field981 != null && client.field452 >= var0.field986 && client.field452 < var0.field987) {
+            if (var0.field981 != null && client.cycle >= var0.field986 && client.cycle < var0.field987) {
                var0.field995 = false;
                var0.field985 = class123.method2216(var0.x, var0.y, class285.plane);
-               var0.field1025 = client.field452;
+               var0.field1025 = client.cycle;
                class166.field1925.method3503(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.field1022, var5, var0.field978, var0.field993, var0.field994, var0.field989);
             } else {
                if ((var0.x & 127) == 64 && 64 == (var0.y & 127)) {
@@ -36,7 +36,7 @@ public class ApproximateRouteStrategy extends class161 {
                }
 
                var0.field985 = class123.method2216(var0.x, var0.y, class285.plane);
-               var0.field1025 = client.field452;
+               var0.field1025 = client.cycle;
                class166.field1925.method3508(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.field1022, var5, var0.field1023);
             }
          }

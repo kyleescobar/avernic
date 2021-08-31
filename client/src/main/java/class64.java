@@ -72,10 +72,10 @@ public class class64 {
                }
             }
 
-            for(var9 = 0; var9 < client.field685; ++var9) {
-               class78 var15 = client.field567[client.field450[var9]];
+            for(var9 = 0; var9 < client.npcCount; ++var9) {
+               Npc var15 = client.npcs[client.npcIndexes[var9]];
                if (null != var15 && var15.method1748()) {
-                  class148 var18 = var15.field1132;
+                  class148 var18 = var15.definition;
                   if (var18 != null && null != var18.field1646) {
                      var18 = var18.method2471();
                   }
@@ -110,9 +110,9 @@ public class class64 {
                }
             }
 
-            if (client.field424 != 0 && client.field452 % 20 < 10) {
-               if (1 == client.field424 && client.field425 >= 0 && client.field425 < client.field567.length) {
-                  class78 var20 = client.field567[client.field425];
+            if (client.field424 != 0 && client.cycle % 20 < 10) {
+               if (1 == client.field424 && client.field425 >= 0 && client.field425 < client.npcs.length) {
+                  Npc var20 = client.npcs[client.field425];
                   if (null != var20) {
                      var12 = var20.x / 32 - MouseHandler.localPlayer.x / 32;
                      var13 = var20.y / 32 - MouseHandler.localPlayer.y / 32;
@@ -122,7 +122,7 @@ public class class64 {
 
                if (client.field424 == 2) {
                   var11 = client.field477 * 4 - class281.baseX * 4 + 2 - MouseHandler.localPlayer.x / 32;
-                  var12 = client.field454 * 4 - class78.baseY * 4 + 2 - MouseHandler.localPlayer.y / 32;
+                  var12 = client.field454 * 4 - Npc.baseY * 4 + 2 - MouseHandler.localPlayer.y / 32;
                   class84.method1930(var1, var2, var11, var12, class151.field1679[1], var5);
                }
 

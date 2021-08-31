@@ -92,7 +92,7 @@ public class class154 extends class349 {
             }
 
             var11.field2966 = var12;
-            var11.field3100 = client.field452;
+            var11.field3100 = client.cycle;
             if (!var11.field2993 || !class151.method2531(var11)) {
                if (var11.field2962 > 0) {
                   class38.method726(var11);
@@ -224,7 +224,7 @@ public class class154 extends class349 {
                      }
 
                      if (var11.field2962 == 1400) {
-                        class25.field202.method5501(var13, var14, var11.field2973, var11.field2990, client.field452);
+                        class25.field202.method5501(var13, var14, var11.field2973, var11.field2990, client.cycle);
                      }
 
                      if (1401 == var11.field2962) {
@@ -232,7 +232,7 @@ public class class154 extends class349 {
                      }
 
                      if (var11.field2962 == 1402) {
-                        class7.field16.method1775(var13, client.field452);
+                        class7.field16.method1775(var13, client.cycle);
                      }
                   }
 

@@ -282,11 +282,11 @@ public final class Player extends class72 {
             }
 
             if (!this.field995 && this.field981 != null) {
-               if (client.field452 >= this.field987) {
+               if (client.cycle >= this.field987) {
                   this.field981 = null;
                }
 
-               if (client.field452 >= this.field986 && client.field452 < this.field987) {
+               if (client.cycle >= this.field986 && client.cycle < this.field987) {
                   var5 = this.field981;
                   var5.method3731(this.field983 - super.x, this.field984 - this.field985, this.field990 - super.y);
                   if (512 == super.orientation) {

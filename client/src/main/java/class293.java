@@ -330,13 +330,13 @@ public class class293 implements class290 {
                   for(var6 = class108.method2106(); var0.method4848(var6) > var14; var6 = var6.substring(1)) {
                   }
 
-                  var0.method4853(class303.escapeBrackets(var6) + (0 == class56.field822 & client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 70, var13, 16777215, 0);
+                  var0.method4853(class303.escapeBrackets(var6) + (0 == class56.field822 & client.cycle % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 70, var13, 16777215, 0);
                   var13 += 15;
 
                   for(var7 = class17.method141(class56.field818); var0.method4848(var7) > var14; var7 = var7.substring(1)) {
                   }
 
-                  var0.method4853(class270.field3466 + var7 + (class56.field822 == 1 & client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 108, var13, 16777215, 0);
+                  var0.method4853(class270.field3466 + var7 + (class56.field822 == 1 & client.cycle % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), class167.field1932 - 108, var13, 16777215, 0);
                   var13 += 15;
                   var12 = 277;
                   var8 = class167.field1932 + -117;
@@ -396,7 +396,7 @@ public class class293 implements class290 {
                      var13 += 15;
                      var0.method4922(class56.field816, class56.field817 + 180, var13, 16777215, 0);
                      var13 += 15;
-                     var0.method4853(class270.field3442 + class17.method141(class147.field1615) + (client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), 180 + class56.field817 - 108, var13, 16777215, 0);
+                     var0.method4853(class270.field3442 + class17.method141(class147.field1615) + (client.cycle % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), 180 + class56.field817 - 108, var13, 16777215, 0);
                      var13 -= 8;
                      var0.method4853(class270.field3235, 180 + class56.field817 - 9, var13, 16776960, 0);
                      var13 += 15;
@@ -436,7 +436,7 @@ public class class293 implements class290 {
                      for(var6 = class108.method2106(); var0.method4848(var6) > var14; var6 = var6.substring(1)) {
                      }
 
-                     var0.method4853(class303.escapeBrackets(var6) + (client.field452 % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), 180 + class56.field817 - 34, var13, 16777215, 0);
+                     var0.method4853(class303.escapeBrackets(var6) + (client.cycle % 40 < 20 ? class44.method770(16776960) + class79.field1138 : ""), 180 + class56.field817 - 34, var13, 16777215, 0);
                      var13 += 15;
                      int var18 = class56.field817 + 180 - 80;
                      short var20 = 321;
@@ -544,8 +544,8 @@ public class class293 implements class290 {
             int[] var24 = new int[4];
             class394.method6259(var24);
             class394.method6279(class56.field825, 0, class56.field825 + 765, client.canvasHeight);
-            class7.field16.method1775(class56.field825 - 22, client.field452);
-            class7.field16.method1775(22 + class56.field825 + 765 - 128, client.field452);
+            class7.field16.method1775(class56.field825 - 22, client.cycle);
+            class7.field16.method1775(22 + class56.field825 + 765 - 128, client.cycle);
             class394.method6260(var24);
          }
 
@@ -558,7 +558,7 @@ public class class293 implements class290 {
                byte var22 = 35;
                class236.field2847.method6349(var13, var14);
                var0.method4922(class270.field3395 + " " + client.field405, var23 / 2 + var13, var22 / 2 + var14 - 2, 16777215, 0);
-               if (class78.field1135 != null) {
+               if (Npc.field1135 != null) {
                   var1.method4922(class270.field3527, var13 + var23 / 2, 12 + var14 + var22 / 2, 16777215, 0);
                } else {
                   var1.method4922(class270.field3528, var13 + var23 / 2, 12 + var14 + var22 / 2, 16777215, 0);

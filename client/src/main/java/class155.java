@@ -226,12 +226,12 @@ public class class155 extends class349 {
 
    static void method2619() {
       if (class368.field4128 != null) {
-         client.field680 = client.field452;
+         client.field680 = client.cycle;
          class368.field4128.method4597();
 
          for(int var1 = 0; var1 < client.localPlayers.length; ++var1) {
             if (client.localPlayers[var1] != null) {
-               class368.field4128.method4596((client.localPlayers[var1].x >> 7) + class281.baseX, (client.localPlayers[var1].y >> 7) + class78.baseY);
+               class368.field4128.method4596((client.localPlayers[var1].x >> 7) + class281.baseX, (client.localPlayers[var1].y >> 7) + Npc.baseY);
             }
          }
       }

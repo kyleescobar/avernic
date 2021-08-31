@@ -1,5 +1,6 @@
 package dev.avernic.server.engine.game.map
 
+import dev.avernic.server.engine.game.Direction
 import kotlin.math.abs
 import kotlin.math.ceil
 import kotlin.math.sqrt
@@ -20,19 +21,33 @@ class Tile(private val packed: Int) {
         (x and 0x7FFF) or ((y and 0x7FFF) shl 15) or (plane shl 30)
     )
 
-    fun translate(x: Int = 0, y: Int = 0, plane: Int = 0) = Tile(this.x + x, this.y + y)
+    fun translate(x: Int = 0, y: Int = 0, plane: Int = 0) = Tile(this.x + x, this.y + y, this.plane + plane)
+
+    fun translate(direction: Direction): Tile = translate(direction.stepX, direction.stepY)
 
     fun isWithinRadius(other: Tile, radius: Int): Boolean = isWithinRadius(other.x, other.y, other.plane, radius)
 
     fun isWithinRadius(x: Int, y: Int, plane: Int, radius: Int): Boolean {
-        if(this.plane != plane) {
+        if(plane != this.plane) {
             return false
         }
 
-        val dx = abs(this.x - x)
-        val dy = abs(this.y - y)
+        val dx = abs(x - this.x)
+        val dy = abs(y - this.y)
         return dx <= radius && dy <= radius
     }
+
+    fun getDistance(other: Tile): Int {
+        val dx = x - other.x
+        val dy = y - other.y
+        return ceil(sqrt((dx * dx + dy * dy).toDouble())).toInt()
+    }
+
+    fun getDelta(other: Tile): Int = abs(x - other.x) + abs(y - other.y)
+
+    fun sameAs(x: Int, y: Int): Boolean = this.x == x && this.y == y
+
+    fun sameAs(other: Tile): Boolean = x == other.x && y == other.y && plane == other.plane
 
     fun toChunk(): Chunk = Chunk(
         x / Chunk.SIZE,

@@ -82,7 +82,7 @@ public class class185 implements class188 {
          if ((!var1 || var6.field1834) && -1 == var6.field1789 && var6.field1836.toLowerCase().indexOf(var0) != -1) {
             if (var4 >= 250) {
                class212.field2520 = -1;
-               class78.field1137 = null;
+               Npc.field1137 = null;
                return;
             }
 
@@ -100,7 +100,7 @@ public class class185 implements class188 {
          }
       }
 
-      class78.field1137 = var3;
+      Npc.field1137 = var3;
       class82.field1165 = 0;
       class212.field2520 = var4;
       String[] var9 = new String[class212.field2520];
@@ -109,7 +109,7 @@ public class class185 implements class188 {
          var9[var10] = KeyHandler.method93(var3[var10]).field1836;
       }
 
-      short[] var11 = class78.field1137;
+      short[] var11 = Npc.field1137;
       class292.method4640(var9, var11, 0, var9.length - 1);
    }
 }

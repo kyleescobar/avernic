@@ -81,12 +81,12 @@ public class class65 extends class354 {
 
    static final void method1676() {
       for(class57 var1 = (class57)client.field538.method4687(); var1 != null; var1 = (class57)client.field538.method4678()) {
-         if (class285.plane == var1.field837 && client.field452 <= var1.field844) {
-            if (client.field452 >= var1.field839) {
+         if (class285.plane == var1.field837 && client.cycle <= var1.field844) {
+            if (client.cycle >= var1.field839) {
                if (var1.field856 > 0) {
-                  class78 var2 = client.field567[var1.field856 - 1];
+                  Npc var2 = client.npcs[var1.field856 - 1];
                   if (var2 != null && var2.x >= 0 && var2.x < 13312 && var2.y >= 0 && var2.y < 13312) {
-                     var1.method1582(var2.x, var2.y, class123.method2216(var2.x, var2.y, var1.field837) - var1.field846, client.field452);
+                     var1.method1582(var2.x, var2.y, class123.method2216(var2.x, var2.y, var1.field837) - var1.field846, client.cycle);
                   }
                }
 
@@ -100,7 +100,7 @@ public class class65 extends class354 {
                   }
 
                   if (null != var4 && var4.x >= 0 && var4.x < 13312 && var4.y >= 0 && var4.y < 13312) {
-                     var1.method1582(var4.x, var4.y, class123.method2216(var4.x, var4.y, var1.field837) - var1.field846, client.field452);
+                     var1.method1582(var4.x, var4.y, class123.method2216(var4.x, var4.y, var1.field837) - var1.field846, client.cycle);
                   }
                }
 

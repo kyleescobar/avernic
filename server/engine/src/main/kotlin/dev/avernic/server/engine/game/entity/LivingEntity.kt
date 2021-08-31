@@ -7,6 +7,7 @@ import dev.avernic.server.engine.event.EventSubject
 import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Size
 import dev.avernic.server.engine.game.World
+import dev.avernic.server.engine.game.entity.pathfinder.Pathfinder
 import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.map.Tile
@@ -25,12 +26,16 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     override var tile: Tile = Tile(0, 0, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
     override var orientation: Int = 0
-    open var running: Boolean = false
+    open var running: Boolean = true
     open var interacting: LivingEntity? = null
     open var movementType: MovementType = MovementType.NONE
     open var combatLevel: Int = 1
     open var chatMessage: String? = null
     open var teleportTile: Tile? = null
+    open var path: MutableList<Tile> = mutableListOf()
+    open var prevPathTile: Tile = prevTile
+
+    abstract val pathfinder: Pathfinder
 
     internal abstract val updateFlags: SortedSet<out UpdateFlag>
 
@@ -50,9 +55,16 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
 
     internal fun processMovement() {
         prevTile = tile
-        if(teleportTile != null) {
-            doTeleport()
-            postMovement()
+        when {
+            teleportTile != null -> {
+                doTeleport()
+                postMovement()
+            }
+
+            path.isNotEmpty() -> {
+                doStep()
+                postMovement()
+            }
         }
     }
 
@@ -60,13 +72,41 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         movementType = MovementType.TELEPORT
         addMovementUpdateFlag()
         tile = teleportTile!!
+        prevPathTile = tile
         addPostTask { teleportTile = null }
     }
 
+    private fun doStep() {
+        tile = when {
+            running -> when {
+                path.size == 1 -> {
+                    movementType = MovementType.WALK
+                    addMovementUpdateFlag()
+                    prevPathTile = tile
+                    path.removeAt(0)
+                }
+                path.size > 1 && tile.isWithinRadius(path[1], 1) -> {
+                    movementType = MovementType.WALK
+                    prevPathTile = path.removeAt(0)
+                    path.removeAt(0)
+                }
+                else -> {
+                    movementType = MovementType.RUN
+                    prevPathTile = path.removeAt(0)
+                    path.removeAt(0)
+                }
+            }
+            else -> {
+                movementType = MovementType.WALK
+                prevPathTile = tile
+                path.removeAt(0)
+            }
+        }
+        orientation = getOrientation(prevPathTile, tile)
+    }
+
     private fun postMovement() {
-        /*
-         * Not yet implemented.
-         */
+        scheduleMoveEvent(movementType)
     }
 
     override fun postProcess() {
@@ -81,7 +121,23 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         this.postTasks.add(action)
     }
 
+    internal abstract fun scheduleMoveEvent(type: MovementType)
+
     abstract fun addAppearanceUpdateFlag()
     abstract fun addForceChatUpdateFlag()
     abstract fun addMovementUpdateFlag()
+
+    fun getOrientation(prev: Tile, new: Tile): Int = getOrientation(new.x - prev.x, new.y - prev.y)
+
+    fun getOrientation(dx: Int, dy: Int): Int = jagexMovementAngle[2 - dy][dx + 2]
+
+    companion object {
+        private val jagexMovementAngle = arrayOf(
+            intArrayOf(768, 768, 1024, 1280, 1280),
+            intArrayOf(768, 768, 1024, 1280, 1280),
+            intArrayOf(512, 512, -1, 1536, 1536),
+            intArrayOf(256, 256, 0, 1792, 1792),
+            intArrayOf(256, 256, 0, 1792, 1792)
+        )
+    }
 }

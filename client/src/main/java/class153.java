@@ -115,16 +115,16 @@ public class class153 extends class349 {
       var3.switchToBitAccess();
       int var4 = var3.readBits(8);
       int var5;
-      if (var4 < client.field685) {
-         for(var5 = var4; var5 < client.field685; ++var5) {
-            client.field628[++client.field529 - 1] = client.field450[var5];
+      if (var4 < client.npcCount) {
+         for(var5 = var4; var5 < client.npcCount; ++var5) {
+            client.field628[++client.field529 - 1] = client.npcIndexes[var5];
          }
       }
 
-      if (var4 > client.field685) {
+      if (var4 > client.npcCount) {
          throw new RuntimeException("");
       } else {
-         client.field685 = 0;
+         client.npcCount = 0;
 
          int var6;
          int var8;
@@ -133,21 +133,21 @@ public class class153 extends class349 {
          int var11;
          int var12;
          for(var5 = 0; var5 < var4; ++var5) {
-            var6 = client.field450[var5];
-            class78 var7 = client.field567[var6];
+            var6 = client.npcIndexes[var5];
+            Npc var7 = client.npcs[var6];
             var8 = var3.readBits(1);
             if (var8 == 0) {
-               client.field450[++client.field685 - 1] = var6;
-               var7.field1070 = client.field452;
+               client.npcIndexes[++client.npcCount - 1] = var6;
+               var7.npcCycle = client.cycle;
             } else {
                var9 = var3.readBits(2);
                if (var9 == 0) {
-                  client.field450[++client.field685 - 1] = var6;
-                  var7.field1070 = client.field452;
+                  client.npcIndexes[++client.npcCount - 1] = var6;
+                  var7.npcCycle = client.cycle;
                   client.field475[++client.field501 - 1] = var6;
                } else if (1 == var9) {
-                  client.field450[++client.field685 - 1] = var6;
-                  var7.field1070 = client.field452;
+                  client.npcIndexes[++client.npcCount - 1] = var6;
+                  var7.npcCycle = client.cycle;
                   var10 = var3.readBits(3);
                   var7.method1832(var10, (byte)1);
                   var11 = var3.readBits(1);
@@ -155,8 +155,8 @@ public class class153 extends class349 {
                      client.field475[++client.field501 - 1] = var6;
                   }
                } else if (2 == var9) {
-                  client.field450[++client.field685 - 1] = var6;
-                  var7.field1070 = client.field452;
+                  client.npcIndexes[++client.npcCount - 1] = var6;
+                  var7.npcCycle = client.cycle;
                   var10 = var3.readBits(3);
                   var7.method1832(var10, (byte)2);
                   var11 = var3.readBits(3);
@@ -173,49 +173,49 @@ public class class153 extends class349 {
 
          class101.method2075(var0, var1);
 
-         int var15;
-         for(var15 = 0; var15 < client.field501; ++var15) {
-            var4 = client.field475[var15];
-            class78 var16 = client.field567[var4];
+         int i;
+         for(i = 0; i < client.field501; ++i) {
+            var4 = client.field475[i];
+            Npc npc = client.npcs[var4];
             var6 = var1.readUnsignedByte();
             if ((var6 & 128) != 0) {
-               var16.field1063 = var1.method5981();
-               var16.field1065 = var1.method5981();
-               var16.field1064 = var1.method5980();
-               var16.field1066 = var1.method5935();
-               var16.field1074 = var1.readUnsignedShortLE() + client.field452;
-               var16.field1068 = var1.readUnsignedShort() + client.field452;
-               var16.field1051 = var1.readUnsignedShort();
-               var16.pathLength = 1;
-               var16.field1067 = 0;
-               var16.field1063 += var16.pathX[0];
-               var16.field1065 += var16.pathY[0];
-               var16.field1064 += var16.pathX[0];
-               var16.field1066 += var16.pathY[0];
+               npc.field1063 = var1.method5981();
+               npc.field1065 = var1.method5981();
+               npc.field1064 = var1.method5980();
+               npc.field1066 = var1.method5935();
+               npc.field1074 = var1.readUnsignedShortLE() + client.cycle;
+               npc.field1068 = var1.readUnsignedShort() + client.cycle;
+               npc.field1051 = var1.readUnsignedShort();
+               npc.pathLength = 1;
+               npc.field1067 = 0;
+               npc.field1063 += npc.pathX[0];
+               npc.field1065 += npc.pathY[0];
+               npc.field1064 += npc.pathX[0];
+               npc.field1066 += npc.pathY[0];
             }
 
             int var17;
             if (0 != (var6 & 32)) {
                var17 = var1.readUnsignedShort();
                var8 = var1.readUnsignedShortLEADD();
-               var9 = var16.x - 64 * (var17 - class281.baseX - class281.baseX);
-               var10 = var16.y - 64 * (var8 - class78.baseY - class78.baseY);
+               var9 = npc.x - 64 * (var17 - class281.baseX - class281.baseX);
+               var10 = npc.y - 64 * (var8 - Npc.baseY - Npc.baseY);
                if (var9 != 0 || var10 != 0) {
-                  var16.faceDegrees = (int)(Math.atan2((double)var9, (double)var10) * 325.949D) & 2047;
+                  npc.faceDegrees = (int)(Math.atan2((double)var9, (double)var10) * 325.949D) & 2047;
                }
             }
 
             if (0 != (var6 & 64)) {
-               var16.field1132 = class97.method2065(var1.readUnsignedShort());
-               var16.field1024 = var16.field1132.field1622;
-               var16.field1075 = var16.field1132.field1645;
-               var16.field1029 = var16.field1132.field1628;
-               var16.field1072 = var16.field1132.field1629;
-               var16.field1046 = var16.field1132.field1630;
-               var16.field1021 = var16.field1132.field1631;
-               var16.field1030 = var16.field1132.field1625;
-               var16.field1052 = var16.field1132.field1626;
-               var16.field1020 = var16.field1132.field1624;
+               npc.definition = class97.method2065(var1.readUnsignedShort());
+               npc.field1024 = npc.definition.field1622;
+               npc.field1075 = npc.definition.field1645;
+               npc.field1029 = npc.definition.field1628;
+               npc.field1072 = npc.definition.field1629;
+               npc.field1046 = npc.definition.field1630;
+               npc.field1021 = npc.definition.field1631;
+               npc.field1030 = npc.definition.field1625;
+               npc.field1052 = npc.definition.field1626;
+               npc.field1020 = npc.definition.field1624;
             }
 
             if (0 != (var6 & 16)) {
@@ -225,25 +225,25 @@ public class class153 extends class349 {
                }
 
                var8 = var1.readUnsignedByte();
-               if (var16.sequence == var17 && -1 != var17) {
+               if (npc.sequence == var17 && -1 != var17) {
                   var9 = class48.method1312(var17).field1876;
                   if (var9 == 1) {
-                     var16.field1054 = 0;
-                     var16.field1055 = 0;
-                     var16.field1056 = var8;
-                     var16.field1057 = 0;
+                     npc.field1054 = 0;
+                     npc.field1055 = 0;
+                     npc.field1056 = var8;
+                     npc.field1057 = 0;
                   }
 
                   if (2 == var9) {
-                     var16.field1057 = 0;
+                     npc.field1057 = 0;
                   }
-               } else if (var17 == -1 || -1 == var16.sequence || class48.method1312(var17).field1864 >= class48.method1312(var16.sequence).field1864) {
-                  var16.sequence = var17;
-                  var16.field1054 = 0;
-                  var16.field1055 = 0;
-                  var16.field1056 = var8;
-                  var16.field1057 = 0;
-                  var16.field1067 = var16.pathLength;
+               } else if (var17 == -1 || -1 == npc.sequence || class48.method1312(var17).field1864 >= class48.method1312(npc.sequence).field1864) {
+                  npc.sequence = var17;
+                  npc.field1054 = 0;
+                  npc.field1055 = 0;
+                  npc.field1056 = var8;
+                  npc.field1057 = 0;
+                  npc.field1067 = npc.pathLength;
                }
             }
 
@@ -268,7 +268,7 @@ public class class153 extends class349 {
                      }
 
                      var13 = var1.method5962();
-                     var16.method1759(var9, var11, var10, var12, client.field452, var13);
+                     npc.method1759(var9, var11, var10, var12, client.cycle, var13);
                   }
                }
 
@@ -281,57 +281,57 @@ public class class153 extends class349 {
                         var12 = var1.method5962();
                         var13 = var1.readUnsignedByteNEG();
                         int var14 = var11 > 0 ? var1.readUnsignedByte() : var13;
-                        var16.method1750(var10, client.field452, var11, var12, var13, var14);
+                        npc.method1750(var10, client.cycle, var11, var12, var13, var14);
                      } else {
-                        var16.method1751(var10);
+                        npc.method1751(var10);
                      }
                   }
                }
             }
 
             if (0 != (var6 & 4)) {
-               var16.overheadText = var1.readStringNullTerminated();
-               var16.overheadTextCyclesRemaining = 100;
+               npc.overheadText = var1.readStringNullTerminated();
+               npc.overheadTextCyclesRemaining = 100;
             }
 
             if ((var6 & 2) != 0) {
-               var16.spotAnimation = var1.readUnsignedShortLE();
+               npc.spotAnimation = var1.readUnsignedShortLE();
                var17 = var1.readIntME();
-               var16.field1062 = var17 >> 16;
-               var16.field1061 = client.field452 + (var17 & '\uffff');
-               var16.field1028 = 0;
-               var16.field1060 = 0;
-               if (var16.field1061 > client.field452) {
-                  var16.field1028 = -1;
+               npc.field1062 = var17 >> 16;
+               npc.field1061 = client.cycle + (var17 & '\uffff');
+               npc.field1028 = 0;
+               npc.field1060 = 0;
+               if (npc.field1061 > client.cycle) {
+                  npc.field1028 = -1;
                }
 
-               if (65535 == var16.spotAnimation) {
-                  var16.spotAnimation = -1;
+               if (65535 == npc.spotAnimation) {
+                  npc.spotAnimation = -1;
                }
             }
 
             if ((var6 & 8) != 0) {
-               var16.targetIndex = var1.readUnsignedShort();
-               if (65535 == var16.targetIndex) {
-                  var16.targetIndex = -1;
+               npc.targetIndex = var1.readUnsignedShort();
+               if (65535 == npc.targetIndex) {
+                  npc.targetIndex = -1;
                }
             }
          }
 
-         for(var15 = 0; var15 < client.field529; ++var15) {
-            var4 = client.field628[var15];
-            if (client.field452 != client.field567[var4].field1070) {
-               client.field567[var4].field1132 = null;
-               client.field567[var4] = null;
+         for(i = 0; i < client.field529; ++i) {
+            var4 = client.field628[i];
+            if (client.cycle != client.npcs[var4].npcCycle) {
+               client.npcs[var4].definition = null;
+               client.npcs[var4] = null;
             }
          }
 
          if (var1.offset != client.packetWriter.serverPacketLength) {
-            throw new RuntimeException(var1.offset + class79.field1140 + client.packetWriter.serverPacketLength);
+            throw new RuntimeException(var1.offset + class79.SYMBOL_COMMA + client.packetWriter.serverPacketLength);
          } else {
-            for(var15 = 0; var15 < client.field685; ++var15) {
-               if (client.field567[client.field450[var15]] == null) {
-                  throw new RuntimeException(var15 + class79.field1140 + client.field685);
+            for(i = 0; i < client.npcCount; ++i) {
+               if (client.npcs[client.npcIndexes[i]] == null) {
+                  throw new RuntimeException(i + class79.SYMBOL_COMMA + client.npcCount);
                }
             }
 
@@ -343,7 +343,7 @@ public class class153 extends class349 {
       String var2 = Integer.toString(var0);
 
       for(int var3 = var2.length() - 3; var3 > 0; var3 -= 3) {
-         var2 = var2.substring(0, var3) + class79.field1140 + var2.substring(var3);
+         var2 = var2.substring(0, var3) + class79.SYMBOL_COMMA + var2.substring(var3);
       }
 
       if (var2.length() > 9) {

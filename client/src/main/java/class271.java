@@ -175,7 +175,7 @@ public class class271 implements class290 {
 
                               if (class311.method5053(var10.field2988[var21][var24]) || var25) {
                                  var22 = true;
-                                 if (var10.field2967 != null && var10.field2967[var21] > client.field452) {
+                                 if (var10.field2967 != null && var10.field2967[var21] > client.cycle) {
                                     break;
                                  }
 
@@ -213,9 +213,9 @@ public class class271 implements class290 {
 
                            if (var24 != 0) {
                               if (0 == var10.field2967[var21]) {
-                                 var10.field2967[var21] = client.field452 + var24 + var10.field3036[var21];
+                                 var10.field2967[var21] = client.cycle + var24 + var10.field3036[var21];
                               } else {
-                                 var10.field2967[var21] = client.field452 + var24;
+                                 var10.field2967[var21] = client.cycle + var24;
                               }
                            } else {
                               var10.field2967[var21] = Integer.MAX_VALUE;

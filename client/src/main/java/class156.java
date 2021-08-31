@@ -536,7 +536,7 @@ public class class156 extends class349 {
                      }
                   }
 
-                  if (class78.field1135 != null && class270.method4359()) {
+                  if (Npc.field1135 != null && class270.method4359()) {
                      class56.field800 = true;
                      class56.field827 = 0;
                      class56.field828 = 0;
@@ -1531,8 +1531,8 @@ public class class156 extends class349 {
             var0.field1050 = var8;
             int var9 = 4;
             boolean var10 = true;
-            if (var0 instanceof class78) {
-               var10 = ((class78)var0).field1132.field1623;
+            if (var0 instanceof Npc) {
+               var10 = ((Npc)var0).definition.field1623;
             }
 
             if (var10) {

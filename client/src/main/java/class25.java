@@ -195,7 +195,7 @@ public class class25 {
       class76 var2 = new class76();
 
       try {
-         var1 = class78.method1836("", class69.field976.field3208, false);
+         var1 = Npc.method1836("", class69.field976.field3208, false);
          byte[] var3 = new byte[(int)var1.method5773()];
 
          int var5;

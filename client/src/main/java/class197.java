@@ -33,7 +33,7 @@ public final class class197 extends class354 {
       class168 var4 = class186.method3221().method5511(var0);
       int var5 = MouseHandler.localPlayer.plane;
       int var6 = (MouseHandler.localPlayer.x >> 7) + class281.baseX;
-      int var7 = (MouseHandler.localPlayer.y >> 7) + class78.baseY;
+      int var7 = (MouseHandler.localPlayer.y >> 7) + Npc.baseY;
       class245 var8 = new class245(var5, var6, var7);
       class186.method3221().method5499(var4, var8, var1, var2);
    }

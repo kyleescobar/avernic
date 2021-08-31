@@ -31,7 +31,7 @@ public abstract class class201 extends class349 {
          } else if (var1 == client.localPlayerIndex) {
             throw new RuntimeException();
          } else {
-            PlayerList.localPlayerRegions[var1] = (class281.baseX + var5.pathX[0] >> 13 << 14) + (var5.plane << 28) + (var5.pathY[0] + class78.baseY >> 13);
+            PlayerList.localPlayerRegions[var1] = (class281.baseX + var5.pathX[0] >> 13 << 14) + (var5.plane << 28) + (var5.pathY[0] + Npc.baseY >> 13);
             if (-1 != var5.faceDegrees) {
                PlayerList.localPlayerOrientations[var1] = var5.faceDegrees;
             } else {
@@ -197,7 +197,7 @@ public abstract class class201 extends class349 {
                var9 = var7 >> 14 & 16383;
                var10 = var7 & 16383;
                var11 = (class281.baseX + var5.pathX[0] + var9 & 16383) - class281.baseX;
-               var12 = (var10 + class78.baseY + var5.pathY[0] & 16383) - class78.baseY;
+               var12 = (var10 + Npc.baseY + var5.pathY[0] & 16383) - Npc.baseY;
                if (var1 != client.localPlayerIndex || var5.x >= 1536 && var5.y >= 1536 && var5.x < 11776 && var5.y < 11776) {
                   if (var3) {
                      var5.field1004 = true;

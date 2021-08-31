@@ -621,10 +621,10 @@ public abstract class class186 {
          class358.field4012 = var9 - var17;
          class117.field1398 = var5;
          class118.field1400 = var29;
-         if (client.field482 == 1 && client.privilegeLevel >= 2 && 0 == client.field452 % 50 && (KeyHandler.field66 >> 7 != MouseHandler.localPlayer.x >> 7 || MouseHandler.localPlayer.y >> 7 != class273.field3553 >> 7)) {
+         if (client.field482 == 1 && client.privilegeLevel >= 2 && 0 == client.cycle % 50 && (KeyHandler.field66 >> 7 != MouseHandler.localPlayer.x >> 7 || MouseHandler.localPlayer.y >> 7 != class273.field3553 >> 7)) {
             var18 = MouseHandler.localPlayer.plane;
             var19 = class281.baseX + (KeyHandler.field66 >> 7);
-            var20 = class78.baseY + (class273.field3553 >> 7);
+            var20 = Npc.baseY + (class273.field3553 >> 7);
             class343.method5419(var19, var20, var18, true);
          }
       }
@@ -709,7 +709,7 @@ public abstract class class186 {
       var17 = PlayerList.localPlayerCount;
       int[] var32 = PlayerList.localPlayerIndexes;
 
-      for(var19 = 0; var19 < client.field685 + var17; ++var19) {
+      for(var19 = 0; var19 < client.npcCount + var17; ++var19) {
          Object var33;
          if (var19 < var17) {
             var33 = client.localPlayers[var32[var19]];
@@ -724,7 +724,7 @@ public abstract class class186 {
                continue;
             }
          } else {
-            var33 = client.field567[client.field450[var19 - var17]];
+            var33 = client.npcs[client.npcIndexes[var19 - var17]];
          }
 
          class209.method3829((class72)var33, var19, var0, var1, var2, var3);
@@ -853,8 +853,8 @@ public abstract class class186 {
       }
 
       if (client.field424 == 2) {
-         class322.method5132((client.field477 - class281.baseX << 7) + client.field430, client.field553 + (client.field454 - class78.baseY << 7), client.field429 * 2);
-         if (client.field506 > -1 && client.field452 % 20 < 10) {
+         class322.method5132((client.field477 - class281.baseX << 7) + client.field430, client.field553 + (client.field454 - Npc.baseY << 7), client.field429 * 2);
+         if (client.field506 > -1 && client.cycle % 20 < 10) {
             class150.field1677[0].method6404(client.field506 + var0 - 12, var1 + client.field507 - 28);
          }
       }
@@ -862,7 +862,7 @@ public abstract class class186 {
       ((class205) Rasterizer3D.field2269).method3701(client.field556);
       client.field522 = 0;
       var14 = class281.baseX + (MouseHandler.localPlayer.x >> 7);
-      var15 = class78.baseY + (MouseHandler.localPlayer.y >> 7);
+      var15 = Npc.baseY + (MouseHandler.localPlayer.y >> 7);
       if (var14 >= 3053 && var14 <= 3156 && var15 >= 3056 && var15 <= 3136) {
          client.field522 = 1;
       }

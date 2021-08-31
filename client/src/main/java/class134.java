@@ -285,11 +285,11 @@ public final class class134 extends class330 implements Runnable {
    }
 
    static final void method2306() {
-      for(int var1 = 0; var1 < client.field685; ++var1) {
-         int var2 = client.field450[var1];
-         class78 var3 = client.field567[var2];
+      for(int var1 = 0; var1 < client.npcCount; ++var1) {
+         int var2 = client.npcIndexes[var1];
+         Npc var3 = client.npcs[var2];
          if (null != var3) {
-            class17.method142(var3, var3.field1132.field1622);
+            class17.method142(var3, var3.definition.field1622);
          }
       }
 

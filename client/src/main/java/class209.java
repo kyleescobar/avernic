@@ -17,8 +17,8 @@ public class class209 {
 
    static final void method3829(class72 var0, int var1, int var2, int var3, int var4, int var5) {
       if (null != var0 && var0.method1748()) {
-         if (var0 instanceof class78) {
-            class148 var7 = ((class78)var0).field1132;
+         if (var0 instanceof Npc) {
+            class148 var7 = ((Npc)var0).definition;
             if (null != var7.field1646) {
                var7 = var7.method2471();
             }
@@ -32,7 +32,7 @@ public class class209 {
          int[] var8 = PlayerList.localPlayerIndexes;
          byte var9 = 0;
          Player var11;
-         if (var1 < var76 && var0.field1025 == client.field452) {
+         if (var1 < var76 && var0.field1025 == client.cycle) {
             var11 = (Player)var0;
             boolean var10;
             if (0 == client.field427) {
@@ -76,7 +76,7 @@ public class class209 {
             class241.method4143(var0, var0.field1071 + 15);
 
             for(class77 var78 = (class77)var0.field1078.method4724(); null != var78; var78 = (class77)var0.field1078.method4726()) {
-               class73 var81 = var78.method1830(client.field452);
+               class73 var81 = var78.method1830(client.cycle);
                if (var81 == null) {
                   if (var78.method1823()) {
                      var78.remove();
@@ -98,7 +98,7 @@ public class class209 {
 
                   int var18 = 255;
                   boolean var19 = true;
-                  int var20 = client.field452 - var81.field1081;
+                  int var20 = client.cycle - var81.field1081;
                   int var21 = var81.field1083 * var16 / var86.field1590;
                   int var22;
                   int var92;
@@ -191,7 +191,7 @@ public class class209 {
                }
             }
          } else {
-            class148 var79 = ((class78)var0).field1132;
+            class148 var79 = ((Npc)var0).definition;
             if (null != var79.field1646) {
                var79 = var79.method2471();
             }
@@ -203,7 +203,7 @@ public class class209 {
                }
             }
 
-            if (1 == client.field424 && client.field425 == client.field450[var1 - var76] && client.field452 % 20 < 10) {
+            if (1 == client.field424 && client.field425 == client.npcIndexes[var1 - var76] && client.cycle % 20 < 10) {
                class241.method4143(var0, 15 + var0.field1071);
                if (client.field506 > -1) {
                   class150.field1677[0].method6404(client.field506 + var2 - 12, client.field507 + var3 - 28);
@@ -232,7 +232,7 @@ public class class209 {
             class155 var89 = null;
             int var90 = 0;
             if (var88 >= 0) {
-               if (var83 <= client.field452) {
+               if (var83 <= client.cycle) {
                   continue;
                }
 
@@ -258,7 +258,7 @@ public class class209 {
                }
             }
 
-            if (var83 - var90 <= client.field452) {
+            if (var83 - var90 <= client.cycle) {
                if (var89 == null) {
                   var0.field1026[var82] = -1;
                } else {
@@ -501,7 +501,7 @@ public class class209 {
                         }
                      }
 
-                     var63 = var0.field1026[var82] - client.field452;
+                     var63 = var0.field1026[var82] - client.cycle;
                      int var64 = var89.field1722 - var89.field1722 * var63 / var89.field1717;
                      int var65 = var89.field1723 * var63 / var89.field1717 + -var89.field1723;
                      int var66 = var64 + (client.field506 + var2 - (var52 >> 1));

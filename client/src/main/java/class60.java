@@ -19,7 +19,7 @@ public class class60 extends class201 {
       if (var7 != -1) {
          this.field885 = class48.method1312(var7);
          this.field882 = 0;
-         this.field887 = client.field452 - 1;
+         this.field887 = client.cycle - 1;
          if (this.field885.field1876 == 0 && var9 != null && var9 instanceof class60) {
             class60 var10 = (class60)var9;
             if (var10.field885 == this.field885) {
@@ -45,7 +45,7 @@ public class class60 extends class201 {
 
    protected final class207 method3687() {
       if (this.field885 != null) {
-         int var2 = client.field452 - this.field887;
+         int var2 = client.cycle - this.field887;
          if (var2 > 100 && this.field885.field1862 > 0) {
             var2 = 100;
          }
@@ -67,7 +67,7 @@ public class class60 extends class201 {
             this.field885 = null;
          }
 
-         this.field887 = client.field452 - var2;
+         this.field887 = client.cycle - var2;
       }
 
       class156 var13 = class124.method2243(this.field884);

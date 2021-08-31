@@ -73,14 +73,14 @@ public class class101 extends class104 {
             int var3 = var1.readBits(15);
             if (32767 != var3) {
                boolean var4 = false;
-               if (null == client.field567[var3]) {
-                  client.field567[var3] = new class78();
+               if (null == client.npcs[var3]) {
+                  client.npcs[var3] = new Npc();
                   var4 = true;
                }
 
-               class78 var5 = client.field567[var3];
-               client.field450[++client.field685 - 1] = var3;
-               var5.field1070 = client.field452;
+               Npc var5 = client.npcs[var3];
+               client.npcIndexes[++client.npcCount - 1] = var3;
+               var5.npcCycle = client.cycle;
                int var9 = var1.readBits(1);
                if (var9 == 1) {
                   client.field475[++client.field501 - 1] = var3;
@@ -122,21 +122,21 @@ public class class101 extends class104 {
                   var1.readBits(32);
                }
 
-               var5.field1132 = class97.method2065(var1.readBits(14));
+               var5.definition = class97.method2065(var1.readBits(14));
                int var6 = var1.readBits(1);
-               var5.field1024 = var5.field1132.field1622;
-               var5.field1075 = var5.field1132.field1645;
+               var5.field1024 = var5.definition.field1622;
+               var5.field1075 = var5.definition.field1645;
                if (var5.field1075 == 0) {
                   var5.field1022 = 0;
                }
 
-               var5.field1029 = var5.field1132.field1628;
-               var5.field1072 = var5.field1132.field1629;
-               var5.field1046 = var5.field1132.field1630;
-               var5.field1021 = var5.field1132.field1631;
-               var5.field1030 = var5.field1132.field1625;
-               var5.field1052 = var5.field1132.field1626;
-               var5.field1020 = var5.field1132.field1624;
+               var5.field1029 = var5.definition.field1628;
+               var5.field1072 = var5.definition.field1629;
+               var5.field1046 = var5.definition.field1630;
+               var5.field1021 = var5.definition.field1631;
+               var5.field1030 = var5.definition.field1625;
+               var5.field1052 = var5.definition.field1626;
+               var5.field1020 = var5.definition.field1624;
                var5.method1833(var7 + MouseHandler.localPlayer.pathX[0], MouseHandler.localPlayer.pathY[0] + var8, var6 == 1);
                continue;
             }

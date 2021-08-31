@@ -79,7 +79,7 @@ public class class135 extends class137 {
       class369 var1 = null;
 
       try {
-         var1 = class78.method1836("", class69.field976.field3208, true);
+         var1 = Npc.method1836("", class69.field976.field3208, true);
          Buffer var2 = class38.clientPreferences.method1820();
          var1.method5780(var2.payload, 0, var2.offset);
       } catch (Exception var4) {

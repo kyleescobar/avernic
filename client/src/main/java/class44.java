@@ -26,7 +26,7 @@ public class class44 {
       int y = packed & 16383;
       localPlayer.pathX[0] = x - class281.baseX;
       localPlayer.x = (localPlayer.pathX[0] << 7) + (localPlayer.getTransformedSize() << 6);
-      localPlayer.pathY[0] = y - class78.baseY;
+      localPlayer.pathY[0] = y - Npc.baseY;
       localPlayer.y = (localPlayer.pathY[0] << 7) + (localPlayer.getTransformedSize() << 6);
       class285.plane = localPlayer.plane = plane;
       if (PlayerList.playerAppearances[localPlayerIndex] != null) {

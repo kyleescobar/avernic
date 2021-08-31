@@ -430,7 +430,7 @@ public final class class13 extends Canvas {
 
    static int method109(int var0, class59 var1, boolean var2) {
       if (3300 == var0) {
-         class51.field747[++class51.field746 - 1] = client.field452;
+         class51.field747[++class51.field746 - 1] = client.cycle;
          return 1;
       } else {
          int var4;
@@ -474,7 +474,7 @@ public final class class13 extends Canvas {
             if (var0 == 3308) {
                var4 = class285.plane;
                var5 = class281.baseX + (MouseHandler.localPlayer.x >> 7);
-               var6 = class78.baseY + (MouseHandler.localPlayer.y >> 7);
+               var6 = Npc.baseY + (MouseHandler.localPlayer.y >> 7);
                class51.field747[++class51.field746 - 1] = var6 + (var5 << 14) + (var4 << 28);
                return 1;
             } else if (3309 == var0) {
@@ -602,8 +602,8 @@ public final class class13 extends Canvas {
             var10 = 64 + 128 * var10;
             var33 = var33 * 128 + 64;
             var7 = 128 * var7 + 64;
-            class57 var45 = new class57(var6, class285.plane, var9, var10, class123.method2216(var9, var10, class285.plane) - var12, client.field452 + var15, var34 + client.field452, var32, var14, var13, var11);
-            var45.method1582(var33, var7, class123.method2216(var33, var7, class285.plane) - var11, client.field452 + var15);
+            class57 var45 = new class57(var6, class285.plane, var9, var10, class123.method2216(var9, var10, class285.plane) - var12, client.cycle + var15, var34 + client.cycle, var32, var14, var13, var11);
+            var45.method1582(var33, var7, class123.method2216(var33, var7, class285.plane) - var11, client.cycle + var15);
             client.field538.method4672(var45);
          }
 
@@ -654,8 +654,8 @@ public final class class13 extends Canvas {
                class207 var30 = var19.method2644(var10, var11, var26, var28, var27, var29);
                if (var30 != null) {
                   class65.method1665(class285.plane, var14, var15, var12, -1, 0, 0, 1 + var17, var6 + 1);
-                  var18.field986 = var17 + client.field452;
-                  var18.field987 = var6 + client.field452;
+                  var18.field986 = var17 + client.cycle;
+                  var18.field987 = var6 + client.cycle;
                   var18.field981 = var30;
                   var18.field983 = var14 * 128 + 64 * var20;
                   var18.field990 = var21 * 64 + 128 * var15;
@@ -691,7 +691,7 @@ public final class class13 extends Canvas {
             if (var33 >= 0 && var34 >= 0 && var33 < 104 && var34 < 104) {
                var33 = 64 + 128 * var33;
                var34 = 64 + 128 * var34;
-               class52 var39 = new class52(var8, class285.plane, var33, var34, class123.method2216(var33, var34, class285.plane) - var6, var7, client.field452);
+               class52 var39 = new class52(var8, class285.plane, var33, var34, class123.method2216(var33, var34, class285.plane) - var6, var7, client.cycle);
                client.field539.method4672(var39);
             }
 

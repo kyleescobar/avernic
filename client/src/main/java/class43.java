@@ -19,7 +19,7 @@ public class class43 extends class354 {
          if (var0.targetIndex != -1) {
             Object var2 = null;
             if (var0.targetIndex < 32768) {
-               var2 = client.field567[var0.targetIndex];
+               var2 = client.npcs[var0.targetIndex];
             } else if (var0.targetIndex >= 32768) {
                var2 = client.localPlayers[var0.targetIndex - '\u8000'];
             }

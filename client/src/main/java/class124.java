@@ -466,9 +466,9 @@ public class class124 extends class354 {
    }
 
    static final void method2242(boolean var0) {
-      for(int var2 = 0; var2 < client.field685; ++var2) {
-         class78 var3 = client.field567[client.field450[var2]];
-         if (null != var3 && var3.method1748() && var3.field1132.field1641 == var0 && var3.field1132.method2472()) {
+      for(int var2 = 0; var2 < client.npcCount; ++var2) {
+         Npc var3 = client.npcs[client.npcIndexes[var2]];
+         if (null != var3 && var3.method1748() && var3.definition.field1641 == var0 && var3.definition.method2472()) {
             int var4 = var3.x >> 7;
             int var5 = var3.y >> 7;
             if (var4 >= 0 && var4 < 104 && var5 >= 0 && var5 < 104) {
@@ -480,8 +480,8 @@ public class class124 extends class354 {
                   client.field502[var4][var5] = client.field505;
                }
 
-               long var6 = class172.method3133(0, 0, 1, !var3.field1132.field1649, client.field450[var2]);
-               var3.field1025 = client.field452;
+               long var6 = class172.method3133(0, 0, 1, !var3.definition.field1649, client.npcIndexes[var2]);
+               var3.field1025 = client.cycle;
                class166.field1925.method3508(class285.plane, var3.x, var3.y, class123.method2216(var3.field1024 * 64 - 64 + var3.x, var3.field1024 * 64 - 64 + var3.y, class285.plane), 60 + (var3.field1024 * 64 - 64), var3, var3.field1022, var6, var3.field1023);
             }
          }

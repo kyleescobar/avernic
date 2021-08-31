@@ -128,12 +128,12 @@ public class class38 {
 
       } else if (var2 == 327) {
          var0.field3009 = 150;
-         var0.field3010 = (int)(Math.sin((double)client.field452 / 40.0D) * 256.0D) & 2047;
+         var0.field3010 = (int)(Math.sin((double)client.cycle / 40.0D) * 256.0D) & 2047;
          var0.field2950 = 5;
          var0.field3002 = 0;
       } else if (328 == var2) {
          var0.field3009 = 150;
-         var0.field3010 = (int)(Math.sin((double)client.field452 / 40.0D) * 256.0D) & 2047;
+         var0.field3010 = (int)(Math.sin((double)client.cycle / 40.0D) * 256.0D) & 2047;
          var0.field2950 = 5;
          var0.field3002 = 1;
       }

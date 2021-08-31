@@ -52,7 +52,7 @@ public abstract class class120 extends class354 {
       client.field597 = 0;
       client.field459 = class81.field1160;
       client.field433 = class81.field1160;
-      client.field685 = 0;
+      client.npcCount = 0;
       PlayerList.localPlayerCount = 0;
 
       int var1;
@@ -66,7 +66,7 @@ public abstract class class120 extends class354 {
       }
 
       for(var1 = 0; var1 < 32768; ++var1) {
-         client.field567[var1] = null;
+         client.npcs[var1] = null;
       }
 
       client.field535 = -1;
