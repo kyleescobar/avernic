@@ -22,7 +22,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     val world: World by inject()
 
     override var index: Int = -1
-    override var size: Size = Size(width = 1, height = 1)
+    open var size: Int = 1
     override var tile: Tile = Tile(0, 0, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
     override var orientation: Int = 0
@@ -33,7 +33,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     open var chatMessage: String? = null
     open var teleportTile: Tile? = null
     open var path: MutableList<Tile> = mutableListOf()
-    open var prevPathTile: Tile = prevTile
+    open var prevPathTile: Tile = tile.copy()
 
     abstract val pathfinder: Pathfinder
 
@@ -126,6 +126,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     abstract fun addAppearanceUpdateFlag()
     abstract fun addForceChatUpdateFlag()
     abstract fun addMovementUpdateFlag()
+    abstract fun addMovementModeUpdateFlag()
 
     fun getOrientation(prev: Tile, new: Tile): Int = getOrientation(new.x - prev.x, new.y - prev.y)
 

@@ -9,9 +9,8 @@ import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Privilege
-import dev.avernic.server.engine.game.entity.pathfinder.TmpPathfinder
+import dev.avernic.server.engine.game.entity.pathfinder.BfsPathfinder
 import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
-import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
 import dev.avernic.server.engine.game.manager.InterfaceManager
@@ -21,11 +20,8 @@ import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.login.LoginRequest
 import dev.avernic.server.engine.net.login.LoginResponse
-import dev.avernic.server.engine.net.packet.server.IfOpenTop
-import dev.avernic.server.engine.net.packet.server.RebuildRegionNormal
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
-import java.util.*
 
 class Player(val client: Client) : LivingEntity() {
 
@@ -44,7 +40,13 @@ class Player(val client: Client) : LivingEntity() {
     /**
      * The pathfinder configured for players.
      */
-    override val pathfinder = TmpPathfinder()
+    override val pathfinder = BfsPathfinder(this)
+
+    override var running: Boolean = super.running
+        set(value) {
+            field = value
+            addMovementModeUpdateFlag()
+        }
 
     /*
      * Player context managers.
@@ -78,6 +80,7 @@ class Player(val client: Client) : LivingEntity() {
          */
         tile = Tile(ServerConfig.DEFAULTS.HOME_TILE.X, ServerConfig.DEFAULTS.HOME_TILE.Y, ServerConfig.DEFAULTS.HOME_TILE.PLANE)
         prevTile = tile
+        prevPathTile = tile.copy()
 
         /*
          * Register the player with the game world.
@@ -127,4 +130,5 @@ class Player(val client: Client) : LivingEntity() {
     override fun addAppearanceUpdateFlag() { updateFlags.add(PlayerUpdateFlag.APPEARANCE) }
     override fun addForceChatUpdateFlag() { updateFlags.add(PlayerUpdateFlag.FORCE_CHAT) }
     override fun addMovementUpdateFlag() { updateFlags.add(PlayerUpdateFlag.MOVEMENT) }
+    override fun addMovementModeUpdateFlag() { updateFlags.add(PlayerUpdateFlag.MOVEMENT_MODE) }
 }

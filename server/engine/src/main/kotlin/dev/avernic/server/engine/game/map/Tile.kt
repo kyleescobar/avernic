@@ -49,6 +49,8 @@ class Tile(private val packed: Int) {
 
     fun sameAs(other: Tile): Boolean = x == other.x && y == other.y && plane == other.plane
 
+    fun copy(): Tile = Tile(x, y, plane)
+
     fun toChunk(): Chunk = Chunk(
         x / Chunk.SIZE,
         y / Chunk.SIZE

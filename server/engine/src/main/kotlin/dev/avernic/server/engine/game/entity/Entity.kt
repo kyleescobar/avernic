@@ -11,6 +11,4 @@ interface Entity {
 
     var orientation: Int
 
-    var size: Size
-
 }

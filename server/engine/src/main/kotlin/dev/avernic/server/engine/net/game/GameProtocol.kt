@@ -3,6 +3,7 @@ package dev.avernic.server.engine.net.game
 import dev.avernic.server.engine.net.Message
 import dev.avernic.server.engine.net.Protocol
 import dev.avernic.server.engine.net.Session
+import dev.avernic.server.engine.net.packet.client.EmptyPacket
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 
@@ -20,7 +21,9 @@ class GameProtocol(session: Session) : Protocol(session) {
         if(buf.readableBytes() > 0) {
             decoder.decode(buf, out)
         } else {
-            buf.readBytes(buf.readableBytes())
+            val codec = GamePackets.CLIENT.getCodec(-1)
+            val packet = codec.decode(session, buf)
+            out.add(packet)
         }
     }
 

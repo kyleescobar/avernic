@@ -7,4 +7,5 @@ import dev.avernic.server.engine.event.player.PlayerLoginEvent
  */
 onEvent<PlayerLoginEvent> { event ->
     event.player.updateAppearance()
+    event.player.running = true
 }

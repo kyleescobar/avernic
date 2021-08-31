@@ -146,7 +146,7 @@ class PlayerUpdateTask(private val player: Player) {
                 buf.writeBits(externalPlayer.tile.x, 13)
                 buf.writeBits(externalPlayer.tile.y, 13)
                 buf.writeBoolean(true)
-                processUpdateFlags(externalPlayer, maskBuf, sortedSetOf(PlayerUpdateFlag.APPEARANCE))
+                processUpdateFlags(externalPlayer, maskBuf, sortedSetOf(PlayerUpdateFlag.APPEARANCE, PlayerUpdateFlag.MOVEMENT_MODE))
                 player.gpi.localPlayers[externalPlayer.index] = externalPlayer
             } else {
                 updateTileLocation(externalPlayer, buf)

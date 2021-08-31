@@ -20,13 +20,13 @@ class RebuildRegionNormal(
                packet.player.gpi.encode(buf)
             }
 
-            buf.writeShortAdd(packet.player.scene.middleChunk.y)
-            buf.writeShortLE(packet.player.scene.middleChunk.x)
+            buf.writeShortAdd(packet.player.scene.currentChunk.y)
+            buf.writeShortLE(packet.player.scene.currentChunk.x)
 
             val xteaKeys = packet.player.scene.getRegionXteaKeys()
 
             buf.writeShort(xteaKeys.size)
-            xteaKeys.forEach { for(xtea in it) { buf.writeInt(xtea) } }
+            xteaKeys.flatMap { it.toList() }.forEach { key -> buf.writeInt(key) }
         }
     }
 }

@@ -49,10 +49,12 @@ class Session(val ctx: ChannelHandlerContext) {
     }
 
     internal fun onError(cause: Throwable) {
-        if(cause.stackTrace.isEmpty() || cause.stackTrace[0].methodName != "read0") {
-            Logger.error(cause) { "An error occurred in session networking thread." }
+        if(cause.stackTrace.isEmpty()
+            || (cause.stackTrace[0].methodName != "read0" && cause.stackTrace[0].methodName != "callDecode")
+        ) {
+            Logger.error(cause) { "An error occurred in session networking thread. [method: ${cause.stackTrace[0].methodName}]" }
+            this.disconnect()
         }
-        this.disconnect()
     }
 
     fun disconnect() {

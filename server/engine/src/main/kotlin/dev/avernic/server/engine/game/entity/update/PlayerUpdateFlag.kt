@@ -72,6 +72,13 @@ class PlayerUpdateFlag(
         }
 
         /**
+         * Player movement mode update flag.
+         */
+        val MOVEMENT_MODE: PlayerUpdateFlag = PlayerUpdateFlag(priority = 8, mask = 0x800) { player ->
+            this.writeByte(if(player.running) 2 else 1)
+        }
+
+        /**
          * Movement update flag.
          */
         val MOVEMENT: PlayerUpdateFlag = PlayerUpdateFlag(priority = 11, mask = 0x2000) { player ->

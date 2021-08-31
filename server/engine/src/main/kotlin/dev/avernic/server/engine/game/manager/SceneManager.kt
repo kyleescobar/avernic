@@ -15,13 +15,13 @@ class SceneManager(private val player: Player) {
     /**
      * The current chunk the player is in.
      */
-    lateinit var middleChunk: Chunk private set
+    lateinit var currentChunk: Chunk private set
 
     internal fun initialize() {
         /*
          * Set the player's current chunk.
          */
-        middleChunk = player.tile.toChunk()
+        currentChunk = player.tile.toChunk()
 
         /*
          * Tell the client to rebuild the world regions with GPI data.
@@ -30,15 +30,15 @@ class SceneManager(private val player: Player) {
     }
 
     fun shouldRebuild(chunk: Chunk): Boolean {
-        val dx = abs(middleChunk.x - chunk.x)
-        val dy = abs(middleChunk.y - chunk.y)
+        val dx = abs(currentChunk.x - chunk.x)
+        val dy = abs(currentChunk.y - chunk.y)
        return dx > REBUILD_DISTANCE || dy > REBUILD_DISTANCE
     }
 
     fun checkReload() {
         val currChunk = player.tile.toChunk()
         if(shouldRebuild(currChunk)) {
-            middleChunk = currChunk
+            currentChunk = currChunk
             player.client.write(RebuildRegionNormal(player))
         }
     }
@@ -48,17 +48,17 @@ class SceneManager(private val player: Player) {
 
         var forceSend = false
 
-        if((middleChunk.x / Chunk.SIZE == 48 || middleChunk.x / Chunk.SIZE == 49)
-            && middleChunk.y / Chunk.SIZE == 48) {
+        if((currentChunk.x / Chunk.SIZE == 48 || currentChunk.x / Chunk.SIZE == 49)
+            && currentChunk.y / Chunk.SIZE == 48) {
             forceSend = true
         }
 
-        if(middleChunk.x / Chunk.SIZE == 48 && middleChunk.y / Chunk.SIZE == 148) {
+        if(currentChunk.x / Chunk.SIZE == 48 && currentChunk.y / Chunk.SIZE == 148) {
             forceSend = true
         }
 
-        for(x in middleChunk.x.sceneMin..middleChunk.x.sceneMax) {
-            for(y in middleChunk.y.sceneMin..middleChunk.y.sceneMax) {
+        for(x in currentChunk.x.sceneMin..currentChunk.x.sceneMax) {
+            for(y in currentChunk.y.sceneMin..currentChunk.y.sceneMax) {
                 /*
                  * Do not send XTEA keys for tutorial island and surrounding
                  * regions if you are standing outside tutorial island.
