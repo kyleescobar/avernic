@@ -328,7 +328,7 @@ public final class Player extends class72 {
          super.sequence = -1;
       }
 
-      super.field1049 = -1;
+      super.faceDegrees = -1;
       if (tileX >= 0 && tileX < 104 && tileY >= 0 && tileY < 104) {
          if (super.pathX[0] >= 0 && super.pathX[0] < 104 && super.pathY[0] >= 0 && super.pathY[0] < 104) {
             if (var3 == 2) {

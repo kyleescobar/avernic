@@ -204,10 +204,10 @@ public class class167 implements class188 {
        * 0: Force Rotation (mask: 0x40)
        */
       if (0 != (updateMask & 64)) {
-         player.field1049 = buf.readUnsignedShort();
+         player.faceDegrees = buf.readUnsignedShort();
          if (0 == player.pathLength) {
-            player.orientation = player.field1049;
-            player.field1049 = -1;
+            player.orientation = player.faceDegrees;
+            player.faceDegrees = -1;
          }
       }
 

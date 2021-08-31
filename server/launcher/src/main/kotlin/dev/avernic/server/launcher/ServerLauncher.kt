@@ -4,6 +4,7 @@ import dev.avernic.server.cache.GameCache
 import dev.avernic.server.common.get
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.config.XteaConfig
+import dev.avernic.server.content.ScriptManager
 import dev.avernic.server.engine.Engine
 import dev.avernic.server.engine.net.NetworkServer
 import dev.avernic.server.util.RSA
@@ -57,11 +58,24 @@ object ServerLauncher {
     private fun launch() {
         Logger.info("Preparing server game engine.")
 
+        /*
+         * Start the game engine.
+         */
         val engine = get<Engine>()
         engine.start()
 
+        /*
+         * Start the server networking.
+         */
         val networkServer = get<NetworkServer>()
         val address = InetSocketAddress(ServerConfig.NETWORK.ADDRESS, ServerConfig.NETWORK.PORT)
         networkServer.bind(address)
+
+        /*
+         * Load all game content scripts.
+         */
+        ScriptManager.loadContentScripts()
+
+        Logger.info("Server is now up and running!")
     }
 }

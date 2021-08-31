@@ -32,8 +32,8 @@ public abstract class class201 extends class349 {
             throw new RuntimeException();
          } else {
             PlayerList.localPlayerRegions[var1] = (class281.baseX + var5.pathX[0] >> 13 << 14) + (var5.plane << 28) + (var5.pathY[0] + class78.baseY >> 13);
-            if (-1 != var5.field1049) {
-               PlayerList.localPlayerOrientations[var1] = var5.field1049;
+            if (-1 != var5.faceDegrees) {
+               PlayerList.localPlayerOrientations[var1] = var5.faceDegrees;
             } else {
                PlayerList.localPlayerOrientations[var1] = var5.orientation;
             }

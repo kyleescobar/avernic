@@ -24,7 +24,7 @@ public abstract class class72 extends class201 {
    int field1044 = 0;
    int field1046 = -1;
    int targetIndex = -1;
-   int field1049 = -1;
+   int faceDegrees = -1;
    int field1050 = -1;
    int field1051;
    int field1052 = -1;

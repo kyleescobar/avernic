@@ -201,7 +201,7 @@ public class class153 extends class349 {
                var9 = var16.x - 64 * (var17 - class281.baseX - class281.baseX);
                var10 = var16.y - 64 * (var8 - class78.baseY - class78.baseY);
                if (var9 != 0 || var10 != 0) {
-                  var16.field1049 = (int)(Math.atan2((double)var9, (double)var10) * 325.949D) & 2047;
+                  var16.faceDegrees = (int)(Math.atan2((double)var9, (double)var10) * 325.949D) & 2047;
                }
             }
 

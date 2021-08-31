@@ -8,6 +8,15 @@ dependencies {
     implementation(project(":server:config"))
     implementation(project(":server:engine"))
     implementation(project(":server:cache"))
+    implementation(project(":server:api"))
+    implementation(project(":server:content"))
+
+    project(":server:content").dependencyProject.subprojects.forEach { project ->
+        if(project.buildFile.exists()) {
+            implementation(project)
+        }
+    }
+
     implementation("ch.qos.logback:logback-classic:_")
 }
 

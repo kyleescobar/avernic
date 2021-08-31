@@ -16,6 +16,7 @@ include(":server:cache")
 include(":server:engine")
 include(":server:api")
 include(":server:content")
+includeModules(":server:content")
 
 fun includeModules(project: String) {
     val parent = project(project).projectDir.toPath()
@@ -31,7 +32,7 @@ fun includeModules(project: String) {
         val relativePath = parent.relativize(path)
         val moduleName = relativePath.toString().replace(File.separator, ":")
         val projectName = project.substring(1)
-        
+
         include("$projectName:$moduleName")
     }
 }

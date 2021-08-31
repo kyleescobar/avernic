@@ -28,6 +28,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     open var interacting: LivingEntity? = null
     open var movementType: MovementType = MovementType.NONE
     open var combatLevel: Int = 1
+    open var chatMessage: String? = null
 
     abstract val updateFlags: SortedSet<out UpdateFlag>
 
@@ -35,7 +36,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
 
     override val tasks = mutableMapOf<TaskType, MutableSet<Task>>()
 
-    internal val postTasks = mutableListOf<() -> Unit>()
+    internal open val postTasks = mutableListOf<() -> Unit>()
 
     internal fun processTasks() {
         while(true) {
@@ -52,4 +53,9 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         postTasks.clear()
         movementType = MovementType.NONE
     }
+
+    fun addPostTask(action: () -> Unit) {
+        this.postTasks.add(action)
+    }
+
 }

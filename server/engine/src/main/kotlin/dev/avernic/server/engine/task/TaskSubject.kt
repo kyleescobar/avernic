@@ -8,7 +8,7 @@ interface TaskSubject {
 
     val tasks: MutableMap<TaskType, MutableSet<Task>>
 
-    fun addTask(type: TaskType = TaskType.NORMAL, action: suspend Task.() -> Unit): Task {
+    fun addTask(type: TaskType = NormalTask, action: suspend Task.() -> Unit): Task {
         val task = Task(type, this)
         task.next = TaskContinuation(TaskEmptyCondition, action.createCoroutineUnintercepted(task, task))
         tasks.getOrPut(type) { mutableSetOf() }.add(task)

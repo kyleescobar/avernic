@@ -12,10 +12,10 @@ class PlayerUpdateFlag(
     val encode: ByteBuf.(Player) -> Unit
 ) : UpdateFlag(priority, mask) {
     companion object {
-        /*
-         * Player Update Flags
-         */
 
+        /**
+         * Player appearance update flag.
+         */
         val APPEARANCE: PlayerUpdateFlag = PlayerUpdateFlag(priority = 2, mask = 0x10) { player ->
             val appBuf = Unpooled.buffer()
 
@@ -61,6 +61,13 @@ class PlayerUpdateFlag(
 
             this.writeByteAdd(bytes.size)
             this.writeBytesReversedAdd(bytes)
+        }
+
+        /**
+         * Player Force Chat update flag.
+         */
+        val FORCE_CHAT: PlayerUpdateFlag = PlayerUpdateFlag(priority = 3, mask = 0x2) { player ->
+            this.writeStringCP1252(player.chatMessage ?: "")
         }
     }
 }

@@ -60,6 +60,7 @@ class PacketDecoder(private val protocol: GameProtocol) {
 
     private fun ByteBuf.readPayload(out: MutableList<Any>) {
         if(readableBytes() < length) {
+            skipBytes(readableBytes())
             return
         }
         try {

@@ -71,6 +71,7 @@ class World : EventSubject, TaskSubject {
 
     private fun synchronize() {
         players.forEach { it.synchronize() }
+        players.forEach { it.postProcess() }
     }
 
     fun getChunk(tile: Tile): Chunk = getChunk(tile.chunkX, tile.chunkY, tile.plane)

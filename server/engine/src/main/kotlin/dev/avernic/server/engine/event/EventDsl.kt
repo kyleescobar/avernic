@@ -12,11 +12,18 @@ annotation class EventDslConditionMarker
 annotation class EventDslActionMarker
 
 @EventDslMarker
-inline fun <reified E : Event> onEvent(): EventAction<E> = EventAction(E::class)
+inline fun <reified E : Event> onEvent(noinline action: ((E) -> Unit)? = null) = EventAction(E::class, action).build()
 
-class EventAction<E : Event>(private val type: KClass<E>) {
+class EventAction<E : Event>(private val type: KClass<E>, private val action: ((E) -> Unit)?) {
 
     private var condition: E.() -> Boolean = { true }
+
+    fun build(): EventAction<E> {
+        if(action != null) {
+            EventListener(type, condition, action)
+        }
+        return this
+    }
 
     @EventDslConditionMarker
     fun where(condition: E.() -> Boolean): EventAction<E> {

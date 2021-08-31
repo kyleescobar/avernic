@@ -36,9 +36,9 @@ public class class43 extends class354 {
             }
          }
 
-         if (-1 != var0.field1049 && (var0.pathLength == 0 || var0.field1079 > 0)) {
-            var0.orientation = var0.field1049;
-            var0.field1049 = -1;
+         if (-1 != var0.faceDegrees && (var0.pathLength == 0 || var0.field1079 > 0)) {
+            var0.orientation = var0.faceDegrees;
+            var0.faceDegrees = -1;
          }
 
          int var5 = var0.orientation - var0.field1022 & 2047;
