@@ -432,7 +432,7 @@ public class class167 implements class188 {
 
       if (player.field1004) {
          if (127 == movementType) {
-            player.resetPath(player.tileX, player.tileY);
+            player.teleport(player.tileX, player.tileY);
          } else {
             byte direction;
             if (-1 != movementType) {

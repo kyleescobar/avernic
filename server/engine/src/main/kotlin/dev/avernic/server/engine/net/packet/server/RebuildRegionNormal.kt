@@ -10,20 +10,23 @@ import io.guthix.buffer.writeShortAdd
 import io.netty.buffer.ByteBuf
 
 @ServerPacket(opcode = 2, type = PacketType.VARIABLE_SHORT)
-class RebuildRegionNormal(val player: Player, val gpi: Boolean = false) : Packet {
+class RebuildRegionNormal(
+    val player: Player,
+    val gpi: Boolean = false
+) : Packet {
     companion object : Codec<RebuildRegionNormal> {
         override fun encode(session: Session, packet: RebuildRegionNormal, buf: ByteBuf) {
             if(packet.gpi) {
                packet.player.gpi.encode(buf)
             }
 
-            buf.writeShortAdd(packet.player.tile.chunkY)
-            buf.writeShortLE(packet.player.tile.chunkX)
+            buf.writeShortAdd(packet.player.scene.middleChunk.y)
+            buf.writeShortLE(packet.player.scene.middleChunk.x)
 
             val xteaKeys = packet.player.scene.getRegionXteaKeys()
 
-            buf.writeShort(xteaKeys.size / 4)
-            xteaKeys.forEach { buf.writeInt(it) }
+            buf.writeShort(xteaKeys.size)
+            xteaKeys.forEach { for(xtea in it) { buf.writeInt(xtea) } }
         }
     }
 }

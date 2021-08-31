@@ -1,5 +1,6 @@
 package dev.avernic.server.engine.game.entity.update
 
+import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.entity.Player
 import io.guthix.buffer.*
 import io.netty.buffer.ByteBuf
@@ -68,6 +69,17 @@ class PlayerUpdateFlag(
          */
         val FORCE_CHAT: PlayerUpdateFlag = PlayerUpdateFlag(priority = 3, mask = 0x2) { player ->
             this.writeStringCP1252(player.chatMessage ?: "")
+        }
+
+        /**
+         * Movement update flag.
+         */
+        val MOVEMENT: PlayerUpdateFlag = PlayerUpdateFlag(priority = 11, mask = 0x2000) { player ->
+            if(player.movementType == MovementType.TELEPORT) {
+                writeByte(127)
+            } else {
+                writeByte(0) // CHECK IF THIS IS CORRECT
+            }
         }
     }
 }

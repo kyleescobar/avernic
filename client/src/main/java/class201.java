@@ -85,7 +85,7 @@ public abstract class class201 extends class349 {
                   var5.pathfindClientSideApproximate(var7, var8, PlayerList.movementDirectionCache[var1]);
                }
             } else {
-               var5.resetPath(var7, var8);
+               var5.teleport(var7, var8);
                var5.field1004 = false;
             }
 
@@ -140,7 +140,7 @@ public abstract class class201 extends class349 {
             }
 
             if (client.localPlayerIndex == var1 && (var5.x < 1536 || var5.y < 1536 || var5.x >= 11776 || var5.y >= 11776)) {
-               var5.resetPath(var7, var8);
+               var5.teleport(var7, var8);
                var5.field1004 = false;
             } else if (var3) {
                var5.field1004 = true;
@@ -182,7 +182,7 @@ public abstract class class201 extends class349 {
                      var5.pathfindClientSideApproximate(var11, var12, PlayerList.movementDirectionCache[var1]);
                   }
                } else {
-                  var5.resetPath(var11, var12);
+                  var5.teleport(var11, var12);
                   var5.field1004 = false;
                }
 
@@ -208,7 +208,7 @@ public abstract class class201 extends class349 {
                      var5.pathfindClientSideApproximate(var11, var12, PlayerList.movementDirectionCache[var1]);
                   }
                } else {
-                  var5.resetPath(var11, var12);
+                  var5.teleport(var11, var12);
                   var5.field1004 = false;
                }
 

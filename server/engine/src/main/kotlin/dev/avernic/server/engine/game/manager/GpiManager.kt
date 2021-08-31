@@ -36,11 +36,6 @@ class GpiManager(private val player: Player) {
                 externalPlayerIndexes[externalPlayerCount++] = index
             }
         }
-
-        /*
-         * Add the initial player appearance update flag.
-         */
-        player.updateFlags.add(PlayerUpdateFlag.APPEARANCE)
     }
 
     internal fun synchronize() {

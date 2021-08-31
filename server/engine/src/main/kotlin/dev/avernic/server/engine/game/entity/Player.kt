@@ -111,5 +111,10 @@ class Player(val client: Client) : LivingEntity() {
     internal fun synchronize() {
         scene.synchronize()
         gpi.synchronize()
+        client.flush()
     }
+
+    override fun addAppearanceUpdateFlag() { updateFlags.add(PlayerUpdateFlag.APPEARANCE) }
+    override fun addForceChatUpdateFlag() { updateFlags.add(PlayerUpdateFlag.FORCE_CHAT) }
+    override fun addMovementUpdateFlag() { updateFlags.add(PlayerUpdateFlag.MOVEMENT) }
 }

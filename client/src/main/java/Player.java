@@ -354,20 +354,20 @@ public final class Player extends class72 {
 
             this.method1712(tileX, tileY, var3);
          } else {
-            this.resetPath(tileX, tileY);
+            this.teleport(tileX, tileY);
          }
       } else {
-         this.resetPath(tileX, tileY);
+         this.teleport(tileX, tileY);
       }
 
    }
 
-   void resetPath(int var1, int var2) {
+   void teleport(int tileX, int tileY) {
       super.pathLength = 0;
       super.field1067 = 0;
       super.field1079 = 0;
-      super.pathX[0] = var1;
-      super.pathY[0] = var2;
+      super.pathX[0] = tileX;
+      super.pathY[0] = tileY;
       int var4 = this.getTransformedSize();
       super.x = 128 * super.pathX[0] + var4 * 64;
       super.y = 64 * var4 + super.pathY[0] * 128;

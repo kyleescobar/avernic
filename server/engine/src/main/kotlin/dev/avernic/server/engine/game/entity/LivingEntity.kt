@@ -7,6 +7,7 @@ import dev.avernic.server.engine.event.EventSubject
 import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Size
 import dev.avernic.server.engine.game.World
+import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.task.Task
@@ -29,8 +30,9 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     open var movementType: MovementType = MovementType.NONE
     open var combatLevel: Int = 1
     open var chatMessage: String? = null
+    open var teleportTile: Tile? = null
 
-    abstract val updateFlags: SortedSet<out UpdateFlag>
+    internal abstract val updateFlags: SortedSet<out UpdateFlag>
 
     override val events = ConcurrentLinkedDeque<EventHandler<Event>>()
 
@@ -46,6 +48,27 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         }
     }
 
+    internal fun processMovement() {
+        prevTile = tile
+        if(teleportTile != null) {
+            doTeleport()
+            postMovement()
+        }
+    }
+
+    private fun doTeleport() {
+        movementType = MovementType.TELEPORT
+        addMovementUpdateFlag()
+        tile = teleportTile!!
+        addPostTask { teleportTile = null }
+    }
+
+    private fun postMovement() {
+        /*
+         * Not yet implemented.
+         */
+    }
+
     override fun postProcess() {
         super.postProcess()
         updateFlags.clear()
@@ -58,4 +81,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         this.postTasks.add(action)
     }
 
+    abstract fun addAppearanceUpdateFlag()
+    abstract fun addForceChatUpdateFlag()
+    abstract fun addMovementUpdateFlag()
 }

@@ -2,11 +2,13 @@ package dev.avernic.server.engine.net.pipeline
 
 import dev.avernic.server.engine.net.Message
 import dev.avernic.server.engine.net.Session
+import io.netty.channel.ChannelHandler
 import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.SimpleChannelInboundHandler
+import io.netty.channel.ChannelInboundHandlerAdapter
 import java.util.concurrent.atomic.AtomicReference
 
-class GameChannelHandler : SimpleChannelInboundHandler<Message>() {
+@ChannelHandler.Sharable
+class GameChannelHandler : ChannelInboundHandlerAdapter() {
 
     internal val session = AtomicReference<Session>(null)
 
@@ -20,7 +22,8 @@ class GameChannelHandler : SimpleChannelInboundHandler<Message>() {
         session.get().onDisconnect()
     }
 
-    override fun channelRead0(ctx: ChannelHandlerContext, msg: Message) {
+    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
+        if(msg !is Message) return
         session.get().onMessage(msg)
     }
 

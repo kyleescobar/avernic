@@ -53,7 +53,7 @@ public class class103 extends class104 {
             var11 = var8 & 255;
             var13.field1031[0] = PlayerList.movementDirectionCache[var1];
             var13.plane = (byte)var9;
-            var13.resetPath(var4 + (var10 << 13) - class281.baseX, var5 + (var11 << 13) - class78.baseY);
+            var13.teleport(var4 + (var10 << 13) - class281.baseX, var5 + (var11 << 13) - class78.baseY);
             var13.field1004 = false;
             return true;
          }

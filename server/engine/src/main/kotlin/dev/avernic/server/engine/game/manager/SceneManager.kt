@@ -15,16 +15,13 @@ class SceneManager(private val player: Player) {
     /**
      * The current chunk the player is in.
      */
-    lateinit var chunk: Chunk private set
-
-    val baseX: Int get() = chunk.x - DISTANCE
-    val baseY: Int get() = chunk.y - DISTANCE
+    lateinit var middleChunk: Chunk private set
 
     internal fun initialize() {
         /*
          * Set the player's current chunk.
          */
-        chunk = world.getChunk(player.tile.chunkX, player.tile.chunkY, player.tile.plane)
+        middleChunk = player.tile.toChunk()
 
         /*
          * Tell the client to rebuild the world regions with GPI data.
@@ -32,63 +29,62 @@ class SceneManager(private val player: Player) {
         player.client.write(RebuildRegionNormal(player, gpi = true))
     }
 
-    fun shouldRebuild(currentChunk: Chunk): Boolean {
-        return abs(chunk.x - currentChunk.x) > REBUILD_DISTANCE || abs(chunk.y - currentChunk.y) > REBUILD_DISTANCE
+    fun shouldRebuild(chunk: Chunk): Boolean {
+        val dx = abs(middleChunk.x - chunk.x)
+        val dy = abs(middleChunk.y - chunk.y)
+       return dx > REBUILD_DISTANCE || dy > REBUILD_DISTANCE
     }
 
-    fun checkReload(currentChunk: Chunk) {
-        if(shouldRebuild(currentChunk)) {
-            chunk = currentChunk
-            player.client.write(RebuildRegionNormal(player, gpi = false))
+    fun checkReload() {
+        val currChunk = player.tile.toChunk()
+        if(shouldRebuild(currChunk)) {
+            middleChunk = currChunk
+            player.client.write(RebuildRegionNormal(player))
         }
     }
 
-    fun getRegionXteaKeys(): List<Int> {
-        val xteas = mutableListOf<Int>()
-        val isOnTutorialIsland = onTutorialIsland(chunk.x / 8, chunk.y / 8)
-        for(x in chunk.x.regionStart..chunk.x.regionEnd) {
-            for(y in chunk.y.regionStart..chunk.y.regionEnd) {
-                if(!isOnTutorialIsland ||
-                        x != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
+    fun getRegionXteaKeys(): List<IntArray> {
+        val xteas = mutableListOf<IntArray>()
+
+        var forceSend = false
+
+        if((middleChunk.x / Chunk.SIZE == 48 || middleChunk.x / Chunk.SIZE == 49)
+            && middleChunk.y / Chunk.SIZE == 48) {
+            forceSend = true
+        }
+
+        if(middleChunk.x / Chunk.SIZE == 48 && middleChunk.y / Chunk.SIZE == 148) {
+            forceSend = true
+        }
+
+        for(x in middleChunk.x.sceneMin..middleChunk.x.sceneMax) {
+            for(y in middleChunk.y.sceneMin..middleChunk.y.sceneMax) {
+                /*
+                 * Do not send XTEA keys for tutorial island and surrounding
+                 * regions if you are standing outside tutorial island.
+                 */
+                if(!forceSend || y != 49 && y != 149 && y != 147 && x != 50 && (x != 49 || y != 47)) {
                     val regionId = (x shl 8) or y
-                    val xteaKeys = XteaConfig.regionKeys(regionId)
-                    xteas.addAll(xteaKeys.toList())
+                    xteas.add(XteaConfig.regionKeys(regionId))
                 }
             }
         }
+
         return xteas
     }
 
     internal fun synchronize() {
-        val currentChunk = world.getChunk(player.tile)
-        checkReload(currentChunk)
+        checkReload()
     }
 
     companion object {
         /**
-         * The number of chunks of the player's scene.
+         * The number of chunks away from the edge of the player's scene where we should
+         * signal to rebuild the scene and re-center the player's base chunk.
          */
-        const val SIZE = 13
+        private const val REBUILD_DISTANCE = 4
 
-        /**
-         * The distance to the edge of the player's scene.
-         */
-        val DISTANCE = SIZE shr 1
-
-        /**
-         * The number of chunks from the edge of the current
-         * scene which a player's scene will be rebuilt.
-         *
-         * (2 chunks or 16 tiles)
-         */
-        const val REBUILD_DISTANCE = 2
-
-        private val Int.regionStart: Int get() = (this - DISTANCE) / 8
-
-        private val Int.regionEnd: Int get() = (this + DISTANCE) / 8
-
-        private fun onTutorialIsland(regionX: Int, regionY: Int): Boolean {
-            return ((regionX == 48 || regionX == 49) && regionY == 48) || (regionX == 48 && regionY == 148)
-        }
+        private val Int.sceneMin: Int get() = (this - 6) / Chunk.SIZE
+        private val Int.sceneMax: Int get() = (this + 6) / Chunk.SIZE
     }
 }
