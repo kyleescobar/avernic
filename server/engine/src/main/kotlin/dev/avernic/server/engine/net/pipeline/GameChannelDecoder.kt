@@ -7,16 +7,9 @@ import io.netty.handler.codec.ByteToMessageDecoder
 class GameChannelDecoder(private val handler: GameChannelHandler) : ByteToMessageDecoder() {
 
     override fun decode(ctx: ChannelHandlerContext, buf: ByteBuf, out: MutableList<Any>) {
-        if(buf.readableBytes() == 0) {
-            return
-        }
-
-        buf.markReaderIndex()
-
         val session = handler.session.get()
         val protocol = session.protocol.get()
         val message = protocol.decode(buf, out)
-
         out.add(message)
     }
 }

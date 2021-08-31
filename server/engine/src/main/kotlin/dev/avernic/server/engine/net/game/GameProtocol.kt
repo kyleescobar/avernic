@@ -4,6 +4,7 @@ import dev.avernic.server.engine.net.Message
 import dev.avernic.server.engine.net.Protocol
 import dev.avernic.server.engine.net.Session
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 
 class GameProtocol(session: Session) : Protocol(session) {
 
@@ -16,7 +17,11 @@ class GameProtocol(session: Session) : Protocol(session) {
     }
 
     override fun decode(buf: ByteBuf, out: MutableList<Any>) {
-        decoder.decode(buf, out)
+        if(buf.readableBytes() > 0) {
+            decoder.decode(buf, out)
+        } else {
+            buf.readBytes(buf.readableBytes())
+        }
     }
 
     override fun handle(message: Message) {

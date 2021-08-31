@@ -1,9 +1,8 @@
 package dev.avernic.server.engine.net.game
 
-import dev.avernic.server.engine.net.packet.client.UnknownPacket
 import io.netty.buffer.ByteBuf
-import io.netty.buffer.Unpooled
 import org.tinylog.kotlin.Logger
+import java.net.SocketAddress
 
 class PacketDecoder(private val protocol: GameProtocol) {
 
@@ -14,10 +13,9 @@ class PacketDecoder(private val protocol: GameProtocol) {
     }
 
     private var stage = Stage.OPCODE
-    private var opcode = -1
-    private var type: PacketType = PacketType.FIXED
-    private var length = 0
-    private var ignore = false
+    private var opcode: Int = -1
+    private var length: Int = 0
+    private var unknown: Boolean = false
 
     fun decode(buf: ByteBuf, out: MutableList<Any>) {
         try {
@@ -26,7 +24,7 @@ class PacketDecoder(private val protocol: GameProtocol) {
                 Stage.LENGTH -> buf.readLength(out)
                 Stage.PAYLOAD -> buf.readPayload(out)
             }
-        } catch(e : Exception) {
+        } catch (e : Exception) {
             Logger.error(e) { "An error occurred while decoding client packet with opcode: $opcode." }
             buf.skipBytes(buf.readableBytes())
             protocol.session.disconnect()
@@ -35,53 +33,52 @@ class PacketDecoder(private val protocol: GameProtocol) {
     }
 
     private fun ByteBuf.readOpcode(out: MutableList<Any>) {
-        if(isReadable) {
-            opcode = (readUnsignedByte().toInt() - protocol.session.decoderIsaac.nextInt()) and 0xFF
-            length = GamePackets.CLIENT_LENGTHS[opcode]!!
-            ignore = GamePackets.CLIENT.isUnknown(opcode)
+        opcode = (this.readUnsignedByte().toInt() - protocol.session.decoderIsaac.nextInt()) and 0xFF
+        length = GamePackets.CLIENT_LENGTHS[opcode] ?: throw IllegalStateException("No client packet length found for opcode: $opcode.")
+        unknown = GamePackets.CLIENT.isUnknown(opcode)
 
-            when(length) {
-                -1, -2 -> stage = Stage.LENGTH
-                else -> {
-                    if(length != 0) {
-                        stage = Stage.PAYLOAD
-                    } else if(!ignore) {
-                        val codec = GamePackets.CLIENT.getCodec(opcode)
-                        val packet = codec.decode(protocol.session, Unpooled.EMPTY_BUFFER)
-                        out.add(packet)
-                    }
-                }
+        stage = when {
+            length == 0 -> {
+                this.readPayload(out)
+                return
+            }
+
+            length < 0 -> {
+                Stage.LENGTH
+            }
+
+            else -> {
+                Stage.PAYLOAD
             }
         }
     }
 
     private fun ByteBuf.readLength(out: MutableList<Any>) {
-        if(isReadable) {
-            length = if(type == PacketType.VARIABLE_SHORT) readUnsignedShort() else readUnsignedByte().toInt()
-            if(length != 0) {
-                stage = Stage.PAYLOAD
-            } else if(!ignore) {
-                val codec = GamePackets.CLIENT.getCodec(opcode)
-                val packet = codec.decode(protocol.session, Unpooled.EMPTY_BUFFER)
-                out.add(packet)
-            }
+        length = when(length) {
+            -1 -> this.readUnsignedByte().toInt()
+            -2 -> this.readUnsignedShort()
+            else -> throw IllegalStateException("Illegal variable length of $length for opcode: $opcode.")
+        }
+
+        if(length == 0) {
+            this.readPayload(out)
+        } else {
+            stage = Stage.PAYLOAD
         }
     }
 
     private fun ByteBuf.readPayload(out: MutableList<Any>) {
-        if(readableBytes() >= length) {
-            val payload = readBytes(length)
-            reset()
+        if(this.readableBytes() >= length) {
+            val payload = this.readBytes(length)
+            stage = Stage.OPCODE
 
-            if(!ignore) {
+            if(!unknown) {
                 val codec = GamePackets.CLIENT.getCodec(opcode)
                 val packet = codec.decode(protocol.session, payload)
                 out.add(packet)
+            } else {
+                Logger.warn("Received unknown client packet. [opcode: $opcode, length: $length, remaining: ${this.readableBytes()}]")
             }
         }
-    }
-
-    private fun reset() {
-        stage = Stage.OPCODE
     }
 }
