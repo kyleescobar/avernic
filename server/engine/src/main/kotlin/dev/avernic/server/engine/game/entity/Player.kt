@@ -53,6 +53,11 @@ class Player(val client: Client) : LivingEntity() {
             addMovementModeUpdateFlag()
         }
 
+    /**
+     * Whether this player can walk through walls and blocked terrain.
+     */
+    var noclip: Boolean = false
+
     /*
      * Player context managers.
      */

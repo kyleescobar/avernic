@@ -65,11 +65,6 @@ class Engine {
          */
         serviceManager.initialize()
         serviceManager.startServices()
-
-        /*
-         * Dispatch the event.
-         */
-        EventBus.schedule(ServerStartEvent())
     }
 
     fun stop() {

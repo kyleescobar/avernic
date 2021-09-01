@@ -11,8 +11,9 @@ annotation class EventDslConditionMarker
 @DslMarker
 annotation class EventDslActionMarker
 
+@Suppress("FunctionName")
 @EventDslMarker
-inline fun <reified E : Event> onEvent(noinline action: ((E) -> Unit)? = null) = EventAction(E::class, action).build()
+inline fun <reified E : Event> on_event(noinline action: ((E) -> Unit)? = null) = EventAction(E::class, action).build()
 
 class EventAction<E : Event>(private val type: KClass<E>, private val action: ((E) -> Unit)?) {
 

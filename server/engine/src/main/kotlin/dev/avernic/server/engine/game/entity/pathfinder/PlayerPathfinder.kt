@@ -1,7 +1,7 @@
 package dev.avernic.server.engine.game.entity.pathfinder
 
-import dev.avernic.server.engine.api.isNotBlocked
 import dev.avernic.server.engine.game.Direction
+import dev.avernic.server.engine.game.collision.isNotBlocked
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.Destination
 import dev.avernic.server.engine.game.map.Tile
@@ -15,7 +15,9 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
     private lateinit var start: Tile
     private lateinit var dest: Tile
 
-    private lateinit var node: Node
+    private var current: Node? = null
+    private var cancel: Boolean = false
+    private var successful: Boolean = false
 
     override fun calculatePath(start: Tile, destination: Destination): MutableList<Tile> {
         this.start = start
@@ -39,9 +41,13 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
 
         queue.add(Node(start))
         while(queue.isNotEmpty()) {
+            if(cancel) {
+                cancel = false
+                break
+            }
             if(searchLimit-- == 0) break
 
-            node = queue.removeFirst()
+            val node = queue.removeFirst()
             if(node.tile.sameAs(destination.x, destination.y)) {
                 return buildSolution(node)
             }
@@ -56,16 +62,19 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
                 if(
                     !visited.contains(neighbor)
                     && start.isWithinRadius(tile, MAX_DISTANCE)
-                    && player.world.isNotBlocked(node.tile, Direction.between(node.tile, tile), player.size)
+                    && Direction.between(node.tile, tile) != Direction.NONE
+                    && (player.noclip || player.world.isNotBlocked(node.tile, Direction.between(node.tile, tile), player.size))
                 ) {
                     neighbor.cost = node.cost + 1
                     queue.add(neighbor)
                     visited.addLast(neighbor)
                 }
             }
+
+            current = node
         }
 
-        return buildSolution(node)
+        return buildSolution(current)
     }
 
     private fun buildSolution(node: Node?): MutableList<Tile> {
@@ -85,7 +94,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
             end = end.parent
         }
 
-        return path.toMutableList()
+        return  if(path.size > MAX_PATH) path.toMutableList().dropLast(path.size - MAX_PATH).toMutableList() else path.toMutableList()
     }
 
     private data class Node(val tile: Tile, var parent: Node? = null) {
@@ -102,8 +111,14 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
 
     companion object {
         /**
-         * The maximum distance to find a path to.
+         * The maximum distance the destination tile can be away from the
+         * starting tile.
          */
-        private const val MAX_DISTANCE = 12
+        private const val MAX_DISTANCE = 30
+
+        /**
+         * The maximum number of steps a resulting path can be.
+         */
+        private const val MAX_PATH = 12
     }
 }

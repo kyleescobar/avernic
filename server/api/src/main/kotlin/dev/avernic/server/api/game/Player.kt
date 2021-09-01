@@ -64,3 +64,12 @@ fun Player.walkTo(tile: Tile) {
 fun Player.toggleRun() {
     this.running = !this.running
 }
+
+/**
+ * Toggles the player's no-clip state.
+ *
+ * @receiver Player
+ */
+fun Player.toggleNoClip() {
+    this.noclip = !noclip
+}

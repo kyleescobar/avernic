@@ -6,6 +6,9 @@ import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.config.XteaConfig
 import dev.avernic.server.content.ScriptManager
 import dev.avernic.server.engine.Engine
+import dev.avernic.server.engine.event.EventBus
+import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.world.ServerStartEvent
 import dev.avernic.server.engine.net.NetworkServer
 import dev.avernic.server.util.RSA
 import org.koin.core.context.startKoin
@@ -76,6 +79,6 @@ object ServerLauncher {
         val address = InetSocketAddress(ServerConfig.NETWORK.ADDRESS, ServerConfig.NETWORK.PORT)
         networkServer.bind(address)
 
-        Logger.info("Server is now up and running!")
+        EventBus.schedule(ServerStartEvent())
     }
 }
