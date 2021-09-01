@@ -32,9 +32,9 @@ class Player(val client: Client) : LivingEntity() {
     var displayName: String = ""
     var privilege: Privilege = Privilege.ADMINISTRATOR
     var appearance: Appearance = Appearance.DEFAULT
+    var displayMode: DisplayMode = DisplayMode.FIXED
     var pid: Int = -1
     var member: Boolean = true
-    var displayMode: DisplayMode = DisplayMode.FIXED
     var skullIcon: Int = -1
     var prayerIcon: Int = -1
     override var combatLevel: Int = 3
@@ -44,6 +44,9 @@ class Player(val client: Client) : LivingEntity() {
      */
     override val pathfinder = PlayerPathfinder(this)
 
+    /**
+     * Gets and Sets whether the player is running or not.
+     */
     override var running: Boolean = super.running
         set(value) {
             field = value

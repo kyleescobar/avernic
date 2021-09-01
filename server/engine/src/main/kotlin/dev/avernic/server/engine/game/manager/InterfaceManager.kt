@@ -4,6 +4,7 @@ import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.interf.GameInterface
 import dev.avernic.server.engine.game.interf.InterfaceType
+import dev.avernic.server.engine.net.packet.server.IfMoveSub
 import dev.avernic.server.engine.net.packet.server.IfOpenSub
 import dev.avernic.server.engine.net.packet.server.IfOpenTop
 import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap
@@ -11,7 +12,7 @@ import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap
 class InterfaceManager(private val player: Player) {
 
     private val visible = Int2IntOpenHashMap()
-    private var currentDisplayMode: DisplayMode = player.displayMode
+    private var currentDisplayMode: DisplayMode = DisplayMode.RESIZABLE_CLASSIC
     private var currentModal = -1
 
     internal fun initialize() {
@@ -20,6 +21,11 @@ class InterfaceManager(private val player: Player) {
         GameInterface.values.forEach { gameInterface ->
             openInterface(gameInterface)
         }
+
+        /*
+         * Now update the player's display mode.
+         */
+        this.updateDisplayMode()
     }
 
     private fun open(parent: Int, child: Int, interfaceId: Int) {
@@ -67,5 +73,29 @@ class InterfaceManager(private val player: Player) {
     fun openInterface(parent: Int, child: Int, interfaceId: Int, type: InterfaceType = InterfaceType.MODAL) {
         this.open(parent, child, interfaceId)
         player.client.write(IfOpenSub(parent, child, interfaceId, type))
+    }
+
+    fun updateDisplayMode() {
+        val displayMode = player.displayMode
+
+        /*
+         * Open the top level display mode interface.
+         */
+        openTopInterface(displayMode)
+
+        /*
+         * Move all the child interfaces to the new display mode.
+         */
+        visible.keys.forEach { hash ->
+            val fromParent = hash shr 16
+            val fromChild = hash and 0xFFFF
+            val toParent = displayMode.id
+            val toChild = GameInterface.fromChild(currentDisplayMode, fromChild)?.getChildId(displayMode)
+            if(toChild != null) {
+                player.client.write(IfMoveSub(fromParent, fromChild, toParent, toChild))
+            }
+        }
+
+        player.client.write(IfMoveSub(161, 15, displayMode.id, GameInterface.getModalChildId(displayMode)))
     }
 }
