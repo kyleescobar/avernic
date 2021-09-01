@@ -1,5 +1,6 @@
 package dev.avernic.server.api.game
 
+import dev.avernic.server.engine.game.MessageType
 import dev.avernic.server.engine.game.World
 import dev.avernic.server.engine.game.entity.Player
 
@@ -12,3 +13,15 @@ import dev.avernic.server.engine.game.entity.Player
  */
 fun World.findPlayer(username: String): Player? =
     this.players.firstOrNull { it.username == username || it.displayName == username }
+
+/**
+ * Sends a broadcast message to all players in the world.
+ *
+ * @receiver World
+ * @param message String
+ */
+fun World.broadcast(message: String) {
+    this.players.forEach { player ->
+        player.sendGameMessage(message, MessageType.BROADCAST)
+    }
+}

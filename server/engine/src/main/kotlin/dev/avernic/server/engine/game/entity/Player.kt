@@ -7,6 +7,7 @@ import dev.avernic.server.engine.event.player.LogoutEvent
 import dev.avernic.server.engine.event.player.PlayerMoveEvent
 import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
+import dev.avernic.server.engine.game.MessageType
 import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Privilege
 import dev.avernic.server.engine.game.entity.pathfinder.PlayerPathfinder
@@ -22,6 +23,7 @@ import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.login.LoginRequest
 import dev.avernic.server.engine.net.login.LoginResponse
 import dev.avernic.server.engine.net.packet.server.RunClientScript
+import dev.avernic.server.engine.net.packet.server.SendMessageGame
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
 
@@ -101,6 +103,10 @@ class Player(val client: Client) : LivingEntity() {
      */
     fun updateVarp(id: Int, value: Int) {
         varpManager.updateVarp(id, value)
+    }
+
+    fun sendGameMessage(message: String, type: MessageType = MessageType.GAME) {
+        client.write(SendMessageGame(type.id, false, message))
     }
 
     private fun initialize() {

@@ -380,19 +380,19 @@ public class class167 implements class188 {
                var9 = -1;
                var10 = -1;
                var19 = -1;
-               var17 = buf.method5962();
+               var17 = buf.readSmallSmart();
                if (var17 == 32767) {
-                  var17 = buf.method5962();
-                  var10 = buf.method5962();
-                  var9 = buf.method5962();
-                  var19 = buf.method5962();
+                  var17 = buf.readSmallSmart();
+                  var10 = buf.readSmallSmart();
+                  var9 = buf.readSmallSmart();
+                  var19 = buf.readSmallSmart();
                } else if (var17 != 32766) {
-                  var10 = buf.method5962();
+                  var10 = buf.readSmallSmart();
                } else {
                   var17 = -1;
                }
 
-               var20 = buf.method5962();
+               var20 = buf.readSmallSmart();
                player.method1759(var17, var10, var9, var19, client.cycle, var20);
             }
          }
@@ -400,10 +400,10 @@ public class class167 implements class188 {
          var14 = buf.readUnsignedByteADD();
          if (var14 > 0) {
             for(var17 = 0; var17 < var14; ++var17) {
-               var9 = buf.method5962();
-               var10 = buf.method5962();
+               var9 = buf.readSmallSmart();
+               var10 = buf.readSmallSmart();
                if (var10 != 32767) {
-                  var19 = buf.method5962();
+                  var19 = buf.readSmallSmart();
                   var20 = buf.readUnsignedByteADD();
                   var13 = var10 > 0 ? buf.readUnsignedByteSUB() : var20;
                   player.method1750(var9, client.cycle, var10, var19, var20, var13);

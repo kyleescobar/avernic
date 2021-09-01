@@ -302,18 +302,18 @@ public class class40 {
       }
 
       for(int var3 = 0; var3 < 10; ++var3) {
-         int var4 = var1.method5962();
+         int var4 = var1.readSmallSmart();
          if (var4 == 0) {
             break;
          }
 
          this.field332[var3] = var4;
          this.field333[var3] = var1.method5961();
-         this.field339[var3] = var1.method5962();
+         this.field339[var3] = var1.readSmallSmart();
       }
 
-      this.field335 = var1.method5962();
-      this.field328 = var1.method5962();
+      this.field335 = var1.readSmallSmart();
+      this.field328 = var1.readSmallSmart();
       this.field344 = var1.readUnsignedShort();
       this.field340 = var1.readUnsignedShort();
       this.field337 = new class39();

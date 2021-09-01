@@ -255,19 +255,19 @@ public class class153 extends class349 {
                      var10 = -1;
                      var11 = -1;
                      var12 = -1;
-                     var9 = var1.method5962();
+                     var9 = var1.readSmallSmart();
                      if (32767 == var9) {
-                        var9 = var1.method5962();
-                        var11 = var1.method5962();
-                        var10 = var1.method5962();
-                        var12 = var1.method5962();
+                        var9 = var1.readSmallSmart();
+                        var11 = var1.readSmallSmart();
+                        var10 = var1.readSmallSmart();
+                        var12 = var1.readSmallSmart();
                      } else if (32766 != var9) {
-                        var11 = var1.method5962();
+                        var11 = var1.readSmallSmart();
                      } else {
                         var9 = -1;
                      }
 
-                     var13 = var1.method5962();
+                     var13 = var1.readSmallSmart();
                      npc.method1759(var9, var11, var10, var12, client.cycle, var13);
                   }
                }
@@ -275,10 +275,10 @@ public class class153 extends class349 {
                var8 = var1.readUnsignedByteNEG();
                if (var8 > 0) {
                   for(var9 = 0; var9 < var8; ++var9) {
-                     var10 = var1.method5962();
-                     var11 = var1.method5962();
+                     var10 = var1.readSmallSmart();
+                     var11 = var1.readSmallSmart();
                      if (var11 != 32767) {
-                        var12 = var1.method5962();
+                        var12 = var1.readSmallSmart();
                         var13 = var1.readUnsignedByteNEG();
                         int var14 = var11 > 0 ? var1.readUnsignedByte() : var13;
                         npc.method1750(var10, client.cycle, var11, var12, var13, var14);

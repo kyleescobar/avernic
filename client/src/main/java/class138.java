@@ -82,7 +82,7 @@ public class class138 {
          int var14 = 0;
 
          while(true) {
-            int var15 = var11.method5962();
+            int var15 = var11.readSmallSmart();
             if (0 == var15) {
                break;
             }

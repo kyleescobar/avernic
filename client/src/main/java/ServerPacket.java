@@ -49,7 +49,7 @@ public class ServerPacket {
    public static final ServerPacket IF_SET_COLOR = new ServerPacket(45, 6);
    public static final ServerPacket field2738 = new ServerPacket(46, -2);
    public static final ServerPacket IF_SET_OBJ = new ServerPacket(47, 10);
-   public static final ServerPacket field2741 = new ServerPacket(49, -1);
+   public static final ServerPacket SEND_MESSAGE_GAME = new ServerPacket(49, -1);
    public static final ServerPacket field2742 = new ServerPacket(50, 1);
    public static final ServerPacket field2743 = new ServerPacket(51, 0);
    public static final ServerPacket field2744 = new ServerPacket(79, -2);

@@ -341,7 +341,7 @@ public class Buffer extends class354 {
       return var2 < 128 ? this.readUnsignedByte() - 64 : this.readUnsignedShort() - '\uc000';
    }
 
-   public int method5962() {
+   public int readSmallSmart() {
       int var2 = this.payload[this.offset] & 255;
       return var2 < 128 ? this.readUnsignedByte() : this.readUnsignedShort() - '\u8000';
    }
@@ -350,7 +350,7 @@ public class Buffer extends class354 {
       int var2 = 0;
 
       int var3;
-      for(var3 = this.method5962(); var3 == 32767; var3 = this.method5962()) {
+      for(var3 = this.readSmallSmart(); var3 == 32767; var3 = this.readSmallSmart()) {
          var2 += 32767;
       }
 

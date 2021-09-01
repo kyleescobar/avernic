@@ -1400,7 +1400,7 @@ public final class client extends class19 implements class318 {
 
                         while(true) {
                            while(!var14) {
-                              var15 = var10.method5962();
+                              var15 = var10.readSmallSmart();
                               if (var15 == 0) {
                                  continue label1339;
                               }
@@ -1424,7 +1424,7 @@ public final class client extends class19 implements class318 {
                               }
                            }
 
-                           var15 = var10.method5962();
+                           var15 = var10.readSmallSmart();
                            if (var15 == 0) {
                               break;
                            }
@@ -1538,7 +1538,7 @@ public final class client extends class19 implements class318 {
                               var13 = 0;
 
                               while(true) {
-                                 var65 = var10.method5962();
+                                 var65 = var10.readSmallSmart();
                                  if (var65 == 0) {
                                     break;
                                  }
@@ -4295,13 +4295,13 @@ public final class client extends class19 implements class318 {
 
             String var63;
             boolean var65;
-            if (ServerPacket.field2741 == packetReader.serverPacket) {
-               value = buf.method5962();
-               var65 = buf.readUnsignedByte() == 1;
+            if (ServerPacket.SEND_MESSAGE_GAME == packetReader.serverPacket) {
+               value = buf.readSmallSmart(); // type
+               var65 = buf.readUnsignedByte() == 1; // isInteractingMessage
                var63 = "";
                boolean var58 = false;
                if (var65) {
-                  var63 = buf.readStringNullTerminated();
+                  var63 = buf.readStringNullTerminated(); // message
                   if (class13.field80.method1325(new class406(var63, class52.field761))) {
                      var58 = true;
                   }
@@ -5214,7 +5214,7 @@ public final class client extends class19 implements class318 {
                }
 
                for(; buf.offset < packetReader.serverPacketLength; class140.method2362(var23, var31, var32 - 1, var36)) {
-                  var31 = buf.method5962();
+                  var31 = buf.readSmallSmart();
                   var32 = buf.readUnsignedShort();
                   var36 = 0;
                   if (0 != var32) {

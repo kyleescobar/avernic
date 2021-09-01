@@ -1,6 +1,7 @@
 package player
 
 import dev.avernic.server.api.Varbits
+import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.api.toggleRun
 import dev.avernic.server.engine.api.updateAppearance
 import dev.avernic.server.engine.event.on_event
@@ -19,4 +20,9 @@ on_event<LoginEvent> { event ->
      * Send default initial client scripts and vars.
      */
     player.updateVarbit(Varbits.HAS_DISPLAY_NAME, 1)
+
+    /*
+     * Send welcome game message.
+     */
+    player.sendGameMessage("Welcome to ${ServerConfig.SERVER_NAME}.")
 }

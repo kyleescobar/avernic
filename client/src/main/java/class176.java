@@ -24,7 +24,7 @@ public class class176 implements class290 {
    public static String method3147(Buffer var0) {
       String var2;
       try {
-         int var3 = var0.method5962();
+         int var3 = var0.readSmallSmart();
          if (var3 > 32767) {
             var3 = 32767;
          }

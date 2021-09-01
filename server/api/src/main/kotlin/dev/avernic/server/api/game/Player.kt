@@ -1,6 +1,6 @@
 package dev.avernic.server.engine.api
 
-import dev.avernic.server.engine.api.task.ChatTask
+import dev.avernic.server.api.ChatTask
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.TileDestination
 import dev.avernic.server.engine.game.map.Tile

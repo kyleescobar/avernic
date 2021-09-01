@@ -1,6 +1,7 @@
 subprojects {
     dependencies {
         implementation(project(":server:api"))
+        implementation(project(":server:config"))
 
         project(":server:content").dependencyProject.subprojects.forEach { subProject ->
             if(subProject.buildFile.exists() && subProject.name !=  project.name) {
