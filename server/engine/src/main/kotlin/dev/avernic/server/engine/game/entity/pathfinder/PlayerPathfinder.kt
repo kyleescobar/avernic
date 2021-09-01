@@ -39,16 +39,21 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
             Direction.NORTH_EAST
         )
 
+        if(start.getDistance(dest) == 1 && !player.world.isNotBlocked(player.tile, Direction.between(player.tile, dest), player.size)) {
+            return mutableListOf()
+        }
+
         queue.add(Node(start))
         while(queue.isNotEmpty()) {
             if(cancel) {
                 cancel = false
                 break
             }
+
             if(searchLimit-- == 0) break
 
             val node = queue.removeFirst()
-            if(node.tile.sameAs(destination.x, destination.y)) {
+            if(destination.hasReached(node.tile.x, node.tile.y, player.size)) {
                 return buildSolution(node)
             }
 
