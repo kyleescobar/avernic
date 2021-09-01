@@ -263,7 +263,7 @@ public class class285 {
                      return 1;
                   } else if (3638 == var0) {
                      var6 = class51.field747[--class51.field746] == 1;
-                     class13.field80.field712.method5239(new class95(var6));
+                     class13.field80.field712.method5239(new UserComparator10(var6));
                      return 1;
                   } else if (var0 == 3639) {
                      class13.field80.field712.method5197();
@@ -354,7 +354,7 @@ public class class285 {
                   } else if (var0 == 3654) {
                      var6 = class51.field747[--class51.field746] == 1;
                      if (class69.field972 != null) {
-                        class69.field972.method5239(new class95(var6));
+                        class69.field972.method5239(new UserComparator10(var6));
                      }
 
                      return 1;

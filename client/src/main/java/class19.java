@@ -617,7 +617,7 @@ public abstract class class19 extends Applet implements Runnable, FocusListener,
          Graphics var5 = this.field106.getGraphics();
          if (null == class7.field13) {
             class7.field13 = new Font("Helvetica", 1, 13);
-            class95.field1250 = this.field106.getFontMetrics(class7.field13);
+            UserComparator10.field1250 = this.field106.getFontMetrics(class7.field13);
          }
 
          if (var3) {
@@ -641,7 +641,7 @@ public abstract class class19 extends Applet implements Runnable, FocusListener,
             var7.fillRect(3 * var1 + 2, 2, 300 - 3 * var1, 30);
             var7.setFont(class7.field13);
             var7.setColor(Color.white);
-            var7.drawString(var2, (304 - class95.field1250.stringWidth(var2)) / 2, 22);
+            var7.drawString(var2, (304 - UserComparator10.field1250.stringWidth(var2)) / 2, 22);
             var5.drawImage(class55.field795, class69.canvasWidth / 2 - 152, client.canvasHeight / 2 - 18, (ImageObserver)null);
          } catch (Exception var10) {
             int var8 = class69.canvasWidth / 2 - 152;
@@ -654,7 +654,7 @@ public abstract class class19 extends Applet implements Runnable, FocusListener,
             var5.fillRect(var1 * 3 + var8 + 2, var9 + 2, 300 - 3 * var1, 30);
             var5.setFont(class7.field13);
             var5.setColor(Color.white);
-            var5.drawString(var2, var8 + (304 - class95.field1250.stringWidth(var2)) / 2, var9 + 22);
+            var5.drawString(var2, var8 + (304 - UserComparator10.field1250.stringWidth(var2)) / 2, var9 + 22);
          }
       } catch (Exception var11) {
          this.field106.repaint();
@@ -665,7 +665,7 @@ public abstract class class19 extends Applet implements Runnable, FocusListener,
    protected final void method181() {
       class55.field795 = null;
       class7.field13 = null;
-      class95.field1250 = null;
+      UserComparator10.field1250 = null;
    }
 
    protected void js5Error(String var1) {

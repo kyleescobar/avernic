@@ -462,7 +462,7 @@ public abstract class class72 extends class201 {
                      class51.field747[++class51.field746 - 1] = class56.field806;
                      return 1;
                   } else if (3154 == var0) {
-                     class51.field747[++class51.field746 - 1] = class68.method1690();
+                     class51.field747[++class51.field746 - 1] = ScriptEvent.method1690();
                      return 1;
                   } else if (3155 == var0) {
                      --class2.field4;

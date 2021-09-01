@@ -17,7 +17,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
         queue.clear()
         visited.clear()
 
-        var searchLimit = 256
+        var searchLimit = 4096
 
         val directions = arrayOf(
             Direction.WEST,

@@ -51,7 +51,7 @@ public class class54 {
                packetNode.packetBuffer.writeByte(18);
                packetNode.packetBuffer.writeShortLEADD(var12 + class281.baseX); // tileX
                packetNode.packetBuffer.writeShort(Npc.baseY + var13); // tileY
-               packetNode.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? (KeyHandler.pressedKeys[81] ? 2 : 1) : 0);
+               packetNode.packetBuffer.writeByte(KeyHandler.pressedKeys[82] ? (KeyHandler.pressedKeys[81] ? 2 : 1) : 0); // type
                packetNode.packetBuffer.writeByte(lastPressedX); // mouseX
                packetNode.packetBuffer.writeByte(lastPressedY); // mouseY
                packetNode.packetBuffer.writeShort(client.cameraAngleY); // angle

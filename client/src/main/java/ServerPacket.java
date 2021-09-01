@@ -91,7 +91,7 @@ public class ServerPacket {
    public static final ServerPacket field2780 = new ServerPacket(88, 5);
    public static final ServerPacket field2781 = new ServerPacket(89, -2);
    public static final ServerPacket field2782 = new ServerPacket(57, 2);
-   public static final ServerPacket field2783 = new ServerPacket(91, -2);
+   public static final ServerPacket RUN_CLIENT_SCRIPT = new ServerPacket(91, -2);
    public static final ServerPacket field2784 = new ServerPacket(77, 2);
    public static final ServerPacket field2785 = new ServerPacket(93, -1);
    public static final ServerPacket field2786 = new ServerPacket(94, 2);

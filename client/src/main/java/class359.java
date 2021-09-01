@@ -118,12 +118,12 @@ public class class359 {
 
             Iterator var13;
             class186 var14;
-            class68 var15;
+            ScriptEvent var15;
             class191 var16;
-            for(var13 = var11.iterator(); var13.hasNext(); class95.method2055(var15)) {
+            for(var13 = var11.iterator(); var13.hasNext(); UserComparator10.runScriptEvent(var15)) {
                var14 = (class186)var13.next();
                var12.add(var14);
-               var15 = new class68();
+               var15 = new ScriptEvent();
                var16 = new class191(var14.method3208(), var14.field2111, var14.field2110);
                var15.method1683(new Object[]{var16, var1, var2});
                if (this.field4073.contains(var14)) {
@@ -138,11 +138,11 @@ public class class359 {
             while(var13.hasNext()) {
                var14 = (class186)var13.next();
                if (!var12.contains(var14)) {
-                  var15 = new class68();
+                  var15 = new ScriptEvent();
                   var16 = new class191(var14.method3208(), var14.field2111, var14.field2110);
                   var15.method1683(new Object[]{var16, var1, var2});
                   var15.method1684(16);
-                  class95.method2055(var15);
+                  UserComparator10.runScriptEvent(var15);
                }
             }
 
@@ -786,7 +786,7 @@ public class class359 {
    }
 
    public void method5537(int var1, int var2, class245 var3, class245 var4) {
-      class68 var6 = new class68();
+      ScriptEvent var6 = new ScriptEvent();
       class191 var7 = new class191(var2, var3, var4);
       var6.method1683(new Object[]{var7});
       switch(var1) {
@@ -806,7 +806,7 @@ public class class359 {
          var6.method1684(14);
       }
 
-      class95.method2055(var6);
+      UserComparator10.runScriptEvent(var6);
    }
 
    public class186 method5619() {

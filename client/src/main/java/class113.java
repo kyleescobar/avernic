@@ -28,9 +28,9 @@ public class class113 extends class104 {
             for(int var3 = 0; var3 < var2.length; ++var3) {
                Interface var4 = var2[var3];
                if (null != var4.field3045) {
-                  class68 var5 = new class68();
+                  ScriptEvent var5 = new ScriptEvent();
                   var5.field961 = var4;
-                  var5.field955 = var4.field3045;
+                  var5.args = var4.field3045;
                   class79.method1844(var5, 5000000, 0);
                }
             }

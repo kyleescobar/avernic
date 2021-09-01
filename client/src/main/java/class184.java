@@ -7,12 +7,12 @@ public class class184 {
       Interface var6 = class50.method1394(var1, var2);
       if (var6 != null) {
          if (var6.field3055 != null) {
-            class68 var7 = new class68();
+            ScriptEvent var7 = new ScriptEvent();
             var7.field961 = var6;
             var7.field957 = var0;
             var7.field952 = var4;
-            var7.field955 = var6.field3055;
-            class95.method2055(var7);
+            var7.args = var6.field3055;
+            UserComparator10.runScriptEvent(var7);
          }
 
          boolean var12 = true;

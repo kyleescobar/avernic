@@ -62,9 +62,9 @@ public final class class215 {
          if (null == var4.field3072) {
             return 0;
          } else {
-            class68 var5 = new class68();
+            ScriptEvent var5 = new ScriptEvent();
             var5.field961 = var4;
-            var5.field955 = var4.field3072;
+            var5.args = var4.field3072;
             var5.field962 = 1 + class51.field743;
             client.field611.method4672(var5);
             return 1;

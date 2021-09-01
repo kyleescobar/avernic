@@ -2,8 +2,8 @@ package dev.avernic.server.engine.game.entity
 
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.PlayerLoginEvent
-import dev.avernic.server.engine.event.player.PlayerLogoutEvent
+import dev.avernic.server.engine.event.player.LoginEvent
+import dev.avernic.server.engine.event.player.LogoutEvent
 import dev.avernic.server.engine.event.player.PlayerMoveEvent
 import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
@@ -106,7 +106,7 @@ class Player(val client: Client) : LivingEntity() {
             }
         }
 
-        EventBus.schedule(PlayerLoginEvent(this))
+        EventBus.schedule(LoginEvent(this))
 
         Logger.info("[username: $username] has connected to the server.")
     }
@@ -114,7 +114,7 @@ class Player(val client: Client) : LivingEntity() {
     internal fun logout() {
         world.players.remove(this)
 
-        EventBus.schedule(PlayerLogoutEvent(this))
+        EventBus.schedule(LogoutEvent(this))
 
         Logger.info("[username: $username] has disconnected from the server.")
     }

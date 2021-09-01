@@ -105,10 +105,10 @@ public class class271 implements class290 {
 
             if (var27 || !var10.field2993 || var13 < var15 && var14 < var16) {
                if (var10.field2993) {
-                  class68 var28;
+                  ScriptEvent var28;
                   if (var10.field3102) {
                      if (MouseHandler.field142 >= var13 && MouseHandler.field145 >= var14 && MouseHandler.field142 < var15 && MouseHandler.field145 < var16) {
-                        for(var28 = (class68)client.field611.method4687(); var28 != null; var28 = (class68)client.field611.method4678()) {
+                        for(var28 = (ScriptEvent)client.field611.method4687(); var28 != null; var28 = (ScriptEvent)client.field611.method4678()) {
                            if (var28.field964) {
                               var28.remove();
                               var28.field961.field3093 = false;
@@ -125,8 +125,8 @@ public class class271 implements class290 {
                         }
                      }
                   } else if (var10.field3078 && MouseHandler.field142 >= var13 && MouseHandler.field145 >= var14 && MouseHandler.field142 < var15 && MouseHandler.field145 < var16) {
-                     for(var28 = (class68)client.field611.method4687(); var28 != null; var28 = (class68)client.field611.method4678()) {
-                        if (var28.field964 && var28.field955 == var28.field961.field3065) {
+                     for(var28 = (ScriptEvent)client.field611.method4687(); var28 != null; var28 = (ScriptEvent)client.field611.method4678()) {
+                        if (var28.field964 && var28.args == var28.field961.field3065) {
                            var28.remove();
                         }
                      }
@@ -264,13 +264,13 @@ public class class271 implements class290 {
                      }
 
                      if (var10.field3044) {
-                        class68 var32;
+                        ScriptEvent var32;
                         if (var29 && 0 != client.field657 && null != var10.field3065) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field964 = true;
                            var32.field961 = var10;
                            var32.field956 = client.field657;
-                           var32.field955 = var10.field3065;
+                           var32.args = var10.field3065;
                            client.field611.method4672(var32);
                         }
 
@@ -283,94 +283,94 @@ public class class271 implements class290 {
                         if (!var10.field2980 && var22) {
                            var10.field2980 = true;
                            if (var10.field3046 != null) {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field964 = true;
                               var32.field961 = var10;
                               var32.field953 = MouseHandler.lastPressedX - var11;
                               var32.field956 = MouseHandler.lastPressedY - var12;
-                              var32.field955 = var10.field3046;
+                              var32.args = var10.field3046;
                               client.field611.method4672(var32);
                            }
                         }
 
                         if (var10.field2980 && var30 && null != var10.field3047) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field964 = true;
                            var32.field961 = var10;
                            var32.field953 = MouseHandler.field142 - var11;
                            var32.field956 = MouseHandler.field145 - var12;
-                           var32.field955 = var10.field3047;
+                           var32.args = var10.field3047;
                            client.field611.method4672(var32);
                         }
 
                         if (var10.field2980 && !var30) {
                            var10.field2980 = false;
                            if (var10.field2955 != null) {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field964 = true;
                               var32.field961 = var10;
                               var32.field953 = MouseHandler.field142 - var11;
                               var32.field956 = MouseHandler.field145 - var12;
-                              var32.field955 = var10.field2955;
+                              var32.args = var10.field2955;
                               client.field686.method4672(var32);
                            }
                         }
 
                         if (var30 && null != var10.field3049) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field964 = true;
                            var32.field961 = var10;
                            var32.field953 = MouseHandler.field142 - var11;
                            var32.field956 = MouseHandler.field145 - var12;
-                           var32.field955 = var10.field3049;
+                           var32.args = var10.field3049;
                            client.field611.method4672(var32);
                         }
 
                         if (!var10.field3093 && var29) {
                            var10.field3093 = true;
                            if (null != var10.field3050) {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field964 = true;
                               var32.field961 = var10;
                               var32.field953 = MouseHandler.field142 - var11;
                               var32.field956 = MouseHandler.field145 - var12;
-                              var32.field955 = var10.field3050;
+                              var32.args = var10.field3050;
                               client.field611.method4672(var32);
                            }
                         }
 
                         if (var10.field3093 && var29 && null != var10.field3051) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field964 = true;
                            var32.field961 = var10;
                            var32.field953 = MouseHandler.field142 - var11;
                            var32.field956 = MouseHandler.field145 - var12;
-                           var32.field955 = var10.field3051;
+                           var32.args = var10.field3051;
                            client.field611.method4672(var32);
                         }
 
                         if (var10.field3093 && !var29) {
                            var10.field3093 = false;
                            if (null != var10.field3052) {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field964 = true;
                               var32.field961 = var10;
                               var32.field953 = MouseHandler.field142 - var11;
                               var32.field956 = MouseHandler.field145 - var12;
-                              var32.field955 = var10.field3052;
+                              var32.args = var10.field3052;
                               client.field686.method4672(var32);
                            }
                         }
 
                         if (var10.field3017 != null) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3017;
+                           var32.args = var10.field3017;
                            client.field612.method4672(var32);
                         }
 
                         int var34;
-                        class68 var36;
+                        ScriptEvent var36;
                         int var37;
                         if (var10.field3057 != null && client.field552 > var10.field3096) {
                            if (var10.field3058 != null && client.field552 - var10.field3096 <= 32) {
@@ -380,18 +380,18 @@ public class class271 implements class290 {
 
                                  for(var34 = 0; var34 < var10.field3058.length; ++var34) {
                                     if (var24 == var10.field3058[var34]) {
-                                       var36 = new class68();
+                                       var36 = new ScriptEvent();
                                        var36.field961 = var10;
-                                       var36.field955 = var10.field3057;
+                                       var36.args = var10.field3057;
                                        client.field611.method4672(var36);
                                        break label820;
                                     }
                                  }
                               }
                            } else {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field961 = var10;
-                              var32.field955 = var10.field3057;
+                              var32.args = var10.field3057;
                               client.field611.method4672(var32);
                            }
 
@@ -406,18 +406,18 @@ public class class271 implements class290 {
 
                                  for(var34 = 0; var34 < var10.field3060.length; ++var34) {
                                     if (var24 == var10.field3060[var34]) {
-                                       var36 = new class68();
+                                       var36 = new ScriptEvent();
                                        var36.field961 = var10;
-                                       var36.field955 = var10.field3083;
+                                       var36.args = var10.field3083;
                                        client.field611.method4672(var36);
                                        break label796;
                                     }
                                  }
                               }
                            } else {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field961 = var10;
-                              var32.field955 = var10.field3083;
+                              var32.args = var10.field3083;
                               client.field611.method4672(var32);
                            }
 
@@ -432,18 +432,18 @@ public class class271 implements class290 {
 
                                  for(var34 = 0; var34 < var10.field3062.length; ++var34) {
                                     if (var10.field3062[var34] == var24) {
-                                       var36 = new class68();
+                                       var36 = new ScriptEvent();
                                        var36.field961 = var10;
-                                       var36.field955 = var10.field2996;
+                                       var36.args = var10.field2996;
                                        client.field611.method4672(var36);
                                        break label772;
                                     }
                                  }
                               }
                            } else {
-                              var32 = new class68();
+                              var32 = new ScriptEvent();
                               var32.field961 = var10;
-                              var32.field955 = var10.field2996;
+                              var32.args = var10.field2996;
                               client.field611.method4672(var32);
                            }
 
@@ -451,83 +451,83 @@ public class class271 implements class290 {
                         }
 
                         if (client.field602 > var10.field3095 && null != var10.field3066) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3066;
+                           var32.args = var10.field3066;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field610 > var10.field3095 && var10.field3070 != null) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3070;
+                           var32.args = var10.field3070;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field604 > var10.field3095 && null != var10.field3059) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3059;
+                           var32.args = var10.field3059;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field605 > var10.field3095 && null != var10.field3075) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3075;
+                           var32.args = var10.field3075;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field606 > var10.field3095 && var10.field3073 != null) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3073;
+                           var32.args = var10.field3073;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field607 > var10.field3095 && null != var10.field2982) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field2982;
+                           var32.args = var10.field2982;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field480 > var10.field3095 && var10.field3079 != null) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3079;
+                           var32.args = var10.field3079;
                            client.field611.method4672(var32);
                         }
 
                         if (client.field517 > var10.field3095 && null != var10.field3074) {
-                           var32 = new class68();
+                           var32 = new ScriptEvent();
                            var32.field961 = var10;
-                           var32.field955 = var10.field3074;
+                           var32.args = var10.field3074;
                            client.field611.method4672(var32);
                         }
 
                         var10.field3095 = client.field593;
                         if (null != var10.field3067) {
                            for(var37 = 0; var37 < client.field451; ++var37) {
-                              class68 var35 = new class68();
+                              ScriptEvent var35 = new ScriptEvent();
                               var35.field961 = var10;
                               var35.field959 = client.field431[var37];
                               var35.field960 = client.field634[var37];
-                              var35.field955 = var10.field3067;
+                              var35.args = var10.field3067;
                               client.field611.method4672(var35);
                            }
                         }
 
-                        class68 var38;
+                        ScriptEvent var38;
                         int[] var39;
                         if (null != var10.field3068) {
                            var39 = class137.method2330();
 
                            for(var24 = 0; var24 < var39.length; ++var24) {
-                              var38 = new class68();
+                              var38 = new ScriptEvent();
                               var38.field961 = var10;
                               var38.field959 = var39[var24];
-                              var38.field955 = var10.field3068;
+                              var38.args = var10.field3068;
                               client.field611.method4672(var38);
                            }
                         }
@@ -536,10 +536,10 @@ public class class271 implements class290 {
                            var39 = class76.method1819();
 
                            for(var24 = 0; var24 < var39.length; ++var24) {
-                              var38 = new class68();
+                              var38 = new ScriptEvent();
                               var38.field961 = var10;
                               var38.field959 = var39[var24];
-                              var38.field955 = var10.field3069;
+                              var38.args = var10.field3069;
                               client.field611.method4672(var38);
                            }
                         }
@@ -577,7 +577,7 @@ public class class271 implements class290 {
                      InterfaceParent var31 = (InterfaceParent)client.interfaceParents.get((long)var10.id);
                      if (var31 != null) {
                         if (0 == var31.field949 && MouseHandler.field142 >= var13 && MouseHandler.field145 >= var14 && MouseHandler.field142 < var15 && MouseHandler.field145 < var16 && !client.isMenuOpen) {
-                           for(class68 var33 = (class68)client.field611.method4687(); null != var33; var33 = (class68)client.field611.method4678()) {
+                           for(ScriptEvent var33 = (ScriptEvent)client.field611.method4687(); null != var33; var33 = (ScriptEvent)client.field611.method4678()) {
                               if (var33.field964) {
                                  var33.remove();
                                  var33.field961.field3093 = false;

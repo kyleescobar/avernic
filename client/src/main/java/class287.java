@@ -47,9 +47,9 @@ final class class287 implements Comparator {
       }
 
       if (var3 && null != var0.field3072 && (var5 != var0.field2973 || var0.field2990 != var6)) {
-         class68 var7 = new class68();
+         ScriptEvent var7 = new ScriptEvent();
          var7.field961 = var0;
-         var7.field955 = var0.field3072;
+         var7.args = var0.field3072;
          client.field611.method4672(var7);
       }
 

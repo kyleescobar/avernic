@@ -1,4 +1,4 @@
-public class class68 extends class354 {
+public class ScriptEvent extends class354 {
    boolean field964;
    Interface field958;
    Interface field961;
@@ -9,11 +9,11 @@ public class class68 extends class354 {
    int field960;
    int field962;
    int field963 = 76;
-   Object[] field955;
+   Object[] args;
    String field952;
 
    public void method1683(Object[] var1) {
-      this.field955 = var1;
+      this.args = var1;
    }
 
    public void method1684(int var1) {

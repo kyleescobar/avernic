@@ -1194,7 +1194,7 @@ public final class client extends class19 implements class318 {
       class308.field3766 = new class334(255, class131.field1477, class131.field1479, 500000);
       class38.clientPreferences = class25.method437();
       this.method156();
-      class66.method1679(this, class95.field1249);
+      class66.method1679(this, UserComparator10.field1249);
       if (0 != field407) {
          field422 = true;
       }
@@ -3611,19 +3611,19 @@ public final class client extends class19 implements class318 {
                   ++field593;
 
                   while(true) {
-                     class68 var30;
+                     ScriptEvent var30;
                      Interface var32;
                      Interface var33;
                      do {
-                        var30 = (class68)field612.method4699();
+                        var30 = (ScriptEvent)field612.method4699();
                         if (null == var30) {
                            while(true) {
                               do {
-                                 var30 = (class68)field686.method4699();
+                                 var30 = (ScriptEvent)field686.method4699();
                                  if (null == var30) {
                                     while(true) {
                                        do {
-                                          var30 = (class68)field611.method4699();
+                                          var30 = (ScriptEvent)field611.method4699();
                                           if (var30 == null) {
                                              this.method830();
                                              if (class25.field202 != null) {
@@ -3961,7 +3961,7 @@ public final class client extends class19 implements class318 {
                                           var33 = class87.getComponent(var32.field3001);
                                        } while(null == var33 || null == var33.field3061 || var32.field3031 >= var33.field3061.length || var33.field3061[var32.field3031] != var32);
 
-                                       class95.method2055(var30);
+                                       UserComparator10.runScriptEvent(var30);
                                     }
                                  }
 
@@ -3973,7 +3973,7 @@ public final class client extends class19 implements class318 {
                                  var33 = class87.getComponent(var32.field3001);
                               } while(null == var33 || var33.field3061 == null || var32.field3031 >= var33.field3061.length || var32 != var33.field3061[var32.field3031]);
 
-                              class95.method2055(var30);
+                              UserComparator10.runScriptEvent(var30);
                            }
                         }
 
@@ -3985,7 +3985,7 @@ public final class client extends class19 implements class318 {
                         var33 = class87.getComponent(var32.field3001);
                      } while(var33 == null || null == var33.field3061 || var32.field3031 >= var33.field3061.length || var33.field3061[var32.field3031] != var32);
 
-                     class95.method2055(var30);
+                     UserComparator10.runScriptEvent(var30);
                   }
                }
 
@@ -4157,7 +4157,7 @@ public final class client extends class19 implements class318 {
          return false;
       } else {
          String var6;
-         int var7;
+         int i;
          try {
             int var23;
             if (packetReader.serverPacket == null) {
@@ -4252,9 +4252,9 @@ public final class client extends class19 implements class318 {
                value = buf.method5995();
                var72 = class87.getComponent(value);
 
-               for(var7 = 0; var7 < var72.field3086.length; ++var7) {
-                  var72.field3086[var7] = -1;
-                  var72.field3086[var7] = 0;
+               for(i = 0; i < var72.field3086.length; ++i) {
+                  var72.field3086[i] = -1;
+                  var72.field3086[i] = 0;
                }
 
                class81.invalidateComponent(var72);
@@ -4391,9 +4391,9 @@ public final class client extends class19 implements class318 {
                if (class270.field3398 >= 100) {
                   value = 64 + class377.field4166 * 128;
                   var23 = class192.field2148 * 128 + 64;
-                  var7 = class123.method2216(value, var23, class285.plane) - class330.field3875;
+                  i = class123.method2216(value, var23, class285.plane) - class330.field3875;
                   var31 = value - class65.field934;
-                  var32 = var7 - class337.field3924;
+                  var32 = i - class337.field3924;
                   var36 = var23 - class358.field4012;
                   var38 = (int)Math.sqrt((double)(var31 * var31 + var36 * var36));
                   class117.field1398 = (int)(Math.atan2((double)var32, (double)var38) * 325.949D) & 2047;
@@ -4414,10 +4414,10 @@ public final class client extends class19 implements class318 {
             long var8;
             int var14;
             long var24;
-            String var35;
+            String rawString;
             String var53;
             if (ServerPacket.field2738 == packetReader.serverPacket) {
-               var35 = buf.readStringNullTerminated();
+               rawString = buf.readStringNullTerminated();
                var24 = (long) buf.readUnsignedShort();
                var8 = (long) buf.method5952();
                PlayerType var44 = (PlayerType)class251.enumeratedValueOf(class85.getPlayerTypes(), buf.readUnsignedByte());
@@ -4431,7 +4431,7 @@ public final class client extends class19 implements class318 {
                   }
                }
 
-               if (class13.field80.method1325(new class406(var35, class52.field761))) {
+               if (class13.field80.method1325(new class406(rawString, class52.field761))) {
                   var46 = true;
                }
 
@@ -4447,9 +4447,9 @@ public final class client extends class19 implements class318 {
                   }
 
                   if (-1 != var44.field3543) {
-                     class121.addGameMessage(var59, class77.method1822(var44.field3543) + var35, var53);
+                     class121.addGameMessage(var59, class77.method1822(var44.field3543) + rawString, var53);
                   } else {
-                     class121.addGameMessage(var59, var35, var53);
+                     class121.addGameMessage(var59, rawString, var53);
                   }
                }
 
@@ -4482,16 +4482,16 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.field2778) {
-               var35 = buf.readStringNullTerminated();
+               rawString = buf.readStringNullTerminated();
                var23 = buf.readUnsignedByteADD();
-               var7 = buf.readUnsignedByteADD();
-               if (var7 >= 1 && var7 <= 8) {
-                  if (var35.equalsIgnoreCase(class270.field3234)) {
-                     var35 = null;
+               i = buf.readUnsignedByteADD();
+               if (i >= 1 && i <= 8) {
+                  if (rawString.equalsIgnoreCase(class270.field3234)) {
+                     rawString = null;
                   }
 
-                  field532[var7 - 1] = var35;
-                  field533[var7 - 1] = var23 == 0;
+                  field532[i - 1] = rawString;
+                  field533[i - 1] = var23 == 0;
                }
 
                packetReader.serverPacket = null;
@@ -4499,9 +4499,9 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.field2749) {
-               var35 = buf.readStringNullTerminated();
+               rawString = buf.readStringNullTerminated();
                var6 = class303.escapeBrackets(class286.method4581(class176.method3147(buf)));
-               class121.addGameMessage(6, var35, var6);
+               class121.addGameMessage(6, rawString, var6);
                packetReader.serverPacket = null;
                return true;
             }
@@ -4552,22 +4552,22 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            if (packetReader.serverPacket == ServerPacket.field2783) {
-               var35 = buf.readStringNullTerminated();
-               Object[] var70 = new Object[var35.length() + 1];
+            if (packetReader.serverPacket == ServerPacket.RUN_CLIENT_SCRIPT) {
+               rawString = buf.readStringNullTerminated();
+               Object[] scriptArgs = new Object[rawString.length() + 1];
 
-               for(var7 = var35.length() - 1; var7 >= 0; --var7) {
-                  if (var35.charAt(var7) == 's') {
-                     var70[var7 + 1] = buf.readStringNullTerminated();
+               for(i = rawString.length() - 1; i >= 0; --i) {
+                  if (rawString.charAt(i) == 's') {
+                     scriptArgs[i + 1] = buf.readStringNullTerminated();
                   } else {
-                     var70[1 + var7] = new Integer(buf.readInt());
+                     scriptArgs[1 + i] = new Integer(buf.readInt());
                   }
                }
 
-               var70[0] = new Integer(buf.readInt());
-               class68 var64 = new class68();
-               var64.field955 = var70;
-               class95.method2055(var64);
+               scriptArgs[0] = new Integer(buf.readInt());
+               ScriptEvent scriptEvent = new ScriptEvent();
+               scriptEvent.args = scriptArgs;
+               UserComparator10.runScriptEvent(scriptEvent);
                packetReader.serverPacket = null;
                return true;
             }
@@ -4699,10 +4699,10 @@ public final class client extends class19 implements class318 {
             if (packetReader.serverPacket == ServerPacket.IF_SET_COLOR) {
                value = buf.method5995();
                var23 = buf.readUnsignedShortLE();
-               var7 = var23 >> 10 & 31;
+               i = var23 >> 10 & 31;
                var31 = var23 >> 5 & 31;
                var32 = var23 & 31;
-               var36 = (var31 << 11) + (var7 << 19) + (var32 << 3);
+               var36 = (var31 << 11) + (i << 19) + (var32 << 3);
                Interface var48 = class87.getComponent(value);
                if (var48.field2983 != var36) {
                   var48.field2983 = var36;
@@ -4753,9 +4753,9 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2724 == packetReader.serverPacket) {
                value = buf.readInt();
                var23 = buf.readUnsignedShort();
-               var7 = buf.readUnsignedShortLEADD();
+               i = buf.readUnsignedShortLEADD();
                var29 = class87.getComponent(value);
-               var29.field3014 = var23 + (var7 << 16);
+               var29.field3014 = var23 + (i << 16);
                packetReader.serverPacket = null;
                return true;
             }
@@ -4812,12 +4812,12 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.IF_SET_ANGLE == packetReader.serverPacket) {
                value = buf.readUnsignedShort();
                var23 = buf.readUnsignedShortLEADD();
-               var7 = buf.readUnsignedShortADD();
+               i = buf.readUnsignedShortADD();
                var31 = buf.readIntME();
                var34 = class87.getComponent(var31);
-               if (var23 != var34.field3009 || var34.field3010 != var7 || var34.field3000 != value) {
+               if (var23 != var34.field3009 || var34.field3010 != i || var34.field3000 != value) {
                   var34.field3009 = var23;
-                  var34.field3010 = var7;
+                  var34.field3010 = i;
                   var34.field3000 = value;
                   class81.invalidateComponent(var34);
                }
@@ -4845,9 +4845,9 @@ public final class client extends class19 implements class318 {
                class108.method2105();
                value = buf.readUnsignedByte();
                var23 = buf.method5995();
-               var7 = buf.readUnsignedByteSUB();
+               i = buf.readUnsignedByteSUB();
                field542[value] = var23;
-               field435[value] = var7;
+               field435[value] = i;
                field541[value] = 1;
 
                for(var31 = 0; var31 < 98; ++var31) {
@@ -4894,11 +4894,11 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2717 == packetReader.serverPacket) {
                value = buf.readUnsignedByte();
                var23 = buf.readUnsignedByte();
-               var7 = buf.readUnsignedByte();
+               i = buf.readUnsignedByte();
                var31 = buf.readUnsignedByte();
                field656[value] = true;
                field437[value] = var23;
-               field609[value] = var7;
+               field609[value] = i;
                field659[value] = var31;
                field660[value] = 0;
                packetReader.serverPacket = null;
@@ -4975,7 +4975,7 @@ public final class client extends class19 implements class318 {
             if (packetReader.serverPacket == ServerPacket.GAMEFRAME_FULL) {
                value = packetReader.serverPacketLength + buf.offset;
                var23 = buf.readUnsignedShort();
-               var7 = buf.readUnsignedShort();
+               i = buf.readUnsignedShort();
                if (rootInterface != var23) {
                   rootInterface = var23;
                   this.resizeRoot(false);
@@ -4988,7 +4988,7 @@ public final class client extends class19 implements class318 {
                }
 
                InterfaceParent var11;
-               for(; var7-- > 0; var11.field948 = true) {
+               for(; i-- > 0; var11.field948 = true) {
                   var31 = buf.readInt();
                   var32 = buf.readUnsignedShort();
                   var36 = buf.readUnsignedByte();
@@ -5077,13 +5077,13 @@ public final class client extends class19 implements class318 {
             if (packetReader.serverPacket == ServerPacket.IF_OPEN_SUB) {
                value = buf.readUnsignedByteADD(); // type
                var23 = buf.readUnsignedShortADD(); // interfaceId
-               var7 = buf.readInt(); // component hash
-               interfaceParent = (InterfaceParent) interfaceParents.get((long)var7);
+               i = buf.readInt(); // component hash
+               interfaceParent = (InterfaceParent) interfaceParents.get((long)i);
                if (interfaceParent != null) {
                   class162.closeInterface(interfaceParent, var23 != interfaceParent.field950);
                }
 
-               class107.openInterface(var7, var23, value);
+               class107.openInterface(i, var23, value);
                packetReader.serverPacket = null;
                return true;
             }
@@ -5148,8 +5148,8 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2773 == packetReader.serverPacket) {
                value = buf.readUnsignedShort();
                var23 = buf.readUnsignedByte();
-               var7 = buf.readUnsignedShort();
-               class128.method2256(value, var23, var7);
+               i = buf.readUnsignedShort();
+               class128.method2256(value, var23, i);
                packetReader.serverPacket = null;
                return true;
             }
@@ -5256,7 +5256,7 @@ public final class client extends class19 implements class318 {
 
             long var10;
             if (packetReader.serverPacket == ServerPacket.field2785) {
-               var35 = buf.readStringNullTerminated();
+               rawString = buf.readStringNullTerminated();
                var24 = buf.method5954();
                var8 = (long) buf.readUnsignedShort();
                var10 = (long) buf.method5952();
@@ -5271,7 +5271,7 @@ public final class client extends class19 implements class318 {
                   }
                }
 
-               if (var43.field3548 && class13.field80.method1325(new class406(var35, class52.field761))) {
+               if (var43.field3548 && class13.field80.method1325(new class406(rawString, class52.field761))) {
                   var56 = true;
                }
 
@@ -5280,9 +5280,9 @@ public final class client extends class19 implements class318 {
                   field631 = (field631 + 1) % 100;
                   var60 = class303.escapeBrackets(class286.method4581(class176.method3147(buf)));
                   if (-1 != var43.field3543) {
-                     class130.method2276(9, class77.method1822(var43.field3543) + var35, var60, class84.method1928(var24));
+                     class130.method2276(9, class77.method1822(var43.field3543) + rawString, var60, class84.method1928(var24));
                   } else {
-                     class130.method2276(9, var35, var60, class84.method1928(var24));
+                     class130.method2276(9, rawString, var60, class84.method1928(var24));
                   }
                }
 
@@ -5341,14 +5341,14 @@ public final class client extends class19 implements class318 {
                }
 
                var23 = buf.readInt();
-               var7 = buf.readUnsignedShortLEADD();
-               if (65535 == var7) {
-                  var7 = -1;
+               i = buf.readUnsignedShortLEADD();
+               if (65535 == i) {
+                  i = -1;
                }
 
                var31 = buf.readIntME();
 
-               for(var32 = value; var32 <= var7; ++var32) {
+               for(var32 = value; var32 <= i; ++var32) {
                   var10 = ((long)var31 << 32) + (long)var32;
                   class354 var40 = field469.get(var10);
                   if (var40 != null) {
@@ -5383,8 +5383,8 @@ public final class client extends class19 implements class318 {
                   var23 = -1;
                }
 
-               var7 = buf.method5995();
-               var29 = class87.getComponent(var7);
+               i = buf.method5995();
+               var29 = class87.getComponent(i);
                class157 var9;
                if (!var29.field2993) {
                   if (var23 == -1) {
@@ -5432,8 +5432,8 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2701 == packetReader.serverPacket) {
                value = buf.method5951();
                var23 = buf.method5989();
-               var7 = buf.method5995();
-               var29 = class87.getComponent(var7);
+               i = buf.method5995();
+               var29 = class87.getComponent(i);
                if (var23 != var29.field2947 || var29.field3019 != value || 0 != var29.field3063 || var29.field2964 != 0) {
                   var29.field2947 = var23;
                   var29.field3019 = value;
@@ -5442,7 +5442,7 @@ public final class client extends class19 implements class318 {
                   class81.invalidateComponent(var29);
                   this.method834(var29);
                   if (0 == var29.field2977) {
-                     class81.revalidateComponent(Interface.components[var7 >> 16], var29, false);
+                     class81.revalidateComponent(Interface.components[i >> 16], var29, false);
                   }
                }
 
@@ -5490,10 +5490,10 @@ public final class client extends class19 implements class318 {
             if (packetReader.serverPacket == ServerPacket.field2725) {
                value = buf.readInt();
                var23 = buf.readInt();
-               var7 = class264.method4339();
+               i = class264.method4339();
                PacketBufferNode var28 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2596, packetWriter.isaacCipher);
                var28.packetBuffer.method5976(class19.field120);
-               var28.packetBuffer.method6067(var7);
+               var28.packetBuffer.method6067(i);
                var28.packetBuffer.method5994(value);
                var28.packetBuffer.method5972(var23);
                packetWriter.addNode(var28);
@@ -5695,8 +5695,8 @@ public final class client extends class19 implements class318 {
          } catch (Exception var19) {
             var6 = "" + (packetReader.serverPacket != null ? packetReader.serverPacket.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (packetReader.field1214 != null ? packetReader.field1214.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + (null != packetReader.field1213 ? packetReader.field1213.field2787 * 1005948575 * -820114081 : -1) + class79.SYMBOL_COMMA + packetReader.serverPacketLength + class79.SYMBOL_COMMA + (class281.baseX + MouseHandler.localPlayer.pathX[0]) + class79.SYMBOL_COMMA + (MouseHandler.localPlayer.pathY[0] + Npc.baseY) + class79.SYMBOL_COMMA;
 
-            for(var7 = 0; var7 < packetReader.serverPacketLength && var7 < 50; ++var7) {
-               var6 = var6 + buf.payload[var7] + class79.SYMBOL_COMMA;
+            for(i = 0; i < packetReader.serverPacketLength && i < 50; ++i) {
+               var6 = var6 + buf.payload[i] + class79.SYMBOL_COMMA;
             }
 
             class333.method5330(var6, var19);
@@ -5920,26 +5920,26 @@ public final class client extends class19 implements class318 {
 
          int var7 = var2 - field587 + field582.field3054;
          int var8 = field582.field2968 + (var3 - field588);
-         class68 var9;
+         ScriptEvent var9;
          if (null != field581.field2995 && field592) {
-            var9 = new class68();
+            var9 = new ScriptEvent();
             var9.field961 = field581;
             var9.field953 = var7;
             var9.field956 = var8;
-            var9.field955 = field581.field2995;
-            class95.method2055(var9);
+            var9.args = field581.field2995;
+            UserComparator10.runScriptEvent(var9);
          }
 
          if (MouseHandler.field141 == 0) {
             if (field592) {
                if (field581.field3081 != null) {
-                  var9 = new class68();
+                  var9 = new ScriptEvent();
                   var9.field961 = field581;
                   var9.field953 = var7;
                   var9.field956 = var8;
                   var9.field958 = field585;
-                  var9.field955 = field581.field3081;
-                  class95.method2055(var9);
+                  var9.args = field581.field3081;
+                  UserComparator10.runScriptEvent(var9);
                }
 
                if (null != field585 && class123.method2215(field581) != null) {

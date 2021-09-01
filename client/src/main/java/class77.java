@@ -78,12 +78,12 @@ public class class77 extends class354 {
                }
             }
 
-            class68 var6;
+            ScriptEvent var6;
             if (var1 == 0 && var4.field3008 != null) {
-               var6 = new class68();
+               var6 = new ScriptEvent();
                var6.field961 = var4;
-               var6.field955 = var4.field3008;
-               class95.method2055(var6);
+               var6.args = var4.field3008;
+               UserComparator10.runScriptEvent(var6);
             }
 
             if (var1 == 1 && var4.field3076 != null) {
@@ -94,10 +94,10 @@ public class class77 extends class354 {
                   }
                }
 
-               var6 = new class68();
+               var6 = new ScriptEvent();
                var6.field961 = var4;
-               var6.field955 = var4.field3076;
-               class95.method2055(var6);
+               var6.args = var4.field3076;
+               UserComparator10.runScriptEvent(var6);
             }
          }
       }

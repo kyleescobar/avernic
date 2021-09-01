@@ -47,10 +47,10 @@ public class ApproximateRouteStrategy extends class161 {
    static void method803(int var0, int var1, int var2, int var3) {
       Interface var5 = class50.method1394(var0, var1);
       if (var5 != null && null != var5.field2974) {
-         class68 var6 = new class68();
+         ScriptEvent var6 = new ScriptEvent();
          var6.field961 = var5;
-         var6.field955 = var5.field2974;
-         class95.method2055(var6);
+         var6.args = var5.field2974;
+         UserComparator10.runScriptEvent(var6);
       }
 
       client.field565 = var3;

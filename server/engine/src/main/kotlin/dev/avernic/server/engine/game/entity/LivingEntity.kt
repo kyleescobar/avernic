@@ -24,7 +24,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     override var tile: Tile = Tile(0, 0, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
     override var orientation: Int = 0
-    open var running: Boolean = true
+    open var running: Boolean = false
     open var interacting: LivingEntity? = null
     open var movementType: MovementType = MovementType.NONE
     open var combatLevel: Int = 1

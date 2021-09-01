@@ -1,11 +1,11 @@
 import java.awt.FontMetrics;
 
-public class class95 extends class325 {
+public class UserComparator10 extends class325 {
    protected static String field1249;
    static FontMetrics field1250;
    final boolean field1251;
 
-   public class95(boolean var1) {
+   public UserComparator10(boolean var1) {
       this.field1251 = var1;
    }
 
@@ -21,7 +21,7 @@ public class class95 extends class325 {
       return this.method2051((class328)var1, (class328)var2);
    }
 
-   public static void method2055(class68 var0) {
+   public static void runScriptEvent(ScriptEvent var0) {
       class79.method1844(var0, 500000, 475000);
    }
 }

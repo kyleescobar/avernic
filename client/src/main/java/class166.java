@@ -106,10 +106,10 @@ public class class166 extends class186 {
       if (client.field563) {
          Interface var1 = class50.method1394(class25.field185, client.field564);
          if (null != var1 && null != var1.field3056) {
-            class68 var2 = new class68();
+            ScriptEvent var2 = new ScriptEvent();
             var2.field961 = var1;
-            var2.field955 = var1.field3056;
-            class95.method2055(var2);
+            var2.args = var1.field3056;
+            UserComparator10.runScriptEvent(var2);
          }
 
          client.field565 = -1;

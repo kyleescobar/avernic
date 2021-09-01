@@ -16,8 +16,8 @@ public class class79 {
       return (int)(var0 >>> 17 & 4294967295L);
    }
 
-   static void method1844(class68 var0, int var1, int var2) {
-      Object[] var4 = var0.field955;
+   static void method1844(ScriptEvent var0, int var1, int var2) {
+      Object[] var4 = var0.args;
       class59 var5;
       int var26;
       if (class217.method3852(var0.field963)) {
