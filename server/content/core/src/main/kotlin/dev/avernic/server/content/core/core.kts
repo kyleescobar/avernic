@@ -1,3 +1,4 @@
+import dev.avernic.server.api.Varbits
 import dev.avernic.server.api.entity.toggleRun
 import dev.avernic.server.api.entity.updateAppearance
 import dev.avernic.server.engine.event.onEvent
@@ -7,13 +8,13 @@ import dev.avernic.server.engine.event.player.LoginEvent
  * Handle the player initialization upon login.
  */
 onEvent<LoginEvent> { event ->
-    /*
-     * Update the local player's appearance to draw the local player.
-     */
-    event.player.updateAppearance()
+    val player = event.player
+
+    player.updateAppearance()
+    player.toggleRun()
 
     /*
-     * Toggle the player's running mode on.
+     * Send default initial client scripts and vars.
      */
-    event.player.toggleRun()
+    player.updateVarbit(Varbits.HAS_DISPLAY_NAME, 1)
 }

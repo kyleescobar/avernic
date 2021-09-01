@@ -69,8 +69,8 @@ public class ServerPacket {
    public static final ServerPacket field2758 = new ServerPacket(17, -2);
    public static final ServerPacket field2759 = new ServerPacket(67, 2);
    public static final ServerPacket field2760 = new ServerPacket(68, 6);
-   public static final ServerPacket field2761 = new ServerPacket(69, 3);
-   public static final ServerPacket field2762 = new ServerPacket(70, 6);
+   public static final ServerPacket UPDATE_VARP_SMALL = new ServerPacket(69, 3);
+   public static final ServerPacket UPDATE_VARP_LARGE = new ServerPacket(70, 6);
    public static final ServerPacket field2763 = new ServerPacket(71, 1);
    public static final ServerPacket IF_SET_MODEL = new ServerPacket(72, 6);
    public static final ServerPacket field2765 = new ServerPacket(86, -2);

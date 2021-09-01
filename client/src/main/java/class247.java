@@ -73,13 +73,13 @@ public class class247 {
          do {
             --var4;
             if (var4 < 0) {
-               var4 = class244.field2915[var1].length - 1;
+               var4 = Varps.field2915[var1].length - 1;
             }
          } while(!class16.method127(var1, var4));
       } else {
          do {
             ++var4;
-            if (var4 >= class244.field2915[var1].length) {
+            if (var4 >= Varps.field2915[var1].length) {
                var4 = 0;
             }
          } while(!class16.method127(var1, var4));
@@ -256,8 +256,8 @@ public class class247 {
                class193 var22 = new class193(var21, var12);
 
                for(var14 = 0; var14 < 5; ++var14) {
-                  if (this.field2932[var14] < class244.field2915[var14].length) {
-                     var22.method3362(class283.field3635[var14], class244.field2915[var14][this.field2932[var14]]);
+                  if (this.field2932[var14] < Varps.field2915[var14].length) {
+                     var22.method3362(class283.field3635[var14], Varps.field2915[var14][this.field2932[var14]]);
                   }
 
                   if (this.field2932[var14] < class209.field2499[var14].length) {
@@ -334,8 +334,8 @@ public class class247 {
             class193 var9 = new class193(var8, var4);
 
             for(var6 = 0; var6 < 5; ++var6) {
-               if (this.field2932[var6] < class244.field2915[var6].length) {
-                  var9.method3362(class283.field3635[var6], class244.field2915[var6][this.field2932[var6]]);
+               if (this.field2932[var6] < Varps.field2915[var6].length) {
+                  var9.method3362(class283.field3635[var6], Varps.field2915[var6][this.field2932[var6]]);
                }
 
                if (this.field2932[var6] < class209.field2499[var6].length) {

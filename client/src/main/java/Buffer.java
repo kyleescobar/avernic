@@ -528,7 +528,7 @@ public class Buffer extends class354 {
       return (byte)(this.payload[++this.offset - 1] - 128);
    }
 
-   public byte method5981() {
+   public byte readByteNEG() {
       return (byte)(0 - this.payload[++this.offset - 1]);
    }
 
@@ -612,7 +612,7 @@ public class Buffer extends class354 {
       this.payload[++this.offset - 1] = (byte)(var1 >> 8);
    }
 
-   public int method5995() {
+   public int readIntLE() {
       this.offset += 4;
       return ((this.payload[this.offset - 2] & 255) << 16) + ((this.payload[this.offset - 1] & 255) << 24) + ((this.payload[this.offset - 3] & 255) << 8) + (this.payload[this.offset - 4] & 255);
    }

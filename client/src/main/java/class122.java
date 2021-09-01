@@ -723,8 +723,8 @@ public class class122 extends class104 {
             var17 = class87.getComponent(var1);
             if (var17.field3080 != null && var17.field3080[0][0] == 5) {
                var14 = var17.field3080[0][1];
-               class244.field2911[var14] = 1 - class244.field2911[var14];
-               ApproximateRouteStrategy.method801(var14);
+               Varps.main[var14] = 1 - Varps.main[var14];
+               ApproximateRouteStrategy.changeGameOptions(var14);
             }
          }
 
@@ -773,9 +773,9 @@ public class class122 extends class104 {
             var17 = class87.getComponent(var1);
             if (var17.field3080 != null && 5 == var17.field3080[0][0]) {
                var14 = var17.field3080[0][1];
-               if (var17.field3082[0] != class244.field2911[var14]) {
-                  class244.field2911[var14] = var17.field3082[0];
-                  ApproximateRouteStrategy.method801(var14);
+               if (var17.field3082[0] != Varps.main[var14]) {
+                  Varps.main[var14] = var17.field3082[0];
+                  ApproximateRouteStrategy.changeGameOptions(var14);
                }
             }
          }

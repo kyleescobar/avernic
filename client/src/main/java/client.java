@@ -162,7 +162,7 @@ public final class client extends class19 implements class318 {
    static int field545;
    static int field546;
    static int field550;
-   static int field552;
+   static int changedVarpsCount;
    static int field553 = 0;
    static int field556;
    static int field557;
@@ -242,7 +242,7 @@ public final class client extends class19 implements class318 {
    static int[] field547;
    static int[] field548;
    static int[] field549;
-   static int[] field594;
+   static int[] changedVarps;
    static int[] field600;
    static int[] field609;
    static int[] field614;
@@ -600,8 +600,8 @@ public final class client extends class19 implements class318 {
       field677 = -1;
       field592 = false;
       field593 = 1;
-      field594 = new int[32];
-      field552 = 0;
+      changedVarps = new int[32];
+      changedVarpsCount = 0;
       field641 = new int[32];
       field575 = 0;
       field428 = new int[32];
@@ -1143,7 +1143,7 @@ public final class client extends class19 implements class318 {
          }
 
          class251.method4293();
-         class244.field2918 = this.getCodeBase().getHost();
+         Varps.field2918 = this.getCodeBase().getHost();
          String var9 = class202.field2350.field3202;
          byte var10 = 0;
 
@@ -1184,7 +1184,7 @@ public final class client extends class19 implements class318 {
       class5.field7 = field407 == 0 ? 443 : '\uc350' + field405;
       class291.field3679 = class170.field1982;
       class283.field3635 = class248.field2942;
-      class244.field2915 = class248.field2944;
+      Varps.field2915 = class248.field2944;
       class8.field26 = class248.field2941;
       class209.field2499 = class248.field2943;
       class170.field1992 = new class87();
@@ -2628,7 +2628,7 @@ public final class client extends class19 implements class318 {
          if (--field436 + 1 <= 0) {
             try {
                if (field438 == 0) {
-                  class239.field2879 = class19.field101.method2258(class244.field2918, class291.field3679);
+                  class239.field2879 = class19.field101.method2258(Varps.field2918, class291.field3679);
                   ++field438;
                }
 
@@ -2749,7 +2749,7 @@ public final class client extends class19 implements class318 {
 
          if (loginState == 1) {
             if (null == class266.field3214) {
-               class266.field3214 = class19.field101.method2258(class244.field2918, class291.field3679);
+               class266.field3214 = class19.field101.method2258(Varps.field2918, class291.field3679);
             }
 
             if (2 == class266.field3214.field1511) {
@@ -4249,7 +4249,7 @@ public final class client extends class19 implements class318 {
             int value;
             Interface var72;
             if (ServerPacket.field2732 == packetReader.serverPacket) {
-               value = buf.method5995();
+               value = buf.readIntLE();
                var72 = class87.getComponent(value);
 
                for(i = 0; i < var72.field3086.length; ++i) {
@@ -4572,16 +4572,16 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            if (packetReader.serverPacket == ServerPacket.field2761) {
-               var20 = buf.method5981();
-               var23 = buf.readUnsignedShortLE();
-               class244.field2912[var23] = var20;
-               if (class244.field2911[var23] != var20) {
-                  class244.field2911[var23] = var20;
+            if (packetReader.serverPacket == ServerPacket.UPDATE_VARP_SMALL) {
+               var20 = buf.readByteNEG(); // state
+               var23 = buf.readUnsignedShortLE(); // id
+               Varps.temp[var23] = var20;
+               if (Varps.main[var23] != var20) {
+                  Varps.main[var23] = var20;
                }
 
-               ApproximateRouteStrategy.method801(var23);
-               field594[++field552 - 1 & 31] = var23;
+               ApproximateRouteStrategy.changeGameOptions(var23);
+               changedVarps[++changedVarpsCount - 1 & 31] = var23;
                packetReader.serverPacket = null;
                return true;
             }
@@ -4660,11 +4660,11 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.field2755) {
-               for(value = 0; value < class244.field2911.length; ++value) {
-                  if (class244.field2911[value] != class244.field2912[value]) {
-                     class244.field2911[value] = class244.field2912[value];
-                     ApproximateRouteStrategy.method801(value);
-                     field594[++field552 - 1 & 31] = value;
+               for(value = 0; value < Varps.main.length; ++value) {
+                  if (Varps.main[value] != Varps.temp[value]) {
+                     Varps.main[value] = Varps.temp[value];
+                     ApproximateRouteStrategy.changeGameOptions(value);
+                     changedVarps[++changedVarpsCount - 1 & 31] = value;
                   }
                }
 
@@ -4697,7 +4697,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.IF_SET_COLOR) {
-               value = buf.method5995();
+               value = buf.readIntLE();
                var23 = buf.readUnsignedShortLE();
                i = var23 >> 10 & 31;
                var31 = var23 >> 5 & 31;
@@ -4844,7 +4844,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2722 == packetReader.serverPacket) {
                class108.method2105();
                value = buf.readUnsignedByte();
-               var23 = buf.method5995();
+               var23 = buf.readIntLE();
                i = buf.readUnsignedByteSUB();
                field542[value] = var23;
                field435[value] = i;
@@ -5158,13 +5158,13 @@ public final class client extends class19 implements class318 {
                for(value = 0; value < class282.field3631; ++value) {
                   class140 var49 = class49.method1383(value);
                   if (null != var49) {
-                     class244.field2912[value] = 0;
-                     class244.field2911[value] = 0;
+                     Varps.temp[value] = 0;
+                     Varps.main[value] = 0;
                   }
                }
 
                class108.method2105();
-               field552 += 32;
+               changedVarpsCount += 32;
                packetReader.serverPacket = null;
                return true;
             }
@@ -5377,13 +5377,13 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.IF_SET_OBJ) {
-               value = buf.method5995();
+               value = buf.readIntLE();
                var23 = buf.readUnsignedShort();
                if (65535 == var23) {
                   var23 = -1;
                }
 
-               i = buf.method5995();
+               i = buf.readIntLE();
                var29 = class87.getComponent(i);
                class157 var9;
                if (!var29.field2993) {
@@ -5432,7 +5432,7 @@ public final class client extends class19 implements class318 {
             if (ServerPacket.field2701 == packetReader.serverPacket) {
                value = buf.method5951();
                var23 = buf.method5989();
-               i = buf.method5995();
+               i = buf.readIntLE();
                var29 = class87.getComponent(i);
                if (var23 != var29.field2947 || var29.field3019 != value || 0 != var29.field3063 || var29.field2964 != 0) {
                   var29.field2947 = var23;
@@ -5450,16 +5450,16 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            if (packetReader.serverPacket == ServerPacket.field2762) {
-               value = buf.readUnsignedShort();
-               var23 = buf.method5995();
-               class244.field2912[value] = var23;
-               if (class244.field2911[value] != var23) {
-                  class244.field2911[value] = var23;
+            if (packetReader.serverPacket == ServerPacket.UPDATE_VARP_LARGE) {
+               value = buf.readUnsignedShort(); // id
+               var23 = buf.readIntLE(); // state
+               Varps.temp[value] = var23;
+               if (Varps.main[value] != var23) {
+                  Varps.main[value] = var23;
                }
 
-               ApproximateRouteStrategy.method801(value);
-               field594[++field552 - 1 & 31] = value;
+               ApproximateRouteStrategy.changeGameOptions(value);
+               changedVarps[++changedVarpsCount - 1 & 31] = value;
                packetReader.serverPacket = null;
                return true;
             }

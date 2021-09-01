@@ -138,11 +138,11 @@ public class class79 {
                            class51.field747[++class51.field746 - 1] = var8[var26];
                         } else if (1 == var27) {
                            var14 = var8[var26];
-                           class51.field747[++class51.field746 - 1] = class244.field2911[var14];
+                           class51.field747[++class51.field746 - 1] = Varps.main[var14];
                         } else if (2 == var27) {
                            var14 = var8[var26];
-                           class244.field2911[var14] = class51.field747[--class51.field746];
-                           ApproximateRouteStrategy.method801(var14);
+                           Varps.main[var14] = class51.field747[--class51.field746];
+                           ApproximateRouteStrategy.changeGameOptions(var14);
                         } else if (var27 == 3) {
                            class51.field738[++class2.field4 - 1] = var5.field866[var26];
                         } else if (var27 == 6) {

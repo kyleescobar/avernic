@@ -61,12 +61,12 @@ public class ApproximateRouteStrategy extends class161 {
       class81.invalidateComponent(var5);
    }
 
-   static final void method801(int var0) {
+   static final void changeGameOptions(int var0) {
       class108.method2105();
       class142.method2389();
       int var2 = class49.method1383(var0).field1528;
       if (0 != var2) {
-         int var3 = class244.field2911[var0];
+         int var3 = Varps.main[var0];
          if (1 == var2) {
             if (var3 == 1) {
                class96.method2064(0.9D);

@@ -87,8 +87,8 @@ public abstract class class120 extends class354 {
       for(var1 = 0; var1 < class282.field3631; ++var1) {
          class140 var4 = class49.method1383(var1);
          if (null != var4) {
-            class244.field2912[var1] = 0;
-            class244.field2911[var1] = 0;
+            Varps.temp[var1] = 0;
+            Varps.main[var1] = 0;
          }
       }
 

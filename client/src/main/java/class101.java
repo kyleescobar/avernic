@@ -42,13 +42,13 @@ public class class101 extends class104 {
       int var9 = var3.field1690;
       int var6 = var3.field1695;
       int var7 = var3.field1688;
-      int var8 = class244.field2917[var7 - var6];
+      int var8 = Varps.field2917[var7 - var6];
       if (var1 < 0 || var1 > var8) {
          var1 = 0;
       }
 
       var8 <<= var6;
-      class244.field2911[var9] = class244.field2911[var9] & ~var8 | var1 << var6 & var8;
+      Varps.main[var9] = Varps.main[var9] & ~var8 | var1 << var6 & var8;
    }
 
    class101(class107 var1) {

@@ -15,11 +15,13 @@ import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
 import dev.avernic.server.engine.game.manager.InterfaceManager
 import dev.avernic.server.engine.game.manager.SceneManager
+import dev.avernic.server.engine.game.manager.VarpManager
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
 import dev.avernic.server.engine.net.login.LoginRequest
 import dev.avernic.server.engine.net.login.LoginResponse
+import dev.avernic.server.engine.net.packet.server.RunClientScript
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
 
@@ -54,8 +56,44 @@ class Player(val client: Client) : LivingEntity() {
     val gpi = GpiManager(this)
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
+    private val varpManager = VarpManager(this)
 
     override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
+
+    /**
+     * A map of varps by their ID for this player.
+     */
+    val varps: Map<Int, Int> get() = varpManager.varps.toMap()
+
+    /**
+     * Runs a client script with ID for this player.
+     *
+     * @param id Int
+     * @param params Array<out Any>
+     */
+    fun runClientScript(id: Int, vararg params: Any) {
+        client.write(RunClientScript(id, *params))
+    }
+
+    /**
+     * Updates a varp's bit value for this player.
+     *
+     * @param id Int
+     * @param value Int
+     */
+    fun updateVarbit(id: Int, value: Int) {
+        varpManager.updateVarbit(id, value)
+    }
+
+    /**
+     * Updates a Varp's value for this player.
+     *
+     * @param id Int
+     * @param value Int
+     */
+    fun updateVarp(id: Int, value: Int) {
+        varpManager.updateVarp(id, value)
+    }
 
     private fun initialize() {
         gpi.initialize()
@@ -120,9 +158,16 @@ class Player(val client: Client) : LivingEntity() {
     }
 
     internal fun synchronize() {
+        varpManager.synchronize()
         scene.synchronize()
         gpi.synchronize()
         client.flush()
+    }
+
+    override fun postProcess() {
+        super.postProcess()
+        varpManager.postProcess()
+        scene.postProcess()
     }
 
     override fun scheduleMoveEvent(type: MovementType) = EventBus.schedule(PlayerMoveEvent(this, type))

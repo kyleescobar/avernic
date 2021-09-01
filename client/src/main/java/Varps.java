@@ -1,6 +1,6 @@
-public class class244 {
-   public static int[] field2911;
-   public static int[] field2912;
+public class Varps {
+   public static int[] main;
+   public static int[] temp;
    public static short[][] field2915;
    static int[] field2917 = new int[32];
    static String field2918;
@@ -13,7 +13,7 @@ public class class244 {
          var0 += var0;
       }
 
-      field2912 = new int[4000];
-      field2911 = new int[4000];
+      temp = new int[4000];
+      main = new int[4000];
    }
 }

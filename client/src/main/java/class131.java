@@ -54,7 +54,7 @@ public class class131 {
                }
 
                if (5 == var7) {
-                  var8 = class244.field2911[var3[var5++]];
+                  var8 = Varps.main[var3[var5++]];
                }
 
                if (var7 == 6) {
@@ -62,7 +62,7 @@ public class class131 {
                }
 
                if (var7 == 7) {
-                  var8 = class244.field2911[var3[var5++]] * 100 / '\ub71b';
+                  var8 = Varps.main[var3[var5++]] * 100 / '\ub71b';
                }
 
                if (var7 == 8) {
@@ -101,7 +101,7 @@ public class class131 {
                }
 
                if (var7 == 13) {
-                  var10 = class244.field2911[var3[var5++]];
+                  var10 = Varps.main[var3[var5++]];
                   int var15 = var3[var5++];
                   var8 = 0 != (var10 & 1 << var15) ? 1 : 0;
                }

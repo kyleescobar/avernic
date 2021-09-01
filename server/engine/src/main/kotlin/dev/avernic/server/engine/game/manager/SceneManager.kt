@@ -77,6 +77,10 @@ class SceneManager(private val player: Player) {
         checkReload()
     }
 
+    internal fun postProcess() {
+
+    }
+
     companion object {
         /**
          * The number of chunks away from the edge of the player's scene where we should

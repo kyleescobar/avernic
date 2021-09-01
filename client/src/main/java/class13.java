@@ -609,8 +609,8 @@ public final class class13 extends Canvas {
 
       } else {
          if (class228.field2677 == var0) {
-            byte var3 = var2.method5981();
-            var4 = var2.method5981();
+            byte var3 = var2.readByteNEG();
+            var4 = var2.readByteNEG();
             byte var5 = var2.method5980();
             var6 = var2.readUnsignedShortADD();
             var7 = var2.readUnsignedShort();

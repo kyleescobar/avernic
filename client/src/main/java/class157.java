@@ -653,7 +653,7 @@ public class class157 extends class349 {
          }
       }
 
-      class244.field2918 = var0.field701;
+      Varps.field2918 = var0.field701;
       client.field405 = var0.field697;
       client.field406 = var0.field700;
       class170.field1982 = client.field407 == 0 ? '\uaa4a' : var0.field697 + '\u9c40';

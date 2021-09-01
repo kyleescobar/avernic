@@ -84,7 +84,7 @@ public final class Player extends class72 {
 
       for(var7 = 0; var7 < 5; ++var7) {
          var8 = buf.readUnsignedByte();
-         if (var8 < 0 || var8 >= class244.field2915[var7].length) {
+         if (var8 < 0 || var8 >= Varps.field2915[var7].length) {
             var8 = 0;
          }
 

@@ -372,11 +372,11 @@ public class class271 implements class290 {
                         int var34;
                         ScriptEvent var36;
                         int var37;
-                        if (var10.field3057 != null && client.field552 > var10.field3096) {
-                           if (var10.field3058 != null && client.field552 - var10.field3096 <= 32) {
+                        if (var10.field3057 != null && client.changedVarpsCount > var10.field3096) {
+                           if (var10.field3058 != null && client.changedVarpsCount - var10.field3096 <= 32) {
                               label820:
-                              for(var37 = var10.field3096; var37 < client.field552; ++var37) {
-                                 var24 = client.field594[var37 & 31];
+                              for(var37 = var10.field3096; var37 < client.changedVarpsCount; ++var37) {
+                                 var24 = client.changedVarps[var37 & 31];
 
                                  for(var34 = 0; var34 < var10.field3058.length; ++var34) {
                                     if (var24 == var10.field3058[var34]) {
@@ -395,7 +395,7 @@ public class class271 implements class290 {
                               client.field611.method4672(var32);
                            }
 
-                           var10.field3096 = client.field552;
+                           var10.field3096 = client.changedVarpsCount;
                         }
 
                         if (var10.field3083 != null && client.field575 > var10.field3097) {

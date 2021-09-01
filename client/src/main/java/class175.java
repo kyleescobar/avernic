@@ -66,8 +66,8 @@ public class class175 implements class188 {
       int var8 = var2.field1690;
       int var5 = var2.field1695;
       int var6 = var2.field1688;
-      int var7 = class244.field2917[var6 - var5];
-      return class244.field2911[var8] >> var5 & var7;
+      int var7 = Varps.field2917[var6 - var5];
+      return Varps.main[var8] >> var5 & var7;
    }
 
    public boolean method3248(int var1, int var2, int var3) {

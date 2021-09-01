@@ -108,7 +108,7 @@ public class class155 extends class349 {
       if (-1 != this.field1729) {
          var2 = class175.method3139(this.field1729);
       } else if (this.field1716 != -1) {
-         var2 = class244.field2911[this.field1716];
+         var2 = Varps.main[this.field1716];
       }
 
       int var3;

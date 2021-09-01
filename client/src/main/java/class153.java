@@ -179,8 +179,8 @@ public class class153 extends class349 {
             Npc npc = client.npcs[var4];
             var6 = var1.readUnsignedByte();
             if ((var6 & 128) != 0) {
-               npc.field1063 = var1.method5981();
-               npc.field1065 = var1.method5981();
+               npc.field1063 = var1.readByteNEG();
+               npc.field1065 = var1.readByteNEG();
                npc.field1064 = var1.method5980();
                npc.field1066 = var1.method5935();
                npc.field1074 = var1.readUnsignedShortLE() + client.cycle;

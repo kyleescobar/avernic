@@ -321,7 +321,7 @@ public class class148 extends class349 {
       if (-1 != this.field1635) {
          var2 = class175.method3139(this.field1635);
       } else if (this.field1648 != -1) {
-         var2 = class244.field2911[this.field1648];
+         var2 = Varps.main[this.field1648];
       }
 
       int var3;
@@ -342,7 +342,7 @@ public class class148 extends class349 {
          if (-1 != this.field1635) {
             var2 = class175.method3139(this.field1635);
          } else if (this.field1648 != -1) {
-            var2 = class244.field2911[this.field1648];
+            var2 = Varps.main[this.field1648];
          }
 
          if (var2 >= 0 && var2 < this.field1646.length) {
