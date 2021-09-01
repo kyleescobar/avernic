@@ -9,7 +9,7 @@ import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.Privilege
-import dev.avernic.server.engine.game.entity.pathfinder.BfsPathfinder
+import dev.avernic.server.engine.game.entity.pathfinder.PlayerPathfinder
 import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.manager.GpiManager
@@ -40,7 +40,7 @@ class Player(val client: Client) : LivingEntity() {
     /**
      * The pathfinder configured for players.
      */
-    override val pathfinder = BfsPathfinder(this)
+    override val pathfinder = PlayerPathfinder(this)
 
     override var running: Boolean = super.running
         set(value) {

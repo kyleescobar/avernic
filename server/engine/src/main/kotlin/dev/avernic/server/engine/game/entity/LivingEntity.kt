@@ -5,10 +5,8 @@ import dev.avernic.server.engine.event.Event
 import dev.avernic.server.engine.event.EventHandler
 import dev.avernic.server.engine.event.EventSubject
 import dev.avernic.server.engine.game.MovementType
-import dev.avernic.server.engine.game.Size
 import dev.avernic.server.engine.game.World
 import dev.avernic.server.engine.game.entity.pathfinder.Pathfinder
-import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.entity.update.UpdateFlag
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.task.Task

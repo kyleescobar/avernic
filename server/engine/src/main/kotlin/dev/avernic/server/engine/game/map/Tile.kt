@@ -13,6 +13,8 @@ class Tile(private val packed: Int) {
 
     val plane: Int get() = (packed shr 30) and 0x3
 
+    val hash: Int get() = packed
+
     val as18BitInteger: Int get() = (y shr 13) or ((x shr 13) shl 8) or ((plane and 0x3) shl 16)
 
     val as30BitInteger: Int get() = (y and 0x3FFF) or ((x and 0x3FFF) shl 14) or ((plane and 0x3) shl 28)
