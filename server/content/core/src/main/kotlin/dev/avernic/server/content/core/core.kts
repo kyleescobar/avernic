@@ -1,6 +1,6 @@
 import dev.avernic.server.api.Varbits
-import dev.avernic.server.api.entity.toggleRun
-import dev.avernic.server.api.entity.updateAppearance
+import dev.avernic.server.engine.api.toggleRun
+import dev.avernic.server.engine.api.updateAppearance
 import dev.avernic.server.engine.event.onEvent
 import dev.avernic.server.engine.event.player.LoginEvent
 

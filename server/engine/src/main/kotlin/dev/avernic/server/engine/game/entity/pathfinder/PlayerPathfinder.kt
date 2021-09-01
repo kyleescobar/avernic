@@ -1,5 +1,6 @@
 package dev.avernic.server.engine.game.entity.pathfinder
 
+import dev.avernic.server.engine.api.isBlocked
 import dev.avernic.server.engine.game.Direction
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.Destination
@@ -11,13 +12,18 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
     private val queue = LinkedList<Node>()
     private val visited = LinkedList<Node>()
 
+    private lateinit var start: Tile
+    private lateinit var dest: Tile
+
     override fun calculatePath(start: Tile, destination: Destination): MutableList<Tile> {
-        val dest = Tile(destination.x, destination.y, start.plane)
+        this.start = start
+        dest = Tile(destination.x, destination.y, start.plane)
 
         queue.clear()
         visited.clear()
 
         var searchLimit = 4096
+        var current: Node? = null
 
         val directions = arrayOf(
             Direction.WEST,
@@ -36,6 +42,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
 
             val node = queue.removeFirst()
             if(node.tile.sameAs(destination.x, destination.y)) {
+                current = node
                 return buildSolution(node)
             }
 
@@ -46,7 +53,11 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
             directions.forEach { dir ->
                 val tile = node.tile.translate(dir)
                 val neighbor = Node(tile, node)
-                if(!visited.contains(neighbor) && start.isWithinRadius(tile, MAX_DISTANCE)) {
+                if(
+                    !visited.contains(neighbor)
+                    && start.isWithinRadius(tile, MAX_DISTANCE)
+                    && player.world.isBlocked(node.tile, Direction.between(node.tile, tile), player.size)
+                ) {
                     neighbor.cost = node.cost + 1
                     queue.add(neighbor)
                     visited.addLast(neighbor)
@@ -54,12 +65,21 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
             }
         }
 
-        return mutableListOf()
+        return buildSolution(current)
     }
 
-    private fun buildSolution(node: Node): MutableList<Tile> {
+    private fun buildSolution(node: Node?): MutableList<Tile> {
         val path = ArrayDeque<Tile>()
         var end: Node? = node
+
+        if(end != null && visited.isNotEmpty()) {
+            val heuristic = visited.minByOrNull { it.tile.getDistance(dest) }!!
+            val sorted = visited.filter { it.tile.getDistance(dest) <= heuristic.tile.getDistance(dest) }
+            if(sorted.isNotEmpty()) {
+                end = sorted.minByOrNull { it.tile.getDelta(start) }
+            }
+        }
+
         while(end?.parent != null) {
             path.addFirst(end.tile)
             end = end.parent

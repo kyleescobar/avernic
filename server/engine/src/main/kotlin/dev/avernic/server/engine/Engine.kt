@@ -51,6 +51,11 @@ class Engine {
         GamePackets.loadPackets()
 
         /*
+         * Load the game world.
+         */
+        world.initialize()
+
+        /*
          * Start the game cycle coroutine.
          */
         gameCoroutine.start(ServerConfig.TICK_INTERVAL)

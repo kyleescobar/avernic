@@ -1,10 +1,8 @@
-package dev.avernic.server.api.entity
+package dev.avernic.server.engine.api
 
-import dev.avernic.server.api.task.ChatTask
-import dev.avernic.server.engine.game.MovementType
+import dev.avernic.server.engine.api.task.ChatTask
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.TileDestination
-import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.task.NormalTask
 

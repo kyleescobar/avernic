@@ -1,4 +1,4 @@
-import dev.avernic.server.api.entity.walkTo
+import dev.avernic.server.engine.api.walkTo
 import dev.avernic.server.engine.event.onEvent
 import dev.avernic.server.engine.event.player.GameClickEvent
 import dev.avernic.server.engine.event.player.MinimapClickEvent

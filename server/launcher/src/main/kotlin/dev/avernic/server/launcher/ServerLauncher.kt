@@ -65,16 +65,16 @@ object ServerLauncher {
         engine.start()
 
         /*
+         * Load all game content scripts.
+         */
+        ScriptManager.loadContentScripts()
+
+        /*
          * Start the server networking.
          */
         val networkServer = get<NetworkServer>()
         val address = InetSocketAddress(ServerConfig.NETWORK.ADDRESS, ServerConfig.NETWORK.PORT)
         networkServer.bind(address)
-
-        /*
-         * Load all game content scripts.
-         */
-        ScriptManager.loadContentScripts()
 
         Logger.info("Server is now up and running!")
     }

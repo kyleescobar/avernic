@@ -2,6 +2,9 @@
 
 package dev.avernic.server.cache
 
+import dev.avernic.server.cache.xtea.MapXtea
+import dev.avernic.server.common.inject
+import dev.avernic.server.config.XteaConfig
 import io.guthix.js5.Js5Cache
 import io.guthix.js5.container.Js5Container
 import io.guthix.js5.container.Js5Store
@@ -9,6 +12,8 @@ import io.guthix.js5.container.disk.Js5DiskStore
 import java.nio.file.Path
 
 class GameCache(private val directory: Path) {
+
+    private val xteaConfig: XteaConfig by inject()
 
     val store = Js5DiskStore.open(directory)
     val cache = Js5Cache(store)
@@ -21,6 +26,7 @@ class GameCache(private val directory: Path) {
      */
 
     lateinit var configArchive: ConfigArchive private set
+    lateinit var mapArchive: MapArchive private set
 
     fun load() {
         val validator = cache.generateValidator(includeWhirlpool = false, includeSizes = false)
@@ -39,5 +45,6 @@ class GameCache(private val directory: Path) {
 
     private fun loadArchives() {
         configArchive = ConfigArchive.load(cache.readArchive(ConfigArchive.id))
+        mapArchive = MapArchive.load(cache.readArchive(MapArchive.id), xteaConfig.xteas.map { MapXtea(it.key, it.value) })
     }
 }

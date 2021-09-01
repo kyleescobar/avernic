@@ -8,6 +8,8 @@ class Chunk(private val packed: Int) {
 
     val plane: Int get() = (packed shr 30) and 0x3
 
+    val hash: Int get() = y or x shl 13 or plane shl 26
+
     constructor(x: Int, y: Int, plane: Int = 0) : this(
         (x and 0x7FFF) or ((y and 0x7FFF) shl 15) or (plane shl 30)
     )

@@ -19,7 +19,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
 
     val world: World by inject()
 
-    override var index: Int = -1
+    var index: Int = -1
     open var size: Int = 1
     override var tile: Tile = Tile(0, 0, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
