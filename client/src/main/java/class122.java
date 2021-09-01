@@ -66,7 +66,7 @@ public class class122 extends class104 {
          }
       }
 
-      PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.field2666, client.packetWriter.isaacCipher);
+      PacketBufferNode var2 = VerticalAlignment.getPacketBufferNode(ClientPacket.CLIENT_CHEAT, client.packetWriter.isaacCipher);
       var2.packetBuffer.writeByte(var0.length() + 1);
       var2.packetBuffer.writeStringCP1252(var0);
       client.packetWriter.addNode(var2);

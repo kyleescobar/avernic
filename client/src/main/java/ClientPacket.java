@@ -96,7 +96,7 @@ public class ClientPacket implements class226 {
    public static final ClientPacket field2662 = new ClientPacket(99, 16);
    public static final ClientPacket field2664 = new ClientPacket(68, 0);
    public static final ClientPacket field2665 = new ClientPacket(101, -1);
-   public static final ClientPacket field2666 = new ClientPacket(103, -1);
+   public static final ClientPacket CLIENT_CHEAT = new ClientPacket(103, -1);
    public static final ClientPacket field2667 = new ClientPacket(71, 4);
    public static final ClientPacket field2668 = new ClientPacket(105, 8);
    public static final ClientPacket field2672 = new ClientPacket(88, -1);

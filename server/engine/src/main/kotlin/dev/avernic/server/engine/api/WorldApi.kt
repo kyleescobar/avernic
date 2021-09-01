@@ -31,7 +31,7 @@ fun World.getCollision(x: Int, y: Int, plane: Int): Int {
     return getCollision(Tile(x, y, plane))
 }
 
-fun World.isBlocked(tile: Tile, direction: Direction, size: Int = 1): Boolean {
+fun World.isNotBlocked(tile: Tile, direction: Direction, size: Int = 1): Boolean {
     return when(direction) {
         Direction.WEST -> (0 until size).none { getCollision(tile.translate(-1, it)) and Collision.BLOCK_E != 0 }
         Direction.EAST -> (0 until size).none { getCollision(tile.translate(size, it)) and Collision.BLOCK_W != 0 }

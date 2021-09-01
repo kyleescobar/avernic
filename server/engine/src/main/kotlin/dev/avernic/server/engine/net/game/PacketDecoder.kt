@@ -77,7 +77,7 @@ class PacketDecoder(private val protocol: GameProtocol) {
                 val packet = codec.decode(protocol.session, payload)
                 out.add(packet)
             } else {
-                Logger.warn("Received unknown client packet. [opcode: $opcode, length: $length, remaining: ${this.readableBytes()}]")
+                //Logger.warn("Received unknown client packet. [opcode: $opcode, length: $length, remaining: ${this.readableBytes()}]")
             }
         }
     }

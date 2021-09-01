@@ -1,0 +1,4 @@
+package command
+
+object CommandManager {
+}

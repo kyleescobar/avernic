@@ -1,6 +1,6 @@
 package dev.avernic.server.engine.game.entity.pathfinder
 
-import dev.avernic.server.engine.api.isBlocked
+import dev.avernic.server.engine.api.isNotBlocked
 import dev.avernic.server.engine.game.Direction
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.Destination
@@ -15,6 +15,8 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
     private lateinit var start: Tile
     private lateinit var dest: Tile
 
+    private lateinit var node: Node
+
     override fun calculatePath(start: Tile, destination: Destination): MutableList<Tile> {
         this.start = start
         dest = Tile(destination.x, destination.y, start.plane)
@@ -22,8 +24,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
         queue.clear()
         visited.clear()
 
-        var searchLimit = 4096
-        var current: Node? = null
+        var searchLimit = 2048
 
         val directions = arrayOf(
             Direction.WEST,
@@ -40,9 +41,8 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
         while(queue.isNotEmpty()) {
             if(searchLimit-- == 0) break
 
-            val node = queue.removeFirst()
+            node = queue.removeFirst()
             if(node.tile.sameAs(destination.x, destination.y)) {
-                current = node
                 return buildSolution(node)
             }
 
@@ -56,7 +56,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
                 if(
                     !visited.contains(neighbor)
                     && start.isWithinRadius(tile, MAX_DISTANCE)
-                    && player.world.isBlocked(node.tile, Direction.between(node.tile, tile), player.size)
+                    && player.world.isNotBlocked(node.tile, Direction.between(node.tile, tile), player.size)
                 ) {
                     neighbor.cost = node.cost + 1
                     queue.add(neighbor)
@@ -65,7 +65,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
             }
         }
 
-        return buildSolution(current)
+        return buildSolution(node)
     }
 
     private fun buildSolution(node: Node?): MutableList<Tile> {
