@@ -1,6 +1,6 @@
-package dev.avernic.server.engine.api
+package api
 
-import dev.avernic.server.api.ChatTask
+import dev.avernic.server.api.Varps
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.TileDestination
 import dev.avernic.server.engine.game.map.Tile
@@ -25,10 +25,9 @@ fun Player.updateAppearance() {
 fun Player.forceChat(message: String) {
     this.chatMessage = message
     this.addForceChatUpdateFlag()
-    cancelTasks(ChatTask)
-    addTask(ChatTask) {
+    queue {
         wait(ticks = 3)
-        addPostTask { chatMessage = null }
+        doLater { chatMessage = null }
     }
 }
 
@@ -56,20 +55,28 @@ fun Player.walkTo(tile: Tile) {
 }
 
 /**
- * Toggle's a player's running state on or off.
- *
- * @receiver Player
- * @return Boolean
- */
-fun Player.toggleRun() {
-    this.running = !this.running
-}
-
-/**
  * Toggles the player's no-clip state.
  *
  * @receiver Player
  */
 fun Player.toggleNoClip() {
     this.noclip = !noclip
+}
+
+/**
+ * Toggles the player's running state.
+ *
+ * @receiver Player
+ */
+fun Player.toggleRun() {
+    running = !running
+    updateVarp(Varps.RUN_STATE, if(running) 1 else 0)
+}
+
+fun Player.drainRunEnergy() {
+    runEnergy -= 1
+}
+
+fun Player.recoverRunEnergy() {
+    runEnergy += 1
 }

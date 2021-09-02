@@ -1,6 +1,6 @@
 package player
 
-import dev.avernic.server.engine.api.walkTo
+import api.walkTo
 import dev.avernic.server.engine.event.on_event
 import dev.avernic.server.engine.event.player.GameClickEvent
 import dev.avernic.server.engine.event.player.MinimapClickEvent

@@ -1,6 +1,6 @@
+import api.toggleNoClip
 import command.on_command
 import dev.avernic.server.api.game.findPlayer
-import dev.avernic.server.engine.api.toggleNoClip
 import dev.avernic.server.engine.game.Privilege
 import dev.avernic.server.engine.game.entity.Player
 

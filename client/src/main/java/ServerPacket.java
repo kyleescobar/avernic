@@ -28,7 +28,7 @@ public class ServerPacket {
    public static final ServerPacket field2716 = new ServerPacket(37, -2);
    public static final ServerPacket field2717 = new ServerPacket(76, 4);
    public static final ServerPacket field2718 = new ServerPacket(28, 0);
-   public static final ServerPacket field2719 = new ServerPacket(27, 1);
+   public static final ServerPacket UPDATE_RUN_ENERGY = new ServerPacket(27, 1);
    public static final ServerPacket field2720 = new ServerPacket(7, 0);
    public static final ServerPacket field2721 = new ServerPacket(52, 1);
    public static final ServerPacket field2722 = new ServerPacket(30, 6);

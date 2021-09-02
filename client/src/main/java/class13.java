@@ -525,7 +525,7 @@ public final class class13 extends Canvas {
                class51.field747[++class51.field746 - 1] = client.field405;
                return 1;
             } else if (3321 == var0) {
-               class51.field747[++class51.field746 - 1] = client.field432;
+               class51.field747[++class51.field746 - 1] = client.runEnergy;
                return 1;
             } else if (3322 == var0) {
                class51.field747[++class51.field746 - 1] = client.field576;

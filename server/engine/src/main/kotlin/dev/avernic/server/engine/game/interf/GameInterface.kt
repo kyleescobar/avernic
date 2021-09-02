@@ -11,9 +11,9 @@ enum class GameInterface(
 ) {
     CHAT_BOX(interfaceId = 162, childId = 38, type = InterfaceType.OVERLAY),
     UNKNOWN1(interfaceId = 651, childId = 7, type = InterfaceType.OVERLAY),
-    UNKNOWN3(interfaceId = 708, childId = 8, type = InterfaceType.OVERLAY),
+    //UNKNOWN3(interfaceId = 708, childId = 8, type = InterfaceType.OVERLAY),
     USERNAME(interfaceId = 163, childId = 16, type = InterfaceType.OVERLAY),
-    UNKNOW5(interfaceId = 303, childId = 4, type = InterfaceType.OVERLAY),
+    //UNKNOW5(interfaceId = 303, childId = 4, type = InterfaceType.OVERLAY),
     MINI_MAP(interfaceId = 160, childId = 37, type = InterfaceType.OVERLAY),
     XP_ORBS(interfaceId = 122, childId = 11, type = InterfaceType.OVERLAY),
     UNKNOWN2(interfaceId = 378, childId = 35, type = InterfaceType.MODAL),
@@ -35,10 +35,9 @@ enum class GameInterface(
     private val cache: GameCache by inject()
 
     @Suppress("UNCHECKED_CAST")
-    fun getChildId(displayMode: DisplayMode): Int {
+    fun getChildId(displayMode: DisplayMode): Int? {
         val mappings = cache.configArchive.enumConfigs[displayMode.enumId]!!.entryMap as Map<EnumConfig.Component, EnumConfig.Component>
         return mappings[EnumConfig.Component(DisplayMode.RESIZABLE_CLASSIC.id, childId)]?.child
-            ?: throw IllegalArgumentException("Failed to get a component child id mapping for the game interface: $this.")
     }
 
     companion object {

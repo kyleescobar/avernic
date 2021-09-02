@@ -93,7 +93,7 @@ public class class131 {
                }
 
                if (11 == var7) {
-                  var8 = client.field432;
+                  var8 = client.runEnergy;
                }
 
                if (var7 == 12) {

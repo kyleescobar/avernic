@@ -103,7 +103,7 @@ public final class client extends class19 implements class318 {
    static int field427;
    static int field429 = 0;
    static int field430 = 0;
-   static int field432;
+   static int runEnergy;
    static int field434;
    static int field436;
    static int field438;
@@ -581,7 +581,7 @@ public final class client extends class19 implements class318 {
       field572 = 0;
       field655 = 0;
       field574 = null;
-      field432 = 0;
+      runEnergy = 0;
       field576 = 0;
       privilegeLevel = 0;
       field510 = -1;
@@ -4651,9 +4651,9 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            if (ServerPacket.field2719 == packetReader.serverPacket) {
+            if (ServerPacket.UPDATE_RUN_ENERGY == packetReader.serverPacket) {
                class108.method2105();
-               field432 = buf.readUnsignedByte();
+               runEnergy = buf.readUnsignedByte();
                field517 = field593;
                packetReader.serverPacket = null;
                return true;
@@ -4934,6 +4934,7 @@ public final class client extends class19 implements class318 {
 
             if (ServerPacket.IF_OPEN_TOP == packetReader.serverPacket) {
                value = buf.readUnsignedShort();
+               System.out.println("TOP: " + value);
                rootInterface = value;
                this.resizeRoot(false);
                class312.resetModelFrames(value);

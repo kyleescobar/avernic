@@ -4,6 +4,7 @@ import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.EventBus
 import dev.avernic.server.engine.event.player.LoginEvent
 import dev.avernic.server.engine.event.player.LogoutEvent
+import dev.avernic.server.engine.event.player.PlayerCycleEvent
 import dev.avernic.server.engine.event.player.PlayerMoveEvent
 import dev.avernic.server.engine.event.schedule
 import dev.avernic.server.engine.game.Appearance
@@ -24,6 +25,7 @@ import dev.avernic.server.engine.net.login.LoginRequest
 import dev.avernic.server.engine.net.login.LoginResponse
 import dev.avernic.server.engine.net.packet.server.RunClientScript
 import dev.avernic.server.engine.net.packet.server.SendMessageGame
+import dev.avernic.server.engine.net.packet.server.UpdateRunEnergy
 import dev.avernic.server.util.SHA256
 import org.tinylog.kotlin.Logger
 
@@ -34,7 +36,7 @@ class Player(val client: Client) : LivingEntity() {
     var displayName: String = ""
     var privilege: Privilege = Privilege.ADMINISTRATOR
     var appearance: Appearance = Appearance.DEFAULT
-    var displayMode: DisplayMode = DisplayMode.FIXED
+    var displayMode: DisplayMode = DisplayMode.RESIZABLE_MODERN
     var pid: Int = -1
     var member: Boolean = true
     var skullIcon: Int = -1
@@ -53,6 +55,15 @@ class Player(val client: Client) : LivingEntity() {
         set(value) {
             field = value
             addMovementModeUpdateFlag()
+        }
+
+    /**
+     * The run energy value of the player.
+     */
+    var runEnergy: Int = 0
+        set(value) {
+            field = value
+            client.write(UpdateRunEnergy(value))
         }
 
     /**
@@ -180,6 +191,7 @@ class Player(val client: Client) : LivingEntity() {
 
     override fun postProcess() {
         super.postProcess()
+        EventBus.schedule(PlayerCycleEvent(this))
         varpManager.postProcess()
         scene.postProcess()
     }

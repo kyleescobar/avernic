@@ -71,7 +71,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         addMovementUpdateFlag()
         tile = teleportTile!!
         prevPathTile = tile
-        addPostTask { teleportTile = null }
+        doLater { teleportTile = null }
     }
 
     private fun doStep() {
@@ -115,7 +115,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
         movementType = MovementType.NONE
     }
 
-    fun addPostTask(action: () -> Unit) {
+    fun doLater(action: () -> Unit) {
         this.postTasks.add(action)
     }
 
