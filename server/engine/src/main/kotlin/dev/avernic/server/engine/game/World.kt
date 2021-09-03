@@ -12,6 +12,7 @@ import dev.avernic.server.engine.game.entity.GameObject
 import dev.avernic.server.engine.game.entity.Npc
 import dev.avernic.server.engine.game.list.NpcList
 import dev.avernic.server.engine.game.list.PlayerList
+import dev.avernic.server.engine.game.manager.GpiManager
 import dev.avernic.server.engine.game.map.Chunk
 import dev.avernic.server.engine.game.map.Region
 import dev.avernic.server.engine.game.map.Tile
@@ -138,14 +139,16 @@ class World : EventSubject, TaskSubject {
         return npc
     }
 
-    fun findNpcsWithinRadius(tile: Tile, radius: Int): List<Npc> {
-        val result = mutableListOf<Npc>()
-        for(x in tile.x - radius .. tile.x + radius) {
-            for(y in tile.y - radius .. tile.x + radius) {
-                result.addAll(npcs.filter { it.tile.x == x && it.tile.y == y && it.tile.plane == tile.plane })
+
+
+    fun findNpcs(tile: Tile, radius: Int): List<Npc> {
+        val rx = tile.toChunk().x - (radius / Chunk.SIZE) .. tile.toChunk().x + (radius / Chunk.SIZE)
+        val ry = tile.toChunk().y - (radius / Chunk.SIZE) .. tile.toChunk().y + (radius / Chunk.SIZE)
+        return rx.flatMap { x ->
+            ry.flatMap { y ->
+                chunks[tile.plane][x][y]?.npcs ?: emptyList()
             }
-        }
-        return result
+        }.filter { tile.toChunk().x in rx && tile.toChunk().y in ry }
     }
 
     fun getChunk(x: Int, y: Int, plane: Int = 0): WorldChunk? = chunks[plane][x / Chunk.SIZE][y / Chunk.SIZE]

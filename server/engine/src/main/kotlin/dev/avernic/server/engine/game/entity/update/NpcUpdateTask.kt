@@ -4,10 +4,8 @@ import dev.avernic.server.engine.game.MovementType
 import dev.avernic.server.engine.game.entity.Npc
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.manager.GpiManager
-import dev.avernic.server.engine.game.map.Tile
 import io.guthix.buffer.BitBuf
 import io.guthix.buffer.toBitMode
-import io.guthix.buffer.writeByteNeg
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 
@@ -71,7 +69,7 @@ class NpcUpdateTask(private val player: Player) {
 
     private fun updateExternalNpc(buf: BitBuf): BitBuf {
         var added = 0
-        for(npc in player.world.findNpcsWithinRadius(player.tile, GpiManager.RENDER_DISTANCE)) {
+        for(npc in player.world.findNpcs(player.tile, GpiManager.RENDER_DISTANCE)) {
             if(added > 16) break
             if(!player.npcs.contains(npc)) {
                 buf.writeBits(npc.index, 15)
