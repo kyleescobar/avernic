@@ -10,6 +10,7 @@ import dev.avernic.server.engine.game.collision.Collision
 import dev.avernic.server.engine.game.collision.addObjectCollision
 import dev.avernic.server.engine.game.entity.GameObject
 import dev.avernic.server.engine.game.entity.Npc
+import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.list.NpcList
 import dev.avernic.server.engine.game.list.PlayerList
 import dev.avernic.server.engine.game.manager.GpiManager
@@ -139,7 +140,9 @@ class World : EventSubject, TaskSubject {
         return npc
     }
 
-
+    fun findPlayer(name: String): Player? {
+        return players.firstOrNull { it.username == name || it.displayName == name }
+    }
 
     fun findNpcs(tile: Tile, radius: Int): List<Npc> {
         val rx = tile.toChunk().x - (radius / Chunk.SIZE) .. tile.toChunk().x + (radius / Chunk.SIZE)
