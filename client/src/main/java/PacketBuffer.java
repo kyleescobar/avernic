@@ -19,19 +19,19 @@ public class PacketBuffer extends Buffer {
       super.payload[++super.offset - 1] = (byte)(var1 + this.isaacCipher.nextInt());
    }
 
-   public static class153 method5928(int var0) {
-      class153 var2 = (class153)class153.field1697.method3880((long)var0);
+   public static ParamComposition method5928(int var0) {
+      ParamComposition var2 = (ParamComposition) ParamComposition.field1697.method3880((long)var0);
       if (null != var2) {
          return var2;
       } else {
-         byte[] var3 = class153.field1698.method4412(11, var0);
-         var2 = new class153();
+         byte[] var3 = ParamComposition.field1698.method4412(11, var0);
+         var2 = new ParamComposition();
          if (var3 != null) {
             var2.method2545(new Buffer(var3));
          }
 
          var2.method2547();
-         class153.field1697.method3882(var2, (long)var0);
+         ParamComposition.field1697.method3882(var2, (long)var0);
          return var2;
       }
    }
@@ -84,7 +84,7 @@ public class PacketBuffer extends Buffer {
       super.offset = (this.field4179 + 7) / 8;
    }
 
-   public int method5901(int var1) {
+   public int readableBytes(int var1) {
       return var1 * 8 - this.field4179;
    }
 }

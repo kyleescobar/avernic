@@ -1,8 +1,8 @@
 package dev.avernic.server.engine.net.packet.client
 
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.MinimapClickEvent
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.player.packet.MinimapClickEvent
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.Session
 import dev.avernic.server.engine.net.game.ClientPacket
@@ -22,7 +22,7 @@ class MoveMinimapClick(
     override fun handle(session: Session) {
         val player = session.client.player
         val tile = Tile(tileX, tileY, player.tile.plane)
-        EventBus.schedule(MinimapClickEvent(player, tile))
+        EventBus.dispatch(MinimapClickEvent(player, tile))
     }
 
     companion object : Codec<MoveMinimapClick> {

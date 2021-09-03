@@ -51,7 +51,7 @@ public class class103 extends class104 {
             var9 = var8 >> 28;
             var10 = var8 >> 14 & 255;
             var11 = var8 & 255;
-            var13.field1031[0] = PlayerList.movementDirectionCache[var1];
+            var13.pathTraversed[0] = PlayerList.movementDirectionCache[var1];
             var13.plane = (byte)var9;
             var13.teleport(var4 + (var10 << 13) - class281.baseX, var5 + (var11 << 13) - Npc.baseY);
             var13.field1004 = false;

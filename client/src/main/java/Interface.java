@@ -821,7 +821,7 @@ public class Interface extends class354 {
             }
 
             if (var6 == 2) {
-               var9 = class97.method2065(var7).method2470();
+               var9 = class97.getNpcDefinition(var7).method2470();
                if (var9 == null) {
                   field2956 = true;
                   return null;

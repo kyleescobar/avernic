@@ -1,8 +1,8 @@
 package dev.avernic.server.engine.net.packet.client
 
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.GameClickEvent
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.player.packet.GameClickEvent
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.Session
 import dev.avernic.server.engine.net.game.ClientPacket
@@ -20,7 +20,7 @@ class MoveGameClick(
 ) : Packet {
     override fun handle(session: Session) {
         val tile = Tile(tileX, tileY, session.client.player.tile.plane)
-        EventBus.schedule(GameClickEvent(session.client.player, tile))
+        EventBus.dispatch(GameClickEvent(session.client.player, tile))
     }
 
     companion object : Codec<MoveGameClick> {

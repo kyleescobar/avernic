@@ -218,12 +218,12 @@ public class class167 implements class188 {
       if ((updateMask & 1024) != 0) {
          player.spotAnimation = buf.readUnsignedShortLE();
          i = buf.readIntLE();
-         player.field1062 = i >> 16;
-         player.field1061 = client.cycle + (i & '\uffff');
-         player.field1028 = 0;
+         player.spotAnimationHeight = i >> 16;
+         player.spotAnimationStartTick = client.cycle + (i & '\uffff');
+         player.isSpotAnimationRunning = 0;
          player.field1060 = 0;
-         if (player.field1061 > client.cycle) {
-            player.field1028 = -1;
+         if (player.spotAnimationStartTick > client.cycle) {
+            player.isSpotAnimationRunning = -1;
          }
 
          if (player.spotAnimation == 65535) {
@@ -272,7 +272,7 @@ public class class167 implements class188 {
          }
 
          var14 = buf.readUnsignedByteSUB(); // animation delay
-         class153.performPlayerAnimation(player, i, var14);
+         ParamComposition.performPlayerAnimation(player, i, var14);
       }
 
       /*

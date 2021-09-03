@@ -7,7 +7,7 @@ import dev.avernic.server.config.XteaConfig
 import dev.avernic.server.content.ScriptManager
 import dev.avernic.server.engine.Engine
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.event.world.ServerStartEvent
 import dev.avernic.server.engine.net.NetworkServer
 import dev.avernic.server.util.RSA
@@ -79,6 +79,6 @@ object ServerLauncher {
         val address = InetSocketAddress(ServerConfig.NETWORK.ADDRESS, ServerConfig.NETWORK.PORT)
         networkServer.bind(address)
 
-        EventBus.schedule(ServerStartEvent())
+        EventBus.dispatch(ServerStartEvent())
     }
 }

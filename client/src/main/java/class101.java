@@ -67,82 +67,82 @@ public class class101 extends class104 {
       var1.method2132(this.field1279, this.field1280, this.field1278, this.field1281);
    }
 
-   static final void method2075(boolean var0, PacketBuffer var1) {
+   static final void method2075(boolean var0, PacketBuffer buf) {
       while(true) {
-         if (var1.method5901(client.packetWriter.serverPacketLength) >= 27) {
-            int var3 = var1.readBits(15);
-            if (32767 != var3) {
+         if (buf.readableBytes(client.packetWriter.serverPacketLength) >= 27) {
+            int npcIndex = buf.readBits(15);
+            if (32767 != npcIndex) {
                boolean var4 = false;
-               if (null == client.npcs[var3]) {
-                  client.npcs[var3] = new Npc();
+               if (null == client.npcs[npcIndex]) {
+                  client.npcs[npcIndex] = new Npc();
                   var4 = true;
                }
 
-               Npc var5 = client.npcs[var3];
-               client.npcIndexes[++client.npcCount - 1] = var3;
-               var5.npcCycle = client.cycle;
-               int var9 = var1.readBits(1);
+               Npc npc = client.npcs[npcIndex];
+               client.npcIndexes[++client.npcCount - 1] = npcIndex;
+               npc.npcCycle = client.cycle;
+               int var9 = buf.readBits(1);
                if (var9 == 1) {
-                  client.field475[++client.field501 - 1] = var3;
+                  client.pendingNpcUpdateIndexes[++client.pendingNpcUpdateCount - 1] = npcIndex;
                }
 
-               int var10 = client.field534[var1.readBits(3)];
+               int movementDirection = client.npcMovementDirections[buf.readBits(3)];
                if (var4) {
-                  var5.orientation = var5.field1022 = var10;
+                  npc.orientation = npc.movementDirection = movementDirection;
                }
 
-               int var7;
+               int localX;
                if (var0) {
-                  var7 = var1.readBits(8);
-                  if (var7 > 127) {
-                     var7 -= 256;
+                  localX = buf.readBits(8);
+                  if (localX > 127) {
+                     localX -= 256;
                   }
                } else {
-                  var7 = var1.readBits(5);
-                  if (var7 > 15) {
-                     var7 -= 32;
+                  localX = buf.readBits(5);
+                  if (localX > 15) {
+                     localX -= 32;
                   }
                }
 
-               int var8;
+               int localY;
                if (var0) {
-                  var8 = var1.readBits(8);
-                  if (var8 > 127) {
-                     var8 -= 256;
+                  localY = buf.readBits(8);
+                  if (localY > 127) {
+                     localY -= 256;
                   }
                } else {
-                  var8 = var1.readBits(5);
-                  if (var8 > 15) {
-                     var8 -= 32;
+                  localY = buf.readBits(5);
+                  if (localY > 15) {
+                     localY -= 32;
                   }
                }
 
-               boolean var11 = var1.readBits(1) == 1;
+               boolean var11 = buf.readBits(1) == 1;
                if (var11) {
-                  var1.readBits(32);
+                  buf.readBits(32);
                }
 
-               var5.definition = class97.method2065(var1.readBits(14));
-               int var6 = var1.readBits(1);
-               var5.field1024 = var5.definition.field1622;
-               var5.field1075 = var5.definition.field1645;
-               if (var5.field1075 == 0) {
-                  var5.field1022 = 0;
+               npc.definition = class97.getNpcDefinition(buf.readBits(14));
+               int shouldProcessNpcUpdateFlags = buf.readBits(1);
+               npc.size = npc.definition.size;
+               npc.rotation = npc.definition.rotation;
+               if (npc.rotation == 0) {
+                  npc.movementDirection = 0;
                }
 
-               var5.field1029 = var5.definition.field1628;
-               var5.field1072 = var5.definition.field1629;
-               var5.field1046 = var5.definition.field1630;
-               var5.field1021 = var5.definition.field1631;
-               var5.field1030 = var5.definition.field1625;
-               var5.field1052 = var5.definition.field1626;
-               var5.field1020 = var5.definition.field1624;
-               var5.method1833(var7 + MouseHandler.localPlayer.pathX[0], MouseHandler.localPlayer.pathY[0] + var8, var6 == 1);
+               npc.walkForwardAnimation = npc.definition.walkForwardAnimation;
+               npc.walkBackAnimation = npc.definition.walkBackAnimation;
+               npc.walkLeftAnimation = npc.definition.walkLeftAnimation;
+               npc.walkRightAnimation = npc.definition.walkRightAnimation;
+               npc.stanceAnimation = npc.definition.stanceAnimation;
+               npc.turnLeftAnimation = npc.definition.turnLeftAnimation;
+               npc.turnRightAnimation = npc.definition.turnRightAnimation;
+               npc.addNpcToScene(localX + MouseHandler.localPlayer.pathX[0], MouseHandler.localPlayer.pathY[0] + localY, shouldProcessNpcUpdateFlags == 1);
                continue;
             }
          }
 
-         var1.switchToByteMode();
+         buf.switchToByteMode();
          return;
       }
    }

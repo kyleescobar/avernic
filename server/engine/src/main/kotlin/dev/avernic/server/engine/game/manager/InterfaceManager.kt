@@ -1,9 +1,9 @@
 package dev.avernic.server.engine.game.manager
 
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.InterfaceCloseEvent
-import dev.avernic.server.engine.event.player.InterfaceOpenEvent
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.player.interf.InterfaceCloseEvent
+import dev.avernic.server.engine.event.player.interf.InterfaceOpenEvent
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.interf.GameInterface
@@ -25,13 +25,13 @@ class InterfaceManager(private val player: Player) {
             close(hash)
         }
         interfaces[hash] = interfaceId
-        EventBus.schedule(InterfaceOpenEvent(player, interfaceId))
+        EventBus.dispatch(InterfaceOpenEvent(player, interfaceId))
     }
 
     private fun close(hash: Int): Int {
         val interfaceId = interfaces.remove(hash)
         if(interfaceId != interfaces.defaultReturnValue()) {
-            EventBus.schedule(InterfaceCloseEvent(player, interfaceId))
+            EventBus.dispatch(InterfaceCloseEvent(player, interfaceId))
             return interfaceId
         }
         return -1

@@ -128,22 +128,22 @@ public class class17 {
       }
 
       if (var0.x < 128 || var0.y < 128 || var0.x >= 13184 || var0.y >= 13184) {
-         var0.sequence = -1;
+         var0.animation = -1;
          var0.spotAnimation = -1;
          var0.field1074 = 0;
          var0.field1068 = 0;
-         var0.x = var0.field1024 * 64 + 128 * var0.pathX[0];
-         var0.y = 128 * var0.pathY[0] + var0.field1024 * 64;
+         var0.x = var0.size * 64 + 128 * var0.pathX[0];
+         var0.y = 128 * var0.pathY[0] + var0.size * 64;
          var0.method1749();
       }
 
       if (MouseHandler.localPlayer == var0 && (var0.x < 1536 || var0.y < 1536 || var0.x >= 11776 || var0.y >= 11776)) {
-         var0.sequence = -1;
+         var0.animation = -1;
          var0.spotAnimation = -1;
          var0.field1074 = 0;
          var0.field1068 = 0;
-         var0.x = var0.pathX[0] * 128 + var0.field1024 * 64;
-         var0.y = var0.field1024 * 64 + var0.pathY[0] * 128;
+         var0.x = var0.pathX[0] * 128 + var0.size * 64;
+         var0.y = var0.size * 64 + var0.pathY[0] * 128;
          var0.method1749();
       }
 

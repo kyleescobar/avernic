@@ -440,7 +440,7 @@ public class class154 extends class349 {
                                     }
 
                                     if ((var47.field1806 == 1 || var11.field3089 != 1) && -1 != var11.field3089) {
-                                       var42 = class44.method770(16748608) + var42 + class79.field1145 + " " + 'x' + class153.method2567(var11.field3089);
+                                       var42 = class44.method770(16748608) + var42 + class79.field1145 + " " + 'x' + ParamComposition.method2567(var11.field3089);
                                     }
                                  }
 
@@ -590,7 +590,7 @@ public class class154 extends class349 {
                                              if (var24.field1806 != 1 && var11.field3087[var21] == 1) {
                                                 var25 = class44.method770(16748608) + var24.field1836 + class79.field1145;
                                              } else {
-                                                var25 = class44.method770(16748608) + var24.field1836 + class79.field1145 + " " + 'x' + class153.method2567(var11.field3087[var21]);
+                                                var25 = class44.method770(16748608) + var24.field1836 + class79.field1145 + " " + 'x' + ParamComposition.method2567(var11.field3087[var21]);
                                              }
 
                                              var26 = var23 * (var11.field3025 + 115) + var13;

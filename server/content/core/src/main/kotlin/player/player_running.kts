@@ -5,6 +5,7 @@ import dev.avernic.server.engine.event.on_event
 import dev.avernic.server.engine.event.player.PlayerCycleEvent
 import dev.avernic.server.engine.event.player.PlayerMoveEvent
 import dev.avernic.server.engine.game.MovementType
+import dev.avernic.server.engine.game.Privilege
 
 on_event<PlayerMoveEvent>()
     .where { type == MovementType.RUN }
@@ -13,11 +14,16 @@ on_event<PlayerMoveEvent>()
             player.toggleRun()
             return@then
         }
+
+        if(player.privilege == Privilege.ADMINISTRATOR) {
+            return@then
+        }
+
         player.drainRunEnergy()
     }
 
 on_event<PlayerCycleEvent>()
-    .where { !player.running && player.runEnergy <= 100 }
+    .where { !player.running && player.runEnergy < 100 }
     .then {
         player.recoverRunEnergy()
     }

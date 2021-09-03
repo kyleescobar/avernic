@@ -566,7 +566,7 @@ public final class class13 extends Canvas {
    }
 
    static final void method99(class228 var0) {
-      PacketBuffer var2 = client.packetWriter.field1201;
+      PacketBuffer var2 = client.packetWriter.packetBuffer;
       byte var4;
       int var6;
       int var7;

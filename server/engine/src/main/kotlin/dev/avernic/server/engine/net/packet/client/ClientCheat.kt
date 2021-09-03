@@ -1,8 +1,8 @@
 package dev.avernic.server.engine.net.packet.client
 
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.CommandEvent
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.player.PlayerCommandEvent
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.net.Session
 import dev.avernic.server.engine.net.game.ClientPacket
 import dev.avernic.server.engine.net.game.Codec
@@ -15,7 +15,7 @@ import io.netty.buffer.ByteBuf
 class ClientCheat(val command: String, val args: List<String>) : Packet {
 
     override fun handle(session: Session) {
-        EventBus.schedule(CommandEvent(session.client.player, command, args))
+        EventBus.dispatch(PlayerCommandEvent(session.client.player, command, args))
     }
 
     companion object : Codec<ClientCheat> {

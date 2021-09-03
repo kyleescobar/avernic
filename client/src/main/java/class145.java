@@ -23,7 +23,7 @@ public class class145 {
       class144.field1580.method3883();
       class144.field1581.method3883();
       class135.method2319();
-      class153.field1697.method3883();
+      ParamComposition.field1697.method3883();
       class44.method771();
       class87.method1990();
       class13.method108();

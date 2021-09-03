@@ -15,7 +15,7 @@ public class class43 extends class354 {
    }
 
    static final void method768(class72 var0) {
-      if (0 != var0.field1075) {
+      if (0 != var0.rotation) {
          if (var0.targetIndex != -1) {
             Object var2 = null;
             if (var0.targetIndex < 32768) {
@@ -41,7 +41,7 @@ public class class43 extends class354 {
             var0.faceDegrees = -1;
          }
 
-         int var5 = var0.orientation - var0.field1022 & 2047;
+         int var5 = var0.orientation - var0.movementDirection & 2047;
          if (var5 == 0 && var0.field1032) {
             var0.targetIndex = -1;
             var0.field1032 = false;
@@ -51,38 +51,38 @@ public class class43 extends class354 {
             ++var0.field1073;
             boolean var6;
             if (var5 > 1024) {
-               var0.field1022 -= var0.field1075;
+               var0.movementDirection -= var0.rotation;
                var6 = true;
-               if (var5 < var0.field1075 || var5 > 2048 - var0.field1075) {
-                  var0.field1022 = var0.orientation;
+               if (var5 < var0.rotation || var5 > 2048 - var0.rotation) {
+                  var0.movementDirection = var0.orientation;
                   var6 = false;
                }
 
-               if (var0.field1050 == var0.field1030 && (var0.field1073 > 25 || var6)) {
-                  if (-1 != var0.field1052) {
-                     var0.field1050 = var0.field1052;
+               if (var0.field1050 == var0.stanceAnimation && (var0.field1073 > 25 || var6)) {
+                  if (-1 != var0.turnLeftAnimation) {
+                     var0.field1050 = var0.turnLeftAnimation;
                   } else {
-                     var0.field1050 = var0.field1029;
+                     var0.field1050 = var0.walkForwardAnimation;
                   }
                }
             } else {
-               var0.field1022 += var0.field1075;
+               var0.movementDirection += var0.rotation;
                var6 = true;
-               if (var5 < var0.field1075 || var5 > 2048 - var0.field1075) {
-                  var0.field1022 = var0.orientation;
+               if (var5 < var0.rotation || var5 > 2048 - var0.rotation) {
+                  var0.movementDirection = var0.orientation;
                   var6 = false;
                }
 
-               if (var0.field1030 == var0.field1050 && (var0.field1073 > 25 || var6)) {
-                  if (var0.field1020 != -1) {
-                     var0.field1050 = var0.field1020;
+               if (var0.stanceAnimation == var0.field1050 && (var0.field1073 > 25 || var6)) {
+                  if (var0.turnRightAnimation != -1) {
+                     var0.field1050 = var0.turnRightAnimation;
                   } else {
-                     var0.field1050 = var0.field1029;
+                     var0.field1050 = var0.walkForwardAnimation;
                   }
                }
             }
 
-            var0.field1022 &= 2047;
+            var0.movementDirection &= 2047;
          } else {
             var0.field1073 = 0;
          }

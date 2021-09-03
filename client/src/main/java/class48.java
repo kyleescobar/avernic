@@ -280,7 +280,7 @@ public class class48 {
                   client.field408 = class51.field747[--class51.field746] == 1;
                   return 1;
                } else {
-                  class153 var6;
+                  ParamComposition var6;
                   int var8;
                   if (6513 == var0) {
                      class51.field746 -= 2;
@@ -288,9 +288,9 @@ public class class48 {
                      var8 = class51.field747[1 + class51.field746];
                      var6 = PacketBuffer.method5928(var8);
                      if (var6.method2548()) {
-                        class51.field738[++class2.field4 - 1] = class97.method2065(var4).method2474(var8, var6.field1701);
+                        class51.field738[++class2.field4 - 1] = class97.getNpcDefinition(var4).method2474(var8, var6.field1701);
                      } else {
-                        class51.field747[++class51.field746 - 1] = class97.method2065(var4).method2475(var8, var6.field1696);
+                        class51.field747[++class51.field746 - 1] = class97.getNpcDefinition(var4).method2475(var8, var6.field1696);
                      }
 
                      return 1;
@@ -391,8 +391,8 @@ public class class48 {
 
    static final void method1315(class72 var0) {
       int var2 = Math.max(1, var0.field1074 - client.cycle);
-      int var3 = var0.field1024 * 64 + var0.field1063 * 128;
-      int var4 = var0.field1024 * 64 + var0.field1065 * 128;
+      int var3 = var0.size * 64 + var0.field1063 * 128;
+      int var4 = var0.size * 64 + var0.field1065 * 128;
       var0.x += (var3 - var0.x) / var2;
       var0.y += (var4 - var0.y) / var2;
       var0.field1079 = 0;

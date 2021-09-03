@@ -5,7 +5,8 @@ import api.updateAppearance
 import dev.avernic.server.api.Varbits
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.on_event
-import dev.avernic.server.engine.event.player.LoginEvent
+import dev.avernic.server.engine.event.player.PlayerLoginEvent
+import dev.avernic.server.engine.game.Direction
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.interf.DisplayMode
 import dev.avernic.server.engine.game.interf.GameInterface
@@ -13,7 +14,7 @@ import dev.avernic.server.engine.game.interf.GameInterface
 /**
  * Handle the player initialization upon login.
  */
-on_event<LoginEvent> { event ->
+on_event<PlayerLoginEvent> { event ->
     val player = event.player
 
     player.updateAppearance()

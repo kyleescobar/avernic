@@ -2,11 +2,11 @@ package dev.avernic.server.engine.game.entity
 
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.player.LoginEvent
-import dev.avernic.server.engine.event.player.LogoutEvent
+import dev.avernic.server.engine.event.player.PlayerLoginEvent
+import dev.avernic.server.engine.event.player.PlayerLogoutEvent
 import dev.avernic.server.engine.event.player.PlayerCycleEvent
 import dev.avernic.server.engine.event.player.PlayerMoveEvent
-import dev.avernic.server.engine.event.schedule
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.game.Appearance
 import dev.avernic.server.engine.game.MessageType
 import dev.avernic.server.engine.game.MovementType
@@ -14,10 +14,7 @@ import dev.avernic.server.engine.game.Privilege
 import dev.avernic.server.engine.game.entity.pathfinder.PlayerPathfinder
 import dev.avernic.server.engine.game.entity.update.PlayerUpdateFlag
 import dev.avernic.server.engine.game.interf.DisplayMode
-import dev.avernic.server.engine.game.manager.GpiManager
-import dev.avernic.server.engine.game.manager.InterfaceManager
-import dev.avernic.server.engine.game.manager.SceneManager
-import dev.avernic.server.engine.game.manager.VarpManager
+import dev.avernic.server.engine.game.manager.*
 import dev.avernic.server.engine.game.map.Tile
 import dev.avernic.server.engine.net.StatusResponse
 import dev.avernic.server.engine.net.game.GameProtocol
@@ -77,6 +74,7 @@ class Player(val client: Client) : LivingEntity() {
     val gpi = GpiManager(this)
     val scene = SceneManager(this)
     val interfaces = InterfaceManager(this)
+    val npcs = NpcManager(this)
     private val varpManager = VarpManager(this)
 
     override val updateFlags = sortedSetOf<PlayerUpdateFlag>()
@@ -169,7 +167,7 @@ class Player(val client: Client) : LivingEntity() {
             }
         }
 
-        EventBus.schedule(LoginEvent(this))
+        EventBus.dispatch(PlayerLoginEvent(this))
 
         Logger.info("[username: $username] has connected to the server.")
     }
@@ -177,7 +175,7 @@ class Player(val client: Client) : LivingEntity() {
     internal fun logout() {
         world.players.remove(this)
 
-        EventBus.schedule(LogoutEvent(this))
+        EventBus.dispatch(PlayerLogoutEvent(this))
 
         Logger.info("[username: $username] has disconnected from the server.")
     }
@@ -186,17 +184,18 @@ class Player(val client: Client) : LivingEntity() {
         varpManager.synchronize()
         scene.synchronize()
         gpi.synchronize()
+        npcs.synchronize()
         client.flush()
     }
 
     override fun postProcess() {
         super.postProcess()
-        EventBus.schedule(PlayerCycleEvent(this))
+        EventBus.dispatch(PlayerCycleEvent(this))
         varpManager.postProcess()
         scene.postProcess()
     }
 
-    override fun scheduleMoveEvent(type: MovementType) = EventBus.schedule(PlayerMoveEvent(this, type))
+    override fun scheduleMoveEvent(type: MovementType) = EventBus.dispatch(PlayerMoveEvent(this, type))
 
     override fun addAppearanceUpdateFlag() { updateFlags.add(PlayerUpdateFlag.APPEARANCE) }
     override fun addForceChatUpdateFlag() { updateFlags.add(PlayerUpdateFlag.FORCE_CHAT) }

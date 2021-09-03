@@ -138,7 +138,7 @@ public final class client extends class19 implements class318 {
    static int field491;
    static int field493;
    static int field498;
-   static int field501;
+   static int pendingNpcUpdateCount;
    static int field504;
    static int field505;
    static int field506;
@@ -156,7 +156,7 @@ public final class client extends class19 implements class318 {
    static int field525;
    static int isMember;
    static int field528;
-   static int field529;
+   static int pendingNpcTeleportsCount;
    static int field535;
    static int field540;
    static int field545;
@@ -231,12 +231,12 @@ public final class client extends class19 implements class318 {
    static int[] field437;
    static int[] field442;
    static int[] npcIndexes;
-   static int[] field475;
+   static int[] pendingNpcUpdateIndexes;
    static int[] field496;
    static int[] field497;
    static int[] field499;
    static int[] field500;
-   static int[] field534;
+   static int[] npcMovementDirections;
    static int[] field541;
    static int[] field542;
    static int[] field547;
@@ -251,7 +251,7 @@ public final class client extends class19 implements class318 {
    static int[] field623;
    static int[] field626;
    static int[] field627;
-   static int[] field628;
+   static int[] pendingNpcTeleports;
    static int[] field629;
    static int[] field634;
    static int[] field641;
@@ -459,8 +459,8 @@ public final class client extends class19 implements class318 {
       npcs = new Npc['\u8000'];
       npcCount = 0;
       npcIndexes = new int['\u8000'];
-      field501 = 0;
-      field475 = new int[250];
+      pendingNpcUpdateCount = 0;
+      pendingNpcUpdateIndexes = new int[250];
       packetWriter = new class86();
       field571 = 0;
       field456 = false;
@@ -535,12 +535,12 @@ public final class client extends class19 implements class318 {
       isMember = 0;
       field527 = true;
       field427 = 0;
-      field529 = 0;
-      field628 = new int[1000];
+      pendingNpcTeleportsCount = 0;
+      pendingNpcTeleports = new int[1000];
       field531 = new int[]{44, 45, 46, 47, 48, 49, 50, 51};
       field532 = new String[8];
       field533 = new boolean[8];
-      field534 = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
+      npcMovementDirections = new int[]{768, 1024, 1280, 512, 1536, 256, 0, 1792};
       field535 = -1;
       field536 = new class296[4][104][104];
       field537 = new class296();
@@ -2724,7 +2724,7 @@ public final class client extends class19 implements class318 {
 
    final void method1094() {
       Object var2 = packetWriter.method1968();
-      PacketBuffer var3 = packetWriter.field1201;
+      PacketBuffer var3 = packetWriter.packetBuffer;
 
       try {
          if (loginState == 0) {
@@ -2840,7 +2840,7 @@ public final class client extends class19 implements class318 {
 
          int loginUsernameLength;
          if (loginState == 5) {
-            packetWriter.field1201.offset = 0;
+            packetWriter.packetBuffer.offset = 0;
             packetWriter.clearBuffer();
             PacketBuffer var24 = new PacketBuffer(500);
             int[] xteaKeys = new int[]{class99.field1267.nextInt(), class99.field1267.nextInt(), class99.field1267.nextInt(), class99.field1267.nextInt()};
@@ -4152,7 +4152,7 @@ public final class client extends class19 implements class318 {
 
    final boolean method829(class86 packetReader) {
       class330 var3 = packetReader.method1968();
-      PacketBuffer buf = packetReader.field1201;
+      PacketBuffer buf = packetReader.packetBuffer;
       if (var3 == null) {
          return false;
       } else {
@@ -4166,7 +4166,7 @@ public final class client extends class19 implements class318 {
                      return false;
                   }
 
-                  var3.read(packetReader.field1201.payload, 0, 1);
+                  var3.read(packetReader.packetBuffer.payload, 0, 1);
                   packetReader.field1210 = 0;
                   packetReader.field1211 = false;
                }
@@ -4177,7 +4177,7 @@ public final class client extends class19 implements class318 {
                      return false;
                   }
 
-                  var3.read(packetReader.field1201.payload, 1, 1);
+                  var3.read(packetReader.packetBuffer.payload, 1, 1);
                   packetReader.field1210 = 0;
                }
 
@@ -4279,13 +4279,13 @@ public final class client extends class19 implements class318 {
             if (packetReader.serverPacket == ServerPacket.field2720) {
                for(value = 0; value < localPlayers.length; ++value) {
                   if (null != localPlayers[value]) {
-                     localPlayers[value].sequence = -1;
+                     localPlayers[value].animation = -1;
                   }
                }
 
                for(value = 0; value < npcs.length; ++value) {
                   if (null != npcs[value]) {
-                     npcs[value].sequence = -1;
+                     npcs[value].animation = -1;
                   }
                }
 
@@ -5070,7 +5070,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.field2757) {
-               class153.method2544(true, buf);
+               ParamComposition.updateNpcs(true, buf);
                packetReader.serverPacket = null;
                return true;
             }
@@ -5170,8 +5170,8 @@ public final class client extends class19 implements class318 {
                return true;
             }
 
-            if (ServerPacket.field2744 == packetReader.serverPacket) {
-               class153.method2544(false, buf);
+            if (ServerPacket.NPC_UPDATE_SMALL == packetReader.serverPacket) {
+               ParamComposition.updateNpcs(false, buf);
                packetReader.serverPacket = null;
                return true;
             }
@@ -5196,7 +5196,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (packetReader.serverPacket == ServerPacket.REBUILD_REGION_NORMAL) {
-               class239.loadRegions(false, packetReader.field1201);
+               class239.loadRegions(false, packetReader.packetBuffer);
                packetReader.serverPacket = null;
                return true;
             }
@@ -5539,7 +5539,7 @@ public final class client extends class19 implements class318 {
             }
 
             if (ServerPacket.field2697 == packetReader.serverPacket) {
-               class239.loadRegions(true, packetReader.field1201);
+               class239.loadRegions(true, packetReader.packetBuffer);
                packetReader.serverPacket = null;
                return true;
             }

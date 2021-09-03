@@ -4,12 +4,13 @@ import dev.avernic.server.cache.GameCache
 import dev.avernic.server.cache.map.MapObjectDefinition
 import dev.avernic.server.cache.map.MapTerrainDefinition
 import dev.avernic.server.common.inject
-import dev.avernic.server.engine.event.Event
-import dev.avernic.server.engine.event.EventHandler
-import dev.avernic.server.engine.event.EventSubject
+import dev.avernic.server.engine.event.*
+import dev.avernic.server.engine.event.world.NpcSpawnEvent
 import dev.avernic.server.engine.game.collision.Collision
 import dev.avernic.server.engine.game.collision.addObjectCollision
 import dev.avernic.server.engine.game.entity.GameObject
+import dev.avernic.server.engine.game.entity.Npc
+import dev.avernic.server.engine.game.list.NpcList
 import dev.avernic.server.engine.game.list.PlayerList
 import dev.avernic.server.engine.game.map.Chunk
 import dev.avernic.server.engine.game.map.Region
@@ -28,6 +29,8 @@ class World : EventSubject, TaskSubject {
     var tick: Long = 0L
 
     val players = PlayerList(MAX_PLAYERS)
+
+    val npcs = NpcList(MAX_NPCS)
 
     override val events = LinkedBlockingDeque<EventHandler<Event>>()
 
@@ -71,11 +74,15 @@ class World : EventSubject, TaskSubject {
         // World
         processTasks()
 
+        // Npc
+        processNpcTasks()
+        processNpcMovement()
+
         // Player
         processPlayerTasks()
         processPlayerMovement()
 
-        // Sync
+        // Synchronize
         synchronize()
 
         // Post
@@ -96,13 +103,49 @@ class World : EventSubject, TaskSubject {
         players.forEach { it.processTasks() }
     }
 
+    private fun processNpcTasks() {
+        npcs.forEach { it.processTasks() }
+    }
+
     private fun processPlayerMovement() {
         players.forEach { it.processMovement() }
+    }
+
+    private fun processNpcMovement() {
+        npcs.forEach { it.processMovement() }
     }
 
     private fun synchronize() {
         players.forEach { it.synchronize() }
         players.forEach { it.postProcess() }
+    }
+
+    fun spawnNpc(id: Int, tile: Tile): Npc {
+        val npc = npcs.add(id, tile)
+        EventBus.dispatch(NpcSpawnEvent(npc))
+        return npc
+    }
+
+    fun spawnNpc(npc: Npc): Npc {
+        npcs.add(npc)
+        npc.isDead = false
+        return npc
+    }
+
+    fun removeNpc(npc: Npc): Npc {
+        npcs.remove(npc)
+        npc.isDead = true
+        return npc
+    }
+
+    fun findNpcsWithinRadius(tile: Tile, radius: Int): List<Npc> {
+        val result = mutableListOf<Npc>()
+        for(x in tile.x - radius .. tile.x + radius) {
+            for(y in tile.y - radius .. tile.x + radius) {
+                result.addAll(npcs.filter { it.tile.x == x && it.tile.y == y && it.tile.plane == tile.plane })
+            }
+        }
+        return result
     }
 
     fun getChunk(x: Int, y: Int, plane: Int = 0): WorldChunk? = chunks[plane][x / Chunk.SIZE][y / Chunk.SIZE]
@@ -152,6 +195,11 @@ class World : EventSubject, TaskSubject {
          * The maximum number of players allowed in the game world.
          */
         const val MAX_PLAYERS = 2048
+
+        /**
+         * The maximum number of npcs allowed in the game world.
+         */
+        const val MAX_NPCS = 32768
 
         /**
          * The maximum number of planes or height levels the world supports.

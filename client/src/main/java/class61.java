@@ -52,7 +52,7 @@ public class class61 {
             class69.field972.method5197();
          }
 
-         class153.method2549();
+         ParamComposition.method2549();
          class90.field1232 = false;
       }
 

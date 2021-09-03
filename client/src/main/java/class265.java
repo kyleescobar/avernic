@@ -91,10 +91,10 @@ public class class265 {
                   continue;
                }
 
-               if (var27.definition.field1622 == 1 && (var27.x & 127) == 64 && 64 == (var27.y & 127)) {
+               if (var27.definition.size == 1 && (var27.x & 127) == 64 && 64 == (var27.y & 127)) {
                   for(var29 = 0; var29 < client.npcCount; ++var29) {
                      var31 = client.npcs[client.npcIndexes[var29]];
-                     if (null != var31 && var31 != var27 && var31.definition.field1622 == 1 && var31.x == var27.x && var27.y == var31.y) {
+                     if (null != var31 && var31 != var27 && var31.definition.size == 1 && var31.x == var27.x && var27.y == var31.y) {
                         class291.method4625(var31.definition, client.npcIndexes[var29], var14, var15);
                      }
                   }
@@ -122,7 +122,7 @@ public class class265 {
                if (64 == (var28.x & 127) && (var28.y & 127) == 64) {
                   for(var29 = 0; var29 < client.npcCount; ++var29) {
                      var31 = client.npcs[client.npcIndexes[var29]];
-                     if (var31 != null && var31.definition.field1622 == 1 && var31.x == var28.x && var28.y == var31.y) {
+                     if (var31 != null && var31.definition.size == 1 && var31.x == var28.x && var28.y == var31.y) {
                         class291.method4625(var31.definition, client.npcIndexes[var29], var14, var15);
                      }
                   }

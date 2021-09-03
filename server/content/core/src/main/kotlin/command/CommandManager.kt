@@ -1,7 +1,7 @@
 package command
 
 import dev.avernic.server.engine.event.on_event
-import dev.avernic.server.engine.event.player.CommandEvent
+import dev.avernic.server.engine.event.player.PlayerCommandEvent
 import dev.avernic.server.engine.game.entity.Player
 import org.tinylog.kotlin.Logger
 
@@ -13,7 +13,7 @@ object CommandManager {
         /*
          * Listen for client command event and handle them.
          */
-        on_event<CommandEvent> { event ->
+        on_event<PlayerCommandEvent> { event ->
             handleCommand(event.player, event.command, event.args)
         }
     }

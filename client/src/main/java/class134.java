@@ -289,7 +289,7 @@ public final class class134 extends class330 implements Runnable {
          int var2 = client.npcIndexes[var1];
          Npc var3 = client.npcs[var2];
          if (null != var3) {
-            class17.method142(var3, var3.definition.field1622);
+            class17.method142(var3, var3.definition.size);
          }
       }
 

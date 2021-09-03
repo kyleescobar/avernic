@@ -15,11 +15,12 @@ import dev.avernic.server.engine.task.TaskType
 import java.util.*
 import java.util.concurrent.ConcurrentLinkedDeque
 
+@Suppress("LeakingThis")
 abstract class LivingEntity : Entity, EventSubject, TaskSubject {
 
     val world: World by inject()
 
-    var index: Int = -1
+    open var index: Int = -1
     open var size: Int = 1
     override var tile: Tile = Tile(0, 0, 0)
     open var prevTile: Tile = Tile(0, 0, 0)
@@ -31,7 +32,7 @@ abstract class LivingEntity : Entity, EventSubject, TaskSubject {
     open var chatMessage: String? = null
     open var teleportTile: Tile? = null
     open var path: MutableList<Tile> = mutableListOf()
-    open var prevPathTile: Tile = tile.copy()
+    open var prevPathTile: Tile = Tile(0, 0, 0)
 
     abstract val pathfinder: Pathfinder
 

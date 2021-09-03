@@ -18,7 +18,7 @@ public class class331 extends class330 {
    }
 
    public static void method5302(class277 var0) {
-      class153.field1698 = var0;
+      ParamComposition.field1698 = var0;
    }
 
    public boolean method5294(int var1) throws IOException {

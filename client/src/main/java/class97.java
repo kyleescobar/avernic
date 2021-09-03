@@ -21,7 +21,7 @@ public class class97 extends class325 {
       return this.method2068((class328)var1, (class328)var2);
    }
 
-   public static class148 method2065(int var0) {
+   public static class148 getNpcDefinition(int var0) {
       class148 var2 = (class148)class148.field1618.method3880((long)var0);
       if (null != var2) {
          return var2;

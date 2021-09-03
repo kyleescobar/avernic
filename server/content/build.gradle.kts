@@ -19,5 +19,3 @@ dependencies {
     implementation(project(":server:api"))
     implementation("io.github.classgraph:classgraph:_")
 }
-
-gradle.buildFinished { buildDir.deleteRecursively() }

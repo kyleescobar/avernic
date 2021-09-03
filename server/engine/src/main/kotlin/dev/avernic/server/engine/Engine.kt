@@ -1,13 +1,10 @@
 package dev.avernic.server.engine
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder
-import dev.avernic.server.cache.GameCache
-import dev.avernic.server.common.get
 import dev.avernic.server.common.inject
 import dev.avernic.server.config.ServerConfig
 import dev.avernic.server.engine.event.EventBus
-import dev.avernic.server.engine.event.schedule
-import dev.avernic.server.engine.event.world.ServerStartEvent
+import dev.avernic.server.engine.event.dispatch
 import dev.avernic.server.engine.event.world.ServerStopEvent
 import dev.avernic.server.engine.game.World
 import dev.avernic.server.engine.net.game.GamePackets
@@ -85,7 +82,7 @@ class Engine {
         /*
          * Dispatch Event
          */
-        EventBus.schedule(ServerStopEvent())
+        EventBus.dispatch(ServerStopEvent())
     }
 
     private fun CoroutineScope.start(delay: Long) = launch {

@@ -472,7 +472,7 @@ public class class124 extends class354 {
             int var4 = var3.x >> 7;
             int var5 = var3.y >> 7;
             if (var4 >= 0 && var4 < 104 && var5 >= 0 && var5 < 104) {
-               if (var3.field1024 == 1 && 64 == (var3.x & 127) && 64 == (var3.y & 127)) {
+               if (var3.size == 1 && 64 == (var3.x & 127) && 64 == (var3.y & 127)) {
                   if (client.field505 == client.field502[var4][var5]) {
                      continue;
                   }
@@ -482,7 +482,7 @@ public class class124 extends class354 {
 
                long var6 = class172.method3133(0, 0, 1, !var3.definition.field1649, client.npcIndexes[var2]);
                var3.field1025 = client.cycle;
-               class166.field1925.method3508(class285.plane, var3.x, var3.y, class123.method2216(var3.field1024 * 64 - 64 + var3.x, var3.field1024 * 64 - 64 + var3.y, class285.plane), 60 + (var3.field1024 * 64 - 64), var3, var3.field1022, var6, var3.field1023);
+               class166.field1925.method3508(class285.plane, var3.x, var3.y, class123.method2216(var3.size * 64 - 64 + var3.x, var3.size * 64 - 64 + var3.y, class285.plane), 60 + (var3.size * 64 - 64), var3, var3.movementDirection, var6, var3.field1023);
             }
          }
       }

@@ -70,20 +70,20 @@ public class class45 extends class349 {
    }
 
    static final void method798(class72 var0) {
-      if (var0.field1068 == client.cycle || var0.sequence == -1 || 0 != var0.field1056 || 1 + var0.field1055 > class48.method1312(var0.sequence).field1865[var0.field1054]) {
+      if (var0.field1068 == client.cycle || var0.animation == -1 || 0 != var0.animationDelay || 1 + var0.animationCycle > class48.method1312(var0.animation).field1865[var0.animationFrame]) {
          int var2 = var0.field1068 - var0.field1074;
          int var3 = client.cycle - var0.field1074;
-         int var4 = var0.field1063 * 128 + var0.field1024 * 64;
-         int var5 = var0.field1024 * 64 + var0.field1065 * 128;
-         int var6 = var0.field1024 * 64 + var0.field1064 * 128;
-         int var7 = var0.field1024 * 64 + var0.field1066 * 128;
+         int var4 = var0.field1063 * 128 + var0.size * 64;
+         int var5 = var0.size * 64 + var0.field1065 * 128;
+         int var6 = var0.size * 64 + var0.field1064 * 128;
+         int var7 = var0.size * 64 + var0.field1066 * 128;
          var0.x = (var6 * var3 + (var2 - var3) * var4) / var2;
          var0.y = (var3 * var7 + (var2 - var3) * var5) / var2;
       }
 
       var0.field1079 = 0;
       var0.orientation = var0.field1051;
-      var0.field1022 = var0.orientation;
+      var0.movementDirection = var0.orientation;
    }
 
    static boolean method785() {

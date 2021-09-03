@@ -25,9 +25,9 @@ final class class282 implements Comparator {
    }
 
    static final int method4540(int var0, int var1) {
-      int var3 = class153.method2563(var0 - 1, var1 - 1) + class153.method2563(1 + var0, var1 - 1) + class153.method2563(var0 - 1, var1 + 1) + class153.method2563(1 + var0, var1 + 1);
-      int var4 = class153.method2563(var0 - 1, var1) + class153.method2563(var0 + 1, var1) + class153.method2563(var0, var1 - 1) + class153.method2563(var0, 1 + var1);
-      int var5 = class153.method2563(var0, var1);
+      int var3 = ParamComposition.method2563(var0 - 1, var1 - 1) + ParamComposition.method2563(1 + var0, var1 - 1) + ParamComposition.method2563(var0 - 1, var1 + 1) + ParamComposition.method2563(1 + var0, var1 + 1);
+      int var4 = ParamComposition.method2563(var0 - 1, var1) + ParamComposition.method2563(var0 + 1, var1) + ParamComposition.method2563(var0, var1 - 1) + ParamComposition.method2563(var0, 1 + var1);
+      int var5 = ParamComposition.method2563(var0, var1);
       return var5 / 4 + var3 / 16 + var4 / 8;
    }
 

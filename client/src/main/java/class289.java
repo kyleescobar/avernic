@@ -8,7 +8,7 @@ public class class289 {
 
    static void method4616() {
       client.packetWriter.clearBuffer();
-      client.packetWriter.field1201.offset = 0;
+      client.packetWriter.packetBuffer.offset = 0;
       client.packetWriter.serverPacket = null;
       client.packetWriter.field1212 = null;
       client.packetWriter.field1214 = null;

@@ -71,7 +71,7 @@ public final class KeyHandler implements KeyListener, FocusListener {
                boolean var7 = false;
 
                for(class354 var5 = var2.field1831.method5719(); null != var5; var5 = var2.field1831.method5720()) {
-                  class153 var6 = PacketBuffer.method5928((int)var5.field3966);
+                  ParamComposition var6 = PacketBuffer.method5928((int)var5.field3966);
                   if (var6.field1699) {
                      var5.remove();
                   } else {

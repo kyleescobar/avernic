@@ -4,17 +4,17 @@ public abstract class class72 extends class201 {
    boolean isAutoChatting;
    boolean field1080 = false;
    byte field1040 = 0;
-   byte[] field1031 = new byte[10];
+   byte[] pathTraversed = new byte[10];
    class298 field1078 = new class298();
-   int field1020 = -1;
-   int field1021 = -1;
-   int field1022;
-   int field1024 = 1;
+   int turnRightAnimation = -1;
+   int walkRightAnimation = -1;
+   int movementDirection;
+   int size = 1;
    int field1025;
    int pathLength = 0;
-   int field1028 = 0;
-   int field1029 = -1;
-   int field1030 = -1;
+   int isSpotAnimationRunning = 0;
+   int walkForwardAnimation = -1;
+   int stanceAnimation = -1;
    int field1033 = -1;
    int overheadTextCyclesRemaining = 100;
    int overheadTextColor = 0;
@@ -22,22 +22,22 @@ public abstract class class72 extends class201 {
    int field1042 = 0;
    int orientation;
    int field1044 = 0;
-   int field1046 = -1;
+   int walkLeftAnimation = -1;
    int targetIndex = -1;
    int faceDegrees = -1;
    int field1050 = -1;
    int field1051;
-   int field1052 = -1;
-   int sequence = -1;
-   int field1054 = 0;
-   int field1055 = 0;
-   int field1056 = 0;
+   int turnLeftAnimation = -1;
+   int animation = -1;
+   int animationFrame = 0;
+   int animationCycle = 0;
+   int animationDelay = 0;
    int field1057 = 0;
    int spotAnimation = -1;
    int y;
    int field1060 = 0;
-   int field1061;
-   int field1062;
+   int spotAnimationStartTick;
+   int spotAnimationHeight;
    int field1063;
    int field1064;
    int field1065;
@@ -47,10 +47,10 @@ public abstract class class72 extends class201 {
    int x;
    int npcCycle = 0;
    int field1071 = 200;
-   int field1072 = -1;
+   int walkBackAnimation = -1;
    int field1073 = 0;
    int field1074;
-   int field1075 = 32;
+   int rotation = 32;
    int field1079 = 0;
    int[] field1026 = new int[4];
    int[] field1036 = new int[4];
@@ -213,7 +213,7 @@ public abstract class class72 extends class201 {
          return 1;
       } else if (3101 == var0) {
          class51.field746 -= 2;
-         class153.performPlayerAnimation(MouseHandler.localPlayer, class51.field747[class51.field746], class51.field747[1 + class51.field746]);
+         ParamComposition.performPlayerAnimation(MouseHandler.localPlayer, class51.field747[class51.field746], class51.field747[1 + class51.field746]);
          return 1;
       } else if (3103 == var0) {
          if (!class51.field741) {

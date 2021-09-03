@@ -164,7 +164,7 @@ public class class247 {
 
    public class207 method4201(class159 var1, int var2, class159 var3, int var4) {
       if (-1 != this.field2937) {
-         return class97.method2065(this.field2937).method2491(var1, var2, var3, var4);
+         return class97.getNpcDefinition(this.field2937).method2491(var1, var2, var3, var4);
       } else {
          long var6 = this.field2934;
          int[] var8 = this.field2929;
@@ -290,7 +290,7 @@ public class class247 {
 
    class193 method4184() {
       if (this.field2937 != -1) {
-         return class97.method2065(this.field2937).method2470();
+         return class97.getNpcDefinition(this.field2937).method2470();
       } else {
          boolean var2 = false;
 
@@ -349,7 +349,7 @@ public class class247 {
    }
 
    public int method4198() {
-      return this.field2937 == -1 ? this.field2929[1] + (this.field2929[11] << 5) + (this.field2929[0] << 15) + (this.field2932[0] << 25) + (this.field2932[4] << 20) + (this.field2929[8] << 10) : 305419896 + class97.method2065(this.field2937).field1627;
+      return this.field2937 == -1 ? this.field2929[1] + (this.field2929[11] << 5) + (this.field2929[0] << 15) + (this.field2932[0] << 25) + (this.field2932[4] << 20) + (this.field2929[8] << 10) : 305419896 + class97.getNpcDefinition(this.field2937).field1627;
    }
 
    static int method4214(int var0, class59 var1, boolean var2) {

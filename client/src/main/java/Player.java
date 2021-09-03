@@ -91,35 +91,35 @@ public final class Player extends class72 {
          var25[var7] = var8;
       }
 
-      super.field1030 = buf.readUnsignedShort();
-      if (super.field1030 == 65535) {
-         super.field1030 = -1;
+      super.stanceAnimation = buf.readUnsignedShort();
+      if (super.stanceAnimation == 65535) {
+         super.stanceAnimation = -1;
       }
 
-      super.field1052 = buf.readUnsignedShort();
-      if (65535 == super.field1052) {
-         super.field1052 = -1;
+      super.turnLeftAnimation = buf.readUnsignedShort();
+      if (65535 == super.turnLeftAnimation) {
+         super.turnLeftAnimation = -1;
       }
 
-      super.field1020 = super.field1052;
-      super.field1029 = buf.readUnsignedShort();
-      if (65535 == super.field1029) {
-         super.field1029 = -1;
+      super.turnRightAnimation = super.turnLeftAnimation;
+      super.walkForwardAnimation = buf.readUnsignedShort();
+      if (65535 == super.walkForwardAnimation) {
+         super.walkForwardAnimation = -1;
       }
 
-      super.field1072 = buf.readUnsignedShort();
-      if (super.field1072 == 65535) {
-         super.field1072 = -1;
+      super.walkBackAnimation = buf.readUnsignedShort();
+      if (super.walkBackAnimation == 65535) {
+         super.walkBackAnimation = -1;
       }
 
-      super.field1046 = buf.readUnsignedShort();
-      if (65535 == super.field1046) {
-         super.field1046 = -1;
+      super.walkLeftAnimation = buf.readUnsignedShort();
+      if (65535 == super.walkLeftAnimation) {
+         super.walkLeftAnimation = -1;
       }
 
-      super.field1021 = buf.readUnsignedShort();
-      if (65535 == super.field1021) {
-         super.field1021 = -1;
+      super.walkRightAnimation = buf.readUnsignedShort();
+      if (65535 == super.walkRightAnimation) {
+         super.walkRightAnimation = -1;
       }
 
       super.field1033 = buf.readUnsignedShort();
@@ -255,16 +255,16 @@ public final class Player extends class72 {
    }
 
    int getTransformedSize() {
-      return this.field979 != null && this.field979.field2937 != -1 ? class97.method2065(this.field979.field2937).field1622 : 1;
+      return this.field979 != null && this.field979.field2937 != -1 ? class97.getNpcDefinition(this.field979.field2937).size : 1;
    }
 
    protected final class207 method3687() {
       if (this.field979 == null) {
          return null;
       } else {
-         class159 var2 = super.sequence != -1 && super.field1056 == 0 ? class48.method1312(super.sequence) : null;
-         class159 var3 = -1 == super.field1050 || this.field995 || super.field1050 == super.field1030 && null != var2 ? null : class48.method1312(super.field1050);
-         class207 var4 = this.field979.method4201(var2, super.field1054, var3, super.field1042);
+         class159 var2 = super.animation != -1 && super.animationDelay == 0 ? class48.method1312(super.animation) : null;
+         class159 var3 = -1 == super.field1050 || this.field995 || super.field1050 == super.stanceAnimation && null != var2 ? null : class48.method1312(super.field1050);
+         class207 var4 = this.field979.method4201(var2, super.animationFrame, var3, super.field1042);
          if (var4 == null) {
             return null;
          } else {
@@ -272,10 +272,10 @@ public final class Player extends class72 {
             super.field1071 = var4.field2346;
             class207 var5;
             class207[] var6;
-            if (!this.field995 && -1 != super.spotAnimation && -1 != super.field1028) {
-               var5 = class25.method403(super.spotAnimation).method2498(super.field1028);
+            if (!this.field995 && -1 != super.spotAnimation && -1 != super.isSpotAnimationRunning) {
+               var5 = class25.method403(super.spotAnimation).method2498(super.isSpotAnimationRunning);
                if (null != var5) {
-                  var5.method3731(0, -super.field1062, 0);
+                  var5.method3731(0, -super.spotAnimationHeight, 0);
                   var6 = new class207[]{var4, var5};
                   var4 = new class207(var6, 2);
                }
@@ -324,8 +324,8 @@ public final class Player extends class72 {
    }
 
    final void pathfindClientSideApproximate(int tileX, int tileY, byte var3) {
-      if (super.sequence != -1 && class48.method1312(super.sequence).field1860 == 1) {
-         super.sequence = -1;
+      if (super.animation != -1 && class48.method1312(super.animation).field1860 == 1) {
+         super.animation = -1;
       }
 
       super.faceDegrees = -1;
@@ -381,12 +381,12 @@ public final class Player extends class72 {
       for(int var5 = super.pathLength; var5 > 0; --var5) {
          super.pathX[var5] = super.pathX[var5 - 1];
          super.pathY[var5] = super.pathY[var5 - 1];
-         super.field1031[var5] = super.field1031[var5 - 1];
+         super.pathTraversed[var5] = super.pathTraversed[var5 - 1];
       }
 
       super.pathX[0] = var1;
       super.pathY[0] = var2;
-      super.field1031[0] = var3;
+      super.pathTraversed[0] = var3;
    }
 
    final boolean method1748() {

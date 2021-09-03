@@ -3,6 +3,7 @@ package dev.avernic.server.engine.game.map
 import dev.avernic.server.common.inject
 import dev.avernic.server.engine.game.World
 import dev.avernic.server.engine.game.entity.GameObject
+import dev.avernic.server.engine.game.entity.Npc
 import dev.avernic.server.engine.game.entity.Player
 
 class WorldChunk(
@@ -20,6 +21,7 @@ class WorldChunk(
     val masks = Array(Chunk.SIZE) { IntArray(Chunk.SIZE) }
     internal val loadedPlayers = mutableListOf<Player>()
     val players = mutableListOf<Player>()
+    val npcs = mutableListOf<Npc>()
     val staticObjects = mutableMapOf<Int, GameObject>()
 
     fun addCollision(x: Int, y: Int, mask: Int) {

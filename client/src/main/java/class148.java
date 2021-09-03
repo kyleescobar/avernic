@@ -22,31 +22,31 @@ public class class148 extends class349 {
    public boolean field1649;
    public boolean field1651;
    public int field1616;
-   public int field1622;
-   public int field1624;
-   public int field1625;
-   public int field1626;
+   public int size;
+   public int turnRightAnimation;
+   public int stanceAnimation;
+   public int turnLeftAnimation;
    public int field1627;
-   public int field1628;
-   public int field1629;
-   public int field1630;
-   public int field1631;
+   public int walkForwardAnimation;
+   public int walkBackAnimation;
+   public int walkLeftAnimation;
+   public int walkRightAnimation;
    public int field1644;
-   public int field1645;
+   public int rotation;
    public int[] field1646;
    public String field1620;
    public String[] field1636;
 
    class148() {
       this.field1620 = class270.field3234;
-      this.field1622 = 1;
-      this.field1625 = -1;
-      this.field1626 = -1;
-      this.field1624 = -1;
-      this.field1628 = -1;
-      this.field1629 = -1;
-      this.field1630 = -1;
-      this.field1631 = -1;
+      this.size = 1;
+      this.stanceAnimation = -1;
+      this.turnLeftAnimation = -1;
+      this.turnRightAnimation = -1;
+      this.walkForwardAnimation = -1;
+      this.walkBackAnimation = -1;
+      this.walkLeftAnimation = -1;
+      this.walkRightAnimation = -1;
       this.field1636 = new String[5];
       this.field1643 = true;
       this.field1616 = -1;
@@ -56,7 +56,7 @@ public class class148 extends class349 {
       this.field1652 = 0;
       this.field1638 = 0;
       this.field1644 = -1;
-      this.field1645 = 32;
+      this.rotation = 32;
       this.field1635 = -1;
       this.field1648 = -1;
       this.field1649 = true;
@@ -91,20 +91,20 @@ public class class148 extends class349 {
       } else if (var2 == 2) {
          this.field1620 = var1.readStringNullTerminated();
       } else if (var2 == 12) {
-         this.field1622 = var1.readUnsignedByte();
+         this.size = var1.readUnsignedByte();
       } else if (var2 == 13) {
-         this.field1625 = var1.readUnsignedShort();
+         this.stanceAnimation = var1.readUnsignedShort();
       } else if (14 == var2) {
-         this.field1628 = var1.readUnsignedShort();
+         this.walkForwardAnimation = var1.readUnsignedShort();
       } else if (var2 == 15) {
-         this.field1626 = var1.readUnsignedShort();
+         this.turnLeftAnimation = var1.readUnsignedShort();
       } else if (16 == var2) {
-         this.field1624 = var1.readUnsignedShort();
+         this.turnRightAnimation = var1.readUnsignedShort();
       } else if (var2 == 17) {
-         this.field1628 = var1.readUnsignedShort();
-         this.field1629 = var1.readUnsignedShort();
-         this.field1630 = var1.readUnsignedShort();
-         this.field1631 = var1.readUnsignedShort();
+         this.walkForwardAnimation = var1.readUnsignedShort();
+         this.walkBackAnimation = var1.readUnsignedShort();
+         this.walkLeftAnimation = var1.readUnsignedShort();
+         this.walkRightAnimation = var1.readUnsignedShort();
       } else if (18 == var2) {
          var1.readUnsignedShort();
       } else if (var2 >= 30 && var2 < 35) {
@@ -154,7 +154,7 @@ public class class148 extends class349 {
       } else if (var2 == 102) {
          this.field1644 = var1.readUnsignedShort();
       } else if (103 == var2) {
-         this.field1645 = var1.readUnsignedShort();
+         this.rotation = var1.readUnsignedShort();
       } else if (var2 != 106 && var2 != 118) {
          if (107 == var2) {
             this.field1649 = false;
@@ -331,7 +331,7 @@ public class class148 extends class349 {
          var3 = this.field1646[this.field1646.length - 1];
       }
 
-      return -1 != var3 ? class97.method2065(var3) : null;
+      return -1 != var3 ? class97.getNpcDefinition(var3) : null;
    }
 
    public boolean method2472() {

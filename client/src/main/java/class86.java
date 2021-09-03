@@ -8,7 +8,7 @@ public class class86 {
    ServerPacket field1214;
    class298 field1202 = new class298();
    class330 field1208;
-   PacketBuffer field1201 = new PacketBuffer(40000);
+   PacketBuffer packetBuffer = new PacketBuffer(40000);
    Buffer field1204 = new Buffer(5000);
    int field1203 = 0;
    int serverPacketLength = 0;

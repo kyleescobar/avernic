@@ -2,8 +2,8 @@ package player
 
 import api.walkTo
 import dev.avernic.server.engine.event.on_event
-import dev.avernic.server.engine.event.player.GameClickEvent
-import dev.avernic.server.engine.event.player.MinimapClickEvent
+import dev.avernic.server.engine.event.player.packet.GameClickEvent
+import dev.avernic.server.engine.event.player.packet.MinimapClickEvent
 
 /**
  * Handle when the player clicks inside the game canvas.

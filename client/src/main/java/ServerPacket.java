@@ -52,7 +52,7 @@ public class ServerPacket {
    public static final ServerPacket SEND_MESSAGE_GAME = new ServerPacket(49, -1);
    public static final ServerPacket field2742 = new ServerPacket(50, 1);
    public static final ServerPacket field2743 = new ServerPacket(51, 0);
-   public static final ServerPacket field2744 = new ServerPacket(79, -2);
+   public static final ServerPacket NPC_UPDATE_SMALL = new ServerPacket(79, -2);
    public static final ServerPacket field2745 = new ServerPacket(53, 6);
    public static final ServerPacket field2746 = new ServerPacket(54, 14);
    public static final ServerPacket GAMEFRAME_FULL = new ServerPacket(1, -2);

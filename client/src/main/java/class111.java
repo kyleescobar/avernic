@@ -46,7 +46,7 @@ public class class111 extends class104 {
             } else if (6751 != var0 && var0 != 6752 && 6753 != var0) {
                if (var0 == 6754) {
                   int var4 = class51.field747[--class51.field746];
-                  class148 var5 = class97.method2065(var4);
+                  class148 var5 = class97.getNpcDefinition(var4);
                   class51.field738[++class2.field4 - 1] = null != var5 ? var5.field1620 : "";
                   return 1;
                } else {

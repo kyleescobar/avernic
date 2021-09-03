@@ -13,7 +13,7 @@ public class ApproximateRouteStrategy extends class161 {
    static void method802(Player var0, boolean var1) {
       if (var0 != null && var0.method1748() && !var0.field998) {
          var0.field995 = false;
-         if ((client.isLowDetailMode && PlayerList.localPlayerCount > 50 || PlayerList.localPlayerCount > 200) && var1 && var0.field1030 == var0.field1050) {
+         if ((client.isLowDetailMode && PlayerList.localPlayerCount > 50 || PlayerList.localPlayerCount > 200) && var1 && var0.stanceAnimation == var0.field1050) {
             var0.field995 = true;
          }
 
@@ -25,7 +25,7 @@ public class ApproximateRouteStrategy extends class161 {
                var0.field995 = false;
                var0.field985 = class123.method2216(var0.x, var0.y, class285.plane);
                var0.field1025 = client.cycle;
-               class166.field1925.method3503(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.field1022, var5, var0.field978, var0.field993, var0.field994, var0.field989);
+               class166.field1925.method3503(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.movementDirection, var5, var0.field978, var0.field993, var0.field994, var0.field989);
             } else {
                if ((var0.x & 127) == 64 && 64 == (var0.y & 127)) {
                   if (client.field502[var3][var4] == client.field505) {
@@ -37,7 +37,7 @@ public class ApproximateRouteStrategy extends class161 {
 
                var0.field985 = class123.method2216(var0.x, var0.y, class285.plane);
                var0.field1025 = client.cycle;
-               class166.field1925.method3508(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.field1022, var5, var0.field1023);
+               class166.field1925.method3508(class285.plane, var0.x, var0.y, var0.field985, 60, var0, var0.movementDirection, var5, var0.field1023);
             }
          }
       }

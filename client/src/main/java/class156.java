@@ -1465,12 +1465,12 @@ public class class156 extends class349 {
    }
 
    static final void method2651(class72 var0) {
-      var0.field1050 = var0.field1030;
+      var0.field1050 = var0.stanceAnimation;
       if (0 == var0.pathLength) {
          var0.field1079 = 0;
       } else {
-         if (var0.sequence != -1 && 0 == var0.field1056) {
-            class159 var2 = class48.method1312(var0.sequence);
+         if (var0.animation != -1 && 0 == var0.animationDelay) {
+            class159 var2 = class48.method1312(var0.animation);
             if (var0.field1067 > 0 && 0 == var2.field1868) {
                ++var0.field1079;
                return;
@@ -1484,8 +1484,8 @@ public class class156 extends class349 {
 
          int var11 = var0.x;
          int var3 = var0.y;
-         int var4 = var0.field1024 * 64 + var0.pathX[var0.pathLength - 1] * 128;
-         int var5 = 128 * var0.pathY[var0.pathLength - 1] + var0.field1024 * 64;
+         int var4 = var0.size * 64 + var0.pathX[var0.pathLength - 1] * 128;
+         int var5 = 128 * var0.pathY[var0.pathLength - 1] + var0.size * 64;
          if (var11 < var4) {
             if (var3 < var5) {
                var0.orientation = 1280;
@@ -1508,24 +1508,24 @@ public class class156 extends class349 {
             var0.orientation = 0;
          }
 
-         byte var6 = var0.field1031[var0.pathLength - 1];
+         byte var6 = var0.pathTraversed[var0.pathLength - 1];
          if (var4 - var11 <= 256 && var4 - var11 >= -256 && var5 - var3 <= 256 && var5 - var3 >= -256) {
-            int var7 = var0.orientation - var0.field1022 & 2047;
+            int var7 = var0.orientation - var0.movementDirection & 2047;
             if (var7 > 1024) {
                var7 -= 2048;
             }
 
-            int var8 = var0.field1072;
+            int var8 = var0.walkBackAnimation;
             if (var7 >= -256 && var7 <= 256) {
-               var8 = var0.field1029;
+               var8 = var0.walkForwardAnimation;
             } else if (var7 >= 256 && var7 < 768) {
-               var8 = var0.field1021;
+               var8 = var0.walkRightAnimation;
             } else if (var7 >= -768 && var7 <= -256) {
-               var8 = var0.field1046;
+               var8 = var0.walkLeftAnimation;
             }
 
             if (-1 == var8) {
-               var8 = var0.field1029;
+               var8 = var0.walkForwardAnimation;
             }
 
             var0.field1050 = var8;
@@ -1536,7 +1536,7 @@ public class class156 extends class349 {
             }
 
             if (var10) {
-               if (var0.field1022 != var0.orientation && var0.targetIndex == -1 && var0.field1075 != 0) {
+               if (var0.movementDirection != var0.orientation && var0.targetIndex == -1 && var0.rotation != 0) {
                   var9 = 2;
                }
 
@@ -1571,7 +1571,7 @@ public class class156 extends class349 {
                var9 <<= 1;
             }
 
-            if (var9 >= 8 && var0.field1050 == var0.field1029 && var0.field1033 != -1) {
+            if (var9 >= 8 && var0.field1050 == var0.walkForwardAnimation && var0.field1033 != -1) {
                var0.field1050 = var0.field1033;
             }
 

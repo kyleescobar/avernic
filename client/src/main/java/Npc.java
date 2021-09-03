@@ -10,71 +10,71 @@ public final class Npc extends class72 {
    Npc() {
    }
 
-   final void method1832(int var1, byte var2) {
-      int var4 = super.pathX[0];
-      int var5 = super.pathY[0];
-      if (0 == var1) {
-         --var4;
-         ++var5;
+   final void translateTile(int direction, byte var2) {
+      int tileX = super.pathX[0];
+      int tileY = super.pathY[0];
+      if (0 == direction) {
+         --tileX;
+         ++tileY;
       }
 
-      if (1 == var1) {
-         ++var5;
+      if (1 == direction) {
+         ++tileY;
       }
 
-      if (var1 == 2) {
-         ++var4;
-         ++var5;
+      if (direction == 2) {
+         ++tileX;
+         ++tileY;
       }
 
-      if (3 == var1) {
-         --var4;
+      if (3 == direction) {
+         --tileX;
       }
 
-      if (var1 == 4) {
-         ++var4;
+      if (direction == 4) {
+         ++tileX;
       }
 
-      if (5 == var1) {
-         --var4;
-         --var5;
+      if (5 == direction) {
+         --tileX;
+         --tileY;
       }
 
-      if (6 == var1) {
-         --var5;
+      if (6 == direction) {
+         --tileY;
       }
 
-      if (var1 == 7) {
-         ++var4;
-         --var5;
+      if (direction == 7) {
+         ++tileX;
+         --tileY;
       }
 
-      if (super.sequence != -1 && class48.method1312(super.sequence).field1860 == 1) {
-         super.sequence = -1;
+      if (super.animation != -1 && class48.method1312(super.animation).field1860 == 1) {
+         super.animation = -1;
       }
 
       if (super.pathLength < 9) {
          ++super.pathLength;
       }
 
-      for(int var6 = super.pathLength; var6 > 0; --var6) {
-         super.pathX[var6] = super.pathX[var6 - 1];
-         super.pathY[var6] = super.pathY[var6 - 1];
-         super.field1031[var6] = super.field1031[var6 - 1];
+      for(int i = super.pathLength; i > 0; --i) {
+         super.pathX[i] = super.pathX[i - 1];
+         super.pathY[i] = super.pathY[i - 1];
+         super.pathTraversed[i] = super.pathTraversed[i - 1];
       }
 
-      super.pathX[0] = var4;
-      super.pathY[0] = var5;
-      super.field1031[0] = var2;
+      super.pathX[0] = tileX;
+      super.pathY[0] = tileY;
+      super.pathTraversed[0] = var2;
    }
 
    public static int method1834() {
       return class208.field2484;
    }
 
-   final void method1833(int var1, int var2, boolean var3) {
-      if (-1 != super.sequence && class48.method1312(super.sequence).field1860 == 1) {
-         super.sequence = -1;
+   final void addNpcToScene(int var1, int var2, boolean var3) {
+      if (-1 != super.animation && class48.method1312(super.animation).field1860 == 1) {
+         super.animation = -1;
       }
 
       if (!var3) {
@@ -88,12 +88,12 @@ public final class Npc extends class72 {
             for(int var7 = super.pathLength; var7 > 0; --var7) {
                super.pathX[var7] = super.pathX[var7 - 1];
                super.pathY[var7] = super.pathY[var7 - 1];
-               super.field1031[var7] = super.field1031[var7 - 1];
+               super.pathTraversed[var7] = super.pathTraversed[var7 - 1];
             }
 
             super.pathX[0] = var1;
             super.pathY[0] = var2;
-            super.field1031[0] = 1;
+            super.pathTraversed[0] = 1;
             return;
          }
       }
@@ -103,32 +103,32 @@ public final class Npc extends class72 {
       super.field1079 = 0;
       super.pathX[0] = var1;
       super.pathY[0] = var2;
-      super.x = super.pathX[0] * 128 + super.field1024 * 64;
-      super.y = 128 * super.pathY[0] + super.field1024 * 64;
+      super.x = super.pathX[0] * 128 + super.size * 64;
+      super.y = 128 * super.pathY[0] + super.size * 64;
    }
 
    protected final class207 method3687() {
       if (this.definition == null) {
          return null;
       } else {
-         class159 var2 = -1 != super.sequence && super.field1056 == 0 ? class48.method1312(super.sequence) : null;
-         class159 var3 = -1 == super.field1050 || super.field1030 == super.field1050 && null != var2 ? null : class48.method1312(super.field1050);
-         class207 var4 = this.definition.method2491(var2, super.field1054, var3, super.field1042);
+         class159 var2 = -1 != super.animation && super.animationDelay == 0 ? class48.method1312(super.animation) : null;
+         class159 var3 = -1 == super.field1050 || super.stanceAnimation == super.field1050 && null != var2 ? null : class48.method1312(super.field1050);
+         class207 var4 = this.definition.method2491(var2, super.animationFrame, var3, super.field1042);
          if (var4 == null) {
             return null;
          } else {
             var4.method3721();
             super.field1071 = var4.field2346;
-            if (-1 != super.spotAnimation && -1 != super.field1028) {
-               class207 var5 = class25.method403(super.spotAnimation).method2498(super.field1028);
+            if (-1 != super.spotAnimation && -1 != super.isSpotAnimationRunning) {
+               class207 var5 = class25.method403(super.spotAnimation).method2498(super.isSpotAnimationRunning);
                if (null != var5) {
-                  var5.method3731(0, -super.field1062, 0);
+                  var5.method3731(0, -super.spotAnimationHeight, 0);
                   class207[] var6 = new class207[]{var4, var5};
                   var4 = new class207(var6, 2);
                }
             }
 
-            if (1 == this.definition.field1622) {
+            if (1 == this.definition.size) {
                var4.field2430 = true;
             }
 
