@@ -2,12 +2,13 @@ package dev.avernic.server.engine.game.entity.pathfinder
 
 import dev.avernic.server.engine.game.Direction
 import dev.avernic.server.engine.game.collision.isNotBlocked
+import dev.avernic.server.engine.game.entity.LivingEntity
 import dev.avernic.server.engine.game.entity.Player
 import dev.avernic.server.engine.game.entity.pathfinder.destination.Destination
 import dev.avernic.server.engine.game.map.Tile
 import java.util.*
 
-class PlayerPathfinder(private val player: Player) : Pathfinder {
+class PlayerPathfinder(private val player: LivingEntity) : Pathfinder {
 
     private val queue = LinkedList<Node>()
     private val visited = LinkedList<Node>()
@@ -68,7 +69,7 @@ class PlayerPathfinder(private val player: Player) : Pathfinder {
                     !visited.contains(neighbor)
                     && start.isWithinRadius(tile, MAX_DISTANCE)
                     && Direction.between(node.tile, tile) != Direction.NONE
-                    && (player.noclip || player.world.isNotBlocked(node.tile, Direction.between(node.tile, tile), player.size))
+                    && ((player is Player && player.noclip) || player.world.isNotBlocked(node.tile, Direction.between(node.tile, tile), player.size))
                 ) {
                     neighbor.cost = node.cost + 1
                     queue.add(neighbor)

@@ -145,13 +145,9 @@ class World : EventSubject, TaskSubject {
     }
 
     fun findNpcs(tile: Tile, radius: Int): List<Npc> {
-        val rx = tile.toChunk().x - (radius / Chunk.SIZE) .. tile.toChunk().x + (radius / Chunk.SIZE)
-        val ry = tile.toChunk().y - (radius / Chunk.SIZE) .. tile.toChunk().y + (radius / Chunk.SIZE)
-        return rx.flatMap { x ->
-            ry.flatMap { y ->
-                chunks[tile.plane][x][y]?.npcs ?: emptyList()
-            }
-        }.filter { tile.toChunk().x in rx && tile.toChunk().y in ry }
+        val rx = tile.x-radius..tile.x+radius
+        val ry = tile.y-radius..tile.y+radius
+        return npcs.filter { it.tile.x in rx && it.tile.y in ry }
     }
 
     fun getChunk(x: Int, y: Int, plane: Int = 0): WorldChunk? = chunks[plane][x / Chunk.SIZE][y / Chunk.SIZE]
